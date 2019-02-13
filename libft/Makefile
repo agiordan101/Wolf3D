@@ -6,7 +6,7 @@
 #    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/03 17:31:01 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/12 15:12:06 by agiordan    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/13 18:37:17 by gmonacho    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -99,7 +99,11 @@ FILE =	ft_memset.c \
 		ft_isspace.c \
 		ft_strreplace.c \
 		ft_filereplace.c \
-		ft_stristr.c
+		ft_stristr.c \
+		ft_countnumbers.c \
+		ft_catinttab.c \
+		ft_intput.c
+
 OBJETS = $(FILE:.c=.o)
 HEADER = libft.h
 FLAGS = -Werror -Wextra -Wall

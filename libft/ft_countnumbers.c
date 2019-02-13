@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_addint.c                                      .::    .:/ .      .::   */
+/*   ft_countnumbers.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: gmonacho <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/14 18:19:54 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/13 18:56:10 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/11/25 20:23:39 by gmonacho     #+#   ##    ##    #+#       */
+/*   Updated: 2019/02/13 17:38:15 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	*ft_addint(int *tab, int nbr, size_t length)
+int		ft_countnumbers(char *str)
 {
-	int		*newtab;
-	size_t	i;
+	int		i;
+	int		nb;
 
-	newtab = (int *)malloc(sizeof(int) * (length + 1));
-	i = -1;
-	while (++i < length)
-		newtab[i] = tab[i];
-	newtab[i] = nbr;
-	return (newtab);
+	i = 0;
+	nb = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			i++;
+		else
+		{
+			nb++;
+			while (ft_isdigit(str[i]) && str[i])
+				i++;
+		}
+	}
+	return (nb);
 }

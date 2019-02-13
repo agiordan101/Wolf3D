@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_addint.c                                      .::    .:/ .      .::   */
+/*   ft_intput.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: gmonacho <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/14 18:19:54 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/13 18:56:10 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/02/13 18:34:15 by gmonacho     #+#   ##    ##    #+#       */
+/*   Updated: 2019/02/13 18:39:30 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	*ft_addint(int *tab, int nbr, size_t length)
+void	ft_intput(int *tab, size_t len)
 {
-	int		*newtab;
-	size_t	i;
+	int		i;
 
-	newtab = (int *)malloc(sizeof(int) * (length + 1));
-	i = -1;
-	while (++i < length)
-		newtab[i] = tab[i];
-	newtab[i] = nbr;
-	return (newtab);
+	i = 0;
+	while (i < (int)len)
+		ft_putstr(ft_itoa(tab[i++]));
 }

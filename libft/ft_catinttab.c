@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_addint.c                                      .::    .:/ .      .::   */
+/*   ft_catinttab.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: gmonacho <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/14 18:19:54 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/13 18:56:10 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/02/13 17:46:16 by gmonacho     #+#   ##    ##    #+#       */
+/*   Updated: 2019/02/13 17:58:03 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	*ft_addint(int *tab, int nbr, size_t length)
+int		*ft_catinttab(int *t1, size_t size1, int *t2, size_t size2)
 {
 	int		*newtab;
-	size_t	i;
+	int		i;
+	int		j;
 
-	newtab = (int *)malloc(sizeof(int) * (length + 1));
-	i = -1;
-	while (++i < length)
-		newtab[i] = tab[i];
-	newtab[i] = nbr;
+	if (!(newtab = (int*)ft_memalloc(size1 + size2)))
+		return (NULL);
+	i = 0;
+	while (i < (int)size1)
+	{
+		newtab[i] = t1[i];
+		i++;
+	}
+	j = 0;
+	while (j < (int)size2)
+		newtab[i++] = t2[j++];
 	return (newtab);
 }

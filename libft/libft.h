@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/03 17:31:57 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/12 19:17:18 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/13 18:37:03 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -117,5 +117,8 @@ int					ft_isspace(int c);
 void				ft_strreplace(char *str, char *target, char *replace);
 int					ft_filereplace(char *file, char *target, char *replace);
 int					ft_stristr(char *str, char *tofind);
+int					ft_countnumbers(char *str);
+int					*ft_catinttab(int *t1, size_t size1, int *t2, size_t size2);
+void				ft_intput(int *tab, size_t len);
 
 #endif

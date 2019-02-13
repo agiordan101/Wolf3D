@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_addint.c                                      .::    .:/ .      .::   */
+/*   main.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: gmonacho <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/14 18:19:54 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/13 18:56:10 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
+/*   Updated: 2019/02/13 18:42:39 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/wolf3d.h"
 
-int	*ft_addint(int *tab, int nbr, size_t length)
+int		main(int ac, char **av)
 {
-	int		*newtab;
-	size_t	i;
+	t_map	map;
+	int		fd;
+	int		ret;
 
-	newtab = (int *)malloc(sizeof(int) * (length + 1));
-	i = -1;
-	while (++i < length)
-		newtab[i] = tab[i];
-	newtab[i] = nbr;
-	return (newtab);
+	if (ac == 2)
+	{
+		if ((fd = open(av[1], O_RDONLY)) < 0 || (ret = parser(fd, &map)) <= 0)
+			return (0);
+		ft_intput(map.tab, 100);
+	}
+	return (0);
 }
