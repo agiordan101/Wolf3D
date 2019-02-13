@@ -6,7 +6,7 @@
 /*   By: gmonacho <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:03:22 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/13 18:56:42 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/13 19:08:58 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,7 +29,7 @@ static int	convert_int(const char *line, int **int_line, double len)
 {
 	int		i;
 
-	if (!(*int_line = (int*)ft_memalloc(len)))
+	if (!(*int_line = (int*)ft_memalloc(sizeof(int) * len)))
 		return (0);
 	i = 0;
 	while (i < len)
@@ -59,22 +59,19 @@ int			parser(int const fd, t_map *map)
 	map->width = 0;
 	map->height = 0;
 	ilen = 0;
-	printf("1\n");
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{
 		if (!(map->len_x = ft_addint(map->len_x, ft_countnumbers(line), ilen)))
 			return (0);
-		printf("2\n");
 		if (convert_int(line, &int_line, map->len_x[ilen]) <= 0)
 			return (0);
-		printf("3\n");
 		tmp = map->tab;
 		if (!(map->tab = ft_catinttab(map->tab, total_value(map->len_x, ilen), int_line, map->len_x[ilen])))
 			return (0);
-		printf("4\n");
 		ft_tabintdel(&tmp);
+		ft_strdel(&line);
+		ft_tabintdel(&int_line);
 		ilen++;
 	}
-	printf("5\n");
 	return (1);
 }
