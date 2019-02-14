@@ -6,7 +6,7 @@
 /*   By: gmonacho <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/13 19:45:37 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/14 15:26:23 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,7 +17,7 @@ int		parser_error(int error)
 {
 	write(1, "Error : ", 8);
 	if (error == -1)
-		return(write(1, "Openning Failed\n", 15));
+		return(write(1, "Openning Failed, Please enter a valid file name\n", 48));
 	else if (error == -2)
 		return(write(1, "Malloc Failed\n", 14));
 	else if (error == -3)
@@ -38,8 +38,10 @@ int		main(int ac, char **av)
 	{
 		if ((fd = open(av[1], O_RDONLY)) < 0)  
 			return (parser_error(-1));
+		write(1, "file opened\n", 12);
 		if ((ret = parser(fd, &map)) <= 0)
 			return(parser_error(ret));
+		write(1, "parsing finished\n", 17);
 		ft_intput(map.tab, 100);
 	}
 	else
