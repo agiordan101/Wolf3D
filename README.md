@@ -1,2 +1,2 @@
 # Wolf3D
-agiordan &amp; gmonacho
+agiordan and gmonacho

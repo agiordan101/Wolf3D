@@ -1,4 +1,4 @@
-# **************************************************************************** #
+ **************************************************************************** #
 #                                                           LE - /             #
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
@@ -6,12 +6,12 @@
 #    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/01/16 17:11:58 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/13 19:00:12 by gmonacho    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/15 14:28:17 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
-NAME = wolf3d
+NAME = Wolf3D
 
 SRC_PATH = srcs
 SRC_FILES = main.c \
@@ -28,31 +28,31 @@ FLAGS = -Wall -Werror -Wextra
 PPFLAGS = -Iinclude
 
 INCLUDE_PATH = include
-LIB = libft/libft.a
-LIB1 = libft
+LIB1_PATH = libft
+LIB1 = $(LIB1_PATH)/$(LIB1_PATH).a
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-		make -C $(LIB1)
-		$(CC) $(FLAGS) $(LIB) $^ -o $@
+		make -C $(LIB1_PATH)
+		$(CC) $(FLAGS) $(LIB1) $^ -o $@
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 		@mkdir $(OBJ_PATH) 2> /dev/null || true
 		$(CC) $(FLAGS) $(PPFLAGS) -c $< -o $@
 
 clean:
-		make clean -C $(LIB1)
+		make clean -C $(LIB1_PATH)
 		@rm -rf $(OBJ_PATH) 2> /dev/null || true
 
 fclean: clean
-		make fclean -C $(LIB1)
+		make fclean -C $(LIB1_PATH)
 		rm -f $(NAME)
-		rm -f launcher
 
 re: fclean all
 
 norme:
+		@norminette $(LIB1_PATH)
 		@norminette $(SRC_PATH)
 		@norminette $(INCLUDE_PATH)
 
