@@ -1,12 +1,12 @@
- **************************************************************************** #
+# **************************************************************************** #
 #                                                           LE - /             #
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
 #    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
-#    Created: 2019/01/16 17:11:58 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/15 14:28:17 by agiordan    ###    #+. /#+    ###.fr      #
+#    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
+#    Updated: 2019/02/15 18:46:02 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -16,7 +16,6 @@ NAME = Wolf3D
 SRC_PATH = srcs
 SRC_FILES = main.c \
 			parser.c
-
 SRC = $(addprefix $(SRC_PATH)/, $(SRC_FILES))
 
 OBJ_PATH = obj
@@ -29,13 +28,15 @@ PPFLAGS = -Iinclude
 
 INCLUDE_PATH = include
 LIB1_PATH = libft
-LIB1 = $(LIB1_PATH)/$(LIB1_PATH).a
+LIB2_PATH = libmath
+LIBRARIES = $(LIB1_PATH)/$(LIB1_PATH).a $(LIB2_PATH)/$(LIB2_PATH).a 
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 		make -C $(LIB1_PATH)
-		$(CC) $(FLAGS) $(LIB1) $^ -o $@
+		make -C $(LIB2_PATH)
+		$(CC) $(FLAGS) $(LIBRARIES) $^ -o $@
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 		@mkdir $(OBJ_PATH) 2> /dev/null || true
@@ -43,16 +44,19 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 
 clean:
 		make clean -C $(LIB1_PATH)
+		make clean -C $(LIB2_PATH)
 		@rm -rf $(OBJ_PATH) 2> /dev/null || true
 
 fclean: clean
 		make fclean -C $(LIB1_PATH)
+		make fclean -C $(LIB2_PATH)
 		rm -f $(NAME)
 
 re: fclean all
 
 norme:
 		@norminette $(LIB1_PATH)
+		@norminette $(LIB2_PATH)
 		@norminette $(SRC_PATH)
 		@norminette $(INCLUDE_PATH)
 

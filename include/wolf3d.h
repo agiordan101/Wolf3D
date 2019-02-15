@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/15 15:23:07 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/15 16:30:40 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,6 +16,7 @@
 
 # include <stdio.h>
 # include "../libft/libft.h"
+# include <stdio.h>
 
 typedef struct	s_map
 {
@@ -26,5 +27,6 @@ typedef struct	s_map
 }				t_map;
 
 int				parser(int const fd, t_map *map);
+int				parser_error(int error);
 
 #endif
