@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   parser.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:03:22 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/13 19:44:48 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/15 15:23:39 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,7 +29,7 @@ static int	convert_int(const char *line, int **int_line, double len)
 {
 	int		i;
 
-	if (!(*int_line = (int*)ft_memalloc(sizeof(int) * len)))
+	if (!(*int_line = (int *)ft_memalloc(sizeof(int) * len)))
 		return (-2);
 	i = 0;
 	while (i < len)
@@ -66,7 +66,8 @@ int			parser(int const fd, t_map *map)
 		if ((ret = convert_int(line, &int_line, map->len_x[ilen])) <= 0)
 			return (ret);
 		tmp = map->tab;
-		if (!(map->tab = ft_catinttab(map->tab, total_value(map->len_x, ilen), int_line, map->len_x[ilen])))
+		if (!(map->tab = ft_catinttab(map->tab,
+					total_value(map->len_x, ilen), int_line, map->len_x[ilen])))
 			return (-2);
 		ft_tabintdel(&tmp);
 		ft_strdel(&line);

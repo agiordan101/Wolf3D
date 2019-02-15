@@ -6,7 +6,7 @@
 /*   By: agiordan <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/14 18:19:54 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/13 18:56:10 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/01/14 02:39:47 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,6 +22,7 @@ int	*ft_addint(int *tab, int nbr, size_t length)
 	i = -1;
 	while (++i < length)
 		newtab[i] = tab[i];
+	ft_tabintdel(&tab);
 	newtab[i] = nbr;
 	return (newtab);
 }

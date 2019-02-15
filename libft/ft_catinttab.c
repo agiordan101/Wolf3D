@@ -6,29 +6,30 @@
 /*   By: gmonacho <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:46:16 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/13 19:07:09 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/15 15:15:14 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		*ft_catinttab(int *t1, size_t size1, int *t2, size_t size2)
+int		*ft_catinttab(int *tab1, size_t len1, int *tab2, size_t len2)
 {
-	int		*newtab;
-	int		i;
-	int		j;
+	int	*newtab;
+	int	i;
+	int	j;
 
-	if (!(newtab = (int*)ft_memalloc(sizeof(int) * (size1 + size2))))
+	if (!tab1)
+		return (tab2);
+	if (!tab2)
+		return (tab1);
+	if (!(newtab = (int*)ft_memalloc(sizeof(int) * (len1 + len2))))
 		return (NULL);
-	i = 0;
-	while (i < (int)size1)
-	{
-		newtab[i] = t1[i];
-		i++;
-	}
+	i = -1;
+	while (++i < (int)len1)
+		newtab[i] = tab1[i];
 	j = 0;
-	while (j < (int)size2)
-		newtab[i++] = t2[j++];
+	while (j < (int)len2)
+		newtab[i++] = tab2[j++];
 	return (newtab);
 }

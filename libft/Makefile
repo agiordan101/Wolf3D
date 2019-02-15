@@ -6,7 +6,7 @@
 #    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/03 17:31:01 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/13 18:37:17 by gmonacho    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/15 15:11:02 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -100,10 +100,9 @@ FILE =	ft_memset.c \
 		ft_strreplace.c \
 		ft_filereplace.c \
 		ft_stristr.c \
+		ft_intput.c \
 		ft_countnumbers.c \
-		ft_catinttab.c \
-		ft_intput.c
-
+		ft_catinttab.c
 OBJETS = $(FILE:.c=.o)
 HEADER = libft.h
 FLAGS = -Werror -Wextra -Wall
