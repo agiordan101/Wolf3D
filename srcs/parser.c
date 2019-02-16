@@ -6,14 +6,14 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:03:22 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/16 16:17:30 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/16 22:58:37 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/wolf3d.h"
 
-int		parser_error(int error)
+int			parser_error(int error)
 {
 	write(1, "Error : ", 8);
 	if (error == -1)
@@ -28,19 +28,19 @@ int		parser_error(int error)
 		return(write(1, "Undefined\n",  10));
 }
 
-static int	total_value(int *len_x, int ilen)
+int			sum_x(t_map *map, int iwanted)
 {
 	int	i;
-	int	total_value;
+	int	sum_x;
 
 	i = 0;
-	total_value = 0;
-	while (i < ilen)
-		total_value += len_x[i++];
-	return (total_value);
+	sum_x = 0;
+	while (i < iwanted)
+		sum_x += map->len_x[i++];
+	return (sum_x);
 }
 
-/*static int	convert_int(const char *line, int **int_line, double len)
+static int	convert_int(const char *line, int **int_line, double len)
 {
 	int		i;
 
@@ -61,21 +61,21 @@ static int	total_value(int *len_x, int ilen)
 			return (-3);
 	}
 	return (1);
-}*/
+}
 
-static int	convert_int(const char *line, int **int_line, double len)
+/*static int	convert_int(const char *line, int **int_line, double len)
 {
 	char	**tab;
 	int		i;
 
 	if (!(*int_line = (int *)ft_memalloc(sizeof(int) * len)))
 		return (-2);
-	tab = ft_strsplit(line, ' ');
+	tab = ft_strsplit(line, ' '); // leaks sale pute d'antoine. ok.
 	i = -1;
 	while (tab[++i])
 		(*int_line)[i] = ft_atoi(tab[i]);
 	return (1);
-}
+}*/
 
 int			parser(int const fd, t_map *map)
 {
@@ -96,14 +96,15 @@ int			parser(int const fd, t_map *map)
 			return (ret);
 		tmp = map->tab;
 		if (!(map->tab = ft_catinttab(map->tab,
-					total_value(map->len_x, i), int_line, map->len_x[i])))
+							sum_x(map, i), int_line, map->len_x[i])))
 			return (-2);
 		ft_putinttab(int_line, map->len_x[i]);
-		//printf("Avant free\n");
 		ft_tabintdel(&tmp);
 		ft_strdel(&line);
 		ft_tabintdel(&int_line);
 		i++;
 	}
+	map->len_y = i;
+	
 	return ((ret < 0) ? -4 : 1);
 }

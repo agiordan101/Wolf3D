@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/03 17:31:57 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/16 17:51:21 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/16 21:45:53 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -82,12 +82,14 @@ double			dist_dot_2d(t_dot_2d d1, t_dot_2d d2);
 double			dist_origin_dot_2d(t_dot_2d dot);
 t_dot_2d		*rand_dot_2d(double xmin, double xmax,\
 								double ymin, double ymax);
+t_dot_2d		vector_to_dot_2d(t_vector_2d vector);
 
 t_dot_3d		*new_dot_3d(double x, double y, double z);
 void			del_dot_3d(t_dot_3d **dot);
 double			dist_dot_3d(t_dot_3d d1, t_dot_3d d2);
 double			dist_origin_dot_3d(t_dot_3d dot);
 t_dot_3d		*rand_dot_3d(double min, double max);
+t_dot_3d		vector_to_dot_3d(t_vector_3d vector);
 
 /*
 **	Vectors *functions 2d/3d
@@ -102,7 +104,8 @@ t_vector_2d		*add_vector_2d(t_vector_2d vector1, t_vector_2d vector2);
 t_vector_2d		*sub_vector_2d(t_vector_2d vector1, t_vector_2d vector2);
 double			scalar_product_2d(t_vector_2d vector1, t_vector_2d vector2);
 t_vector_2d		*normalize_vector_2d(t_vector_2d *vector);
-t_vector_2d		*rand_vector_2d();
+t_vector_2d		*rand_vector_2d(void);
+t_vector_2d		dot_to_vector_2d(t_dot_2d dot);
 
 t_vector_3d		*new_vector_3d(t_dot_3d *origin, double x, double y, double z);
 void			del_vector_3d(t_vector_3d **vector);
@@ -113,6 +116,7 @@ t_vector_3d		*sub_vector_3d(t_vector_3d vector1, t_vector_3d vector2);
 double			scalar_product_3d(t_vector_3d vector1, t_vector_3d vector2);
 t_vector_3d		*vector_product(t_vector_3d vector1, t_vector_3d vector2);
 t_vector_3d		*normalize_vector_3d(t_vector_3d *vector);
-t_vector_3d		*rand_vector_3d();
+t_vector_3d		*rand_vector_3d(void);
+t_vector_3d		dot_to_vector_3d(t_dot_3d dot);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/16 17:08:40 by agiordan    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/16 22:58:37 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -15,7 +15,10 @@ NAME = Wolf3D
 
 SRC_PATH = srcs
 SRC_FILES = main.c \
-			parser.c
+			parser.c \
+			raycasting.c \
+			get_y.c \
+			collision.c
 SRC = $(addprefix $(SRC_PATH)/, $(SRC_FILES))
 
 OBJ_PATH = obj
