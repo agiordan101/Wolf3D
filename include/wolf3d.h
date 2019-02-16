@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/16 17:38:55 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/16 18:08:28 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,15 +21,13 @@
 
 typedef struct		s_player
 {
-	double			x;
-	double			y;
-	t_vector_2d		vel_x;
-	t_vector_2d		vel_y;
+	t_dot_2d		pos;
+	t_vector_2d		vel;
 }					t_player;
 
-typedef struct	s_calculs
+typedef struct		s_calculs
 {
-	vector_2d		vectors;
+	t_vector_2d		vectors;
 	double			*dist;
 }					t_calculs;
 
