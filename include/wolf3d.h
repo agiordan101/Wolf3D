@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/16 17:03:46 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/16 17:18:47 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,5 +42,7 @@ typedef struct	s_win
 
 int				parser(int const fd, t_map *map);
 int				parser_error(int error);
+
+void			calcul_dist(t_map *map, t_calculs *calculs);
 
 #endif
