@@ -6,14 +6,14 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 19:22:44 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/13 19:22:45 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/16 17:46:17 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libmath.h"
 
-dot_2d	*rand_dot_2d(double xmin, double xmax,\
+t_dot_2d	*rand_dot_2d(double xmin, double xmax,\
 			double ymin, double ymax)
 {
 	srand(time(0));

@@ -6,14 +6,14 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 19:25:22 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/13 19:25:23 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/16 17:34:52 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libmath.h"
 
-double	dist_dot_3d(dot_3d d1, dot_3d d2)
+double	dist_dot_3d(t_dot_3d d1, t_dot_3d d2)
 {
 	return (ft__sqrt((d2.x - d1.x) * (d2.x - d1.x) +\
 			(d2.y - d1.y) * (d2.y - d1.y) +\

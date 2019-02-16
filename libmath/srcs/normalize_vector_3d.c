@@ -6,14 +6,14 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 19:22:49 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/13 19:22:52 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/16 17:46:04 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libmath.h"
 
-vector_3d	*normalize_vector_3d(vector_3d *vector)
+t_vector_3d	*normalize_vector_3d(t_vector_3d *vector)
 {
 	double	mag;
 

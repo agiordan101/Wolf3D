@@ -6,7 +6,7 @@
 #    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/01/16 17:11:58 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/15 20:05:40 by agiordan    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/16 17:33:36 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -63,7 +63,7 @@ OBJ = $(addprefix $(OBJ_PATH)/, $(OBJ_NAME))
 
 CC = gcc
 INCLUDE_PATH = include
-PPFLAGS = -I ./$(INCLUDE_PATH)
+PPFLAGS = -I./$(INCLUDE_PATH)
 FLAGS = -Wall -Werror -Wextra $(PPFLAGS)
 
 all: $(NAME)

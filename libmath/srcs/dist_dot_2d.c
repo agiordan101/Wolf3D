@@ -6,14 +6,14 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 19:25:24 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/13 19:25:26 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/16 17:35:00 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libmath.h"
 
-double	dist_dot_2d(dot_2d d1, dot_2d d2)
+double	dist_dot_2d(t_dot_2d d1, t_dot_2d d2)
 {
 	return (ft__sqrt((d2.x - d1.x) * (d2.x - d1.x) +\
 			(d2.y - d1.y) * (d2.y - d1.y), 2));

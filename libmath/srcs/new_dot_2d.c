@@ -6,19 +6,19 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 19:23:19 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/13 19:23:20 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/16 17:44:38 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libmath.h"
 
-dot_2d	*new_dot_2d(double x, double y)
+t_dot_2d	*new_dot_2d(double x, double y)
 {
-	dot_2d	*dot;
+	t_dot_2d	*dot;
 
-	if (!(dot = (dot_2d *)malloc(sizeof(dot_2d))))
+	if (!(dot = (t_dot_2d *)malloc(sizeof(t_dot_2d))))
 		return (NULL);
-	*dot = (dot_2d){.x = x, .y = y};
+	*dot = (t_dot_2d){.x = x, .y = y};
 	return (dot);
 }

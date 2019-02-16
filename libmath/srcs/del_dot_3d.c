@@ -6,14 +6,14 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 19:25:34 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/13 19:25:35 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/16 17:34:52 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libmath.h"
 
-void	del_dot_3d(dot_3d **dot)
+void	del_dot_3d(t_dot_3d **dot)
 {
 	if (!dot)
 		return ;
