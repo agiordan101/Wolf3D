@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:03:22 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/15 17:10:52 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/16 16:17:30 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -81,9 +81,9 @@ int			parser(int const fd, t_map *map)
 {
 	char	*line;
 	int		*int_line;
+	int		*tmp;
 	int		ret;
 	int		i;
-	int		*tmp;
 
 	int_line = NULL;
 	i = 0;
@@ -91,12 +91,14 @@ int			parser(int const fd, t_map *map)
 	{
 		if (!(map->len_x = ft_addint(map->len_x, ft_countnumbers(line), i)))
 			return (-2);
+		printf("Line : %s\n", line);
 		if ((ret = convert_int(line, &int_line, map->len_x[i])) <= 0)
 			return (ret);
 		tmp = map->tab;
 		if (!(map->tab = ft_catinttab(map->tab,
 					total_value(map->len_x, i), int_line, map->len_x[i])))
 			return (-2);
+		ft_putinttab(int_line, map->len_x[i]);
 		//printf("Avant free\n");
 		ft_tabintdel(&tmp);
 		ft_strdel(&line);

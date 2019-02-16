@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_intput.c                                      .::    .:/ .      .::   */
+/*   ft_putinttab.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/02/13 18:34:15 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/15 15:31:04 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/02/16 15:50:58 by agiordan     #+#   ##    ##    #+#       */
+/*   Updated: 2019/02/16 15:51:02 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_intput(int *tab, size_t len)
+void	ft_putinttab(int *tab, size_t len)
 {
 	int	i;
 

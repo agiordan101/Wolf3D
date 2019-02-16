@@ -6,7 +6,7 @@
 #    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/01/16 17:11:58 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/14 19:59:55 by agiordan    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/15 20:05:40 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -54,6 +54,7 @@ SRC_FILES = add_vector_2d.c \
 			set_mag_vector_3d.c \
 			sub_vector_2d.c \
 			sub_vector_3d.c
+
 SRC = $(addprefix $(SRC_PATH)/, $(SRC_FILES))
 
 OBJ_PATH = obj
@@ -61,14 +62,13 @@ OBJ_NAME = $(SRC_FILES:.c=.o)
 OBJ = $(addprefix $(OBJ_PATH)/, $(OBJ_NAME))
 
 CC = gcc
-INCLUdE_PATH = include
-PPFLAGS = -I$(INCLUdE_PATH)
+INCLUDE_PATH = include
+PPFLAGS = -I ./$(INCLUDE_PATH)
 FLAGS = -Wall -Werror -Wextra $(PPFLAGS)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-		$(CC) $(FLAGS) -c $(SRC)
 		ar rc $(NAME).a $(OBJ)
 		ranlib $(NAME).a
 
@@ -86,6 +86,6 @@ re: fclean all
 
 norme:
 		@norminette $(SRC_PATH)
-		@norminette $(INCLUdE_PATH)
+		@norminette $(INCLUDE_PATH)
 
 .PHONY: all, clean, flcean, re, norme

@@ -6,7 +6,7 @@
 #    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/03 17:31:01 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/15 15:11:02 by agiordan    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/15 20:08:49 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -100,18 +100,16 @@ FILE =	ft_memset.c \
 		ft_strreplace.c \
 		ft_filereplace.c \
 		ft_stristr.c \
-		ft_intput.c \
+		ft_putinttab.c \
 		ft_countnumbers.c \
 		ft_catinttab.c
 OBJETS = $(FILE:.c=.o)
-HEADER = libft.h
 FLAGS = -Werror -Wextra -Wall
 CC = gcc
 
 all:		$(NAME)
 
 $(NAME):	$(OBJETS)
-			$(CC) $(FLAGS) -c $(FILE)
 			ar rc $(NAME) $(OBJETS)
 			ranlib $(NAME)
 
