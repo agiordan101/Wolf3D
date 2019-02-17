@@ -6,12 +6,12 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/17 01:54:17 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/17 03:47:30 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../include/wolf3d.h"
+#include "wolf3d.h"
 
 int		init(/*t_win *win, */t_map *map, t_calculs *calculs, t_player *player)
 {
@@ -21,11 +21,11 @@ int		init(/*t_win *win, */t_map *map, t_calculs *calculs, t_player *player)
 	map->len_x = NULL;
 	if (!(calculs->dist = (double *)malloc(sizeof(double) * map->width)))
 		return (-1);
-	player->pos.x = 3.5;
-	player->pos.y = 1.5;
+	player->pos.x = 1.5;
+	player->pos.y = 3.3;
 	player->vel = (t_vector_2d){.x = 1.0, .y = 0};
 	player->dir = PI / 2;
-	player->fov = PI / 1.5;
+	player->fov = PI / 4;
 	return (0);
 }
 
@@ -59,9 +59,9 @@ int		main(int ac, char **av)
 			printf("\n");
 		}
 		raycasting(&(win.map), &(win.player), &(win.calculs));
-		/*i = -1;
+		i = -1;
 		while (++i < win.map.width)
-			printf("%lf - ", win.calculs.dist[i]);*/
+			printf("%lf - ", win.calculs.dist[i]);
 		collision(&(win.player), win.map);
 	}
 	else
