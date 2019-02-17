@@ -3,12 +3,19 @@
 /*                                                              /             */
 /*   open_window.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/14 18:59:51 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/14 19:01:25 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/17 02:04:47 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-# include "../include/wolf3d.h"
+# include "wolf3d.h"
+
+int     open_window()
+{
+    if (SDL_Init(SDL_INIT_VIDEO) < 0)
+        return (0);
+    return (1);
+}
