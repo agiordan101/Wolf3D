@@ -1,8 +1,8 @@
 build/SDL_sysjoystick.lo: \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/joystick/darwin/SDL_sysjoystick.c \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/joystick/darwin/../../SDL_internal.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/joystick/darwin/../../dynapi/SDL_dynapi.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/joystick/darwin/../../dynapi/SDL_dynapi_overrides.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/joystick/darwin/SDL_sysjoystick.c \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/joystick/darwin/../../SDL_internal.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/joystick/darwin/../../dynapi/SDL_dynapi.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/joystick/darwin/../../dynapi/SDL_dynapi_overrides.h \
   include/SDL_config.h include/SDL_platform.h include/begin_code.h \
   include/close_code.h include/SDL_events.h include/SDL_stdinc.h \
   include/SDL_error.h include/SDL_video.h include/SDL_pixels.h \
@@ -11,9 +11,9 @@ build/SDL_sysjoystick.lo: \
   include/SDL_keycode.h include/SDL_scancode.h include/SDL_mouse.h \
   include/SDL_joystick.h include/SDL_gamecontroller.h include/SDL_quit.h \
   include/SDL_gesture.h include/SDL_touch.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/joystick/darwin/../SDL_sysjoystick.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/joystick/darwin/../SDL_joystick_c.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/joystick/darwin/SDL_sysjoystick_c.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/joystick/darwin/../hidapi/SDL_hidapijoystick_c.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/joystick/darwin/../hidapi/../../hidapi/hidapi/hidapi.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/joystick/darwin/../../haptic/darwin/SDL_syshaptic_c.h
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/joystick/darwin/../SDL_sysjoystick.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/joystick/darwin/../SDL_joystick_c.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/joystick/darwin/SDL_sysjoystick_c.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/joystick/darwin/../hidapi/SDL_hidapijoystick_c.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/joystick/darwin/../hidapi/../../hidapi/hidapi/hidapi.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/joystick/darwin/../../haptic/darwin/SDL_syshaptic_c.h

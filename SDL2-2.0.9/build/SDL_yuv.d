@@ -1,15 +1,15 @@
 build/SDL_yuv.lo: \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/SDL_yuv.c \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/../SDL_internal.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/../dynapi/SDL_dynapi.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/../dynapi/SDL_dynapi_overrides.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/SDL_yuv.c \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/../SDL_internal.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/../dynapi/SDL_dynapi.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/../dynapi/SDL_dynapi_overrides.h \
   include/SDL_config.h include/SDL_platform.h include/begin_code.h \
   include/close_code.h include/SDL_endian.h include/SDL_stdinc.h \
   include/SDL_video.h include/SDL_pixels.h include/SDL_rect.h \
   include/SDL_error.h include/SDL_rwops.h include/SDL_surface.h \
   include/SDL_blendmode.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/SDL_pixels_c.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/SDL_blit.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/SDL_pixels_c.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/SDL_blit.h \
   include/SDL_cpuinfo.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/SDL_yuv_c.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/yuv2rgb/yuv_rgb.h
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/SDL_yuv_c.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/yuv2rgb/yuv_rgb.h

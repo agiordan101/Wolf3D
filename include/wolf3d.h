@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/17 05:22:09 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/17 05:39:16 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,7 +17,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
-//# include <SDL.h>
+# include "../SDL2-2.0.9/include/SDL.h"
 # include "../libft/libft.h"
 # include "../libmath/include/libmath.h"
 

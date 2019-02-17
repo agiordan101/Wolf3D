@@ -1,11 +1,11 @@
 build/SDL_x11dyn.lo: \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/x11/SDL_x11dyn.c \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/x11/../../SDL_internal.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/x11/../../dynapi/SDL_dynapi.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/x11/../../dynapi/SDL_dynapi_overrides.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/x11/SDL_x11dyn.c \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/x11/../../SDL_internal.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/x11/../../dynapi/SDL_dynapi.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/x11/../../dynapi/SDL_dynapi_overrides.h \
   include/SDL_config.h include/SDL_platform.h include/begin_code.h \
   include/close_code.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/x11/SDL_x11dyn.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/x11/SDL_x11dyn.h \
   /usr/X11R6/include/X11/Xlib.h /usr/X11R6/include/X11/X.h \
   /usr/X11R6/include/X11/Xfuncproto.h /usr/X11R6/include/X11/Xosdefs.h \
   /usr/X11R6/include/X11/Xutil.h /usr/X11R6/include/X11/keysym.h \
@@ -40,6 +40,6 @@ build/SDL_x11dyn.lo: \
   /usr/X11R6/include/X11/extensions/shapeconst.h \
   /usr/X11R6/include/X11/extensions/xf86vmode.h \
   /usr/X11R6/include/X11/extensions/xf86vm.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/x11/SDL_x11sym.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/x11/SDL_x11sym.h \
   include/SDL_name.h include/SDL_loadso.h include/SDL_stdinc.h \
   include/SDL_error.h

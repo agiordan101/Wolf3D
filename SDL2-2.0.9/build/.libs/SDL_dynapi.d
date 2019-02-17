@@ -1,8 +1,8 @@
 build/SDL_dynapi.lo: \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/dynapi/SDL_dynapi.c \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/dynapi/SDL_dynapi.c \
   include/SDL_config.h include/SDL_platform.h include/begin_code.h \
   include/close_code.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/dynapi/SDL_dynapi.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/dynapi/SDL_dynapi.h \
   include/SDL.h include/SDL_main.h include/SDL_stdinc.h \
   include/SDL_assert.h include/SDL_atomic.h include/SDL_audio.h \
   include/SDL_error.h include/SDL_endian.h include/SDL_mutex.h \
@@ -20,4 +20,4 @@ build/SDL_dynapi.lo: \
   /usr/X11R6/include/X11/Xlib.h /usr/X11R6/include/X11/X.h \
   /usr/X11R6/include/X11/Xfuncproto.h /usr/X11R6/include/X11/Xosdefs.h \
   /usr/X11R6/include/X11/Xatom.h include/SDL_vulkan.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/dynapi/SDL_dynapi_procs.h
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/dynapi/SDL_dynapi_procs.h

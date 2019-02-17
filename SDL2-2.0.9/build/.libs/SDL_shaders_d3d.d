@@ -1,8 +1,8 @@
 build/SDL_shaders_d3d.lo: \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/render/direct3d/SDL_shaders_d3d.c \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/render/direct3d/../../SDL_internal.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/render/direct3d/../../dynapi/SDL_dynapi.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/render/direct3d/../../dynapi/SDL_dynapi_overrides.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/render/direct3d/SDL_shaders_d3d.c \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/render/direct3d/../../SDL_internal.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/render/direct3d/../../dynapi/SDL_dynapi.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/render/direct3d/../../dynapi/SDL_dynapi_overrides.h \
   include/SDL_config.h include/SDL_platform.h include/begin_code.h \
   include/close_code.h include/SDL_render.h include/SDL_stdinc.h \
   include/SDL_rect.h include/SDL_error.h include/SDL_pixels.h \
