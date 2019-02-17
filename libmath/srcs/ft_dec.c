@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   open_window.c                                    .::    .:/ .      .::   */
+/*   ft_dec.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/02/14 18:59:51 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/17 04:09:08 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/02/17 04:36:14 by agiordan     #+#   ##    ##    #+#       */
+/*   Updated: 2019/02/17 04:37:39 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "libmath.h"
 
-int     open_window()
+double	ft_dec(double nbr)
 {
-    if (SDL_Init(SDL_INIT_VIDEO) < 0)
-        return (0);
-    return (1);
+	return (ft_modulo(nbr, 1));
 }

@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/17 04:24:53 by gmonacho    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/17 05:22:01 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -33,8 +33,7 @@ PPFLAGS = -Iinclude
 INCLUDE_PATH = include
 LIB1_PATH = libft
 LIB2_PATH = libmath
-LIB3_PATH = SDL2-2.0.9/build/.libs/libSDL2.a
-LIBRARIES = $(LIB1_PATH)/$(LIB1_PATH).a $(LIB2_PATH)/$(LIB2_PATH).a $(LIB3_PATH)
+LIBRARIES = $(LIB1_PATH)/$(LIB1_PATH).a $(LIB2_PATH)/$(LIB2_PATH).a
 
 all: $(NAME)
 

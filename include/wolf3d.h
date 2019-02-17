@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   wolf3d.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/17 04:13:32 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/17 05:22:09 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,7 +16,8 @@
 # define VEL 0.05
 
 # include <stdio.h>
-# include "../SDL2-2.0.9/include/SDL.h"
+# include <stdlib.h>
+//# include <SDL.h>
 # include "../libft/libft.h"
 # include "../libmath/include/libmath.h"
 
@@ -62,6 +63,7 @@ int					parser(int const fd, t_map *map);
 int					parser_error(int error);
 int					sum_x(t_map *map, int ilen);
 int					collision(t_player *player, t_map map);
+int					open_window();
 		
 void				raycasting(t_map *map, t_player *player, t_calculs *calculs);
 
