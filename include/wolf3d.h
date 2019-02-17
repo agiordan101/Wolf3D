@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   wolf3d.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/17 03:47:30 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/17 04:13:32 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,7 +16,7 @@
 # define VEL 0.05
 
 # include <stdio.h>
-//# include <SDL2/SDL.h>
+# include "../SDL2-2.0.9/include/SDL.h"
 # include "../libft/libft.h"
 # include "../libmath/include/libmath.h"
 
