@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   raycasting.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 19:27:03 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/16 22:58:37 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/17 00:31:53 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,19 +20,22 @@ static int test_wall(t_map *map, t_dot_2d dot)
 
 	j = ft_dtoi_low(dot.x);
 	i = ft_dtoi_low(dot.y);
-	if (map->tab[i * sum_x(map, i) + j] == 1)
+	printf("y = %lf\tx = %lf\n", dot.y, dot.x);
+	printf("i = %i\tj = %i\n", i, j);
+	if (map->tab[i][j] == 1)
 		return (1);
 	return (0);
 }
 
-static void	calcul_dist(t_map *map, t_calculs *calculs, t_vector_2d vector)
+static void	calcul_dist(t_map *map, t_player *player, t_calculs *calculs, t_vector_2d vector)
 {
 	t_dot_2d	next;
 	t_dot_2d	nextIndex;
 	t_dot_2d	d1;
 	t_dot_2d	d2;
 
-	next =		(t_dot_2d){.x = 0, .y = 0};
+	printf("Vector = %lf\tVector = %lf\n", vector.y, vector.x);
+	next = player->pos;
 	nextIndex =	(t_dot_2d){.x = 0, .y = 0};
 	calculs->a = vector.x / vector.y;
 	calculs->b = vector.y - calculs->a * vector.x;
@@ -48,7 +51,9 @@ static void	calcul_dist(t_map *map, t_calculs *calculs, t_vector_2d vector)
 			d2.y = ft_dtoi_low(vector.y) + nextIndex.y;
 		d1.y = calculs->a * d1.x + calculs->b;
 		d2.x = (d2.y - calculs->b) / calculs->a;
-		if (dist_dot_2d(d1, next) < dist_dot_2d(d2, next))
+		printf("y1 = %lf\tx1 = %lf\n", d1.y, d1.x);
+		printf("y2 = %lf\tx2 = %lf\n", d2.y, d2.x);
+		if (ft__abs(dist_dot_2d(d1, vector.origin)) < ft__abs(dist_dot_2d(d2, vector.origin)))
 		{
 			next = d1;
 			(nextIndex.x)++;
@@ -75,7 +80,7 @@ void	raycasting(t_map *map, t_player *player, t_calculs *calculs)
 	{
 		vector = (t_vector_2d){.origin = player->pos, .x = cos(player->dir + angle),\
 											.y = sin(player->dir + angle)};
-		calcul_dist(map, calculs, vector);
+		calcul_dist(map, player, calculs, vector);
 		angle += dangle;
 	}
 }

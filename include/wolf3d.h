@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/16 22:58:37 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/17 00:48:35 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,7 +43,7 @@ typedef struct		s_calculs
 
 typedef struct		s_map
 {
-	int				*tab;
+	int				**tab;
 	int				*len_x;
 	int				len_y;
 	int				width;
@@ -59,10 +59,9 @@ typedef struct		s_win
 
 int					parser(int const fd, t_map *map);
 int					parser_error(int error);
-int					get_y(int y, int *len_x);
+int					sum_x(t_map *map, int ilen);
 int					collision(t_player *player, t_map map);
 		
 void				raycasting(t_map *map, t_player *player, t_calculs *calculs);
-int					sum_x(t_map *map, int ilen);
 
 #endif

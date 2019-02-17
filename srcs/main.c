@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/16 22:58:37 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/17 00:51:54 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,15 +15,15 @@
 
 int		init(/*t_win *win, */t_map *map, t_calculs *calculs, t_player *player)
 {
-	map->height = 1500;
-	map->width = 1500;
+	map->height = 100;
+	map->width = 100;
 	map->tab = NULL;
 	map->len_x = NULL;
 	if (!(calculs->dist = (double *)malloc(sizeof(double) * map->width)))
 		return (-1);
-	player->pos.x = 2.2;
-	player->pos.y = 1.5;
-	player->vel = (t_vector_2d){.x = 1.0, .y = 0.3};
+	player->pos.x = 3.5;
+	player->pos.y = 2.5;
+	player->vel = (t_vector_2d){.x = 1.0, .y = 0};
 	player->dir = PI / 2;
 	player->fov = PI / 4;
 	return (0);
@@ -51,14 +51,17 @@ int		main(int ac, char **av)
 			return(parser_error(ret));
 		ft_putendl("parsing finished");
 		i = -1;
-		while (++i < 4)
+		while (++i < 5)
 		{
 			j = -1;
-			while (++j < 4)
-				printf("%i", win.map.tab[i * 4 + j]);
+			while (++j < win.map.len_x[i])
+				printf("%i", win.map.tab[i][j]);
 			printf("\n");
 		}
-		raycasting(&(win.map), &(win.player), &(win.calculs));
+		/*raycasting(&(win.map), &(win.player), &(win.calculs));
+		i = -1;
+		while (++i < win.map.width)
+			printf("%lf - ", win.calculs.dist[i]);*/
 		collision(&(win.player), win.map);
 	}
 	else

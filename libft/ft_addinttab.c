@@ -6,26 +6,37 @@
 /*   By: agiordan <mwaterso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/14 20:16:36 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/01/07 14:30:52 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/16 23:35:58 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		**ft_addinttab(int **tab, int *line, size_t length)
+int		**ft_addinttab(int **tab, size_t nline, int *line, size_t len)
 {
 	int		**newtab;
 	size_t	i;
+	size_t	j;
 
-	newtab = (int **)malloc(sizeof(int *) * (length + 1));
+	newtab = (int **)malloc(sizeof(int *) * (nline + 1));
 	i = 0;
-	while (i < length)
+	while (i < nline)
 	{
-		newtab[i] = tab[i];
-		tab[i] = NULL;
+		newtab[i] = (int *)malloc(sizeof(int) * len);
+		j = 0;
+		while (j < len)
+		{
+			newtab[i][j] = tab[i][j];
+			j++;
+		}
 		i++;
 	}
-	newtab[i] = line;
+	j = 0;
+	while (j < len)
+	{
+		newtab[i][j] = line[j];
+		j++;
+	}
 	return (newtab);
 }
