@@ -1,12 +1,5 @@
 
 #include "wolf3d"
-# define WALL_COLOR 0x109010
-# define BACKGROUND 0x505050
-
-/*
-**	0 : > height
-**	height / 4 * dist
-*/
 
 void	set_pixel(t_win *win, int x, int y, int color)
 {
@@ -42,9 +35,8 @@ void	draw(t_win *win, t_map *map, t_calculs *calculs)
 {
 	t_dot_2d	d1;
 	t_dot_2d	d2;
-	int			i;
+	int		i;
 	
-	print_background();
 	i = -1;
 	while (++i < map->width)
 	{
