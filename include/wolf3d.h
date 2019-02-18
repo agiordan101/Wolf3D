@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/18 19:15:39 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/18 20:01:04 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,9 +20,9 @@
 
 # include <stdio.h>
 # include <stdlib.h>
-# include "../lib/SDL/include/SDL2/SDL.h"
-# include "../lib/libft/libft.h"
-# include "../lib/libmath/include/libmath.h"
+# include "../SDL/include/SDL2/SDL.h"
+# include "../libft/libft.h"
+# include "../libmath/include/libmath.h"
 
 /*
 **	dir: Direction de la camera en radian
@@ -75,8 +75,10 @@ int					open_window(t_win *win);
 int					window_loop(t_win *win);
 int					wolf3d_exit(t_win *win);
 int 				put_map(t_win *win);
-		
-void				raycasting(t_map *map, t_player *player, t_calculs *calculs);
-void				line_put(t_dot_2d p1, t_dot_2d p2, SDL_Renderer *rend);
+int					quit(t_win *win);
+
+void				draw(t_win *win, t_calculs *calculs);		
+void				raycasting(t_win *win, t_map *map, t_player *player, t_calculs *calculs);
+void				line_put(t_win *win, t_dot_2d p1, t_dot_2d p2);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 09:58:24 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/18 17:49:30 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/18 19:59:14 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,9 +28,9 @@ int				map_editor(int fd)
 	int		error;
 
 	init(&win);
-	if (error = parser(fd, &(win.map)) <= 0)
+	if ((error = parser(fd, &(win.map))) <= 0)
 		return (parser_error(error));
-	if (!(open_window(&(win.ptr), &(win.rend))))
+	if (!(open_window(&(win))))
 		return (0);
 	window_loop(&win);
 	quit(&win);

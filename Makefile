@@ -5,94 +5,61 @@
 #                                                  +:+:+   +:    +:  +:+:+     #
 #    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
-#    Created: 2018/11/06 19:11:00 by gmonacho     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/18 19:15:39 by agiordan    ###    #+. /#+    ###.fr      #
+#    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
+#    Updated: 2019/02/18 19:52:18 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
-NAME = Wolf3d
+NAME = Wolf3D
 
 SRCS_PATH = src
-SRCS_PATH_1 = parsing
-SRCS_PATH_2 = window
-SRCS_PATH_3 = map_editor
-SRCS_PATH_4 = physics
+SRCS_FILES = main.c \
+	  window/open_window.c \
+	  window/window_loop.c \
+	  window/draw.c \
+	  window/draw_rect.c \
+	  window/line_put.c \
+	  window/quit.c \
+	  parsing/parser.c \
+	  parsing/parser_error.c \
+	  map_editor/map_editor.c \
+	  physics/collision.c \
+	  physics/raycasting.c \
+	  physics/sum_x.c
 
-SRCS_FILES =	$(SRCS_PATH_1)/main.c \
-				$(SRCS_PATH_1)/parser.c \
-				$(SRCS_PATH_1)/parser_error.c \
-				$(SRCS_PATH_2)/open_window.c \
-				$(SRCS_PATH_2)/window_loop.c \
-				$(SRCS_PATH_2)/draw.c \
-				$(SRCS_PATH_2)/draw_rect.c \
-				$(SRCS_PATH_2)/line_put.c \
-				$(SRCS_PATH_2)/quit.c \
-				$(SRCS_PATH_3)/map_editor.c \
-				$(SRCS_PATH_4)/collision.c \
-				$(SRCS_PATH_4)/raycasting.c \
-				$(SRCS_PATH_4)/sum_x.c 
-SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS))
+SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_FILES))
 
-OBJS_PATH = obj
-OBJS_NAME = $(SRCS:.c=.o)
-OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS_NAME))
+OBJ = $(SRCS:%.c=%.o)
 
 CC = gcc
-FLAGS = -Wall -Werror -Wextra
-INCLUDE_PATH = include
-PPFLAGS = -I./$(INCLUDE_PATH)
+CFLAGS += -Wall -Wextra -Werror -I./include
 
-LIB1 = libft
-LIB2 = libmath
+LIBFT = libft/libft.a
+LIBMATH = libmath/libmath.a
 LIBSDL2 = `sdl2-config --cflags --libs`
-LIBRARIES = $(LIB1)/$(LIB1).a $(LIB2)/$(LIB2).a $(LIBSDL2)
 
 all: $(NAME)
 
-$(NAME): $(LIB1) $(LIB2) $(OBJ)
-	make -C $(LIB1)
-	make -C $(LIB2)
-	$(CC) $(FLAGS) $(PPFLAGS) $(LIBRARIES) $(OBJ) -o $@
+$(NAME): $(LIBFT) $(LIBMATH) $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) $(FRAMEWORK) $(LIBFT) $(LIBMATH) $(LIBSDL2) -o $(NAME)
 
-$(LIB1):
-	make -C $@
+$(LIBFT):
+	make -C libft/
 
-$(LIB2):
-	make -C $@
-
-$(OBJ_PATH)/$(SRCS_PATH_1)/%.o : $(SRCS_PATH)/$(SRCS_PATH_1)/%.c
-		@mkdir $(OBJ_PATH)/$(SRCS_PATH_1) 2> /dev/null || true
-		$(CC) $(FLAGS) $(PPFLAGS) $(LIBRARIES) -c $< -o $@
-
-$(OBJ_PATH)/$(SRCS_PATH_2)/%.o : $(SRCS_PATH)/$(SRCS_PATH_2)/%.c
-		@mkdir $(OBJ_PATH)/$(SRCS_PATH_2) 2> /dev/null || true
-		$(CC) $(FLAGS) $(PPFLAGS) $(LIBRARIES) -c $< -o $@
-
-$(OBJ_PATH)/$(SRCS_PATH_3)/%.o : $(SRCS_PATH)/$(SRCS_PATH_3)/%.c
-		@mkdir $(OBJ_PATH)/$(SRCS_PATH_3) 2> /dev/null || true
-		$(CC) $(FLAGS) $(PPFLAGS) $(LIBRARIES) -c $< -o $@
-
-$(OBJ_PATH)/$(SRCS_PATH_4)/%.o : $(SRCS_PATH)/$(SRCS_PATH_4)/%.c
-		@mkdir $(OBJ_PATH)/$(SRCS_PATH_4) 2> /dev/null || true
-		$(CC) $(FLAGS) $(PPFLAGS) $(LIBRARIES) -c $< -o $@
+$(LIBMATH):
+	make -C libmath/
 
 clean:
-		make clean -C $(LIB1)
-		make clean -C $(LIB2)
-		@rm -rf $(OBJ_PATH) 2> /dev/null || true
+	rm -f $(OBJ)
+	make clean -C libft
+	make clean -C libmath
 
 fclean: clean
-		make fclean -C $(LIB1)
-		make fclean -C $(LIB2)
-		rm -f $(NAME)
+	rm -f $(NAME)
+	make fclean -C libft
+	make fclean -C libft
 
 re: fclean all
 
-norme:
-		@norminette $(LIB1)
-		@norminette $(LIB2)
-		@norminette $(SRC_PATH)
-		@norminette $(INCLUDE_PATH)
-
-.PHONY: all, clean, flcean, re
+.PHONY: all, clean, fclean, re

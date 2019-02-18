@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 19:27:03 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/17 06:10:37 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/18 20:01:04 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -72,16 +72,16 @@ static void	calcul_dist(t_map *map, t_player *player, t_calculs *calculs, t_vect
 	calculs->dist[calculs->i] = dist_dot_2d(next, player->pos);
 }
 
-void	raycasting(t_map *map, t_player *player, t_calculs *calculs)
+void	raycasting(t_win *win, t_map *map, t_player *player, t_calculs *calculs)
 {
 	t_vector_2d	vector;
 	double		angle;
 	double		dangle;
 
-	dangle = 2 * player->fov / map->width;
+	dangle = 2 * player->fov / win->width;
 	calculs->i = -1;
 	angle = player->fov;
-	while (++(calculs->i) < map->width)
+	while (++(calculs->i) < win->width)
 	{
 		vector = (t_vector_2d){.origin = player->pos, .x = cos(player->dir + angle),\
 											.y = -sin(player->dir + angle)};
