@@ -3,15 +3,15 @@
 /*                                                              /             */
 /*   line_put.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/21 18:05:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/18 14:54:34 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/18 18:23:18 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "map_editor.h"
+#include "wolf3d.h"
 
 static void		get_vec(double *dx, double *dy, int *nb_point)
 {
@@ -29,7 +29,7 @@ static void		get_vec(double *dx, double *dy, int *nb_point)
 	}
 }
 
-void			line_put(t_point p1, t_point p2, SDL_Renderer *rend)
+void			line_put(t_dot_2d p1, t_dot_2d p2, SDL_Renderer *rend)
 {
 	int			i;
 	int			nb_point;

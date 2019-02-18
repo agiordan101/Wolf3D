@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/Users/gmonacho/ecole_101/Wolf3D/SDL/lib'
+libdir='/Users/agiordan/Documents/Wolf3D/SDL/lib'

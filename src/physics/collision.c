@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 17:45:05 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/18 17:11:57 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/18 18:32:42 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -94,7 +94,6 @@ int		collision(t_player *player, t_map map)
 			bcoll(player, (int)nx, (int)ny);
 		else if (player->vel.y < 0)
 			tcoll(player, (int)nx, (int)ny);
-		printf("velx = %f, vely = %f\n", player->vel.x, player->vel.y);
 		return (1);
 	}
 	else

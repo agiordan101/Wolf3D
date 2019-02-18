@@ -1,7 +1,7 @@
-build/SDL.lo: /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/SDL.c \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/./SDL_internal.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/dynapi/SDL_dynapi.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/dynapi/SDL_dynapi_overrides.h \
+build/SDL.lo: /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/SDL.c \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/./SDL_internal.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/dynapi/SDL_dynapi.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/dynapi/SDL_dynapi_overrides.h \
   include/SDL_config.h include/SDL_platform.h include/begin_code.h \
   include/close_code.h include/SDL.h include/SDL_main.h \
   include/SDL_stdinc.h include/SDL_assert.h include/SDL_atomic.h \
@@ -18,25 +18,25 @@ build/SDL.lo: /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/SDL.c \
   include/SDL_render.h include/SDL_sensor.h include/SDL_shape.h \
   include/SDL_system.h include/SDL_timer.h include/SDL_version.h \
   include/SDL_bits.h include/SDL_revision.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/SDL_assert_c.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/events/SDL_events_c.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/events/../video/SDL_sysvideo.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/events/../video/SDL_vulkan_internal.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/events/../video/./khronos/vulkan/vulkan.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/events/../video/./khronos/vulkan/./vk_platform.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/SDL_assert_c.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/events/SDL_events_c.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/events/../video/SDL_sysvideo.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/events/../video/SDL_vulkan_internal.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/events/../video/./khronos/vulkan/vulkan.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/events/../video/./khronos/vulkan/./vk_platform.h \
   /usr/X11R6/include/X11/Xlib.h /usr/X11R6/include/X11/X.h \
   /usr/X11R6/include/X11/Xfuncproto.h /usr/X11R6/include/X11/Xosdefs.h \
   /usr/X11R6/include/xcb/xcb.h /usr/X11R6/include/xcb/xproto.h \
   include/SDL_vulkan.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/events/SDL_clipboardevents_c.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/events/SDL_displayevents_c.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/events/SDL_dropevents_c.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/events/SDL_gesture_c.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/events/SDL_keyboard_c.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/events/SDL_mouse_c.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/events/SDL_touch_c.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/events/SDL_windowevents_c.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/haptic/SDL_haptic_c.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/joystick/SDL_joystick_c.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/sensor/SDL_sensor_c.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/timer/SDL_timer_c.h
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/events/SDL_clipboardevents_c.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/events/SDL_displayevents_c.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/events/SDL_dropevents_c.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/events/SDL_gesture_c.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/events/SDL_keyboard_c.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/events/SDL_mouse_c.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/events/SDL_touch_c.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/events/SDL_windowevents_c.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/haptic/SDL_haptic_c.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/joystick/SDL_joystick_c.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/sensor/SDL_sensor_c.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/timer/SDL_timer_c.h

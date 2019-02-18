@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                           LE - /             #
 #                                                               /              #
-#    Makefile                                         .::    .:/ .      .::    #
+#    Makefile2                                        .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
 #    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/18 17:52:53 by agiordan    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/18 18:37:25 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -38,14 +38,13 @@ SRCS = $(addprefix $(SRCS_PATH_1)/, $(SRCS_FILES_1))
 SRCS += $(addprefix $(SRCS_PATH_2)/, $(SRCS_FILES_2))
 SRCS += $(addprefix $(SRCS_PATH_3)/, $(SRCS_FILES_3))
 SRCS += $(addprefix $(SRCS_PATH_4)/, $(SRCS_FILES_4))
-TMP_SRCS = SRCS
 
 OBJS_PATH = obj
 OBJS_NAME = $(SRCS_FILES_1:.c=.o) $(SRCS_FILES_2:.c=.o) \
 			$(SRCS_FILES_3:.c=.o) $(SRCS_FILES_4:.c=.o)
 OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS_NAME))
 
-SRCS = $(addprefix $(SRCS_PATH)/, $(TMP_SRCS))
+SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS))
 
 CC = gcc
 FLAGS = -Wall -Werror -Wextra

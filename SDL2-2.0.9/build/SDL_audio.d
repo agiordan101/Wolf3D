@@ -1,8 +1,8 @@
 build/SDL_audio.lo: \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/audio/SDL_audio.c \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/audio/../SDL_internal.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/audio/../dynapi/SDL_dynapi.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/audio/../dynapi/SDL_dynapi_overrides.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/audio/SDL_audio.c \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/audio/../SDL_internal.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/audio/../dynapi/SDL_dynapi.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/audio/../dynapi/SDL_dynapi_overrides.h \
   include/SDL_config.h include/SDL_platform.h include/begin_code.h \
   include/close_code.h include/SDL.h include/SDL_main.h \
   include/SDL_stdinc.h include/SDL_assert.h include/SDL_atomic.h \
@@ -18,10 +18,10 @@ build/SDL_audio.lo: \
   include/SDL_log.h include/SDL_messagebox.h include/SDL_power.h \
   include/SDL_render.h include/SDL_sensor.h include/SDL_shape.h \
   include/SDL_system.h include/SDL_timer.h include/SDL_version.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/audio/SDL_audio_c.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/audio/SDL_sysaudio.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/audio/../SDL_dataqueue.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/audio/../thread/SDL_systhread.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/audio/../thread/SDL_thread_c.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/audio/../thread/pthread/SDL_systhread_c.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/audio/../thread/../SDL_error_c.h
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/audio/SDL_audio_c.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/audio/SDL_sysaudio.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/audio/../SDL_dataqueue.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/audio/../thread/SDL_systhread.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/audio/../thread/SDL_thread_c.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/audio/../thread/pthread/SDL_systhread_c.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/audio/../thread/../SDL_error_c.h

@@ -1,8 +1,8 @@
 build/SDL_cocoavideo.lo: \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/cocoa/SDL_cocoavideo.m \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/cocoa/../../SDL_internal.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/cocoa/../../dynapi/SDL_dynapi.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/cocoa/../../dynapi/SDL_dynapi_overrides.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/cocoa/SDL_cocoavideo.m \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/cocoa/../../SDL_internal.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/cocoa/../../dynapi/SDL_dynapi.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/cocoa/../../dynapi/SDL_dynapi_overrides.h \
   include/SDL_config.h include/SDL_platform.h include/begin_code.h \
   include/close_code.h include/SDL.h include/SDL_main.h \
   include/SDL_stdinc.h include/SDL_assert.h include/SDL_atomic.h \
@@ -18,25 +18,25 @@ build/SDL_cocoavideo.lo: \
   include/SDL_log.h include/SDL_messagebox.h include/SDL_power.h \
   include/SDL_render.h include/SDL_sensor.h include/SDL_shape.h \
   include/SDL_system.h include/SDL_timer.h include/SDL_version.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/cocoa/SDL_cocoavideo.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/cocoa/SDL_cocoavideo.h \
   include/SDL_opengl.h include/SDL_opengl_glext.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/cocoa/../SDL_sysvideo.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/cocoa/../SDL_vulkan_internal.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/cocoa/.././khronos/vulkan/vulkan.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/cocoa/.././khronos/vulkan/./vk_platform.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/cocoa/../SDL_sysvideo.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/cocoa/../SDL_vulkan_internal.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/cocoa/.././khronos/vulkan/vulkan.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/cocoa/.././khronos/vulkan/./vk_platform.h \
   /usr/X11R6/include/X11/Xlib.h /usr/X11R6/include/X11/X.h \
   /usr/X11R6/include/X11/Xfuncproto.h /usr/X11R6/include/X11/Xosdefs.h \
   /usr/X11R6/include/xcb/xcb.h /usr/X11R6/include/xcb/xproto.h \
   include/SDL_vulkan.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/cocoa/SDL_cocoaclipboard.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/cocoa/SDL_cocoaevents.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/cocoa/SDL_cocoakeyboard.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/cocoa/SDL_cocoamodes.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/cocoa/SDL_cocoamouse.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/cocoa/SDL_cocoaopengl.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/cocoa/SDL_cocoawindow.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/cocoa/../SDL_egl_c.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/cocoa/SDL_cocoaclipboard.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/cocoa/SDL_cocoaevents.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/cocoa/SDL_cocoakeyboard.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/cocoa/SDL_cocoamodes.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/cocoa/SDL_cocoamouse.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/cocoa/SDL_cocoaopengl.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/cocoa/SDL_cocoawindow.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/cocoa/../SDL_egl_c.h \
   include/SDL_egl.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/cocoa/SDL_cocoashape.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/cocoa/../SDL_shape_internals.h \
-  /Users/gmonacho/ecole_101/Wolf3D/SDL2-2.0.9/src/video/cocoa/SDL_cocoavulkan.h
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/cocoa/SDL_cocoashape.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/cocoa/../SDL_shape_internals.h \
+  /Users/agiordan/Documents/Wolf3D/SDL2-2.0.9/src/video/cocoa/SDL_cocoavulkan.h
