@@ -6,12 +6,12 @@
 #    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/06 19:11:00 by gmonacho     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/18 19:08:32 by agiordan    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/18 19:15:39 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
-NAME = Wolf3D
+NAME = Wolf3d
 
 SRCS_PATH = src
 SRCS_PATH_1 = parsing
@@ -50,8 +50,10 @@ LIBRARIES = $(LIB1)/$(LIB1).a $(LIB2)/$(LIB2).a $(LIBSDL2)
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIB1) $(LIB2)
-	$(CC) $(FLAGS) $(PPFLAGS) $(LIBRARIES) $< -o $@
+$(NAME): $(LIB1) $(LIB2) $(OBJ)
+	make -C $(LIB1)
+	make -C $(LIB2)
+	$(CC) $(FLAGS) $(PPFLAGS) $(LIBRARIES) $(OBJ) -o $@
 
 $(LIB1):
 	make -C $@

@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 16:24:13 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/18 19:08:32 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/18 19:15:39 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,7 +17,7 @@ void	draw(t_win *win, t_map *map, t_calculs *calculs)
 {
 	t_dot_2d	d1;
 	t_dot_2d	d2;
-	int		i;
+	int			i;
 	
 	i = -1;
 	while (++i < map->width)
