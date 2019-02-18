@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   main.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/17 06:10:31 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/18 08:23:41 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -58,12 +58,12 @@ int		main(int ac, char **av)
 				printf("%i", win.map.tab[i][j]);
 			printf("\n");
 		}
-		raycasting(&(win.map), &(win.player), &(win.calculs));
+		/*raycasting(&(win.map), &(win.player), &(win.calculs));
 		i = -1;
 		while (++i < win.map.width)
-			printf("%lf - ", win.calculs.dist[i]);
+			printf("%lf - ", win.calculs.dist[i]);*/
 		collision(&(win.player), win.map);
-		open_window();
+		open_window(&(win.win_ptr));
 	}
 	else
 		ft_putendl("usage: ./Wolf3D <map>\n");

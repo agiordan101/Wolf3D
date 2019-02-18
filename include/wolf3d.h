@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   wolf3d.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/17 05:39:16 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/18 08:23:17 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
-# include "../SDL2-2.0.9/include/SDL.h"
+# include "../SDL/include/SDL2/SDL.h"
 # include "../libft/libft.h"
 # include "../libmath/include/libmath.h"
 
@@ -59,6 +59,7 @@ typedef struct		s_win
 	t_map			map;
 	t_calculs		calculs;
 	t_player		player;
+	void			*win_ptr;
 }					t_win;
 
 int					parser(int const fd, t_map *map);

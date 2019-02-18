@@ -3,19 +3,26 @@
 /*                                                              /             */
 /*   open_window.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/14 18:59:51 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/17 04:09:08 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/18 08:28:59 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int     open_window()
+int		open_window(void **win_ptr)
 {
-    if (SDL_Init(SDL_INIT_VIDEO) < 0)
-        return (0);
-    return (1);
+	printf("la\n");
+	if (SDL_Init(SDL_INIT_VIDEO) < 0 || !(*win_ptr = SDL_CreateWindow("Wolf3d", 40, 40, 640, 480, SDL_WINDOW_RESIZABLE)))
+	{
+		ft_putstr(SDL_GetError());
+		return (0);
+	}
+	SDL_Delay(6000);
+	printf("la\n");
+	SDL_Quit();
+	return (1);
 }
