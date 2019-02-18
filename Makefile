@@ -6,7 +6,7 @@
 #    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/06 19:11:00 by gmonacho     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/18 18:54:58 by agiordan    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/18 19:04:58 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -51,8 +51,8 @@ LIBRARIES = $(LIB1)/$(LIB1).a $(LIB2)/$(LIB2).a $(LIBSDL2)
 
 all: $(NAME)
 
-$(NAME): $(LIB1) $(LIB2) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(FRAMEWORK) $(LIBRARIES) -o $(NAME)
+$(NAME): $(OBJ) $(LIB1) $(LIB2)
+	$(CC) $(FLAGS) $(PPFLAGS) $(LIBRARIES) $< -o $@
 
 $(LIB1):
 	make -C $@
@@ -62,7 +62,19 @@ $(LIB2):
 
 $(OBJ_PATH)/$(SRCS_PATH_1)/%.o : $(SRCS_PATH)/$(SRCS_PATH_1)/%.c
 		@mkdir $(OBJ_PATH)/$(SRCS_PATH_1) 2> /dev/null || true
-		$(CC) $(FLAGS) $(PPFLAGS) -c $< -o $@
+		$(CC) $(FLAGS) $(PPFLAGS) $(LIBRARIES) -c $< -o $@
+
+$(OBJ_PATH)/$(SRCS_PATH_2)/%.o : $(SRCS_PATH)/$(SRCS_PATH_2)/%.c
+		@mkdir $(OBJ_PATH)/$(SRCS_PATH_2) 2> /dev/null || true
+		$(CC) $(FLAGS) $(PPFLAGS) $(LIBRARIES) -c $< -o $@
+
+$(OBJ_PATH)/$(SRCS_PATH_3)/%.o : $(SRCS_PATH)/$(SRCS_PATH_3)/%.c
+		@mkdir $(OBJ_PATH)/$(SRCS_PATH_3) 2> /dev/null || true
+		$(CC) $(FLAGS) $(PPFLAGS) $(LIBRARIES) -c $< -o $@
+
+$(OBJ_PATH)/$(SRCS_PATH_4)/%.o : $(SRCS_PATH)/$(SRCS_PATH_4)/%.c
+		@mkdir $(OBJ_PATH)/$(SRCS_PATH_4) 2> /dev/null || true
+		$(CC) $(FLAGS) $(PPFLAGS) $(LIBRARIES) -c $< -o $@
 
 clean:
 		make clean -C $(LIB1)
