@@ -14,6 +14,8 @@
 #ifndef WOLF3D_H
 # define WOLF3D_H
 # define VEL 0.05
+# define WALL_COLOR 0x109010
+# define BACKGROUND 0x505050
 
 # include <stdio.h>
 # include <stdlib.h>
