@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/18 20:05:47 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/18 20:09:42 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -80,5 +80,6 @@ int					quit(t_win *win);
 void				draw(t_win *win, t_calculs *calculs);		
 void				raycasting(t_win *win, t_map *map, t_player *player, t_calculs *calculs);
 void				line_put(t_win *win, t_dot_2d p1, t_dot_2d p2);
+void				draw_rect(t_win *win, int x, int y, int width, int height);
 
 #endif

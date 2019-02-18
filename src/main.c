@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/18 20:05:47 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/18 20:08:05 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -65,7 +65,7 @@ int		main(int ac, char **av)
 		collision(&(win.player), win.map);
 		open_window(&win);
 		window_loop(&win);
-		wolf3d_exit(&win);
+		quit(&win);
 	}
 	else
 		ft_putendl("usage: ./Wolf3D <map>\n");

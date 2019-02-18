@@ -6,7 +6,7 @@
 #    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/18 19:52:18 by agiordan    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/18 20:10:06 by gmonacho    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -24,6 +24,7 @@ SRCS_FILES = main.c \
 	  parsing/parser.c \
 	  parsing/parser_error.c \
 	  map_editor/map_editor.c \
+	  map_editor/put_map.c \
 	  physics/collision.c \
 	  physics/raycasting.c \
 	  physics/sum_x.c
