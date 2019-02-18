@@ -6,7 +6,7 @@
 #    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/06 19:11:00 by gmonacho     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/18 18:43:43 by agiordan    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/18 18:54:58 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -43,11 +43,10 @@ FLAGS = -Wall -Werror -Wextra
 INCLUDE_PATH = include
 PPFLAGS = -I./$(INCLUDE_PATH)
 
-LIBS_PATH = lib
 LIB1 = libft
 LIB2 = libmath
 LIBSDL2 = `sdl2-config --cflags --libs`
-LIBRARIES = $(LIBS_PATH)/$(LIB1)/$(LIB1).a $(LIBS_PATH)/$(LIB2)/$(LIB2).a $(LIBSDL2)
+LIBRARIES = $(LIB1)/$(LIB1).a $(LIB2)/$(LIB2).a $(LIBSDL2)
 
 
 all: $(NAME)
@@ -56,26 +55,30 @@ $(NAME): $(LIB1) $(LIB2) $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(FRAMEWORK) $(LIBRARIES) -o $(NAME)
 
 $(LIB1):
-	make -C lib/libft/
+	make -C $@
 
 $(LIB2):
-	make -C lib/libmath/
+	make -C $@
+
+$(OBJ_PATH)/$(SRCS_PATH_1)/%.o : $(SRCS_PATH)/$(SRCS_PATH_1)/%.c
+		@mkdir $(OBJ_PATH)/$(SRCS_PATH_1) 2> /dev/null || true
+		$(CC) $(FLAGS) $(PPFLAGS) -c $< -o $@
 
 clean:
-		make clean -C $(LIBS_PATH)/$(LIB1)
-		make clean -C $(LIBS_PATH)/$(LIB2)
+		make clean -C $(LIB1)
+		make clean -C $(LIB2)
 		@rm -rf $(OBJ_PATH) 2> /dev/null || true
 
 fclean: clean
-		make fclean -C $(LIBS_PATH)/$(LIB1)
-		make fclean -C $(LIBS_PATH)/$(LIB2)
+		make fclean -C $(LIB1)
+		make fclean -C $(LIB2)
 		rm -f $(NAME)
 
 re: fclean all
 
 norme:
-		@norminette $(LIBS_PATH)/$(LIB1)
-		@norminette $(LIBS_PATH)/$(LIB2)
+		@norminette $(LIB1)
+		@norminette $(LIB2)
 		@norminette $(SRC_PATH)
 		@norminette $(INCLUDE_PATH)
 
