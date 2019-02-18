@@ -1,0 +1,8 @@
+{
+	"files.associations": {
+		"libmath.h": "c",
+		"libft.h": "c",
+		"stdio.h": "c",
+		"math.h": "c"
+	}
+}

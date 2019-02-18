@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   draw.c                                           .::    .:/ .      .::   */
+/*   ft_catinttab.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/02/18 16:24:13 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/18 19:08:32 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/02/13 17:46:16 by gmonacho     #+#   ##    ##    #+#       */
+/*   Updated: 2019/02/15 17:01:23 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "libft.h"
 
-void	draw(t_win *win, t_map *map, t_calculs *calculs)
+int		*ft_catinttab(int *tab1, size_t l1, int *tab2, size_t l2)
 {
-	t_dot_2d	d1;
-	t_dot_2d	d2;
-	int		i;
-	
+	int	*newtab;
+	int	i;
+	int	j;
+
+	if (!tab1)
+		l1 = 0;
+	if (!tab2)
+		l2 = 0;
+	if (!(newtab = (int*)ft_memalloc(sizeof(int) * (l1 + l2))))
+		return (NULL);
 	i = -1;
-	while (++i < map->width)
-	{
-		d1 = (t_dot_2d){.x = i, .y = 0};
-		d2 = (t_dot_2d){.x = i, .y = map->height};
-		line_put(d1, d2, win->rend);
-		d1 = (t_dot_2d){.x = i, .y = map->height / 2 - map->height / 4 * calculs->dist[i]};
-		d2 = (t_dot_2d){.x = i, .y = map->height / 2 + map->height / 4 * calculs->dist[i]};
-		line_put(d1, d2, win->rend);
-	}
+	if (tab1)
+		while (++i < (int)l1)
+			newtab[i] = tab1[i];
+	j = 0;
+	if (tab2)
+		while (j < (int)l2)
+			newtab[i++] = tab2[j++];
+	return (newtab);
 }

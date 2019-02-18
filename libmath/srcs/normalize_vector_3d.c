@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   draw.c                                           .::    .:/ .      .::   */
+/*   normalize_vector_3d.c                            .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/02/18 16:24:13 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/18 19:08:32 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/02/13 19:22:49 by agiordan     #+#   ##    ##    #+#       */
+/*   Updated: 2019/02/16 17:46:04 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "libmath.h"
 
-void	draw(t_win *win, t_map *map, t_calculs *calculs)
+t_vector_3d	*normalize_vector_3d(t_vector_3d *vector)
 {
-	t_dot_2d	d1;
-	t_dot_2d	d2;
-	int		i;
-	
-	i = -1;
-	while (++i < map->width)
-	{
-		d1 = (t_dot_2d){.x = i, .y = 0};
-		d2 = (t_dot_2d){.x = i, .y = map->height};
-		line_put(d1, d2, win->rend);
-		d1 = (t_dot_2d){.x = i, .y = map->height / 2 - map->height / 4 * calculs->dist[i]};
-		d2 = (t_dot_2d){.x = i, .y = map->height / 2 + map->height / 4 * calculs->dist[i]};
-		line_put(d1, d2, win->rend);
-	}
+	double	mag;
+
+	mag = mag_vector_3d(*vector);
+	vector->x = vector->x / mag;
+	vector->y = vector->y / mag;
+	vector->z = vector->z / mag;
+	vector->mag = 1;
+	return (vector);
 }

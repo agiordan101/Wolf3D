@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   draw.c                                           .::    .:/ .      .::   */
+/*   ft_stristr.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/02/18 16:24:13 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/18 19:08:32 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/02/12 17:07:53 by agiordan     #+#   ##    ##    #+#       */
+/*   Updated: 2019/02/12 18:41:11 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "libft.h"
 
-void	draw(t_win *win, t_map *map, t_calculs *calculs)
+int	ft_stristr(char *str, char *tofind)
 {
-	t_dot_2d	d1;
-	t_dot_2d	d2;
-	int		i;
-	
+	int	i;
+	int	j;
+
 	i = -1;
-	while (++i < map->width)
+	while (str[++i])
 	{
-		d1 = (t_dot_2d){.x = i, .y = 0};
-		d2 = (t_dot_2d){.x = i, .y = map->height};
-		line_put(d1, d2, win->rend);
-		d1 = (t_dot_2d){.x = i, .y = map->height / 2 - map->height / 4 * calculs->dist[i]};
-		d2 = (t_dot_2d){.x = i, .y = map->height / 2 + map->height / 4 * calculs->dist[i]};
-		line_put(d1, d2, win->rend);
+		j = 0;
+		while (str[i + j] == tofind[j] || !tofind[j])
+			if (!tofind[j++])
+				return (i);
 	}
+	return (-1);
 }

@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   draw.c                                           .::    .:/ .      .::   */
+/*   dist_dot_2d.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/02/18 16:24:13 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/18 19:08:32 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/02/13 19:25:24 by agiordan     #+#   ##    ##    #+#       */
+/*   Updated: 2019/02/16 17:35:00 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "libmath.h"
 
-void	draw(t_win *win, t_map *map, t_calculs *calculs)
+double	dist_dot_2d(t_dot_2d d1, t_dot_2d d2)
 {
-	t_dot_2d	d1;
-	t_dot_2d	d2;
-	int		i;
-	
-	i = -1;
-	while (++i < map->width)
-	{
-		d1 = (t_dot_2d){.x = i, .y = 0};
-		d2 = (t_dot_2d){.x = i, .y = map->height};
-		line_put(d1, d2, win->rend);
-		d1 = (t_dot_2d){.x = i, .y = map->height / 2 - map->height / 4 * calculs->dist[i]};
-		d2 = (t_dot_2d){.x = i, .y = map->height / 2 + map->height / 4 * calculs->dist[i]};
-		line_put(d1, d2, win->rend);
-	}
+	return (ft__sqrt((d2.x - d1.x) * (d2.x - d1.x) +\
+			(d2.y - d1.y) * (d2.y - d1.y), 2));
 }
