@@ -5,10 +5,15 @@
 
 /*
 **	0 : > height
-**	1.5 * height / dist
+**	height / 4 * dist
 */
 
-void	ft_put_line(t_dot_2d d1, t_dot_2d d2, int color)
+void	set_pixel(t_win *win, int x, int y, int color)
+{
+	//Affichage pixel avec la SDL
+}
+
+void	ft_put_line(t_win *win, t_dot_2d d1, t_dot_2d d2, int color)
 {
 	t_vector	pas;
 	int			nbpixels;
@@ -46,8 +51,8 @@ void	draw(t_win *win, t_map *map, t_calculs *calculs)
 		d1 = (t_dot_2d){.x = i, .y = 0};
 		d2 = (t_dot_2d){.x = i, .y = map->height};
 		ft_put_line(d1, d2, BACKGROUND);
-		d1 = (t_dot_2d){.x = i, .y = map->height / 2 - };
-		d2 = (t_dot_2d){.x = i, .y = map->height / 2 + };
+		d1 = (t_dot_2d){.x = i, .y = map->height / 2 - map->height / 4 * dist};
+		d2 = (t_dot_2d){.x = i, .y = map->height / 2 + map->height / 4 * dist};
 		ft_put_line(d1, d2, WALL_COLOR);
 	}
 }
