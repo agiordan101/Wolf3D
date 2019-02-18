@@ -6,12 +6,12 @@
 #    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/06 19:11:00 by gmonacho     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/18 19:04:58 by agiordan    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/18 19:07:15 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
-NAME = Wolf3d
+NAME = Wolf3D
 
 SRCS_PATH = src
 SRCS_PATH_1 = parsing
@@ -19,7 +19,7 @@ SRCS_PATH_2 = window
 SRCS_PATH_3 = map_editor
 SRCS_PATH_4 = physics
 
-SRCS_FILES =	main.c \
+SRCS_FILES =	$(SRCS_PATH_1)/main.c \
 				$(SRCS_PATH_1)/parser.c \
 				$(SRCS_PATH_1)/parser_error.c \
 				$(SRCS_PATH_2)/open_window.c \
@@ -47,7 +47,6 @@ LIB1 = libft
 LIB2 = libmath
 LIBSDL2 = `sdl2-config --cflags --libs`
 LIBRARIES = $(LIB1)/$(LIB1).a $(LIB2)/$(LIB2).a $(LIBSDL2)
-
 
 all: $(NAME)
 
