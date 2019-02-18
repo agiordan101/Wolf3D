@@ -1,0 +1,102 @@
+# **************************************************************************** #
+#                                                           LE - /             #
+#                                                               /              #
+#    Makefile                                         .::    .:/ .      .::    #
+#                                                  +:+:+   +:    +:  +:+:+     #
+#    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
+#                                                  #+#   #+    #+    #+#       #
+#    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
+#    Updated: 2019/02/18 17:52:53 by agiordan    ###    #+. /#+    ###.fr      #
+#                                                          /                   #
+#                                                         /                    #
+# **************************************************************************** #
+
+NAME = Wolf3D
+
+SRCS_PATH = src
+SRCS_PATH_1 = parsing
+SRCS_PATH_2 = window
+SRCS_PATH_3 = map_editor
+SRCS_PATH_4 = physics
+
+SRCS_FILES_1 =	parser.c \
+				parser_error.c	
+SRCS_FILES_2 =	open_window.c \
+				window_loop.c \
+				draw.c \
+				draw_rect.c \
+				main.c \
+				line_put.c \
+				quit.c						
+SRCS_FILES_3 =	map_editor.c \
+				put_map.c
+SRCS_FILES_4 =	collision.c \
+				raycasting.c \
+				sum_x.c
+			
+SRCS = $(addprefix $(SRCS_PATH_1)/, $(SRCS_FILES_1))
+SRCS += $(addprefix $(SRCS_PATH_2)/, $(SRCS_FILES_2))
+SRCS += $(addprefix $(SRCS_PATH_3)/, $(SRCS_FILES_3))
+SRCS += $(addprefix $(SRCS_PATH_4)/, $(SRCS_FILES_4))
+TMP_SRCS = SRCS
+
+OBJS_PATH = obj
+OBJS_NAME = $(SRCS_FILES_1:.c=.o) $(SRCS_FILES_2:.c=.o) \
+			$(SRCS_FILES_3:.c=.o) $(SRCS_FILES_4:.c=.o)
+OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS_NAME))
+
+SRCS = $(addprefix $(SRCS_PATH)/, $(TMP_SRCS))
+
+CC = gcc
+FLAGS = -Wall -Werror -Wextra
+INCLUDE_PATH = include
+PPFLAGS = -I./$(INCLUDE_PATH)
+
+LIBS_PATH = lib
+LIB1 = libft
+LIB2 = libmath
+LIBRARIES = $(LIBS_PATH)/$(LIB1)/$(LIB1).a $(LIBS_PATH)/$(LIB2)/$(LIB2).a `sdl2-config --cflags --libs`
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+		make -C $(LIBS_PATH)/$(LIB1)
+		make -C $(LIBS_PATH)/$(LIB2)
+		$(CC) $(FLAGS) $(LIBRARIES) $^ -o $@
+
+#Enlever le srcs_path
+$(OBJ_PATH)/$(SRCS_PATH_1)/%.o : $(SRCS_PATH)/$(SRCS_PATH_1)/%.c
+		@mkdir $(OBJ_PATH)/$(SRCS_PATH_1) 2> /dev/null || true
+		$(CC) $(FLAGS) $(PPFLAGS) -c $< -o $@
+
+$(OBJ_PATH)/$(SRCS_PATH_2)/%.o : $(SRCS_PATH)/$(SRCS_PATH_2)/%.c
+		@mkdir $(OBJ_PATH)/$(SRCS_PATH_2) 2> /dev/null || true
+		$(CC) $(FLAGS) $(PPFLAGS) -c $< -o $@
+
+$(OBJ_PATH)/$(SRCS_PATH_3)/%.o : $(SRCS_PATH)/$(SRCS_PATH_3)/%.c
+		@mkdir $(OBJ_PATH)/$(SRCS_PATH_3) 2> /dev/null || true
+		$(CC) $(FLAGS) $(PPFLAGS) -c $< -o $@
+
+$(OBJ_PATH)/$(SRCS_PATH_4)/%.o : $(SRCS_PATH)/$(SRCS_PATH_4)/%.c
+		@mkdir $(OBJ_PATH)/$(SRCS_PATH_4) 2> /dev/null || true
+		$(CC) $(FLAGS) $(PPFLAGS) -c $< -o $@
+
+clean:
+		make clean -C $(LIBS_PATH)/$(LIB1)
+		make clean -C $(LIBS_PATH)/$(LIB2)
+		@rm -rf $(OBJ_PATH) 2> /dev/null || true
+
+fclean: clean
+		make fclean -C $(LIBS_PATH)/$(LIB1)
+		make fclean -C $(LIBS_PATH)/$(LIB2)
+		rm -f $(NAME)
+
+re: fclean all
+
+norme:
+		@norminette $(LIBS_PATH)/$(LIB1)
+		@norminette $(LIBS_PATH)/$(LIB2)
+		@norminette $(SRC_PATH)
+		@norminette $(INCLUDE_PATH)
+
+.PHONY: all, clean, flcean, re

@@ -3,69 +3,71 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
-#    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/18 09:54:13 by gmonacho    ###    #+. /#+    ###.fr      #
+#    Created: 2018/11/06 19:11:00 by gmonacho     #+#   ##    ##    #+#        #
+#    Updated: 2019/02/18 17:57:55 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
-NAME = Wolf3D
+NAME = fractol
 
-SRC_PATH = src
-SRC_FILES = main.c \
-			parser.c \
-			parser_error.c \
-			collision.c \
-			raycasting.c \
-			sum_x.c \
-			open_window.c \
-			window_loop.c \
-			wolf3d_exit.c
-SRC = $(addprefix $(SRC_PATH)/, $(SRC_FILES))
+SRC = ./src/main.c \
+	  ./src/window/close_window.c \
+	  ./src/window/open_window.c \
+	  ./src/window/window_loop.c \
+	  ./src/window/refresh_window.c \
+	  ./src/window/line_put.c \
+	  ./src/window/draw_square.c \
+	  ./src/event/key_press.c \
+	  ./src/event/key_release.c \
+	  ./src/event/key_event.c \
+	  ./src/event/mouse_move.c \
+	  ./src/event/mouse_press.c \
+	  ./src/event/mouse_release.c \
+	  ./src/event/mouse_drag.c \
+	  ./src/event/mouse_event.c \
+	  ./src/fractal/put_fractal.c \
+	  ./src/fractal/set_julia.c \
+	  ./src/fractal/set_mandelbrot.c \
+	  ./src/fractal/put_square.c \
+	  ./src/user_interface/key_info.c \
+	  ./src/create_point.c
 
-OBJ_PATH = obj
-OBJ_NAME = $(SRC_FILES:.c=.o)
-OBJ = $(addprefix $(OBJ_PATH)/, $(OBJ_NAME))
+OBJ = $(SRC:%.c=%.o)
 
 CC = gcc
-FLAGS = -Wall -Werror -Wextra
-PPFLAGS = -Iinclude
 
-INCLUDE_PATH = include
-LIB1_PATH = libft
-LIB2_PATH = libmath
-#LIB3_PATH = SDL2-2.0.9/build/.libs/libSDL2.a SDL2-2.0.9/build/.libs/libSDL2main.a SDL2-2.0.9/build/.libs/libSDL2_test.a
-LIBRARIES = $(LIB1_PATH)/$(LIB1_PATH).a $(LIB2_PATH)/$(LIB2_PATH).a `sdl2-config --cflags --libs`
+CFLAGS += -Wall -Wextra -Werror
+
+LIBFT = ./lib/libft/libft.a
+
+LIBMATH = ./lib/libmath/libmath.a
+
+LIBSDL2 = `sdl2-config --cflags --libs`
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-		make -C $(LIB1_PATH)
-		make -C $(LIB2_PATH)
-		$(CC) $(FLAGS) $(LIBRARIES) $^ -o $@
+$(NAME): $(LIBFT) $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) $(FRAMEWORK) $(LIBFT) $(LIBMATH) $(LIBSDL2) -o $(NAME)
 
-$(OBJ_PATH)/%.o : $(SRC_PATH)/%.c
-		@mkdir $(OBJ_PATH) 2> /dev/null || true
-		$(CC) $(FLAGS) $(PPFLAGS) -c $< -o $@
+$(LIBFT):
+	make -C ./lib/libft/
+
+$(LIBMATH):
+	make -C ./lib/libmath/
 
 clean:
-		make clean -C $(LIB1_PATH)
-		make clean -C $(LIB2_PATH)
-		@rm -rf $(OBJ_PATH) 2> /dev/null || true
+	rm -f $(OBJ)
+	make clean -C libft
+	make clean -C minilibx_macos
 
 fclean: clean
-		make fclean -C $(LIB1_PATH)
-		make fclean -C $(LIB2_PATH)
-		rm -f $(NAME)
+	rm -f $(NAME)
+	make fclean -C libft
+	make fclean -C minilibx_macos
 
 re: fclean all
 
-norme:
-		@norminette $(LIB1_PATH)
-		@norminette $(LIB2_PATH)
-		@norminette $(SRC_PATH)
-		@norminette $(INCLUDE_PATH)
-
-.PHONY: all, clean, flcean, re
+.PHONY: all clean fclean re

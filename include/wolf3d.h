@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   wolf3d.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/18 09:55:14 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/18 17:49:35 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,9 +20,9 @@
 
 # include <stdio.h>
 # include <stdlib.h>
-# include "../SDL/include/SDL2/SDL.h"
-# include "../libft/libft.h"
-# include "../libmath/include/libmath.h"
+# include "../lib/SDL/include/SDL2/SDL.h"
+# include "../lib/libft/libft.h"
+# include "../lib/libmath/include/libmath.h"
 
 /*
 **	dir: Direction de la camera en radian
@@ -53,14 +53,20 @@ typedef struct		s_map
 	int				len_y;
 	int				width;
 	int				height;
+	int				unit;
 }					t_map;
 
 typedef struct		s_win
 {
 	t_map			map;
+	t_dot_2d		pos;
+	int				width;
+	int				height;
 	t_calculs		calculs;
 	t_player		player;
-	void			*ptr;
+	SDL_Window		*ptr;
+	SDL_Renderer	*rend;
+
 }					t_win;
 
 int					parser(int const fd, t_map *map);

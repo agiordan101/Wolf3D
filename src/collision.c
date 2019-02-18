@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 17:45:05 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/17 01:54:17 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/18 17:38:09 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,7 +28,6 @@ static int		rcoll(t_player *player, double x, double y)
 	else
 		return (0);
 }
-
 
 static int		lcoll(t_player *player, double x, double y)
 {
