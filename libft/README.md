@@ -1,0 +1,2 @@
+Name : libft
+Author : agiordan
