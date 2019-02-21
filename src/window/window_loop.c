@@ -31,6 +31,24 @@ static void		keyboard_event(t_win *win, SDL_Event event)
 		win->pos.x -= 10;
 	if (event.key.keysym.sym == SDLK_d)
 		win->pos.x += 10;
+
+	if (event.key.keysym.sym == SDLK_UP)
+		win->player.pos.y -= 10;
+	if (event.key.keysym.sym == SDLK_DOWN)
+		win->player.pos.y += 10;
+	if (event.key.keysym.sym == SDLK_LEFT)
+		win->player.pos.x -= 10;
+	if (event.key.keysym.sym == SDLK_RIGHT)
+		win->player.pos.x += 10;
+
+	if (event.key.keysym.sym == SDLK_x)
+		win->player.dir += 0.1;
+	if (event.key.keysym.sym == SDLK_c)
+		win->player.dir -= 0.1;
+	/*if (event.key.keysym.sym == SDLK_'+')
+		win->player.fov += 0.1;
+	if (event.key.keysym.sym == SDLK_'-')
+		win->player.fov -= 0.1;*/
 }
 
 int window_loop(t_win *win)
