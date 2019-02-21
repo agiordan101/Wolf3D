@@ -15,8 +15,12 @@
 # define WOLF3D_H
 
 # define VEL 0.05
-# define WALL_COLOR 0x109010
-# define BACKGROUND 0x505050
+# define WALL_R 16
+# define WALL_G 144
+# define WALL_B 16
+# define BACK_R 100
+# define BACK_G 100
+# define BACK_B 100
 
 # include <stdio.h>
 # include <stdlib.h>

@@ -15,18 +15,26 @@
 
 void	draw(t_win *win, t_calculs *calculs)
 {
+	t_dot_2d	dfloor1;
+	t_dot_2d	dfloor2;
 	t_dot_2d	d1;
 	t_dot_2d	d2;
-	int			i;
+	int		i;
 	
+	dfloor1.y = win->height;
+	dfloor2.y = 0;
 	i = -1;
 	while (++i < win->width)
 	{
-		d1 = (t_dot_2d){.x = i, .y = 0};
-		d2 = (t_dot_2d){.x = i, .y = win->height};
-		line_put(win, d1, d2);
+		dfloor1.x = i;
+		dfloor2.x = i;
 		d1 = (t_dot_2d){.x = i, .y = win->height / 2 - win->height / 4 * calculs->dist[i]};
 		d2 = (t_dot_2d){.x = i, .y = win->height / 2 + win->height / 4 * calculs->dist[i]};
+		SDL_SetRenderDrawColor(win->rend, BACK_R, BACK_G, BACK_B, 255);
+		line_put(win, dfloor2, d1);
+		SDL_SetRenderDrawColor(win->rend, WALL_R, WALL_G, WALL_B, 255);
 		line_put(win, d1, d2);
+		SDL_SetRenderDrawColor(win->rend, BACK_R, BACK_G, BACK_B, 255);
+		line_put(win, d2, dfloor1);
 	}
 }
