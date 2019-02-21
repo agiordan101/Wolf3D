@@ -3,15 +3,19 @@
 /*                                                              /             */
 /*   raycasting.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gal <gal@student.le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 19:27:03 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/18 20:44:40 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/21 17:14:36 by gal         ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+/*
+** Makefile Linux
+*/
 
 static int test_wall(t_map *map, t_dot_2d dot, t_vector_2d vector)
 {
@@ -24,8 +28,8 @@ static int test_wall(t_map *map, t_dot_2d dot, t_vector_2d vector)
 		j -= vector.x >= 0 ? 0 : 1;
 	if (!ft_dec(dot.y)) //Else if
 		i -= vector.y >= 0 ? 0 : 1;
-	printf("x = %lf\ty = %lf\n", dot.x, dot.y);
-	printf("i = %i\tj = %i\n", i, j);
+	//printf("x = %lf\ty = %lf\n", dot.x, dot.y);
+	//printf("i = %i\tj = %i\n", i, j);
 	if (map->tab[i][j] == 1)
 		return (1);
 	return (0);
@@ -38,7 +42,7 @@ static void	calcul_dist(t_map *map, t_player *player, t_calculs *calculs, t_vect
 	t_dot_2d	d1;
 	t_dot_2d	d2;
 
-	printf("Vector x = %lf\tVector y = %lf\n", vector.x, vector.y);
+	//printf("Vector x = %lf\tVector y = %lf\n", vector.x, vector.y);
 	next = player->pos;
 	nextIndex =	(t_dot_2d){.x = 0, .y = 0};
 	calculs->a = vector.y / vector.x;
@@ -83,7 +87,7 @@ void	raycasting(t_win *win, t_map *map, t_player *player, t_calculs *calculs)
 	angle = player->fov;
 	while (++(calculs->i) < win->width)
 	{
-		vector = (t_vector_2d){.origin = player->pos, .x = cos(player->dir + angle),\
+		vector = (t_vector_2d){.origin = player->pos, .x = cos(player->dir + angle),
 											.y = -sin(player->dir + angle)};
 		calcul_dist(map, player, calculs, vector);
 		angle -= dangle;
