@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   main.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/18 20:08:05 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/25 17:18:19 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,32 +37,39 @@ int		main(int ac, char **av)
 	int		i;
 	int		j;
 
-	if (ac == 2)
+	if (ac == 3)
 	{
-		if (init(&win, &(win.map), &(win.calculs), &(win.player)))
+		if (ft_atoi(av[2]) == 0)
 		{
-			ft_putendl("Error initialisation");
-			return (1);
+			if (init(&win, &(win.map), &(win.calculs), &(win.player)))
+			{
+				ft_putendl("Error initialisation");
+				return (1);
+			}
+			if ((fd = open(av[1], O_RDONLY)) < 0)  
+				return (parser_error(-1));
+			ft_putendl("file opened");
+			if ((ret = parser(fd, &(win.map))) <= 0)
+				return(parser_error(ret));
+			ft_putendl("parsing finished");
+			i = -1;
+			while (++i < 5)
+			{
+				j = -1;
+				while (++j < win.map.len_x[i])
+					printf("%i", win.map.tab[i][j]);
+				printf("\n");
+			}
+			raycasting(&win, &(win.map), &(win.player), &(win.calculs));
+			i = -1;
+			while (++i < win.width)
+				printf("%lf - ", win.calculs.dist[i]);
+			collision(&(win.player), win.map);
 		}
-		if ((fd = open(av[1], O_RDONLY)) < 0)  
-			return (parser_error(-1));
-		ft_putendl("file opened");
-		if ((ret = parser(fd, &(win.map))) <= 0)
-			return(parser_error(ret));
-		ft_putendl("parsing finished");
-		i = -1;
-		while (++i < 5)
+		else if (ft_atoi(av[2] == 1))
 		{
-			j = -1;
-			while (++j < win.map.len_x[i])
-				printf("%i", win.map.tab[i][j]);
-			printf("\n");
+			printf("map_editor\n");
 		}
-		raycasting(&win, &(win.map), &(win.player), &(win.calculs));
-		i = -1;
-		while (++i < win.width)
-			printf("%lf - ", win.calculs.dist[i]);
-		collision(&(win.player), win.map);
 		open_window(&win);
 		window_loop(&win);
 		quit(&win);
