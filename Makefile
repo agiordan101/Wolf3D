@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: gal <gal@student.le-101.fr>                +:+   +:    +:    +:+      #
+#    By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/21 17:08:08 by gal         ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/25 18:07:10 by gmonacho    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -19,8 +19,8 @@ SRCS_PATH_2 =	physics
 SRCS_PATH_3 =	window
 SRCS_PATH_4 =	map_editor
 SRCS_FILES =	main.c \
+				error.c \
 				$(SRCS_PATH_1)/parser.c \
-				$(SRCS_PATH_1)/parser_error.c \
 				$(SRCS_PATH_2)/collision.c \
 				$(SRCS_PATH_2)/raycasting.c \
 				$(SRCS_PATH_2)/sum_x.c \
@@ -31,6 +31,7 @@ SRCS_FILES =	main.c \
 				$(SRCS_PATH_3)/line_put.c \
 				$(SRCS_PATH_3)/quit.c \
 				$(SRCS_PATH_4)/map_editor.c \
+				$(SRCS_PATH_4)/ed_window_loop.c \
 				$(SRCS_PATH_4)/put_map.c
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_FILES))
 

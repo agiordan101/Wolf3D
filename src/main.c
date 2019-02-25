@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/25 17:18:19 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/25 18:01:09 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,7 @@ static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 	win->width = 1200;
 	win->height = 1200;
 	if (!(calculs->dist = (double *)malloc(sizeof(double) * win->width)))
-		return (-1);
+		return (1);
 	player->pos.x = 2.5;
 	player->pos.y = 3.5;
 	player->vel = (t_vector_2d){.x = 1.0, .y = 0};
@@ -39,19 +39,14 @@ int		main(int ac, char **av)
 
 	if (ac == 3)
 	{
+		if ((fd = open(av[1], O_RDONLY)) < 0)  
+			return (error(-1, "open"));
 		if (ft_atoi(av[2]) == 0)
 		{
 			if (init(&win, &(win.map), &(win.calculs), &(win.player)))
-			{
-				ft_putendl("Error initialisation");
-				return (1);
-			}
-			if ((fd = open(av[1], O_RDONLY)) < 0)  
-				return (parser_error(-1));
-			ft_putendl("file opened");
+				return (error(-2, "init"));
 			if ((ret = parser(fd, &(win.map))) <= 0)
-				return(parser_error(ret));
-			ft_putendl("parsing finished");
+				return(error(ret, "parser"));
 			i = -1;
 			while (++i < 5)
 			{
@@ -66,8 +61,9 @@ int		main(int ac, char **av)
 				printf("%lf - ", win.calculs.dist[i]);
 			collision(&(win.player), win.map);
 		}
-		else if (ft_atoi(av[2] == 1))
+		else if (ft_atoi(av[2]) == 1)
 		{
+			map_editor(fd);
 			printf("map_editor\n");
 		}
 		open_window(&win);
@@ -75,6 +71,6 @@ int		main(int ac, char **av)
 		quit(&win);
 	}
 	else
-		ft_putendl("usage: ./Wolf3D <map>\n");
+		ft_putendl("usage: ./Wolf3D <map> <0/1>\n0 : Wolf3d\n1 : map_editor");
 	return (0);
 }

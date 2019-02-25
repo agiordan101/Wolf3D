@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   window_loop.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 08:56:27 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/18 18:08:59 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/25 19:08:54 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,15 +23,6 @@ static void		refresh_window(t_win *win)
 
 static void		keyboard_event(t_win *win, SDL_Event event)
 {
-	if (event.key.keysym.sym == SDLK_w)
-		win->pos.y -= 10;
-	if (event.key.keysym.sym == SDLK_s)
-		win->pos.y += 10;
-	if (event.key.keysym.sym == SDLK_a)
-		win->pos.x -= 10;
-	if (event.key.keysym.sym == SDLK_d)
-		win->pos.x += 10;
-
 	if (event.key.keysym.sym == SDLK_UP)
 		win->player.pos.y -= 10;
 	if (event.key.keysym.sym == SDLK_DOWN)

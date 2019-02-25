@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   wolf3d.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/18 20:09:42 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/25 18:06:39 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -60,30 +60,30 @@ typedef struct		s_map
 
 typedef struct		s_win
 {
-	t_map			map;
-	t_dot_2d		pos;
-	int				width;
-	int				height;
-	t_calculs		calculs;
-	t_player		player;
 	SDL_Window		*ptr;
 	SDL_Renderer	*rend;
-
+	t_map			map;
+	t_player		player;
+	int				width;
+	int				height;
+	t_dot_2d		pos;
+	t_calculs		calculs;
 }					t_win;
 
-int					parser(int const fd, t_map *map);
-int					parser_error(int error);
-int					sum_x(t_map *map, int ilen);
 int					collision(t_player *player, t_map map);
+void				draw(t_win *win, t_calculs *calculs);
+void				draw_rect(t_win *win, int x, int y, int width, int height);
+int 				ed_window_loop(t_win *win);
+int					error(int error, char *error_source);
+void				line_put(t_win *win, t_dot_2d p1, t_dot_2d p2);
+int					map_editor(int fd);
 int					open_window(t_win *win);
+int					parser(int const fd, t_map *map);
+int					quit(t_win *win);
+void				raycasting(t_win *win, t_map *map, t_player *player, t_calculs *calculs);
+int					sum_x(t_map *map, int ilen);
 int					window_loop(t_win *win);
 int					wolf3d_exit(t_win *win);
 int 				put_map(t_win *win);
-int					quit(t_win *win);
-
-void				draw(t_win *win, t_calculs *calculs);		
-void				raycasting(t_win *win, t_map *map, t_player *player, t_calculs *calculs);
-void				line_put(t_win *win, t_dot_2d p1, t_dot_2d p2);
-void				draw_rect(t_win *win, int x, int y, int width, int height);
 
 #endif

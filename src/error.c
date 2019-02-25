@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   parser_error.c                                   .::    .:/ .      .::   */
+/*   error.c                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 23:34:23 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/18 16:43:49 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/25 18:01:36 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int			parser_error(int error)
+int			error(int error, char *error_source)
 {
-	write(1, "Error : ", 8);
+	ft_putstr("Error (");
+	ft_putstr(error_source);
+	ft_putstr(") : ");
 	if (error == -1)
 		return(write(1, "Openning Failed, Please enter a valid file name\n", 48));
 	else if (error == -2)
@@ -26,4 +28,5 @@ int			parser_error(int error)
 		return(write(1, "Get_next_line Failed\n", 21));
 	else
 		return(write(1, "Undefined\n",  10));
+	// Free !
 }
