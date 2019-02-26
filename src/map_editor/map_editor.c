@@ -6,7 +6,7 @@
 /*   By: gal <gal@student.le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 09:58:24 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/26 16:48:42 by gal         ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/26 20:39:48 by gal         ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,8 @@
 
 static void		init(t_win *win)
 {
-	win->map.unit = 10;
+	win->map.unit = 50;
+	win->map.tab = NULL;
 	win->pos.x = 0;
 	win->pos.y = 0;
 	win->width = 1200;

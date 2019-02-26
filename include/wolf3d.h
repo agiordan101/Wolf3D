@@ -6,7 +6,7 @@
 /*   By: gal <gal@student.le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/26 16:17:51 by gal         ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/26 19:13:49 by gal         ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -74,8 +74,11 @@ typedef struct		s_win
 int					collision(t_player *player, t_map map);
 void				draw(t_win *win, t_calculs *calculs);
 void				draw_rect(t_win *win, int x, int y, int width, int height);
-int 				ed_window_loop(t_win *win);
 int					error(int error, char *error_source);
+int					ed_add_tile(int	x, int y, t_win *win);
+int					ed_is_in_map(int x, int y, t_win *win);
+int 				ed_put_map(t_win *win);
+int					ed_window_loop(t_win *win);
 void				line_put(t_win *win, t_dot_2d p1, t_dot_2d p2);
 int					map_editor(int fd);
 int					open_window(t_win *win);
@@ -85,6 +88,5 @@ void				raycasting(t_win *win, t_map *map, t_player *player, t_calculs *calculs)
 int					sum_x(t_map *map, int ilen);
 int					window_loop(t_win *win);
 int					wolf3d_exit(t_win *win);
-int 				put_map(t_win *win);
 
 #endif

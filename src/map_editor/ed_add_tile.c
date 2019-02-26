@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_memalloc.c                                    .::    .:/ .      .::   */
+/*   ed_add_tile.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: gal <gal@student.le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/06 19:23:23 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/26 20:07:11 by gal         ###    #+. /#+    ###.fr     */
+/*   Created: 2019/02/26 18:00:25 by gal          #+#   ##    ##    #+#       */
+/*   Updated: 2019/02/26 19:39:01 by gal         ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "wolf3d.h"
 
-void	*ft_memalloc(size_t size)
+int ed_add_tile(int	x, int y, t_win *win)
 {
-	void	*mem;
+	int		i;
+	int		j;
 
-	if (!(mem = (void *)malloc(size)))
-		return (NULL);
-	ft_bzero(mem, size);
-	return (mem);
+	i = (win->pos.y - y) / win->map.unit;
+	j = (win->pos.x - x) / win->map.unit;
+	if (win->map.tab[i][j] == 0)
+	{
+		win->map.tab[i][j] = 1;
+		return (1);
+	}
+	else
+		return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gal <gal@student.le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:03:22 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/26 16:49:42 by gal         ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/26 20:30:28 by gal         ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -76,15 +76,18 @@ int parser(int const fd, t_map *map)
 	map->len_y = 0;
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{
-		map->len_x = ft_addint(map->len_x, (double)ft_countnumbers(line), map->len_y);
+
+		if (!(map->len_x = ft_addint(map->len_x, (double)ft_countnumbers(line), map->len_y)))
+			return (-2);
 		if ((error = convert_int(line, &int_line, map->len_x[map->len_y])) <= 0)
 			return (error);
 		tmp = map->tab;
-		map->tab = ft_addinttabn(map->tab, map->len_y, map->len_x, int_line);
+		if (!(map->tab = ft_addinttabn(map->tab, map->len_y, map->len_x, int_line)))
+			return (-2);
 		ft_tabint2del(&tmp, map->len_y);
-		map->len_y++;
 		ft_tabintdel(&int_line);
 		ft_strdel(&line);
+		map->len_y++;
 	}
 	return ((ret < 0) ? -4 : 1);
 }

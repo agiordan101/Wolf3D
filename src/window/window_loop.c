@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   window_loop.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gal <gal@student.le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 08:56:27 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/25 19:08:54 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/26 18:14:35 by gal         ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,7 +17,6 @@ static void		refresh_window(t_win *win)
 {
 	SDL_SetRenderDrawColor(win->rend, 0, 0, 0, 255);
 	SDL_RenderClear(win->rend);
-	put_map(win);
 	SDL_RenderPresent(win->rend);
 }
 
@@ -31,7 +30,6 @@ static void		keyboard_event(t_win *win, SDL_Event event)
 		win->player.pos.x -= 10;
 	if (event.key.keysym.sym == SDLK_RIGHT)
 		win->player.pos.x += 10;
-
 	if (event.key.keysym.sym == SDLK_x)
 		win->player.dir += 0.1;
 	if (event.key.keysym.sym == SDLK_c)

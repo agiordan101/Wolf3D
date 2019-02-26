@@ -6,7 +6,7 @@
 #    By: gal <gal@student.le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/26 16:20:03 by gal         ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/26 19:20:43 by gal         ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -32,7 +32,9 @@ SRCS_FILES =	main.c \
 				$(SRCS_PATH_3)/quit.c \
 				$(SRCS_PATH_4)/map_editor.c \
 				$(SRCS_PATH_4)/ed_window_loop.c \
-				$(SRCS_PATH_4)/put_map.c
+				$(SRCS_PATH_4)/ed_put_map.c \
+				$(SRCS_PATH_4)/ed_is_in_map.c \
+				$(SRCS_PATH_4)/ed_add_tile.c
 
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_FILES))
 
