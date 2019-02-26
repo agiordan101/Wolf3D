@@ -33,7 +33,6 @@ static int	pevent(t_win *win, SDL_Event event)
 			win->map.unit += 1;
 		else if (event.wheel.y < 0)
 			win->map.unit = (win->map.unit > 1) ? win->map.unit -1 : 1;
-		printf("unit = %d\n", win->map.unit);
 	}
 	return (1);
 }
