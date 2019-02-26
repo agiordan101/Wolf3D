@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   wolf3d.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gal <gal@student.le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/25 18:06:39 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/26 16:17:51 by gal         ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,6 +24,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <math.h>
 # include "../SDL/include/SDL2/SDL.h"
 # include "../libft/libft.h"
 # include "../libmath/include/libmath.h"

@@ -6,7 +6,7 @@
 #    By: gal <gal@student.le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/21 17:08:08 by gal         ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/26 16:20:03 by gal         ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -19,8 +19,8 @@ SRCS_PATH_2 =	physics
 SRCS_PATH_3 =	window
 SRCS_PATH_4 =	map_editor
 SRCS_FILES =	main.c \
+				error.c \
 				$(SRCS_PATH_1)/parser.c \
-				$(SRCS_PATH_1)/parser_error.c \
 				$(SRCS_PATH_2)/collision.c \
 				$(SRCS_PATH_2)/raycasting.c \
 				$(SRCS_PATH_2)/sum_x.c \
@@ -31,7 +31,9 @@ SRCS_FILES =	main.c \
 				$(SRCS_PATH_3)/line_put.c \
 				$(SRCS_PATH_3)/quit.c \
 				$(SRCS_PATH_4)/map_editor.c \
+				$(SRCS_PATH_4)/ed_window_loop.c \
 				$(SRCS_PATH_4)/put_map.c
+
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_FILES))
 
 OBJ = $(SRCS:%.c=%.o)
@@ -43,14 +45,14 @@ CFLAGS += -Wall -Wextra -Werror -I./$(INCLUDE_PATH)
 LIBFT = libft
 LIBMATH = libmath
 LIBSDL2 = `sdl2-config --cflags --libs`
-LIB3 = SDL/lib/LIBSDL2.a SDL/lib/LIBSDL2main.a
+LIBCMATH = -lm
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	make -C $(LIBFT)
 	make -C $(LIBMATH)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT)/$(LIBFT).a $(LIBMATH)/$(LIBMATH).a -o $(NAME) $(LIBSDL2)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBCMATH) $(LIBFT)/$(LIBFT).a $(LIBMATH)/$(LIBMATH).a -o $(NAME) $(LIBSDL2)
 
 clean:
 	rm -f $(OBJ)
