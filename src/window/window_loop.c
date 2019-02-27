@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 08:56:27 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 21:24:24 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 21:27:57 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@ static void		refresh_window(t_win *win)
 	SDL_RenderPresent(win->rend);
 }
 
-static void keyboard_state(t_win *win, t_player *player, const Uint8 *state)
+static void keyboard_state(t_player *player, const Uint8 *state)
 {
 	player->vel = (t_vector_2d){};
 	if (state[SDL_SCANCODE_W])
@@ -112,7 +112,7 @@ int window_loop(t_win *win)
 	while (loop)
 	{
 		SDL_PumpEvents();
-		keyboard_state(win, &(win->player), state);
+		keyboard_state(&(win->player), state);
 		collision(&(win->player), win->map);
 		move(win);
 		while (SDL_PollEvent(&event))
