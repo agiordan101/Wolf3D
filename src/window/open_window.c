@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/14 18:59:51 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/18 18:29:03 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 22:37:11 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,5 +20,6 @@ int		open_window(t_win *win)
 		ft_putstr(SDL_GetError());
 		return (0);
 	}
+	//TTF_OpenFont("Arial", 65);
 	return (1);
 }
