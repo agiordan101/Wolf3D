@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 13:12:58 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 14:10:25 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,6 +25,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
+# include <unistd.h>
+# include <fcntl.h>
 # include "../SDL/include/SDL2/SDL.h"
 # include "../libft/libft.h"
 # include "../libmath/include/libmath.h"
@@ -76,6 +78,7 @@ void				draw(t_win *win, t_calculs *calculs);
 void				draw_rect(t_win *win, int x, int y, int width, int height);
 int					error(int error, char *error_source);
 int					ed_add_tile(int	x, int y, t_win *win, int tile);
+int 				ed_export(t_map map);
 int					ed_is_in_map(int x, int y, t_win *win);
 void				ed_put_grid(t_win *win);
 int 				ed_put_map(t_win *win);

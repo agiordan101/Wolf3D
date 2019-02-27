@@ -6,7 +6,7 @@
 #    By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/27 13:14:49 by gmonacho    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/27 13:58:45 by gmonacho    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -35,6 +35,7 @@ SRCS_FILES =	main.c \
 				$(SRCS_PATH_4)/ed_put_map.c \
 				$(SRCS_PATH_4)/ed_add_tile.c \
 				$(SRCS_PATH_4)/ed_is_in_map.c \
+				$(SRCS_PATH_4)/ed_export.c \
 				$(SRCS_PATH_4)/ed_put_grid.c
 
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_FILES))
