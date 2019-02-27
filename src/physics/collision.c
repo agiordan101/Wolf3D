@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   collision.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 17:45:05 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/18 18:32:42 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 20:44:22 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,8 @@ static int		rcoll(t_player *player, double x, double y)
 	ny = player->pos.y + player->vel.y;
 	if (nx > x && ny > y && ny < y + 1)
 	{
-		player->vel.x = x - player->pos.x;
+		printf("RIGHTCOLLISION\n");
+		player->vel.x = x - player->pos.x - 0.01;
 		return (1);
 	}
 	else
@@ -84,7 +85,7 @@ int		collision(t_player *player, t_map map)
 
 	nx = player->pos.x + player->vel.x;
 	ny = player->pos.y + player->vel.y;
-	if (map.tab[(int)ny][(int)nx])
+	if (map.tab[(int)ny][(int)nx] == 1)
 	{
 		if (player->vel.x > 0)
 			rcoll(player, (int)nx, (int)ny);

@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   window_loop.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 08:56:27 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 20:39:48 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 20:51:37 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,48 +24,45 @@ static void		refresh_window(t_win *win)
 
 static void keyboard_state(t_win *win, const Uint8 *state)
 {
-	double	pas;
-
-	pas = 0.1;
 	if (state[SDL_SCANCODE_W])
 	{
-		win->player.pos.y -= (win->player.pos.y - sin(win->player.dir) * pas < 0) ||\
-					(win->player.pos.y - sin(win->player.dir) * pas > win->map.len_y) ?\
-					0 : sin(win->player.dir) * pas;
-		win->player.pos.x += (win->player.pos.x + cos(win->player.dir) * pas\
+		win->player.pos.y -= (win->player.pos.y - sin(win->player.dir) * win->player.vel.y < 0) ||\
+					(win->player.pos.y - sin(win->player.dir) * win->player.vel.y > win->map.len_y) ?\
+					0 : sin(win->player.dir) * win->player.vel.y;
+		win->player.pos.x += (win->player.pos.x + cos(win->player.dir) * win->player.vel.x\
 							> win->map.len_x[(int)win->player.pos.y]) ||\
-							(win->player.pos.x + cos(win->player.dir) * pas < 0) ?\
-							0 : cos(win->player.dir) * pas;
+							(win->player.pos.x + cos(win->player.dir) * win->player.vel.x < 0) ?\
+							0 : cos(win->player.dir) * win->player.vel.x;
 	}
 	if (state[SDL_SCANCODE_S])
 	{
-		win->player.pos.y -= (win->player.pos.y - sin(win->player.dir + PI) * pas < 0) ||\
-					(win->player.pos.y - sin(win->player.dir + PI) * pas > win->map.len_y) ?\
-					0 : sin(win->player.dir + PI) * pas;
-		win->player.pos.x += (win->player.pos.x + cos(win->player.dir + PI) * pas\
+		win->player.pos.y -= (win->player.pos.y - sin(win->player.dir + PI) * win->player.vel.y < 0) ||\
+					(win->player.pos.y - sin(win->player.dir + PI) * win->player.vel.y > win->map.len_y) ?\
+					0 : sin(win->player.dir + PI) * win->player.vel.y;
+		win->player.pos.x += (win->player.pos.x + cos(win->player.dir + PI) * win->player.vel.x\
 							> win->map.len_x[(int)win->player.pos.y]) ||\
-							(win->player.pos.x + cos(win->player.dir + PI) * pas < 0) ?\
-							0 : cos(win->player.dir + PI) * pas;
+							(win->player.pos.x + cos(win->player.dir + PI) * win->player.vel.x < 0) ?\
+							0 : cos(win->player.dir + PI) * win->player.vel.x;
 	}
 	if (state[SDL_SCANCODE_A])
 	{
-		win->player.pos.y -= (win->player.pos.y - sin(win->player.dir + PI / 2) * pas < 0) ||\
-					(win->player.pos.y - sin(win->player.dir + PI / 2) * pas > win->map.len_y) ?\
-					0 : sin(win->player.dir + PI / 2) * pas;
-		win->player.pos.x += win->player.pos.x + cos(win->player.dir + PI / 2) * pas\
+		win->player.pos.y -= (win->player.pos.y - sin(win->player.dir + PI / 2) * win->player.vel.y < 0) ||\
+					(win->player.pos.y - sin(win->player.dir + PI / 2) * win->player.vel.y > win->map.len_y) ?\
+					0 : sin(win->player.dir + PI / 2) * win->player.vel.y;
+		win->player.pos.x += win->player.pos.x + cos(win->player.dir + PI / 2) * win->player.vel.x\
 							> win->map.len_x[(int)win->player.pos.y] ||\
-							(win->player.pos.x + cos(win->player.dir + PI / 2) * pas < 0) ?\
-							0 : cos(win->player.dir + PI / 2) * pas;
+							(win->player.pos.x + cos(win->player.dir + PI / 2) * win->player.vel.x < 0) ?\
+							0 : cos(win->player.dir + PI / 2) * win->player.vel.x;
 	}
 	if (state[SDL_SCANCODE_D])
 	{
-		win->player.pos.y -= (win->player.pos.y - sin(win->player.dir - PI / 2) * pas < 0) ||\
-					(win->player.pos.y - sin(win->player.dir - PI / 2) * pas > win->map.len_y) ?\
-					0 : sin(win->player.dir - PI / 2) * pas;
-		win->player.pos.x += win->player.pos.x + cos(win->player.dir - PI / 2) * pas\
+		win->player.pos.y -= (win->player.pos.y - sin(win->player.dir - PI / 2) * win->player.vel.y < 0) ||\
+					(win->player.pos.y - sin(win->player.dir - PI / 2) * win->player.vel.y > win->map.len_y) ?\
+					0 : sin(win->player.dir - PI / 2) * win->player.vel.y;
+		win->player.pos.x += win->player.pos.x + cos(win->player.dir - PI / 2) * win->player.vel.x\
 							> win->map.len_x[(int)win->player.pos.y] ||\
-							(win->player.pos.x + cos(win->player.dir - PI / 2) * pas < 0) ?\
-							0 : cos(win->player.dir - PI / 2) * pas;
+							(win->player.pos.x + cos(win->player.dir - PI / 2) * win->player.vel.x < 0) ?\
+							0 : cos(win->player.dir - PI / 2) * win->player.vel.x;
 	}
 	if (state[SDL_SCANCODE_RIGHT])
 		win->player.dir -= 0.1;
@@ -100,13 +97,13 @@ int window_loop(t_win *win)
 	while (loop)
 	{
 		SDL_PumpEvents();
+		collision(&(win->player), win->map);
 		keyboard_state(win, state);
 		while (SDL_PollEvent(&event))
 		{
 			if (!keyboard_event(win, event))
 				loop = 0;
 		}
-		collision(&(win->player), win->map);
 		refresh_window(win);
 	}
 	return (1);
