@@ -3,15 +3,31 @@
 /*                                                              /             */
 /*   ed_export.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/27 13:42:55 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 16:39:10 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 17:59:51 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+static char		*next_file()
+{
+	char	*filename;
+	int		i;
+
+	filename = NULL;
+	filename = "maps/map0.w3d";
+	i = 0;
+	while (open(filename, O_RDONLY) > 0)
+	{
+		i++;
+		filename = ft_strjoin(ft_strjoin("maps/map", ft_itoa(i)), ".w3d");
+	}
+	return (filename);
+}
 
 static int		open_new_fd(char *filename)
 {
@@ -28,7 +44,7 @@ int			ed_export(t_map map)
 	int     j;
 	int		fd_export;
 
-	fd_export = open_new_fd("new_map.w3d");
+	fd_export = open_new_fd(next_file());
 	i = 0;
 	while (i < map.len_y)
 	{
