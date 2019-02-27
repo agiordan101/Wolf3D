@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 19:27:03 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 17:00:11 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 18:57:09 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -87,13 +87,14 @@ void	raycasting(t_win *win, t_map *map, t_player *player, t_calculs *calculs)
 	double		angle;
 	double		dangle;
 
-	dangle = 2 * player->fov / win->width;
+	dangle = player->fov / win->width;
 	calculs->i = -1;
-	angle = player->fov;
+	angle = player->fov / 2;
 	while (++(calculs->i) < win->width)
 	{
-		vector = (t_vector_2d){.origin = player->pos, .x = cos(player->dir + angle),
-											.y = -sin(player->dir + angle)};
+		vector = (t_vector_2d){.origin = player->pos,\
+								.x = cos(player->dir + angle),
+								.y = -sin(player->dir + angle)};
 		calcul_dist(map, player, calculs, vector);
 		angle -= dangle;
 	}

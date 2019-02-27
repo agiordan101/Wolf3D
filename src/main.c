@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   main.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 15:05:23 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 19:16:24 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,7 +24,7 @@ static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 	player->pos.x = 2.5;
 	player->pos.y = 3.5;
 	player->vel = (t_vector_2d){.x = 1.0, .y = 0};
-	player->dir = PI / 2;
+	player->dir = -PI / 2;
 	player->fov = PI / 2;
 	return (0);
 }
@@ -34,7 +34,6 @@ int		main(int ac, char **av)
 	t_win	win;
 	int		fd;
 	int		ret;
-	int		i;
 
 	if (ac == 3)
 	{
@@ -46,11 +45,6 @@ int		main(int ac, char **av)
 				return (error(-2, "init"));
 			if ((ret = parser(fd, &(win.map))) <= 0)
 				return(error(ret, "parser"));
-			raycasting(&win, &(win.map), &(win.player), &(win.calculs));
-			i = -1;
-			while (++i < win.width)
-				printf("%lf - ", win.calculs.dist[i]);
-			collision(&(win.player), win.map);
 		}
 		else if (ft_atoi(av[2]) == 1)
 		{
