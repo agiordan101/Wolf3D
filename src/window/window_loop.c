@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   window_loop.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 08:56:27 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 20:51:37 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 21:24:24 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,52 +22,67 @@ static void		refresh_window(t_win *win)
 	SDL_RenderPresent(win->rend);
 }
 
-static void keyboard_state(t_win *win, const Uint8 *state)
+static void keyboard_state(t_win *win, t_player *player, const Uint8 *state)
 {
+	player->vel = (t_vector_2d){};
 	if (state[SDL_SCANCODE_W])
 	{
-		win->player.pos.y -= (win->player.pos.y - sin(win->player.dir) * win->player.vel.y < 0) ||\
+		player->vel.x = cos(player->dir) * player->const_vel;
+		player->vel.y = -sin(player->dir) * player->const_vel;
+		/*win->player.pos.y -= (win->player.pos.y - sin(win->player.dir) * win->player.vel.y < 0) ||\
 					(win->player.pos.y - sin(win->player.dir) * win->player.vel.y > win->map.len_y) ?\
 					0 : sin(win->player.dir) * win->player.vel.y;
 		win->player.pos.x += (win->player.pos.x + cos(win->player.dir) * win->player.vel.x\
 							> win->map.len_x[(int)win->player.pos.y]) ||\
 							(win->player.pos.x + cos(win->player.dir) * win->player.vel.x < 0) ?\
-							0 : cos(win->player.dir) * win->player.vel.x;
+							0 : cos(win->player.dir) * win->player.vel.x;*/
 	}
 	if (state[SDL_SCANCODE_S])
 	{
-		win->player.pos.y -= (win->player.pos.y - sin(win->player.dir + PI) * win->player.vel.y < 0) ||\
+		player->vel.x = cos(player->dir + PI) * player->const_vel;
+		player->vel.y = -sin(player->dir + PI) * player->const_vel;
+		/*win->player.pos.y -= (win->player.pos.y - sin(win->player.dir + PI) * win->player.vel.y < 0) ||\
 					(win->player.pos.y - sin(win->player.dir + PI) * win->player.vel.y > win->map.len_y) ?\
 					0 : sin(win->player.dir + PI) * win->player.vel.y;
 		win->player.pos.x += (win->player.pos.x + cos(win->player.dir + PI) * win->player.vel.x\
 							> win->map.len_x[(int)win->player.pos.y]) ||\
 							(win->player.pos.x + cos(win->player.dir + PI) * win->player.vel.x < 0) ?\
-							0 : cos(win->player.dir + PI) * win->player.vel.x;
+							0 : cos(win->player.dir + PI) * win->player.vel.x;*/
 	}
 	if (state[SDL_SCANCODE_A])
 	{
-		win->player.pos.y -= (win->player.pos.y - sin(win->player.dir + PI / 2) * win->player.vel.y < 0) ||\
+		player->vel.x = cos(player->dir + PI / 2) * player->const_vel;
+		player->vel.y = -sin(player->dir + PI / 2) * player->const_vel;
+		/*win->player.pos.y -= (win->player.pos.y - sin(win->player.dir + PI / 2) * win->player.vel.y < 0) ||\
 					(win->player.pos.y - sin(win->player.dir + PI / 2) * win->player.vel.y > win->map.len_y) ?\
 					0 : sin(win->player.dir + PI / 2) * win->player.vel.y;
 		win->player.pos.x += win->player.pos.x + cos(win->player.dir + PI / 2) * win->player.vel.x\
 							> win->map.len_x[(int)win->player.pos.y] ||\
 							(win->player.pos.x + cos(win->player.dir + PI / 2) * win->player.vel.x < 0) ?\
-							0 : cos(win->player.dir + PI / 2) * win->player.vel.x;
+							0 : cos(win->player.dir + PI / 2) * win->player.vel.x;*/
 	}
 	if (state[SDL_SCANCODE_D])
 	{
-		win->player.pos.y -= (win->player.pos.y - sin(win->player.dir - PI / 2) * win->player.vel.y < 0) ||\
+		player->vel.x = cos(player->dir - PI / 2) * player->const_vel;
+		player->vel.y = -sin(player->dir - PI / 2) * player->const_vel;
+		/*win->player.pos.y -= (win->player.pos.y - sin(win->player.dir - PI / 2) * win->player.vel.y < 0) ||\
 					(win->player.pos.y - sin(win->player.dir - PI / 2) * win->player.vel.y > win->map.len_y) ?\
 					0 : sin(win->player.dir - PI / 2) * win->player.vel.y;
 		win->player.pos.x += win->player.pos.x + cos(win->player.dir - PI / 2) * win->player.vel.x\
 							> win->map.len_x[(int)win->player.pos.y] ||\
 							(win->player.pos.x + cos(win->player.dir - PI / 2) * win->player.vel.x < 0) ?\
-							0 : cos(win->player.dir - PI / 2) * win->player.vel.x;
+							0 : cos(win->player.dir - PI / 2) * win->player.vel.x;*/
 	}
 	if (state[SDL_SCANCODE_RIGHT])
-		win->player.dir -= 0.1;
+		player->dir -= 0.1;
 	if (state[SDL_SCANCODE_LEFT])
-		win->player.dir += 0.1;
+		player->dir += 0.1;
+}
+
+static void	move(t_win *win)
+{
+	win->player.pos.y += win->player.vel.y;
+	win->player.pos.x += win->player.vel.x;
 }
 
 static int	keyboard_event(t_win *win, SDL_Event event)
@@ -97,8 +112,9 @@ int window_loop(t_win *win)
 	while (loop)
 	{
 		SDL_PumpEvents();
+		keyboard_state(win, &(win->player), state);
 		collision(&(win->player), win->map);
-		keyboard_state(win, state);
+		move(win);
 		while (SDL_PollEvent(&event))
 		{
 			if (!keyboard_event(win, event))
