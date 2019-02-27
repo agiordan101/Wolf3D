@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/25 18:01:09 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 15:05:23 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,7 +35,6 @@ int		main(int ac, char **av)
 	int		fd;
 	int		ret;
 	int		i;
-	int		j;
 
 	if (ac == 3)
 	{
@@ -47,14 +46,6 @@ int		main(int ac, char **av)
 				return (error(-2, "init"));
 			if ((ret = parser(fd, &(win.map))) <= 0)
 				return(error(ret, "parser"));
-			i = -1;
-			while (++i < 5)
-			{
-				j = -1;
-				while (++j < win.map.len_x[i])
-					printf("%i", win.map.tab[i][j]);
-				printf("\n");
-			}
 			raycasting(&win, &(win.map), &(win.player), &(win.calculs));
 			i = -1;
 			while (++i < win.width)

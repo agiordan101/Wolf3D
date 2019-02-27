@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 14:10:25 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 14:43:06 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -59,6 +59,7 @@ typedef struct		s_map
 	int				*len_x;
 	int				len_y;
 	int				unit;
+	int				tile;
 }					t_map;
 
 typedef struct		s_win

@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/26 18:00:19 by gal          #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 13:59:40 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 14:47:43 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,7 +42,7 @@ static void mouse_event(t_win *win)
 	if (SDL_GetMouseState(&x, &y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 	{
 		if (ed_is_in_map(x, y, win))
-			ed_add_tile(x, y, win, 1);
+			ed_add_tile(x, y, win, win->map.tile);
 	}
 	if (SDL_GetMouseState(&x, &y) & SDL_BUTTON(SDL_BUTTON_RIGHT))
 	{
@@ -59,6 +59,10 @@ static int pevent(t_win *win, SDL_Event event)
 	{
 		if(event.key.keysym.sym == SDLK_ESCAPE)
 			return (0);
+		else if(event.key.keysym.sym == SDLK_1)
+			win->map.tile = 1;
+		else if(event.key.keysym.sym == SDLK_2)
+			win->map.tile = 2;
 	}
 	else if (event.type == SDL_MOUSEWHEEL)
 	{
