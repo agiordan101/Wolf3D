@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   raycasting.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gal <gal@student.le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 19:27:03 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/21 17:14:36 by gal         ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 17:00:11 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,7 +14,12 @@
 #include "wolf3d.h"
 
 /*
-** Makefile Linux
+**	test_wall	: 1 si mur, 0 sinon
+**
+**	calcul_dist : Trouve le premier mur pointe par le vector
+**
+**	raycasting	: Lance des 'calcul_dist' pour chaque pixel de l'ecran avec le
+**					vector qui correspond
 */
 
 static int test_wall(t_map *map, t_dot_2d dot, t_vector_2d vector)

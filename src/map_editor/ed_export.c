@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ed_export.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/27 13:42:55 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 15:11:01 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 16:39:10 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,7 +17,7 @@ static int		open_new_fd(char *filename)
 {
 	int	fd;
  
-	if (!(fd = open(filename, O_CREAT | O_WRONLY | S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)))
+	if (!(fd = open(filename, O_CREAT | O_WRONLY, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)))
 		return (-1);
 	return (fd);
 }
