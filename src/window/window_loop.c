@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   window_loop.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 08:56:27 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 19:53:56 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 20:04:59 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -83,8 +83,10 @@ static void keyboard_state(t_win *win, const Uint8 *state)
 	}
 }
 
-static void		keyboard_event(t_win *win, SDL_Event event)
+static int	keyboard_event(t_win *win, SDL_Event event)
 {
+	if (event.type == SDL_QUIT || event.key.keysym.sym == SDLK_ESCAPE)
+		return (0);
 	if (event.key.keysym.sym == SDLK_x)
 		win->player.dir += 0.1;
 	if (event.key.keysym.sym == SDLK_c)
@@ -93,27 +95,27 @@ static void		keyboard_event(t_win *win, SDL_Event event)
 		win->player.fov += 0.1;
 	if (event.key.keysym.sym == SDLK_'-')
 		win->player.fov -= 0.1;*/
+	return (1);
 }
 
 int window_loop(t_win *win)
 {
 	const Uint8 *state;
 	SDL_Event event;
-	int exit;
+	int loop;
 
 	state = SDL_GetKeyboardState(NULL);
-	exit = 0;
+	loop = 1;
 	if (!win)
 		return (0);
-	while (!exit)
+	while (loop)
 	{
 		SDL_PumpEvents();
 		keyboard_state(win, state);
 		while (SDL_PollEvent(&event))
 		{
-			if (event.type == SDL_QUIT)
-				exit = 1;
-			keyboard_event(win, event);
+			if (!keyboard_event(win, event))
+				loop = 0;
 		}
 		refresh_window(win);
 	}
