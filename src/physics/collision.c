@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 17:45:05 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 20:44:22 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 21:17:56 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,6 @@ static int		rcoll(t_player *player, double x, double y)
 	ny = player->pos.y + player->vel.y;
 	if (nx > x && ny > y && ny < y + 1)
 	{
-		printf("RIGHTCOLLISION\n");
 		player->vel.x = x - player->pos.x - 0.01;
 		return (1);
 	}
@@ -85,6 +84,14 @@ int		collision(t_player *player, t_map map)
 
 	nx = player->pos.x + player->vel.x;
 	ny = player->pos.y + player->vel.y;
+	if (nx < 0)
+		nx = 0;
+	else if (nx > (double)map.len_x[(int)ny] - 1)
+		nx = map.len_x[(int)ny] - 1;
+	if (nx < 0)
+		nx = 0;
+	else if (nx > (double)map.len_y - 1)
+		nx = map.len_y - 1;
 	if (map.tab[(int)ny][(int)nx] == 1)
 	{
 		if (player->vel.x > 0)
