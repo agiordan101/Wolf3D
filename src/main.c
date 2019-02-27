@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   main.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 20:50:31 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 21:20:39 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,7 +23,8 @@ static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 		return (1);
 	player->pos.x = 2.5;
 	player->pos.y = 3.5;
-	player->vel = (t_vector_2d){.x = 0.1, .y = 0.1};
+	player->vel = (t_vector_2d){}; //Inutile
+	player->const_vel = 0.2;
 	player->dir = -PI / 2;
 	player->fov = PI / 2;
 	return (0);

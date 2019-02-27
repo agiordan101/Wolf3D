@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   wolf3d.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 14:43:06 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 21:19:20 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,6 +40,7 @@ typedef struct		s_player
 {
 	t_dot_2d		pos;
 	t_vector_2d		vel;
+	double			const_vel;
 	double			dir;
 	double			fov;
 }					t_player;

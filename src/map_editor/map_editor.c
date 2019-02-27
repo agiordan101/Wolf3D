@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 09:58:24 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 14:46:06 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 20:59:22 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,7 +36,6 @@ int				map_editor(int fd)
 	if (!(open_window(&(win))))
 		return (error(-1, "map editor : open_window"));
 	ed_window_loop(&win);
-	ed_export(win.map);
 	quit(&win);
 	return (1);
 }
