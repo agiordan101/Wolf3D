@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ed_window_loop.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gal <gal@student.le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/26 18:00:19 by gal          #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 02:51:54 by gal         ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 13:24:40 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,6 +18,7 @@ static void refresh_window(t_win *win)
 	SDL_SetRenderDrawColor(win->rend, 0, 0, 0, 255);
 	SDL_RenderClear(win->rend);
 	ed_put_map(win);
+	ed_put_grid(win);
 	SDL_RenderPresent(win->rend);
 }
 
@@ -82,11 +83,11 @@ int ed_window_loop(t_win *win)
 	while (loop)
 	{
 		SDL_PumpEvents();
+		keyboard_event(win, state);
+		mouse_event(win);
 		while (SDL_PollEvent(&event))
 			if (!pevent(win, event))
 				loop = 0;
-		keyboard_event(win, state);
-		mouse_event(win);
 		refresh_window(win);
 	}
 	return (1);

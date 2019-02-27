@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   wolf3d.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gal <gal@student.le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 02:50:04 by gal         ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 13:12:58 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -77,6 +77,7 @@ void				draw_rect(t_win *win, int x, int y, int width, int height);
 int					error(int error, char *error_source);
 int					ed_add_tile(int	x, int y, t_win *win, int tile);
 int					ed_is_in_map(int x, int y, t_win *win);
+void				ed_put_grid(t_win *win);
 int 				ed_put_map(t_win *win);
 int					ed_window_loop(t_win *win);
 void				line_put(t_win *win, t_dot_2d p1, t_dot_2d p2);
