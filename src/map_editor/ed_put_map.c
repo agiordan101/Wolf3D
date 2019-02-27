@@ -6,28 +6,29 @@
 /*   By: gal <gal@student.le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 11:24:44 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/26 18:06:32 by gal         ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 02:46:49 by gal         ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static void 	draw_tile(t_win *win, int i, int j)
+static void draw_tile(t_win *win, int i, int j)
 {
-	if (win->map.tab[i][j] == 1)
+	if (win->map.tab[i][j] != 0)
 	{
-		SDL_SetRenderDrawColor(win->rend, 255, 255, 255, 255);
-		draw_rect(win, j * win->map.unit / 2 - win->pos.x, i * win->map.unit - win->pos.y, win->map.unit, win->map.unit);
-	}
-	if (win->map.tab[i][j] == 2)
-	{
-		SDL_SetRenderDrawColor(win->rend, 255, 0, 0, 255);
-		draw_rect(win, j * win->map.unit / 2 - win->pos.x, i * win->map.unit - win->pos.y, win->map.unit, win->map.unit);
+		if (win->map.tab[i][j] == 1)
+			SDL_SetRenderDrawColor(win->rend, 255, 255, 255, 255);
+		else if (win->map.tab[i][j] == 2)
+			SDL_SetRenderDrawColor(win->rend, 255, 0, 0, 255);
+		draw_rect(win,
+			  j * win->map.unit - (int)(win->pos.x),
+			  i * win->map.unit - (int)(win->pos.y),
+			  win->map.unit, win->map.unit);
 	}
 }
 
-int 			ed_put_map(t_win *win)
+int ed_put_map(t_win *win)
 {
 	int imax;
 	int jmax;

@@ -6,7 +6,7 @@
 /*   By: gal <gal@student.le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/26 18:00:19 by gal          #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/26 19:28:02 by gal         ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 02:51:54 by gal         ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,9 +41,12 @@ static void mouse_event(t_win *win)
 	if (SDL_GetMouseState(&x, &y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 	{
 		if (ed_is_in_map(x, y, win))
-		{
-			ed_add_tile(x, y, win);
-		}
+			ed_add_tile(x, y, win, 1);
+	}
+	if (SDL_GetMouseState(&x, &y) & SDL_BUTTON(SDL_BUTTON_RIGHT))
+	{
+		if (ed_is_in_map(x, y, win))
+			ed_add_tile(x, y, win, 0);
 	}
 }
 
@@ -51,6 +54,11 @@ static int pevent(t_win *win, SDL_Event event)
 {
 	if (event.type == SDL_QUIT)
 		return (0);
+	else if (event.type == SDL_KEYDOWN)
+	{
+		if(event.key.keysym.sym == SDLK_ESCAPE)
+			return (0);
+	}
 	else if (event.type == SDL_MOUSEWHEEL)
 	{
 		if (event.wheel.y > 0)
@@ -74,11 +82,11 @@ int ed_window_loop(t_win *win)
 	while (loop)
 	{
 		SDL_PumpEvents();
-		keyboard_event(win, state);
-		mouse_event(win);
-		if (SDL_PollEvent(&event))
+		while (SDL_PollEvent(&event))
 			if (!pevent(win, event))
 				loop = 0;
+		keyboard_event(win, state);
+		mouse_event(win);
 		refresh_window(win);
 	}
 	return (1);

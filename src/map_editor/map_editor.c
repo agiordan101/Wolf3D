@@ -6,7 +6,7 @@
 /*   By: gal <gal@student.le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 09:58:24 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/26 20:39:48 by gal         ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/27 02:40:22 by gal         ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,6 +17,7 @@ static void		init(t_win *win)
 {
 	win->map.unit = 50;
 	win->map.tab = NULL;
+	win->map.len_x = NULL;
 	win->pos.x = 0;
 	win->pos.y = 0;
 	win->width = 1200;
@@ -32,8 +33,8 @@ int				map_editor(int fd)
 	if ((ret = parser(fd, &(win.map))) <= 0)
 		return (error(ret, "map_editor : parser"));
 	if (!(open_window(&(win))))
-		return (0);
+		return (error(-1, "map editor : open_window"));
 	ed_window_loop(&win);
 	quit(&win);
-	return (0);
+	return (1);
 }
