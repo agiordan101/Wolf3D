@@ -6,7 +6,7 @@
 #    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/27 17:30:25 by agiordan    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/27 17:32:04 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -100,4 +100,4 @@ norme:
 		@norminette $(SRCS_PATH)
 		@norminette $(INCLUDES_PATH)
 
-.PHONY: all, clean, fclean, re
+.PHONY: all, clean, fclean, re, directory, norme
