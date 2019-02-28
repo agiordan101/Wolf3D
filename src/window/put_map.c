@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ed_put_map.c                                     .::    .:/ .      .::   */
+/*   put_map.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/02/18 11:24:44 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/28 17:18:21 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/02/28 17:08:46 by gmonacho     #+#   ##    ##    #+#       */
+/*   Updated: 2019/02/28 17:18:07 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,7 +28,7 @@ static void draw_tile(t_win *win, int i, int j)
 	}
 }
 
-int ed_put_map(t_win *win)
+int put_map(t_win *win)
 {
 	int imax;
 	int jmax;
