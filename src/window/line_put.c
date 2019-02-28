@@ -6,14 +6,14 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/21 18:05:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/18 20:44:40 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/28 18:46:50 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void			line_put(t_win *win, t_dot_2d p1, t_dot_2d p2)
+void			line_put(t_win *win, t_dot_2d p1, t_dot_2d p2, SDL_Renderer *image)
 {
 	int			i;
 	int			n_pixels;
@@ -35,6 +35,6 @@ void			line_put(t_win *win, t_dot_2d p1, t_dot_2d p2)
 	{
 		pixel = (t_dot_2d){.x = p1.x + delta.x * i, .y = p1.y + delta.y * i};
 		if (pixel.y < win->height && pixel.y >= 0 && pixel.x < win->width && pixel.x >= 0)
-			SDL_RenderDrawPoint(win->rend, pixel.x, pixel.y);
+			SDL_RenderDrawPoint(image, pixel.x, pixel.y);
 	}
 }

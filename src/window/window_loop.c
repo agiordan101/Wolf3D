@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 08:56:27 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/28 18:45:42 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/28 20:31:27 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,9 +18,11 @@ static void		refresh_window(t_win *win)
 	SDL_SetRenderDrawColor(win->rend, 0, 0, 0, 255);
 	SDL_RenderClear(win->rend);
 	raycasting(win, &(win->map), &(win->player), &(win->calculs));
+	draw_compass(win);
 	draw(win, &(win->calculs));
 	put_minimap(win);
 	SDL_RenderPresent(win->rend);
+	SDL_RenderPresent(win->compas);
 }
 
 static void keyboard_state(t_player *player, const Uint8 *state)

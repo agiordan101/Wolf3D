@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ed_put_grid.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 15:18:08 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 13:38:11 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/28 19:16:21 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -62,7 +62,7 @@ static void		put_vert(t_win *win)
 	while (j <= win->map.len_x[get_heighter_i(win->map.len_x, win->map.len_y)])
 	{
 		x = j * win->map.unit - win->pos.x;
-		line_put(win, (t_dot_2d){x, top}, (t_dot_2d){x, bot});
+		line_put(win, (t_dot_2d){x, top}, (t_dot_2d){x, bot}, win->rend);
 		j++;
 	}
 }
@@ -80,7 +80,7 @@ static void		put_hor(t_win *win)
 	while (i <= win->map.len_y)
 	{
 		y = i * win->map.unit - win->pos.y;
-		line_put(win, (t_dot_2d){left, y}, (t_dot_2d){right, y});
+		line_put(win, (t_dot_2d){left, y}, (t_dot_2d){right, y}, win->rend);
 		i++;
 	}
 }

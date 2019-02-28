@@ -6,7 +6,7 @@
 #    By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/28 18:32:15 by gmonacho    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/28 20:27:13 by gmonacho    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -31,6 +31,7 @@ SRCS_FILES =	main.c \
 				$(SRCS_PATH_3)/line_put.c \
 				$(SRCS_PATH_3)/put_minimap.c \
 				$(SRCS_PATH_3)/quit.c \
+				$(SRCS_PATH_3)/compass.c \
 				$(SRCS_PATH_4)/map_editor.c \
 				$(SRCS_PATH_4)/ed_window_loop.c \
 				$(SRCS_PATH_4)/ed_put_map.c \
@@ -46,12 +47,17 @@ OBJS_FILES = $(SRCS_FILES:.c=.o)
 OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS_FILES))
 
 INCLUDES_PATH = include
+FW_PATH = ./frameworks
 CC = gcc
-CFLAGS += -Wall -Wextra -Werror -I./$(INCLUDES_PATH)
+CFLAGS += -Wall -Wextra -Werror -I./$(INCLUDES_PATH)\
+			-I$(FW_PATH)/SDL2_image.framework/Headers/\
+			-I$(FW_PATH)/SDL2_ttf.framework/Headers/\
+			-I$(FW_PATH)/SDL2.framework/Headers/
 
 LIBFT = libft
 LIBMATH = libmath
-LIBSDL2 = `sdl2-config --cflags --libs`
+#LIBSDL2 = `sdl2-config --cflags --libs`
+LIBSDL2 = -framework SDL2 -F $(FW_PATH) -framework SDL2_image -framework SDL2_ttf -rpath $(FW_PATH)
 LIBRARIES = $(LIBFT)/$(LIBFT).a $(LIBMATH)/$(LIBMATH).a $(LIBSDL2)
 
 all:	directory $(NAME)

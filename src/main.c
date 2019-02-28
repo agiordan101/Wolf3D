@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/28 19:09:09 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/28 20:30:59 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,8 +29,9 @@ static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 	player->pos.y = 3.5;
 	player->vel = (t_vector_2d){}; //Inutile
 	player->const_vel = 0.05;
-	player->dir = -PI / 2;
+	player->dir = 0;
 	player->fov = PI / 2;
+	calcul_compass(win);
 	return (0);
 }
 
