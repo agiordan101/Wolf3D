@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/14 18:59:51 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 22:37:11 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/28 18:44:14 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,9 @@
 
 int		open_window(t_win *win)
 {
-	if (SDL_Init(SDL_INIT_VIDEO) < 0 || !(win->ptr = SDL_CreateWindow("Wolf3d", 0, 0, win->width, win->height, 0)) || !(win->rend = SDL_CreateRenderer(win->ptr, -1, SDL_RENDERER_SOFTWARE)))
+	if (SDL_Init(SDL_INIT_VIDEO) < 0 || \
+	!(win->ptr = SDL_CreateWindow("Wolf3d", 0, 0, win->width, win->height, 0))\
+	|| !(win->rend = SDL_CreateRenderer(win->ptr, -1, SDL_RENDERER_SOFTWARE)))
 	{
 		ft_putstr(SDL_GetError());
 		return (0);

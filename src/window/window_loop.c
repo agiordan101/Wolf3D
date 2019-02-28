@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   window_loop.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gal <gal@student.le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 08:56:27 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/28 01:57:04 by gal         ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/28 18:54:32 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,8 +18,10 @@ static void		refresh_window(t_win *win)
 	SDL_SetRenderDrawColor(win->rend, 0, 0, 0, 255);
 	SDL_RenderClear(win->rend);
 	raycasting(win, &(win->map), &(win->player), &(win->calculs));
+	draw_compass(win);
 	draw(win, &(win->calculs));
 	SDL_RenderPresent(win->rend);
+	SDL_RenderPresent(win->compas);
 }
 
 static void keyboard_state(t_player *player, const Uint8 *state)
