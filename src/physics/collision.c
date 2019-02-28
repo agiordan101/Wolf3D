@@ -3,107 +3,69 @@
 /*                                                              /             */
 /*   collision.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gal <gal@student.le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 17:45:05 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 21:17:56 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/28 02:08:54 by gal         ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static int		rcoll(t_player *player, double x, double y)
+static int		get_smaller(t_player player, t_dot_2d sx, t_dot_2d sy)
 {
-	double	nx;
-	double	ny;
-
-	nx = player->pos.x + player->vel.x;
-	ny = player->pos.y + player->vel.y;
-	if (nx > x && ny > y && ny < y + 1)
-	{
-		player->vel.x = x - player->pos.x - 0.01;
-		return (1);
-	}
-	else
+	if (sqrt((sx.x - player.pos.x) * (sx.x - player.pos.x) +
+			 (sx.y - player.pos.y) * (sx.y - player.pos.y)) <=
+		sqrt((sy.x - player.pos.x) * (sy.x - player.pos.x) +
+			 (sy.y - player.pos.y) * (sy.y - player.pos.y)))
 		return (0);
+	else
+		return (1);
 }
 
-static int		lcoll(t_player *player, double x, double y)
+static void		set_vel(t_player *player, double nx, double ny)
 {
-	double	nx;
-	double	ny;
+	double		a;
+	int			x_shift;
+	int			y_shift;
+	double		sx;
+	double		sy;
 
-	nx = player->pos.x + player->vel.x;
-	ny = player->pos.y + player->vel.y;
-	if (nx < x + 1 && ny > y && ny < y + 1)
+	x_shift = (cos(player->dir) >= 0) ? 0 : 1;
+	y_shift = (-sin(player->dir) >= 0) ? 0 : 1;
+	a = (ny - player->pos.y) / (nx - player->pos.x);
+	sx = (((int)ny + y_shift) + player->pos.x) / a;
+	sy = a * ((int)nx + x_shift) + player->pos.x;
+	if (get_smaller(*player, (t_dot_2d){sx, (int)ny + y_shift},
+							(t_dot_2d){(int)nx + x_shift, sy}))
 	{
-		player->vel.x = x - player->pos.x;
-		return (1);
+		printf("1\n");
+		player->vel.x = sx - player->pos.x;
+		player->vel.y = (int)ny + y_shift - player->pos.y;
 	}
 	else
-		return (0);
-}
-
-static int		tcoll(t_player *player, double x, double y)
-{
-	double	nx;
-	double	ny;
-
-	nx = player->pos.x + player->vel.x;
-	ny = player->pos.y + player->vel.y;
-	if (ny < y + 1 && nx > x && nx < x + 1)
 	{
-		player->vel.y = y - player->pos.y;
-		return (1);
+		printf("2\n");
+		player->vel.x = (int)nx + x_shift - player->pos.x;
+		player->vel.y = sy - player->pos.y;
 	}
-	else
-		return (0);
+	printf("x = %f, y = %f\n", player->pos.x + player->vel.x, player->pos.y + player->vel.y);
 }
 
-static int		bcoll(t_player *player, double x, double y)
-{
-	double	nx;
-	double	ny;
-
-	nx = player->pos.x + player->vel.x;
-	ny = player->pos.y + player->vel.y;
-	if (ny > y && nx > x && nx < x + 1)
-	{
-		player->vel.y = y - player->pos.y;
-		return (1);
-	}
-	else
-		return (0);
-}
-
-int		collision(t_player *player, t_map map)
+int					collision(t_player *player, t_map map)
 {
 	double		nx;
 	double		ny;
 
 	nx = player->pos.x + player->vel.x;
 	ny = player->pos.y + player->vel.y;
-	if (nx < 0)
-		nx = 0;
-	else if (nx > (double)map.len_x[(int)ny] - 1)
-		nx = map.len_x[(int)ny] - 1;
-	if (nx < 0)
-		nx = 0;
-	else if (nx > (double)map.len_y - 1)
-		nx = map.len_y - 1;
 	if (map.tab[(int)ny][(int)nx] == 1)
 	{
-		if (player->vel.x > 0)
-			rcoll(player, (int)nx, (int)ny);
-		else if (player->vel.x < 0)
-			lcoll(player, (int)nx, (int)ny);
-		if (player->vel.y > 0)
-			bcoll(player, (int)nx, (int)ny);
-		else if (player->vel.y < 0)
-			tcoll(player, (int)nx, (int)ny);
+		printf("velx = %f, vely = %f\n", player->vel.x, player->vel.y);
+		set_vel(player, nx, ny);
+		printf("nvelx = %f, nvely = %f\n", player->vel.x, player->vel.y);
 		return (1);
 	}
-	else
-		return (0);	
+	return (0);
 }
