@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: gal <gal@student.le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/27 17:32:04 by agiordan    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/28 00:55:54 by gal         ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -31,73 +31,49 @@ SRCS_FILES =	main.c \
 				$(SRCS_PATH_3)/line_put.c \
 				$(SRCS_PATH_3)/quit.c \
 				$(SRCS_PATH_4)/map_editor.c \
+				$(SRCS_PATH_4)/ed_export.c \
+				$(SRCS_PATH_4)/ed_put_grid.c \
 				$(SRCS_PATH_4)/ed_window_loop.c \
 				$(SRCS_PATH_4)/ed_put_map.c \
-				$(SRCS_PATH_4)/ed_add_tile.c \
 				$(SRCS_PATH_4)/ed_is_in_map.c \
-				$(SRCS_PATH_4)/ed_export.c \
-				$(SRCS_PATH_4)/ed_put_grid.c
+				$(SRCS_PATH_4)/ed_add_tile.c
 
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_FILES))
 
-OBJS_PATH = obj
-OBJS_FILES = $(SRCS_FILES:.c=.o)
-OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS_FILES))
+OBJ = $(SRCS:%.c=%.o)
 
-INCLUDES_PATH = include
+INCLUDE_PATH = include
 CC = gcc
-CFLAGS += -Wall -Wextra -Werror -I./$(INCLUDES_PATH)
+CFLAGS += -Wall -Wextra -Werror -I./$(INCLUDE_PATH)
 
 LIBFT = libft
 LIBMATH = libmath
 LIBSDL2 = `sdl2-config --cflags --libs`
-LIBRARIES = $(LIBFT)/$(LIBFT).a $(LIBMATH)/$(LIBMATH).a $(LIBSDL2)
+LIBCMATH = -lm
 
-all:	directory $(NAME)
+all: $(NAME)
 
-$(NAME): $(OBJS)
-		make -C $(LIBFT)
-		make -C $(LIBMATH)
-		$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBRARIES)
-
-$(OBJS_PATH)/%.o : $(SRCS_PATH)/%.c
-				$(CC) $(CFLAGS) -c $< -o $@
-
-$(OBJS_PATH)/$(SRCS_PATH_1)/%.o : $(SRCS_PATH)/$(SRCS_PATH_1)/%.c
-				$(CC) $(CFLAGS) -c $< -o $@
-
-$(OBJS_PATH)/$(SRCS_PATH_2)/%.o : $(SRCS_PATH)/$(SRCS_PATH_2)/%.c
-				$(CC) $(CFLAGS) -c $< -o $@
-
-$(OBJS_PATH)/$(SRCS_PATH_3)/%.o : $(SRCS_PATH)/$(SRCS_PATH_3)/%.c
-				$(CC) $(CFLAGS) -c $< -o $@
-
-$(OBJS_PATH)/$(SRCS_PATH_4)/%.o : $(SRCS_PATH)/$(SRCS_PATH_4)/%.c
-				$(CC) $(CFLAGS) -c $< -o $@
-
-directory:
-				@mkdir $(OBJS_PATH) 2> /dev/null || true
-				@mkdir $(OBJS_PATH)/$(SRCS_PATH_1) 2> /dev/null || true
-				@mkdir $(OBJS_PATH)/$(SRCS_PATH_2) 2> /dev/null || true
-				@mkdir $(OBJS_PATH)/$(SRCS_PATH_3) 2> /dev/null || true
-				@mkdir $(OBJS_PATH)/$(SRCS_PATH_4) 2> /dev/null || true
+$(NAME): $(OBJ)
+	make -C $(LIBFT)
+	make -C $(LIBMATH)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBCMATH) $(LIBFT)/$(LIBFT).a $(LIBMATH)/$(LIBMATH).a -o $(NAME) $(LIBSDL2)
 
 clean:
-	rm -rf $(OBJS_PATH)
+	rm -f $(OBJ)
 	make clean -C $(LIBFT)
 	make clean -C $(LIBMATH)
 
-fclean:	clean
-	rm -rf $(NAME)
+fclean: clean
+	rm -f $(NAME)
 	make fclean -C $(LIBFT)
 	make fclean -C $(LIBMATH)
 
-re:	fclean all
+re: fclean all
 
 norme:
 		@norminette $(LIBFT)
 		@norminette $(LIBMATH)
-		@norminette $(SRCS_PATH)
-		@norminette $(INCLUDES_PATH)
+		@norminette $(SRC_PATH)
+		@norminette $(INCLUDE_PATH)
 
-.PHONY: all, clean, fclean, re, directory, norme
+.PHONY: all, clean, fclean, re

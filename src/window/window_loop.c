@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   window_loop.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gal <gal@student.le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 08:56:27 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/28 01:57:04 by gal         ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/28 17:01:04 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -81,6 +81,14 @@ static void keyboard_state(t_player *player, const Uint8 *state)
 
 static void	move(t_win *win)
 {
+	if (win->player.pos.x + win->player.vel.x < 0)
+		win->player.pos.x = 0.01 + win->player.vel.x;
+	else if (win->player.pos.x + win->player.vel.x > win->map.len_x[0] - 1)
+		win->player.pos.x = win->map.len_x[0] - 1.01 - win->player.vel.x;
+	if (win->player.pos.y + win->player.vel.y < 0)
+		win->player.pos.y = 0.01 + win->player.vel.y;
+	else if (win->player.pos.y + win->player.vel.y > win->map.len_y - 1)
+		win->player.pos.y =  win->map.len_y - 1.01 - win->player.vel.y;
 	win->player.pos.y += win->player.vel.y;
 	win->player.pos.x += win->player.vel.x;
 }
