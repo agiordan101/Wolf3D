@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 22:32:16 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/28 18:30:43 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -54,6 +54,15 @@ typedef struct		s_calculs
 	int				i;
 }					t_calculs;
 
+typedef struct 		s_minimap
+{
+	int 			x;
+	int				y;
+	int				width;
+	int 			height;
+}					t_minimap;
+
+
 typedef struct		s_map
 {
 	int				**tab;
@@ -61,6 +70,7 @@ typedef struct		s_map
 	int				len_y;
 	int				unit;
 	int				tile;
+	t_minimap		minimap;
 }					t_map;
 
 typedef struct		s_win
@@ -89,6 +99,7 @@ void				line_put(t_win *win, t_dot_2d p1, t_dot_2d p2);
 int					map_editor(int fd);
 int					open_window(t_win *win);
 int					parser(int const fd, t_map *map);
+int 				put_minimap(t_win *win);
 int					quit(t_win *win);
 void				raycasting(t_win *win, t_map *map, t_player *player, t_calculs *calculs);
 int					sum_x(t_map *map, int ilen);

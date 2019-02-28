@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 08:56:27 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/28 17:01:04 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/28 18:45:42 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,6 +19,7 @@ static void		refresh_window(t_win *win)
 	SDL_RenderClear(win->rend);
 	raycasting(win, &(win->map), &(win->player), &(win->calculs));
 	draw(win, &(win->calculs));
+	put_minimap(win);
 	SDL_RenderPresent(win->rend);
 }
 

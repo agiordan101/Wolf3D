@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 22:42:48 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/28 19:09:09 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,10 +15,14 @@
 
 static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 {
-	map->tab = NULL;
-	map->len_x = NULL;
 	win->width = 1200;
 	win->height = 1200;
+	map->minimap.x = win->width / 20;
+	map->minimap.y = win->height / 20;
+	map->minimap.width = win->width / 5;
+	map->minimap.height = win->height / 5;
+	map->tab = NULL;
+	map->len_x = NULL;
 	if (!(calculs->dist = (double *)malloc(sizeof(double) * win->width)))
 		return (1);
 	player->pos.x = 2.5;
