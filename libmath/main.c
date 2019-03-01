@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 19:23:30 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 17:06:48 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 17:34:45 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,10 +26,10 @@ int	main()
 	a = (double *)malloc(sizeof(double));
 	b = (double *)malloc(sizeof(double));
 	h = (double *)malloc(sizeof(double));
-	*a = 2;
-	*b = -1;
+	a = NULL;
+	*b = 3;
 	*h = 3.605551;
 	printf("%lf\n", ft_pythagore(h, a, b));
-	printf("%lf\n", *b);
+	//printf("%lf\n", *b);
 	return (0);
 }
