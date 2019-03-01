@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   put_minimap.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/28 17:08:46 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/28 19:50:41 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 16:06:57 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 static void draw_tile(t_win *win, int i, int j, int unit)
 {
-	printf("i = %d, j = %d\n", i, j);
+	//printf("i = %d, j = %d\n", i, j);
 	if (win->map.tab[i][j] != 0)
 	{
 		if (win->map.tab[i][j] == 1)
@@ -26,7 +26,7 @@ static void draw_tile(t_win *win, int i, int j, int unit)
 			  j * unit - (int)(win->pos.x),
 			  i * unit - (int)(win->pos.y),
 			  unit, unit);
-		printf("x = %d, y = %d\n", j * unit - (int)(win->pos.x), i * unit - (int)(win->pos.y));
+		//printf("x = %d, y = %d\n", j * unit - (int)(win->pos.x), i * unit - (int)(win->pos.y));
 	}
 }
 
@@ -46,7 +46,7 @@ int put_minimap(t_win *win)
 	j = (win->player.pos.x - win->map.minimap.width / 2) / unit;
 	imax = i + 1 + win->map.minimap.height / unit;
 	jmax = j + win->map.minimap.width / unit;
-	printf("unit = %f, i = %d, j = %d | im = %d, jm = %d\n", unit, i, j, imax, jmax);
+	//printf("unit = %f, i = %d, j = %d | im = %d, jm = %d\n", unit, i, j, imax, jmax);
 	while (i < imax && i < win->map.len_y)
 	{
 		j = win->pos.x / unit;

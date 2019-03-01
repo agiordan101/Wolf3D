@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   wolf3d.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/28 20:30:02 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 16:08:48 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,9 +15,9 @@
 # define WOLF3D_H
 
 # define VEL 0.05
-# define WALL_R 0xFF
-# define WALL_G 0xCC
-# define WALL_B 0xAA
+# define WALL_R 0x50
+# define WALL_G 0xAA
+# define WALL_B 0x50
 # define BACK_R 100
 # define BACK_G 100
 # define BACK_B 100
