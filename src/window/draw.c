@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   draw.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 16:24:13 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 16:08:26 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 17:59:57 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,10 +34,10 @@ void		draw(t_win *win, t_calculs *calculs)
 		d2 = (t_dot_2d){.x = i, .y = win->height / 2 + 200 / calculs->dist[i]};
 		//printf("d1x = %f\td1y = %f\n", d1.x, d1.y);
 		SDL_SetRenderDrawColor(win->rend, BACK_R, BACK_G, BACK_B, 255);
-		line_put(win, dfloor2, d1, win->rend);
+		draw_line(win, dfloor2, d1, win->rend);
 		SDL_SetRenderDrawColor(win->rend, WALL_R, WALL_G, WALL_B, 255);
-		line_put(win, d1, d2, win->rend);
+		draw_line(win, d1, d2, win->rend);
 		SDL_SetRenderDrawColor(win->rend, BACK_R, BACK_G, BACK_B, 255);
-		line_put(win, d2, dfloor1, win->rend);
+		draw_line(win, d2, dfloor1, win->rend);
 	}
 }

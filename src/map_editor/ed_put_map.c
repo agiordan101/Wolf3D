@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 11:24:44 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 16:30:03 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 18:15:10 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,9 +21,9 @@ static void draw_tile(t_win *win, int i, int j)
 			SDL_SetRenderDrawColor(win->rend, 255, 255, 255, 255);
 		else if (win->map.tab[i][j] == 2)
 			SDL_SetRenderDrawColor(win->rend, 255, 0, 0, 255);
-		draw_rect(win,
+		draw_rect(win, (t_dot_2d){
 			  j * win->map.unit - (int)(win->pos.x),
-			  i * win->map.unit - (int)(win->pos.y),
+			  i * win->map.unit - (int)(win->pos.y)},
 			  win->map.unit, win->map.unit);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 16:48:03 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 18:21:54 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -88,11 +88,13 @@ typedef struct		s_win
 	t_calculs		calculs;
 }					t_win;
 
-void				line_put(t_win *win, t_dot_2d p1, t_dot_2d p2, SDL_Renderer *image);
-void				draw(t_win *win, t_calculs *calculs);
-void				draw_rect(t_win *win, int x, int y, int width, int height);
-void				calcul_compass(t_win *win);
+
+void				draw_rect(t_win *win, t_dot_2d pos, int width, int height);
+void				draw_empty_rect(t_win *win, t_dot_2d pos, int width, int height);
+void				draw_line(t_win *win, t_dot_2d p1, t_dot_2d p2, SDL_Renderer *image);
 void				draw_compass(t_win *win);
+void				draw(t_win *win, t_calculs *calculs);
+void				calcul_compass(t_win *win);
 
 int					ed_add_tile(int	x, int y, t_win *win, int tile);
 int 				ed_export(t_map map);

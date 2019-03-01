@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   line_put.c                                       .::    .:/ .      .::   */
+/*   draw_shapes.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/21 18:05:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/28 18:46:50 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/03/01 17:49:51 by gmonacho     #+#   ##    ##    #+#       */
+/*   Updated: 2019/03/01 18:20:55 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void			line_put(t_win *win, t_dot_2d p1, t_dot_2d p2, SDL_Renderer *image)
+void    draw_line(t_win *win, t_dot_2d p1, t_dot_2d p2, SDL_Renderer *image)
 {
 	int			i;
 	int			n_pixels;
@@ -37,4 +37,24 @@ void			line_put(t_win *win, t_dot_2d p1, t_dot_2d p2, SDL_Renderer *image)
 		if (pixel.y < win->height && pixel.y >= 0 && pixel.x < win->width && pixel.x >= 0)
 			SDL_RenderDrawPoint(image, pixel.x, pixel.y);
 	}
+}
+
+void	draw_rect(t_win *win, t_dot_2d pos, int width, int height)
+{
+	int		posx;
+
+	posx = pos.x;
+	while (posx < pos.x + width)
+	{
+		draw_line(win , (t_dot_2d){posx, pos.y}, (t_dot_2d){posx, pos.y + height}, win->rend);
+		posx++;
+	}
+}
+
+void	draw_empty_rect(t_win *win, t_dot_2d pos, int width, int height)
+{
+	draw_line(win,  (t_dot_2d){pos.x, pos.y}, (t_dot_2d){pos.x + width, pos.y}, win->rend);
+	draw_line(win,  (t_dot_2d){pos.x + width, pos.y}, (t_dot_2d){pos.x + width, pos.y + height}, win->rend);
+	draw_line(win,  (t_dot_2d){pos.x + width, pos.y + height}, (t_dot_2d){pos.x, pos.y + height}, win->rend);
+	draw_line(win,  (t_dot_2d){pos.x, pos.y + height}, (t_dot_2d){pos.x, pos.y}, win->rend);
 }

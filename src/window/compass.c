@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   compass.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/28 18:53:05 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/28 19:51:08 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 18:00:44 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,10 +26,10 @@ void	calcul_compass(t_win *win)
 	origin = (t_dot_2d){.x = win->width - win->width / 10, .y = win->height / 10};
 	d1 = (t_dot_2d){.x = origin.x - len, .y = origin.y};
 	d2 = (t_dot_2d){.x = origin.x + len, .y = origin.y};
-	line_put(win, d1, d2, win->compass);
+	draw_line(win, d1, d2, win->compass);
 	d1 = (t_dot_2d){.x = origin.x, .y = origin.y - len};
 	d2 = (t_dot_2d){.x = origin.x, .y = origin.y + len};
-	line_put(win, d1, d2, win->compass);
+	draw_line(win, d1, d2, win->compass);
 }
 
 void	draw_compass(t_win *win)

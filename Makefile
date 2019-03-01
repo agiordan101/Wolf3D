@@ -6,7 +6,7 @@
 #    By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/03/01 16:28:02 by gmonacho    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/03/01 18:03:17 by gmonacho    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -26,8 +26,7 @@ SRCS_FILES =	main.c \
 				$(SRCS_PATH_3)/open_window.c \
 				$(SRCS_PATH_3)/window_loop.c \
 				$(SRCS_PATH_3)/draw.c \
-				$(SRCS_PATH_3)/draw_rect.c \
-				$(SRCS_PATH_3)/line_put.c \
+				$(SRCS_PATH_3)/draw_shapes.c \
 				$(SRCS_PATH_3)/put_minimap.c \
 				$(SRCS_PATH_3)/quit.c \
 				$(SRCS_PATH_3)/compass.c \
