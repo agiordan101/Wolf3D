@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/01 19:31:15 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 19:35:33 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 20:22:25 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,8 +38,11 @@ int pevent(t_win *win, SDL_Event event)
 	return (1);
 }
 
-void ed_keyboard_event(t_win *win, const Uint8 *state)
+void ed_keyboard_event(t_win *win)
 {
+	const Uint8	*state;
+
+	state = SDL_GetKeyboardState(NULL);
 	if (state[SDL_SCANCODE_W])
 		win->pos.y -= 1;
 	else if (state[SDL_SCANCODE_S])

@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 19:27:03 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 19:13:13 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 22:48:00 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,24 @@
 **					vector qui correspond
 */
 
-static int test_wall(t_map *map, t_dot_2d dot, t_vector_2d vector)
+/*double	prop(double x, t_dot_2d inter1, t_dot_2d inter2)
+{
+	return ((x - inter1.x) / (inter1.y - inter1.x) * (inter2.y - inter2.x)\
+													+ inter2.x);
+}
+	t_dot_2d tmpAngle;
+	t_dot_2d tmpCorrection;
+
+	tmpAngle = (t_dot_2d){.x = 0, .y = player->fov / 2};
+	tmpCorrection = (t_dot_2d){.x = cos(calculs->angle), .y = sin(calculs->angle)};
+	//0			-> cos(calculs->angle)
+	//fov / 2	-> 0
+	//1 / 
+*/
+		/*calculs->dist[calculs->i] = prop(ft__abs(calculs->angle), tmpAngle, tmpCorrection) *\
+									dist_dot_2d(next, player->pos);*/
+
+static int		test_wall(t_map *map, t_dot_2d dot, t_vector_2d vector)
 {
 	int	i;
 	int	j;
@@ -42,7 +59,7 @@ static int test_wall(t_map *map, t_dot_2d dot, t_vector_2d vector)
 	return (0);
 }
 
-static void	calcul_dist(t_map *map, t_player *player, t_calculs *calculs, t_vector_2d vector)
+static double	calcul_dist(t_map *map, t_player *player, t_calculs *calculs, t_vector_2d vector)
 {
 	t_dot_2d	next;
 	t_dot_2d	nextIndex;
@@ -83,27 +100,23 @@ static void	calcul_dist(t_map *map, t_player *player, t_calculs *calculs, t_vect
 			nextIndex.y += vector.y > 0 ? 1 : -1;
 		}
 	}
-	if (ret == -1)
-		calculs->dist[calculs->i] = -1; //ret useless opti possible
-	else
-		calculs->dist[calculs->i] = dist_dot_2d(next, player->pos);
+	return (ret == -1 ? -1 : cos(calculs->angle) * dist_dot_2d(next, player->pos));
 }
 
-void	raycasting(t_win *win, t_map *map, t_player *player, t_calculs *calculs)
+void			raycasting(t_win *win, t_map *map, t_player *player, t_calculs *calculs)
 {
 	t_vector_2d	vector;
-	double		angle;
 	double		dangle;
 
 	dangle = player->fov / win->width;
+	calculs->angle = player->fov / 2;
 	calculs->i = -1;
-	angle = player->fov / 2;
 	while (++(calculs->i) < win->width)
 	{
 		vector = (t_vector_2d){.origin = player->pos,\
-								.x = cos(player->dir + angle),
-								.y = -sin(player->dir + angle)};
-		calcul_dist(map, player, calculs, vector);
-		angle -= dangle;
+								.x = cos(player->dir + calculs->angle),
+								.y = -sin(player->dir + calculs->angle)};
+		calculs->dist[calculs->i] = calcul_dist(map, player, calculs, vector);
+		calculs->angle -= dangle;
 	}
 }

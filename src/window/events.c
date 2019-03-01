@@ -6,15 +6,18 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/01 19:25:09 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 19:25:44 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 20:21:27 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void keyboard_state(t_player *player, const Uint8 *state)
+void keyboard_state(t_player *player)
 {
+    const Uint8 *state;
+
+    state = SDL_GetKeyboardState(NULL);
 	player->vel = (t_vector_2d){.x = 0, .y = 0};
 	if (state[SDL_SCANCODE_W])
 	{
