@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 19:27:03 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 22:48:00 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 22:56:46 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -59,7 +59,7 @@ static int		test_wall(t_map *map, t_dot_2d dot, t_vector_2d vector)
 	return (0);
 }
 
-static double	calcul_dist(t_map *map, t_player *player, t_calculs *calculs, t_vector_2d vector)
+double	calcul_dist(t_map *map, t_player *player, t_calculs *calculs, t_vector_2d vector)
 {
 	t_dot_2d	next;
 	t_dot_2d	nextIndex;

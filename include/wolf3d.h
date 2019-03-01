@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 22:51:42 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 22:57:49 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -105,7 +105,7 @@ void				ed_put_grid(t_win *win);
 int 				ed_put_map(t_win *win);
 int					ed_window_loop(t_win *win);
 int					pevent(t_win *win, SDL_Event event);
-void				ed_keyboard_event(t_win *win, const Uint8 *state);
+void				ed_keyboard_event(t_win *win);
 void				ed_mouse_event(t_win *win);
 
 int					parser(int const fd, t_map *map, t_player *player);
@@ -113,7 +113,7 @@ int					map_editor(int fd);
 
 int					open_window(t_win *win);
 int					window_loop(t_win *win);
-void				keyboard_state(t_player *player, const Uint8 *state);
+void				keyboard_state(t_player *player);
 int					keyboard_event(t_win *win, SDL_Event event);
 
 int 				put_minimap(t_win *win);
@@ -122,6 +122,7 @@ int					wolf3d_exit(t_win *win);
 int					quit(t_win *win);
 
 void				raycasting(t_win *win, t_map *map, t_player *player, t_calculs *calculs);
+double				calcul_dist(t_map *map, t_player *player, t_calculs *calculs, t_vector_2d vector);
 int					collision(t_player *player, t_map map);
 
 #endif
