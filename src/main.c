@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 18:26:34 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 22:39:04 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,9 +16,9 @@
 static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 {
 	win->width = 1200;
-	win->height = 1200;
-	map->minimap.x = 0;
-	map->minimap.y = 0;
+	win->height = 800;
+	map->minimap.x = 10;
+	map->minimap.y = 10;
 	map->minimap.width = win->width / 5;
 	map->minimap.height = win->height / 5;
 	map->tab = NULL;
@@ -26,13 +26,15 @@ static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 		return (1);
 	player->pos.x = 0;
 	player->pos.y = 0;
+	player->box.x = 0.2;
+	player->box.y = 0.2;
 	player->vel = (t_vector_2d){}; //Inutile
 	player->const_vel = 0.05;
 	player->dir = 0;
 	player->fov = PI / 2;
 	calcul_compass(win);
 	return (0);
-}
+} 
 
 int		main(int ac, char **av)
 {
@@ -50,15 +52,11 @@ int		main(int ac, char **av)
 				return (error(-2, "init"));
 			if ((ret = parser(fd, &(win.map), &(win.player))) <= 0)
 				return(error(ret, "parser"));
-			printf("px = %f, py = %f\n", win.player.pos.x, win.player.pos.y);
 			open_window(&win);
 			window_loop(&win);
 		}
 		else if (ft_atoi(av[2]) == 1)
-		{
 			map_editor(fd);
-			printf("map_editor\n");
-		}
 		quit(&win);
 	}
 	else
