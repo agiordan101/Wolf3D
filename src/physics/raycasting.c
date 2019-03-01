@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 19:27:03 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 21:42:33 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 17:40:05 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -46,14 +46,15 @@ static void	calcul_dist(t_map *map, t_player *player, t_calculs *calculs, t_vect
 	t_dot_2d	nextIndex;
 	t_dot_2d	d1;
 	t_dot_2d	d2;
+	double		distMax;
 
 	//printf("Vector x = %lf\tVector y = %lf\n", vector.x, vector.y);
 	next = player->pos;
 	nextIndex =	(t_dot_2d){.x = 0, .y = 0};
 	calculs->a = vector.y / vector.x;
 	calculs->b = vector.origin.y - calculs->a * vector.origin.x;
-	//printf("a = %lf\nb = %lf\n", calculs->a, calculs->b);
-	while (!test_wall(map, next, vector))
+	distMax = ft_pythagore(NULL, (double *)&map->len_x, (double *)&map->len_y);
+	while (!test_wall(map, next, vector) && mag_vector_2d(vector) < distMax)
 	{
 		if (vector.x > 0)
 			d1.x = ft_dtoi_up(player->pos.x) + nextIndex.x;
@@ -76,7 +77,7 @@ static void	calcul_dist(t_map *map, t_player *player, t_calculs *calculs, t_vect
 		{
 			next = d2;
 			nextIndex.y += vector.y > 0 ? 1 : -1;
-		}	
+		}
 	}
 	calculs->dist[calculs->i] = dist_dot_2d(next, player->pos);
 }
