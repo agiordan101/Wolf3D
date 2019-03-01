@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/03 17:31:57 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/17 04:37:18 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 17:06:51 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -71,6 +71,7 @@ double			ft_dtorad(double nbr);
 void			ft_divmod(double nbr, int *intpart, int *decpart);
 double			ft_modulo(double nbr, double mod);
 double			ft_dec(double nbr);
+double			ft_pythagore(double *hypo, double *c1, double *c2);
 
 /*
 **	Dots functions 2d/3d

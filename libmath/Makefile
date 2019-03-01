@@ -6,7 +6,7 @@
 #    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/01/16 17:11:58 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/17 04:38:10 by agiordan    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/03/01 16:31:22 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -37,6 +37,7 @@ SRC_FILES = add_vector_2d.c \
 			ft_radtod.c \
 			ft_square.c \
 			ft_dec.c \
+			ft_pythagore.c \
 			mag_vector_2d.c \
 			mag_vector_3d.c \
 			new_dot_2d.c \
