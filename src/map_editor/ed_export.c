@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/27 13:42:55 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 17:59:51 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 16:31:09 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,7 +49,7 @@ int			ed_export(t_map map)
 	while (i < map.len_y)
 	{
 		j = 0;
-		while (j < map.len_x[i])
+		while (j < map.len_x)
 		{
 			write(fd_export, ft_strjoin(ft_itoa(map.tab[i][j]), " "), 2);
 			j++;

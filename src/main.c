@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   main.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 16:16:04 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 16:43:49 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,6 @@ static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 	map->minimap.width = win->width / 5;
 	map->minimap.height = win->height / 5;
 	map->tab = NULL;
-	map->len_x = NULL;
 	if (!(calculs->dist = (double *)malloc(sizeof(double) * win->width)))
 		return (1);
 	player->pos.x = 2.5;
@@ -51,14 +50,14 @@ int		main(int ac, char **av)
 				return (error(-2, "init"));
 			if ((ret = parser(fd, &(win.map))) <= 0)
 				return(error(ret, "parser"));
+			open_window(&win);
+			window_loop(&win);
 		}
 		else if (ft_atoi(av[2]) == 1)
 		{
 			map_editor(fd);
 			printf("map_editor\n");
 		}
-		open_window(&win);
-		window_loop(&win);
 		quit(&win);
 	}
 	else

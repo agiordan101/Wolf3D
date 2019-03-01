@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 23:34:23 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/25 18:01:36 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 16:26:40 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,6 +26,8 @@ int			error(int error, char *error_source)
 		return(write(1, "File must contain only spaces and numbers between 0 and 9\n", 58));
 	else if (error == -4)
 		return(write(1, "Get_next_line Failed\n", 21));
+	else if (error == -5)
+		return(write(1, "Invalid Line Size\n", 18));
 	else
 		return(write(1, "Undefined\n",  10));
 	// Free !

@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/26 18:00:25 by gal          #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 15:06:56 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 16:30:26 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@ static void	ed_switch_player(int i, int j, t_map *map)
 	while (ni < map->len_y)
 	{
 		nj = 0;
-		while (nj < map->len_x[ni])
+		while (nj < map->len_x)
 		{
 			if (map->tab[ni][nj] == 2)
 				map->tab[ni][nj] = 0;

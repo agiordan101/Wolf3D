@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 11:24:44 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/28 17:18:21 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 16:30:03 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -46,7 +46,7 @@ int ed_put_map(t_win *win)
 		j = win->pos.x / win->map.unit;
 		if (j < 0)
 			j = 0;
-		while (j < jmax && j < win->map.len_x[i])
+		while (j < jmax && j < win->map.len_x)
 		{
 			draw_tile(win, i, j);
 			j++;

@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   put_minimap.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/28 17:08:46 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 16:06:57 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 16:29:21 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -52,7 +52,7 @@ int put_minimap(t_win *win)
 		j = win->pos.x / unit;
 		if (j < 0)
 			j = 0;
-		while (j < jmax && j < win->map.len_x[i])
+		while (j < jmax && j < win->map.len_x)
 		{
 			draw_tile(win, i, j, unit);
 			j++;

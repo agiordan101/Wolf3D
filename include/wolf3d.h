@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   wolf3d.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 16:08:48 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 16:27:51 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -67,7 +67,7 @@ typedef struct 		s_minimap
 typedef struct		s_map
 {
 	int				**tab;
-	int				*len_x;
+	int				len_x;
 	int				len_y;
 	int				unit;
 	int				tile;
@@ -115,6 +115,5 @@ int					quit(t_win *win);
 
 void				raycasting(t_win *win, t_map *map, t_player *player, t_calculs *calculs);
 int					collision(t_player *player, t_map map);
-int					sum_x(t_map *map, int ilen);
 
 #endif

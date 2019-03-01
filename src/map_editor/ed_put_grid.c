@@ -3,51 +3,15 @@
 /*                                                              /             */
 /*   ed_put_grid.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 15:18:08 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/28 19:16:21 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 16:33:24 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-
-static int		get_heighter_i(int *tab, int len)
-{
-	int 	i;
-	int		heighter;
-	int		index;
-
-	i = 0;
-	heighter = 0;
-	while (i < len)
-	{
-		if (tab[i] > heighter)
-		{
-			heighter = tab[i];
-			index = i;
-		}
-		i++;
-	}
-	return (index);
-}
-
-static int		get_heighter(int *tab, int len)
-{
-	int 	i;
-	int		heighter;
-
-	i = 0;
-	heighter = 0;
-	while (i < len)
-	{
-		if (tab[i] > heighter)
-			heighter = tab[i];
-		i++;
-	}
-	return (heighter);
-}
 
 static void		put_vert(t_win *win)
 {
@@ -59,7 +23,7 @@ static void		put_vert(t_win *win)
 	top = 0 - win->pos.y;;
 	bot = win->map.len_y * win->map.unit - win->pos.y;
 	j = 0;
-	while (j <= win->map.len_x[get_heighter_i(win->map.len_x, win->map.len_y)])
+	while (j <= win->map.len_x)
 	{
 		x = j * win->map.unit - win->pos.x;
 		line_put(win, (t_dot_2d){x, top}, (t_dot_2d){x, bot}, win->rend);
@@ -75,7 +39,7 @@ static void		put_hor(t_win *win)
 	int		y;
 
 	left = 0 - win->pos.x;
-	right = get_heighter(win->map.len_x, win->map.len_y) * win->map.unit - win->pos.x;
+	right = win->map.len_x * win->map.unit - win->pos.x;
 	i = 0;
 	while (i <= win->map.len_y)
 	{

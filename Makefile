@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/03/01 16:03:56 by agiordan    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/03/01 16:28:02 by gmonacho    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -23,7 +23,6 @@ SRCS_FILES =	main.c \
 				$(SRCS_PATH_1)/parser.c \
 				$(SRCS_PATH_2)/collision.c \
 				$(SRCS_PATH_2)/raycasting.c \
-				$(SRCS_PATH_2)/sum_x.c \
 				$(SRCS_PATH_3)/open_window.c \
 				$(SRCS_PATH_3)/window_loop.c \
 				$(SRCS_PATH_3)/draw.c \

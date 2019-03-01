@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 09:58:24 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/27 20:59:22 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 16:29:34 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,6 @@ static void		init(t_win *win)
 	win->map.unit = 50;
 	win->map.tile = 1;
 	win->map.tab = NULL;
-	win->map.len_x = NULL;
 	win->pos.x = 0;
 	win->pos.y = 0;
 	win->width = 1200;
