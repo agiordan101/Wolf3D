@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/03/01 18:03:17 by gmonacho    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/03/01 19:34:54 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -25,6 +25,7 @@ SRCS_FILES =	main.c \
 				$(SRCS_PATH_2)/raycasting.c \
 				$(SRCS_PATH_3)/open_window.c \
 				$(SRCS_PATH_3)/window_loop.c \
+				$(SRCS_PATH_3)/events.c \
 				$(SRCS_PATH_3)/draw.c \
 				$(SRCS_PATH_3)/draw_shapes.c \
 				$(SRCS_PATH_3)/put_minimap.c \
@@ -36,7 +37,8 @@ SRCS_FILES =	main.c \
 				$(SRCS_PATH_4)/ed_add_tile.c \
 				$(SRCS_PATH_4)/ed_is_in_map.c \
 				$(SRCS_PATH_4)/ed_export.c \
-				$(SRCS_PATH_4)/ed_put_grid.c
+				$(SRCS_PATH_4)/ed_put_grid.c \
+				$(SRCS_PATH_4)/ed_events.c
 
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_FILES))
 

@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   wolf3d.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 18:21:54 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 19:33:20 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -102,12 +102,17 @@ int					ed_is_in_map(int x, int y, t_win *win);
 void				ed_put_grid(t_win *win);
 int 				ed_put_map(t_win *win);
 int					ed_window_loop(t_win *win);
+int					pevent(t_win *win, SDL_Event event);
+void				ed_keyboard_event(t_win *win, const Uint8 *state);
+void				ed_mouse_event(t_win *win);
 
 int					parser(int const fd, t_map *map, t_player *player);
 int					map_editor(int fd);
 
 int					open_window(t_win *win);
 int					window_loop(t_win *win);
+void				keyboard_state(t_player *player, const Uint8 *state);
+int					keyboard_event(t_win *win, SDL_Event event);
 
 int 				put_minimap(t_win *win);
 int					error(int error, char *error_source);
