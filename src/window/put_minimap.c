@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/28 17:08:46 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 16:29:21 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 17:39:31 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,8 +23,8 @@ static void draw_tile(t_win *win, int i, int j, int unit)
 		else if (win->map.tab[i][j] == 2)
 			SDL_SetRenderDrawColor(win->rend, 255, 0, 0, 255);
 		draw_rect(win,
-			  j * unit - (int)(win->pos.x),
-			  i * unit - (int)(win->pos.y),
+			  j * unit - win->player.pos.x * unit + win->map.minimap.width / 2,
+			  i * unit - win->player.pos.y * unit + win->map.minimap.height / 2,
 			  unit, unit);
 		//printf("x = %d, y = %d\n", j * unit - (int)(win->pos.x), i * unit - (int)(win->pos.y));
 	}
@@ -37,19 +37,18 @@ int put_minimap(t_win *win)
 	int 	i;
 	int 	j;
 	double	unit;
-
+	
 	unit = 10;
 
-	i = (win->player.pos.y - win->map.minimap.height / 2) / unit;
+	i = (int)win->player.pos.y - 4;
 	if (i < 0)
 		i = 0;
-	j = (win->player.pos.x - win->map.minimap.width / 2) / unit;
-	imax = i + 1 + win->map.minimap.height / unit;
-	jmax = j + win->map.minimap.width / unit;
-	//printf("unit = %f, i = %d, j = %d | im = %d, jm = %d\n", unit, i, j, imax, jmax);
+	j = (int)win->player.pos.x - 4;
+	imax = (int)win->player.pos.y + 4;
+	jmax = (int)win->player.pos.x + 4;
 	while (i < imax && i < win->map.len_y)
 	{
-		j = win->pos.x / unit;
+		j = (int)win->player.pos.x - 4;;
 		if (j < 0)
 			j = 0;
 		while (j < jmax && j < win->map.len_x)
