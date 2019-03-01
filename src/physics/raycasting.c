@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 19:27:03 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 17:40:05 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 19:03:39 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,7 +35,7 @@ static int test_wall(t_map *map, t_dot_2d dot, t_vector_2d vector)
 		i -= vector.y >= 0 ? 0 : 1;
 	//printf("x = %lf\ty = %lf\n", dot.x, dot.y);
 	//printf("i = %i\tj = %i\n", i, j);
-	if (map->tab[i][j] == 1)
+	if (i <= map->tab[i][j] == 1)
 		return (1);
 	return (0);
 }
@@ -53,7 +53,8 @@ static void	calcul_dist(t_map *map, t_player *player, t_calculs *calculs, t_vect
 	nextIndex =	(t_dot_2d){.x = 0, .y = 0};
 	calculs->a = vector.y / vector.x;
 	calculs->b = vector.origin.y - calculs->a * vector.origin.x;
-	distMax = ft_pythagore(NULL, (double *)&map->len_x, (double *)&map->len_y);
+	distMax = ft__sqrt(map->len_x * map->len_x + map->len_y * map->len_y, 2);
+	//printf("%lf -- %lf-%lf\n", distMax, *((double *)&map->len_x), *((double *)&map->len_y));
 	while (!test_wall(map, next, vector) && mag_vector_2d(vector) < distMax)
 	{
 		if (vector.x > 0)
