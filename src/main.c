@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 16:43:49 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 17:07:55 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,8 +24,8 @@ static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 	map->tab = NULL;
 	if (!(calculs->dist = (double *)malloc(sizeof(double) * win->width)))
 		return (1);
-	player->pos.x = 2.5;
-	player->pos.y = 3.5;
+	player->pos.x = 0;
+	player->pos.y = 0;
 	player->vel = (t_vector_2d){}; //Inutile
 	player->const_vel = 0.05;
 	player->dir = 0;
@@ -48,8 +48,9 @@ int		main(int ac, char **av)
 		{
 			if (init(&win, &(win.map), &(win.calculs), &(win.player)))
 				return (error(-2, "init"));
-			if ((ret = parser(fd, &(win.map))) <= 0)
+			if ((ret = parser(fd, &(win.map), &(win.player))) <= 0)
 				return(error(ret, "parser"));
+			printf("px = %f, py = %f\n", win.player.pos.x, win.player.pos.y);
 			open_window(&win);
 			window_loop(&win);
 		}

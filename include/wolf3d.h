@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 16:27:51 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 16:48:03 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -101,13 +101,12 @@ void				ed_put_grid(t_win *win);
 int 				ed_put_map(t_win *win);
 int					ed_window_loop(t_win *win);
 
-int					parser(int const fd, t_map *map);
+int					parser(int const fd, t_map *map, t_player *player);
 int					map_editor(int fd);
 
 int					open_window(t_win *win);
 int					window_loop(t_win *win);
 
-int					parser(int const fd, t_map *map);
 int 				put_minimap(t_win *win);
 int					error(int error, char *error_source);
 int					wolf3d_exit(t_win *win);

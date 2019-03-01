@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 09:58:24 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 16:29:34 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 17:05:20 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,7 +30,7 @@ int				map_editor(int fd)
 	int		ret;
 
 	init(&win);
-	if ((ret = parser(fd, &(win.map))) <= 0)
+	if ((ret = parser(fd, &(win.map), &(win.player))) <= 0)
 		return (error(ret, "map_editor : parser"));
 	if (!(open_window(&(win))))
 		return (error(-1, "map editor : open_window"));

@@ -6,14 +6,38 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:03:22 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 16:37:30 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 17:08:09 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static int **ft_addinttabn(int **tab, int len_y, int len_x, int *line)
+static int		set_player_pos(t_map map, t_player *player)
+{
+	int				i;
+	int				j;
+
+	i = 0;
+	while (i < map.len_y)
+	{
+		j = 0;
+		while (j < map.len_x)
+		{
+			if (map.tab[i][j] == 2)
+			{
+				player->pos.x = j + 0.5;
+				player->pos.y = i + 0.5;
+				return (1);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+static int 			**ft_addinttabn(int **tab, int len_y, int len_x, int *line)
 {
 	int **ntab;
 	int i;
@@ -42,7 +66,7 @@ static int **ft_addinttabn(int **tab, int len_y, int len_x, int *line)
 	return (ntab);
 }
 
-static int	convert_int(const char *line, int **int_line, int len)
+static int			convert_int(const char *line, int **int_line, int len)
 {
 	int		i;
 
@@ -65,7 +89,7 @@ static int	convert_int(const char *line, int **int_line, int len)
 	return (1);
 }
 
-int parser(int const fd, t_map *map)
+int parser(int const fd, t_map *map, t_player *player)
 {
 	char *line;
 	int *int_line;
@@ -90,5 +114,7 @@ int parser(int const fd, t_map *map)
 		ft_strdel(&line);
 		map->len_y++;
 	}
+	if (!(set_player_pos(*map, player)))
+		return (-6);
 	return ((ret < 0) ? -4 : 1);
 }
