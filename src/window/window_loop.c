@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   window_loop.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 08:56:27 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 16:29:03 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 19:25:32 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,35 +25,6 @@ static void		refresh_window(t_win *win)
 	//SDL_RenderPresent(win->compass);
 }
 
-static void keyboard_state(t_player *player, const Uint8 *state)
-{
-	player->vel = (t_vector_2d){.x = 0, .y = 0};
-	if (state[SDL_SCANCODE_W])
-	{
-		player->vel.x += cos(player->dir) * player->const_vel;
-		player->vel.y += -sin(player->dir) * player->const_vel;
-	}
-	if (state[SDL_SCANCODE_S])
-	{
-		player->vel.x += cos(player->dir + PI) * player->const_vel;
-		player->vel.y += -sin(player->dir + PI) * player->const_vel;
-	}
-	if (state[SDL_SCANCODE_A])
-	{
-		player->vel.x += cos(player->dir + PI / 2) * player->const_vel;
-		player->vel.y += -sin(player->dir + PI / 2) * player->const_vel;
-	}
-	if (state[SDL_SCANCODE_D])
-	{
-		player->vel.x += cos(player->dir - PI / 2) * player->const_vel;
-		player->vel.y += -sin(player->dir - PI / 2) * player->const_vel;
-	}
-	if (state[SDL_SCANCODE_RIGHT])
-		player->dir -= 0.1;
-	if (state[SDL_SCANCODE_LEFT])
-		player->dir += 0.1;
-}
-
 static void	move(t_win *win)
 {
 	if (win->player.pos.x + win->player.vel.x < 0)
@@ -66,20 +37,6 @@ static void	move(t_win *win)
 		win->player.pos.y =  win->map.len_y - 1.01 - win->player.vel.y;
 	win->player.pos.y += win->player.vel.y;
 	win->player.pos.x += win->player.vel.x;
-}
-
-static int	keyboard_event(t_win *win, SDL_Event event)
-{
-	double	dfov;
-
-	dfov = 0.1;
-	if (event.type == SDL_QUIT || event.key.keysym.sym == SDLK_ESCAPE)
-		return (0);
-	if (event.key.keysym.sym == SDLK_KP_MINUS)
-		win->player.fov -= win->player.fov - dfov < 0 ? 0 : dfov;
-	if (event.key.keysym.sym == SDLK_KP_PLUS)
-		win->player.fov += win->player.fov + dfov > 2 * PI ? 0 : dfov;
-	return (1);
 }
 
 int window_loop(t_win *win)
