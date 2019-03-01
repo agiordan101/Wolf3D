@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 22:47:54 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 22:51:28 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,10 +15,10 @@
 
 static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 {
-	win->width = 1300;
-	win->height = 1300;
-	map->minimap.x = 0;
-	map->minimap.y = 0;
+	win->width = 1200;
+	win->height = 800;
+	map->minimap.x = 10;
+	map->minimap.y = 10;
 	map->minimap.width = win->width / 5;
 	map->minimap.height = win->height / 5;
 	map->tab = NULL;
@@ -27,13 +27,15 @@ static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 		return (1);
 	player->pos.x = 0;
 	player->pos.y = 0;
+	player->box.x = 0.2;
+	player->box.y = 0.2;
 	player->vel = (t_vector_2d){}; //Inutile
 	player->const_vel = 0.05;
 	player->dir = PI / 2;
 	player->fov = PI / 2.5;
 	calcul_compass(win);
 	return (0);
-}
+} 
 
 int		main(int ac, char **av)
 {
