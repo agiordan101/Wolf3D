@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/28 20:31:47 by gmonacho    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/03/01 16:03:56 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -56,7 +56,6 @@ CFLAGS += -Wall -Wextra -Werror -I./$(INCLUDES_PATH)\
 
 LIBFT = libft
 LIBMATH = libmath
-#LIBSDL2 = `sdl2-config --cflags --libs`
 LIBSDL2 = -framework SDL2 -F $(FW_PATH) -framework SDL2_image -framework SDL2_ttf -rpath $(FW_PATH)
 LIBRARIES = $(LIBFT)/$(LIBFT).a $(LIBMATH)/$(LIBMATH).a $(LIBSDL2)
 
