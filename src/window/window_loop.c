@@ -6,23 +6,26 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 08:56:27 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 22:52:06 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/02 04:04:26 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static void		refresh_window(t_win *win)
+static void	refresh_window(t_win *win)
 {
 	SDL_SetRenderDrawColor(win->rend, 0, 0, 0, 255);
 	SDL_RenderClear(win->rend);
+
 	raycasting(win, &(win->map), &(win->player), &(win->calculs));
-	//draw_compass(win);
 	draw(win, &(win->calculs));
+
 	put_minimap(win);
+	calcul_compass(win);
+	//draw_compass(win);
+	
 	SDL_RenderPresent(win->rend);
-	//SDL_RenderPresent(win->compass);
 }
 
 static void	move(t_win *win)
@@ -39,7 +42,7 @@ static void	move(t_win *win)
 	win->player.pos.x += win->player.vel.x;
 }
 
-int window_loop(t_win *win)
+int			window_loop(t_win *win)
 {
 	SDL_Event event;
 	int loop;
@@ -51,7 +54,8 @@ int window_loop(t_win *win)
 	{
 		SDL_PumpEvents();
 		keyboard_state(&(win->player));
-		collision(&(win->player), win->map);
+		if (win->player.vel.x || win->player.vel.y)
+			collision(&(win->map), &(win->player));
 		move(win);
 		while (SDL_PollEvent(&event))
 		{

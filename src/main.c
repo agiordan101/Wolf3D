@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 22:51:28 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 23:24:40 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -33,7 +33,6 @@ static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 	player->const_vel = 0.05;
 	player->dir = PI / 2;
 	player->fov = PI / 2.5;
-	calcul_compass(win);
 	return (0);
 } 
 
@@ -54,6 +53,7 @@ int		main(int ac, char **av)
 			if ((ret = parser(fd, &(win.map), &(win.player))) <= 0)
 				return(error(ret, "parser"));
 			open_window(&win);
+			calcul_compass(&win);
 			window_loop(&win);
 		}
 		else if (ft_atoi(av[2]) == 1)

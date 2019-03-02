@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/01 19:25:09 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 20:21:27 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/01 23:00:19 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,9 +40,9 @@ void keyboard_state(t_player *player)
 		player->vel.y += -sin(player->dir - PI / 2) * player->const_vel;
 	}
 	if (state[SDL_SCANCODE_RIGHT])
-		player->dir -= 0.1;
+		player->dir -= 0.05;
 	if (state[SDL_SCANCODE_LEFT])
-		player->dir += 0.1;
+		player->dir += 0.05;
 }
 
 int	keyboard_event(t_win *win, SDL_Event event)

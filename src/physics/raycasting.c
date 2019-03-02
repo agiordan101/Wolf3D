@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 19:27:03 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 22:56:46 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/02 02:28:33 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -66,16 +66,13 @@ double	calcul_dist(t_map *map, t_player *player, t_calculs *calculs, t_vector_2d
 	t_dot_2d	d1;
 	t_dot_2d	d2;
 	int			ret;
-	//double		distMax;
 
 	//printf("Vector x = %lf\tVector y = %lf\n", vector.x, vector.y);
 	next = player->pos;
 	nextIndex =	(t_dot_2d){.x = 0, .y = 0};
 	calculs->a = vector.y / vector.x; //Division 0
 	calculs->b = vector.origin.y - calculs->a * vector.origin.x;
-	//distMax = ft__sqrt(map->len_x * map->len_x + map->len_y * map->len_y, 2);
-	//printf("%lf -- %lf-%lf\n", distMax, *((double *)&map->len_x), *((double *)&map->len_y));
-	while ((ret = test_wall(map, next, vector)) == 0/* && mag_vector_2d(vector) < distMax*/)
+	while ((ret = test_wall(map, next, vector)) == 0)
 	{
 		if (vector.x > 0)
 			d1.x = ft_dtoi_up(player->pos.x) + nextIndex.x;
@@ -87,8 +84,6 @@ double	calcul_dist(t_map *map, t_player *player, t_calculs *calculs, t_vector_2d
 			d2.y = ft_dtoi_low(player->pos.y) + nextIndex.y;
 		d1.y = calculs->a * d1.x + calculs->b;
 		d2.x = (d2.y - calculs->b) / calculs->a; //Division 0
-		//printf("x1 = %lf\ty1 = %lf\n", d1.x, d1.y);
-		//printf("x2 = %lf\ty2 = %lf\n", d2.x, d2.y);
 		if (ft__abs(dist_dot_2d(d1, player->pos)) < ft__abs(dist_dot_2d(d2, player->pos)))
 		{
 			next = d1;

@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   collision.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 17:45:05 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/02 02:13:05 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/02 04:52:42 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,7 +17,7 @@
 ** On va faire simple poyr l'instant
 */
 
-static int		test_wall(t_map *map, t_dot_2d dot, t_vector_2d vector)
+static int		test_wall(t_map *map, t_dot_2d dot, t_vector_2d *vector)
 {
 	int	i;
 	int	j;
@@ -25,34 +25,32 @@ static int		test_wall(t_map *map, t_dot_2d dot, t_vector_2d vector)
 	j = ft_dtoi_low(dot.x);
 	i = ft_dtoi_low(dot.y);
 	if (!ft_dec(dot.x))
-		j -= vector.x >= 0 ? 0 : 1;
-	if (!ft_dec(dot.y)) //Else if
-		i -= vector.y >= 0 ? 0 : 1;
+		j -= vector->x >= 0 ? 0 : 1;
+	if (!ft_dec(dot.y))
+		i -= vector->y >= 0 ? 0 : 1;
 	if (i < 0 || i >= map->len_y || j < 0 || j >= map->len_x)
-		return (-1);
+		*vector = (t_vector_2d){};
 	if (map->tab[i][j] == 1)
 		return (1);
 	return (0);
 }
 
-int					collision(t_player *player, t_map *map, t_win *win)
+int				collision(t_map *map, t_player *player)
 {
-	double		bx;
-	double		by;
-	t_dot_2d	next;
-	double		ret;
+	int			ret;
+	t_dot_2d	nextx;
+	t_dot_2d	nexty;
+	t_dot_2d	box;
 
-	win = NULL;
-	bx = (player->vel.x >= 0) ? player->box.x : -player->box.x;
-	by = (player->vel.y >= 0) ? player->box.y : -player->box.y;
-	//printf("x - y = %lf\t%lf\n", player->pos.x, player->pos.y);
-	//printf("Dist : %lf\n", calcul_dist_collisions(map, player, &(win->calculs), player->vel));
-	next = (t_dot_2d){.x = player->pos.x + player->vel.x,\
-						.y = player->pos.y + player->vel.y};
-	if ((ret = test_wall(map, next, player->vel)) == 1)
-	{
-		printf("Collisions\n");
-		return (1);
-	}
+	box.x = (player->vel.x > 0) ? player->box.x : -player->box.x;
+    box.y = (player->vel.y > 0) ? player->box.y : -player->box.y;
+	nextx = (t_dot_2d){.x = player->pos.x + player->vel.x + box.x,
+						.y = player->pos.y + box.y};
+	nexty = (t_dot_2d){.x = player->pos.x + box.x,
+						.y = player->pos.y + player->vel.y + box.y};
+	if ((ret = test_wall(map, nextx, &(player->vel))) == 1)
+		player->vel.x = 0;
+	if ((ret = test_wall(map, nexty, &(player->vel))) == 1)
+		player->vel.y = 0;
 	return (0);
 }
