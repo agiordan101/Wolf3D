@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/02 04:04:19 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/02 05:54:42 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -80,8 +80,8 @@ typedef struct		s_win
 {
 	SDL_Window		*ptr;
 	SDL_Renderer	*rend;
-	SDL_Renderer	*compass;
-	//TTF_Font		police;
+	TTF_Font		*police;
+	SDL_Surface		*texte;
 	t_map			map;
 	t_player		player;
 	int				width;
@@ -94,8 +94,9 @@ typedef struct		s_win
 void				draw_rect(t_win *win, t_dot_2d pos, int width, int height);
 void				draw_empty_rect(t_win *win, t_dot_2d pos, int width, int height);
 void				draw_line(t_win *win, t_dot_2d p1, t_dot_2d p2, SDL_Renderer *image);
-void				draw_compass(t_win *win);
+void				draw_txt(t_win *win, char *txt, SDL_Color color, SDL_Rect rect);
 void				draw(t_win *win, t_calculs *calculs);
+void				draw_compass(t_win *win);
 void				calcul_compass(t_win *win);
 
 int					ed_add_tile(int	x, int y, t_win *win, int tile);

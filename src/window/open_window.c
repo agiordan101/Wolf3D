@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/14 18:59:51 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/02 00:13:33 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/02 06:11:04 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,9 +19,13 @@ int		open_window(t_win *win)
 	!(win->ptr = SDL_CreateWindow("Wolf3d", 0, 0, win->width, win->height, 0))\
 	|| !(win->rend = SDL_CreateRenderer(win->ptr, -1, SDL_RENDERER_SOFTWARE)))
 	{
-		ft_putstr(ft_strjoin("open_window ", SDL_GetError()));
+		ft_putstr(ft_strjoin("open_window error : ", SDL_GetError()));
 		return (0);
 	}
-	//TTF_OpenFont("Arial", 65);
+	if (TTF_Init() < 0 || !(win->police = TTF_OpenFont("arial.ttf", 65)))
+	{
+		ft_putstr(ft_strjoin("open_TTF error : ", TTF_GetError()));
+		return (0);
+	}
 	return (1);
 }
