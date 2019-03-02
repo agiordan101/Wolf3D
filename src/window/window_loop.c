@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 08:56:27 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/02 04:04:26 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/02 04:54:47 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,7 +23,6 @@ static void	refresh_window(t_win *win)
 
 	put_minimap(win);
 	calcul_compass(win);
-	//draw_compass(win);
 	
 	SDL_RenderPresent(win->rend);
 }

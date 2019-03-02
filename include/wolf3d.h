@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 22:57:49 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/02 04:04:19 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -123,6 +123,6 @@ int					quit(t_win *win);
 
 void				raycasting(t_win *win, t_map *map, t_player *player, t_calculs *calculs);
 double				calcul_dist(t_map *map, t_player *player, t_calculs *calculs, t_vector_2d vector);
-int					collision(t_player *player, t_map map);
+int					collision(t_map *map, t_player *player);
 
 #endif
