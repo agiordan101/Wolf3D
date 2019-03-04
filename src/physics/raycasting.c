@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 19:27:03 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/02 02:28:33 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/04 19:05:23 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,20 +26,9 @@
 {
 	return ((x - inter1.x) / (inter1.y - inter1.x) * (inter2.y - inter2.x)\
 													+ inter2.x);
-}
-	t_dot_2d tmpAngle;
-	t_dot_2d tmpCorrection;
+}*/
 
-	tmpAngle = (t_dot_2d){.x = 0, .y = player->fov / 2};
-	tmpCorrection = (t_dot_2d){.x = cos(calculs->angle), .y = sin(calculs->angle)};
-	//0			-> cos(calculs->angle)
-	//fov / 2	-> 0
-	//1 / 
-*/
-		/*calculs->dist[calculs->i] = prop(ft__abs(calculs->angle), tmpAngle, tmpCorrection) *\
-									dist_dot_2d(next, player->pos);*/
-
-static int		test_wall(t_map *map, t_dot_2d dot, t_vector_2d vector)
+static int		test_wall(t_map *map, t_calculs *calculs, t_dot_2d dot, t_vector_2d vector)
 {
 	int	i;
 	int	j;
@@ -55,7 +44,25 @@ static int		test_wall(t_map *map, t_dot_2d dot, t_vector_2d vector)
 	if (i < 0 || i >= map->len_y || j < 0 || j >= map->len_x)
 		return (-1);
 	if (map->tab[i][j] == 1)
+	{
+		/*
+		*/
+		if (ft_dec(i))
+		{
+			if (vector.x > 0)
+				calculs->xray[calculs->i] = ft_dec(i);
+			else
+				calculs->xray[calculs->i] = 1 - ft_dec(i);
+		}
+		else
+		{
+			if (vector.y > 0)
+				calculs->xray[calculs->i] = 1 - ft_dec(j);
+			else
+				calculs->xray[calculs->i] = ft_dec(j);
+		}
 		return (1);
+	}
 	return (0);
 }
 
@@ -72,7 +79,7 @@ double	calcul_dist(t_map *map, t_player *player, t_calculs *calculs, t_vector_2d
 	nextIndex =	(t_dot_2d){.x = 0, .y = 0};
 	calculs->a = vector.y / vector.x; //Division 0
 	calculs->b = vector.origin.y - calculs->a * vector.origin.x;
-	while ((ret = test_wall(map, next, vector)) == 0)
+	while ((ret = test_wall(map, calculs, next, vector)) == 0)
 	{
 		if (vector.x > 0)
 			d1.x = ft_dtoi_up(player->pos.x) + nextIndex.x;

@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/04 19:22:21 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/04 20:34:42 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,8 +15,8 @@
 
 static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 {
-	win->width = 1200;
-	win->height = 800;
+	win->width = 2200;
+	win->height = 1400;
 	map->minimap.x = 10;
 	map->minimap.y = 10;
 	map->minimap.width = win->height / 4;
@@ -36,6 +36,7 @@ static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 	player->const_vel = 0.05;
 	player->dir = PI / 2;
 	player->fov = PI / 2.5;
+	win->textures.mur = NULL;
 	return (0);
 } 
 

@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/04 19:22:10 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/04 20:31:34 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -69,6 +69,10 @@ typedef struct 		s_minimap
 	int				static_map;
 }					t_minimap;
 
+typedef struct		s_texture
+{
+	SDL_Surface		*mur;
+}					t_texture;
 
 typedef struct		s_map
 {
@@ -87,6 +91,7 @@ typedef struct		s_win
 	TTF_Font		*police;
 	SDL_Surface		*texte;
 	t_map			map;
+	t_texture		textures;
 	t_player		player;
 	int				width;
 	int				height;
