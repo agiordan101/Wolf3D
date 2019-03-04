@@ -6,28 +6,28 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/28 17:08:46 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 22:38:00 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/04 17:42:54 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static void 	draw_tile(t_win *win, int i, int j, int unit)
+static void 	draw_tile(t_win *win, int i, int j)
 {
 	int 	x;
 	int		y;
 	int		x_unit;
 	int		y_unit;
 
-	x_unit = unit;
-	y_unit = unit;
+	x_unit = win->map.minimap.x_unit;
+	y_unit = win->map.minimap.y_unit;
 	if (win->map.tab[i][j] != 0)
 	{
 		if (win->map.tab[i][j] == 1)
 		{
-			x = win->map.minimap.x + j * unit - win->player.pos.x * unit + win->map.minimap.width / 2;
-			y = win->map.minimap.y + i * unit - win->player.pos.y * unit + win->map.minimap.height / 2;
+			x = win->map.minimap.x + j * x_unit - win->player.pos.x * x_unit + win->map.minimap.width / 2;
+			y = win->map.minimap.y + i * y_unit - win->player.pos.y * y_unit + win->map.minimap.height / 2;
 			if (x < win->map.minimap.x)
 			{
 				x_unit -= win->map.minimap.x - x;
@@ -35,7 +35,7 @@ static void 	draw_tile(t_win *win, int i, int j, int unit)
 			}
 			else if (x + x_unit > win->map.minimap.x + win->map.minimap.width)
 			{
-				x_unit -= x + unit - (win->map.minimap.x + win->map.minimap.width);
+				x_unit -= x + x_unit - (win->map.minimap.x + win->map.minimap.width);
 			}
 			if (x_unit < 0)
 				x_unit = 0;
@@ -46,7 +46,7 @@ static void 	draw_tile(t_win *win, int i, int j, int unit)
 			}
 			else if (y + y_unit > win->map.minimap.y + win->map.minimap.height)
 			{
-				y_unit -= y + unit - (win->map.minimap.y + win->map.minimap.height);
+				y_unit -= y + y_unit - (win->map.minimap.y + win->map.minimap.height);
 			}
 			if (y_unit < 0)
 				y_unit = 0;
@@ -59,14 +59,52 @@ static void 	draw_tile(t_win *win, int i, int j, int unit)
 	}
 }
 
-static void		draw_player(t_win *win, int unit)
+static void		draw_player(t_win *win)
 {
 	SDL_SetRenderDrawColor(win->rend, 255, 0, 0, 255);
 	draw_rect(win, (t_dot_2d){
-		win->map.minimap.x + win->map.minimap.width / 2 - unit / 4,
-		win->map.minimap.y + win->map.minimap.height / 2 - unit / 4},
-		unit / 2,
-		unit / 2);
+		win->map.minimap.x + win->map.minimap.width / 2 - win->map.minimap.x_unit / 4,
+		win->map.minimap.y + win->map.minimap.height / 2 - win->map.minimap.y_unit / 4},
+		win->map.minimap.x_unit / 2,
+		win->map.minimap.y_unit / 2);
+}
+
+static void		static_draw_player(t_win *win)
+{
+	SDL_SetRenderDrawColor(win->rend, 255, 0, 0, 255);
+	draw_rect(win, (t_dot_2d){
+		win->map.minimap.x + win->player.pos.x * win->map.minimap.x_unit,
+		win->map.minimap.y + win->player.pos.y * win->map.minimap.y_unit},
+		win->map.minimap.x_unit / 2,
+		win->map.minimap.y_unit / 2);
+}
+
+static void 	static_draw_tile(t_win *win, int i, int j)
+{
+	int 	x;
+	int		y;
+	int		x_unit;
+	int		y_unit;
+
+	x_unit = win->map.minimap.x_unit;
+	y_unit = win->map.minimap.y_unit;
+	if (win->map.tab[i][j] != 0)
+	{
+		if (win->map.tab[i][j] == 1)
+		{
+			x = win->map.minimap.x + j * x_unit;
+			y = win->map.minimap.y + i * y_unit;
+			if (x_unit < 0)
+				x_unit = 0;
+			if (y_unit < 0)
+				y_unit = 0;
+			SDL_SetRenderDrawColor(win->rend, 255, 255, 255, 255);
+			draw_rect(win, (t_dot_2d){
+				x,
+				y},
+				x_unit, y_unit);
+		}
+	}
 }
 
 int				put_minimap(t_win *win)
@@ -75,27 +113,33 @@ int				put_minimap(t_win *win)
 	int 	jmax;
 	int 	i;
 	int 	j;
-	double	unit;
-	
-	unit = win->map.minimap.width / 8;
-	i = (int)win->player.pos.y - ((int)(win->map.minimap.height / 2 / unit) + 1);
+
+	i = (!win->map.minimap.static_map) ? (int)win->player.pos.y - ((int)(win->map.minimap.height / 2 / win->map.minimap.y_unit) + 1) : 0;
 	if (i < 0)
 		i = 0;
-	j = (int)win->player.pos.x - (int)(win->map.minimap.width / 2 / unit);
-	imax = (int)win->player.pos.y + ((int)(win->map.minimap.height / 2 / unit) + 2);
-	jmax = (int)win->player.pos.x + (int)(win->map.minimap.width / 2 / unit) + 1;
+	j = (!win->map.minimap.static_map) ? (int)win->player.pos.x - (int)(win->map.minimap.width / 2 / win->map.minimap.x_unit) : 0;
+	imax = (!win->map.minimap.static_map) ? (int)win->player.pos.y + ((int)(win->map.minimap.height / 2 / win->map.minimap.y_unit) + 2) : win->map.len_y;
+	jmax = (!win->map.minimap.static_map) ? (int)win->player.pos.x + (int)(win->map.minimap.width / 2 / win->map.minimap.x_unit) + 1 : win->map.len_x;
 	while (i < imax && i < win->map.len_y)
 	{
-		j = (int)win->player.pos.x - (int)(win->map.minimap.width / 2 / unit);
+		j = (!win->map.minimap.static_map) ? (int)win->player.pos.x - (int)(win->map.minimap.width / 2 / win->map.minimap.x_unit) : 0;
 		if (j < 0)
 			j = 0;
 		while (j < jmax && j < win->map.len_x)
-			draw_tile(win, i, j++, unit);
+		{
+			if (win->map.minimap.static_map)
+				static_draw_tile(win, i, j++);
+			else
+				draw_tile(win, i, j++);
+		}
 		i++;
 	}
 	SDL_SetRenderDrawColor(win->rend, 0, 0, 0, 255);
 	draw_empty_rect(win, (t_dot_2d){win->map.minimap.x, win->map.minimap.y},
 									win->map.minimap.width, win->map.minimap.height);
-	draw_player(win, unit);
+	if (win->map.minimap.static_map)
+		static_draw_player(win);
+	else
+		draw_player(win);
 	return (1);
 }
