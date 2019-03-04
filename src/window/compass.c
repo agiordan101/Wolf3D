@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/28 18:53:05 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 23:38:36 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/02 06:29:27 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,6 +18,7 @@ void	calcul_compass(t_win *win)
 	t_dot_2d	d1;
 	t_dot_2d	d2;
 	t_dot_2d	origin;
+	SDL_Rect	rect;
 	double		len;
 
 	len = 60;
@@ -33,6 +34,11 @@ void	calcul_compass(t_win *win)
 	d2 = (t_dot_2d){.x = origin.x + cos(-PI / 2 - PI / 2 + win->player.dir) * len,\
 					.y = origin.y + sin(-PI / 2 - PI / 2 + win->player.dir) * len};
 	draw_line(win, d1, d2, win->rend);
+	rect = (SDL_Rect){.x = origin.x + cos(PI - PI / 2 + win->player.dir) * 5 * len / 4,\
+						.y = origin.y + sin(PI - PI / 2 + win->player.dir) * 5 * len / 4,\
+						.w = 100,\
+						.h = 100};
+	draw_txt(win, ft_strdup("Nfvfvrgbv"), (SDL_Color){255, 255, 255, 255}, rect);
 }
 
 /*void	draw_compass(t_win *win)

@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/04 17:03:34 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/04 17:54:24 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -53,8 +53,8 @@ int		main(int ac, char **av)
 				return (error(-2, "init"));
 			if ((ret = parser(fd, &(win.map), &(win.player))) <= 0)
 				return(error(ret, "parser"));
-			open_window(&win);
-			calcul_compass(&win);
+			if (!open_window(&win))
+				return (0);
 			window_loop(&win);
 		}
 		else if (ft_atoi(av[2]) == 1)
