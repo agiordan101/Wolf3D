@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/28 17:08:46 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/04 17:42:54 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/04 18:16:22 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -73,8 +73,8 @@ static void		static_draw_player(t_win *win)
 {
 	SDL_SetRenderDrawColor(win->rend, 255, 0, 0, 255);
 	draw_rect(win, (t_dot_2d){
-		win->map.minimap.x + win->player.pos.x * win->map.minimap.x_unit,
-		win->map.minimap.y + win->player.pos.y * win->map.minimap.y_unit},
+		win->map.minimap.x + win->player.pos.x * win->map.minimap.x_unit - win->map.minimap.x_unit / 4,
+		win->map.minimap.y + win->player.pos.y * win->map.minimap.y_unit - win->map.minimap.x_unit / 4},
 		win->map.minimap.x_unit / 2,
 		win->map.minimap.y_unit / 2);
 }

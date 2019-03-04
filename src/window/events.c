@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/01 19:25:09 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/04 17:38:44 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/04 19:19:39 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -45,11 +45,10 @@ void keyboard_state(t_player *player, t_win *win)
 		player->dir += 0.05;
 	if (state[SDL_SCANCODE_TAB])
 	{
-		win->map.minimap.height = win->height - 50;
-		win->map.minimap.width = win->map.minimap.height;
-		win->map.minimap.x = (win->width - win->map.minimap.width) / 2;
-		win->map.minimap.x_unit = win->map.minimap.width / win->map.len_x;
-		win->map.minimap.y_unit = win->map.minimap.height / win->map.len_y;
+		win->map.minimap.x_unit = (win->map.len_x >= win->map.len_y) ? win->width / win->map.len_x : win->width / win->map.len_y;
+		win->map.minimap.y_unit = (win->map.len_x >= win->map.len_y) ? win->width / win->map.len_x : win->width / win->map.len_y;
+		win->map.minimap.height = win->map.len_y * win->map.minimap.y_unit;
+		win->map.minimap.width = win->map.len_x * win->map.minimap.x_unit;
 		win->map.minimap.static_map = 1;
 	}
 	else
@@ -58,7 +57,7 @@ void keyboard_state(t_player *player, t_win *win)
 		win->map.minimap.width = win->height / 4;
 		win->map.minimap.x = 10;
 		win->map.minimap.x_unit = win->map.minimap.width / 4;
-		win->map.minimap.y_unit = win->map.minimap.height / 4;
+		win->map.minimap.y_unit = win->map.minimap.width / 4;
 		win->map.minimap.static_map = 0;
 	}
 }
