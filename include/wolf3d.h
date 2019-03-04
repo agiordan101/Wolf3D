@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/02 05:54:42 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/04 18:46:53 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -54,6 +54,7 @@ typedef struct		s_calculs
 	double			a;
 	double			b;
 	double			*dist;
+	double			*xray;
 	int				i;
 }					t_calculs;
 
