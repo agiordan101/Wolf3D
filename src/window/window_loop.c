@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   window_loop.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 08:56:27 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/02 04:54:47 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/04 16:29:19 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -52,7 +52,7 @@ int			window_loop(t_win *win)
 	while (loop)
 	{
 		SDL_PumpEvents();
-		keyboard_state(&(win->player));
+		keyboard_state(&(win->player), win);
 		if (win->player.vel.x || win->player.vel.y)
 			collision(&(win->map), &(win->player));
 		move(win);

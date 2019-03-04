@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/04 18:46:36 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/04 19:22:21 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,8 +19,9 @@ static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 	win->height = 800;
 	map->minimap.x = 10;
 	map->minimap.y = 10;
-	map->minimap.width = win->width / 5;
-	map->minimap.height = win->height / 5;
+	map->minimap.width = win->height / 4;
+	map->minimap.height = win->height / 4;
+	map->minimap.static_map = 0;
 	map->tab = NULL;
 	calculs->angle = -player->fov / 2;
 	if (!(calculs->dist = (double *)malloc(sizeof(double) * win->width)))

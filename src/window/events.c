@@ -3,17 +3,17 @@
 /*                                                              /             */
 /*   events.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/01 19:25:09 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 23:00:19 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/04 19:19:39 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void keyboard_state(t_player *player)
+void keyboard_state(t_player *player, t_win *win)
 {
     const Uint8 *state;
 
@@ -43,6 +43,23 @@ void keyboard_state(t_player *player)
 		player->dir -= 0.05;
 	if (state[SDL_SCANCODE_LEFT])
 		player->dir += 0.05;
+	if (state[SDL_SCANCODE_TAB])
+	{
+		win->map.minimap.x_unit = (win->map.len_x >= win->map.len_y) ? win->width / win->map.len_x : win->width / win->map.len_y;
+		win->map.minimap.y_unit = (win->map.len_x >= win->map.len_y) ? win->width / win->map.len_x : win->width / win->map.len_y;
+		win->map.minimap.height = win->map.len_y * win->map.minimap.y_unit;
+		win->map.minimap.width = win->map.len_x * win->map.minimap.x_unit;
+		win->map.minimap.static_map = 1;
+	}
+	else
+	{
+		win->map.minimap.height = win->height / 4;
+		win->map.minimap.width = win->height / 4;
+		win->map.minimap.x = 10;
+		win->map.minimap.x_unit = win->map.minimap.width / 4;
+		win->map.minimap.y_unit = win->map.minimap.width / 4;
+		win->map.minimap.static_map = 0;
+	}
 }
 
 int	keyboard_event(t_win *win, SDL_Event event)

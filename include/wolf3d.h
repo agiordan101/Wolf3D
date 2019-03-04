@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/04 18:46:53 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/04 19:22:10 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -64,6 +64,9 @@ typedef struct 		s_minimap
 	int				y;
 	int				width;
 	int 			height;
+	int				x_unit;
+	int				y_unit;
+	int				static_map;
 }					t_minimap;
 
 
@@ -115,7 +118,7 @@ int					map_editor(int fd);
 
 int					open_window(t_win *win);
 int					window_loop(t_win *win);
-void				keyboard_state(t_player *player);
+void				keyboard_state(t_player *player, t_win *win);
 int					keyboard_event(t_win *win, SDL_Event event);
 
 int 				put_minimap(t_win *win);
