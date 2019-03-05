@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_tabint2del.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gal <gal@student.le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: agiordan <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/01/10 18:54:01 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/26 20:09:32 by gal         ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/06 16:41:28 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,11 +18,10 @@ void	ft_tabint2del(int ***tab, size_t len)
 	size_t	i;
 
 	i = -1;
-	if (tab)
-	{
-		while (++i < len)
-			ft_tabintdel(&((*tab)[i]));
-		free(*tab);
-		*tab = NULL;
-	}
+	if (!tab || !(*tab))
+		return ;
+	while (++i < len)
+		ft_tabintdel(&((*tab)[i]));
+	free(*tab);
+	*tab = NULL;
 }

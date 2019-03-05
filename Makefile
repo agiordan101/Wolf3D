@@ -6,7 +6,7 @@
 #    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/03/01 23:04:54 by agiordan    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/03/05 16:01:53 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -21,6 +21,7 @@ SRCS_PATH_4 =	map_editor
 SRCS_FILES =	main.c \
 				error.c \
 				$(SRCS_PATH_1)/parser.c \
+				$(SRCS_PATH_1)/flags.c \
 				$(SRCS_PATH_2)/collision.c \
 				$(SRCS_PATH_2)/raycasting.c \
 				$(SRCS_PATH_3)/open_window.c \
@@ -49,7 +50,7 @@ OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS_FILES))
 INCLUDES_PATH = include
 FW_PATH = ./frameworks
 CC = gcc
-CFLAGS += -Wall -Wextra -Werror -o3 -I./$(INCLUDES_PATH)\
+CFLAGS += -Wall -Wextra -Werror -O3 -I./$(INCLUDES_PATH)\
 			-I$(FW_PATH)/SDL2_image.framework/Headers/\
 			-I$(FW_PATH)/SDL2_ttf.framework/Headers/\
 			-I$(FW_PATH)/SDL2.framework/Headers/

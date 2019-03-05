@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_tabintdel.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gal <gal@student.le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/01/10 18:50:50 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/26 20:19:28 by gal         ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/15 16:53:21 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,9 +15,8 @@
 
 void	ft_tabintdel(int **tab)
 {
-	if (tab)
-	{
-		free(*tab);
-		*tab = NULL;
-	}
+	if (!tab)
+		return ;
+	free(*tab);
+	*tab = NULL;
 }

@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_filereplace.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gal <gal@student.le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/12 17:08:16 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/21 16:54:49 by gal         ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/15 15:15:27 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,6 +16,7 @@
 int	ft_filereplace(char *file, char *target, char *replace)
 {
 	char	*line;
+	char	*tmpline;
 	int		fdrd;
 	int		fdwr;
 	int		ret;
@@ -27,6 +28,7 @@ int	ft_filereplace(char *file, char *target, char *replace)
 	line = NULL;
 	while ((ret = get_next_line(fdrd, &line)) == 1)
 	{
+		tmpline = line;
 		line = ft_strreplace(line, target, replace);
 		ft_putendl_fd(line, fdwr);
 	}

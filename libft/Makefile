@@ -6,7 +6,7 @@
 #    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/03 17:31:01 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/02/15 20:08:49 by agiordan    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/03/05 16:02:28 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -104,7 +104,7 @@ FILE =	ft_memset.c \
 		ft_countnumbers.c \
 		ft_catinttab.c
 OBJETS = $(FILE:.c=.o)
-FLAGS = -Werror -Wextra -Wall
+FLAGS = -Werror -Wextra -Wall -O3
 CC = gcc
 
 all:		$(NAME)
