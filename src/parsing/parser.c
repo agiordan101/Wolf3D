@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   parser.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:03:22 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 17:08:09 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/05 15:26:26 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,8 +15,8 @@
 
 static int		set_player_pos(t_map map, t_player *player)
 {
-	int				i;
-	int				j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < map.len_y)
@@ -68,7 +68,7 @@ static int 			**ft_addinttabn(int **tab, int len_y, int len_x, int *line)
 
 static int			convert_int(const char *line, int **int_line, int len)
 {
-	int		i;
+	int	i;
 
 	if (!(*int_line = (int *)ft_memalloc(sizeof(int) * len)))
 		return (-2);
@@ -89,13 +89,13 @@ static int			convert_int(const char *line, int **int_line, int len)
 	return (1);
 }
 
-int parser(int const fd, t_map *map, t_player *player)
+int					parser(int const fd, t_map *map, t_player *player)
 {
-	char *line;
-	int *int_line;
-	int ret;
-	int error;
-	int **tmp;
+	char	*line;
+	int		*int_line;
+	int		ret;
+	int		error;
+	int		**tmp;
 
 	map->len_y = 0;
 	while ((ret = get_next_line(fd, &line)) > 0)

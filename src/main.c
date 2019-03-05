@@ -6,17 +6,26 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/04 20:34:42 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/05 22:14:10 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
+/*
+**	Differents murs :
+**	
+**	0	->	Vide
+**	1	->	Mur simple
+**	2	->	Position initiale du personnage
+**	3	->	Mur invisible
+**	4	->	Mur traversable
+*/
+
+
 static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 {
-	win->width = 2200;
-	win->height = 1400;
 	map->minimap.x = 10;
 	map->minimap.y = 10;
 	map->minimap.width = win->height / 4;
@@ -46,25 +55,22 @@ int		main(int ac, char **av)
 	int		fd;
 	int		ret;
 
-	if (ac == 3)
+	if ((fd = params(&win, ac, av)) == -1)
+		return (error(-1, "open"));
+	if (win.choice == 0)
 	{
-		if ((fd = open(av[1], O_RDONLY)) < 0)  
-			return (error(-1, "open"));
-		if (ft_atoi(av[2]) == 0)
-		{
-			if (init(&win, &(win.map), &(win.calculs), &(win.player)))
-				return (error(-2, "init"));
-			if ((ret = parser(fd, &(win.map), &(win.player))) <= 0)
-				return(error(ret, "parser"));
-			if (!open_window(&win))
-				return (0);
-			window_loop(&win);
-		}
-		else if (ft_atoi(av[2]) == 1)
-			map_editor(fd);
-		quit(&win);
+		if (init(&win, &(win.map), &(win.calculs), &(win.player)))
+			return (error(-2, "init"));
+		if ((ret = parser(fd, &(win.map), &(win.player))) <= 0)
+			return(error(ret, "parser"));
+		if (!open_window(&win))
+			return (0);
+		window_loop(&win);
 	}
+	else if (win.choice == 1)
+		map_editor(fd);
 	else
 		ft_putendl("usage: ./Wolf3D <map> <0/1>\n0 : Wolf3d\n1 : map_editor");
+	quit(&win);
 	return (0);
 }

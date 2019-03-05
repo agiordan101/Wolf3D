@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/04 20:31:34 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/05 15:43:37 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -93,6 +93,9 @@ typedef struct		s_win
 	t_map			map;
 	t_texture		textures;
 	t_player		player;
+	char			*name;
+	int				choice;
+	int				fd;
 	int				width;
 	int				height;
 	t_dot_2d		pos;
@@ -119,6 +122,7 @@ void				ed_keyboard_event(t_win *win);
 void				ed_mouse_event(t_win *win);
 
 int					parser(int const fd, t_map *map, t_player *player);
+int					params(t_win *win, int ac, char **av);
 int					map_editor(int fd);
 
 int					open_window(t_win *win);

@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 19:27:03 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/04 19:05:23 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/05 23:46:35 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,7 +43,7 @@ static int		test_wall(t_map *map, t_calculs *calculs, t_dot_2d dot, t_vector_2d 
 	//printf("i = %i\tj = %i\n", i, j);
 	if (i < 0 || i >= map->len_y || j < 0 || j >= map->len_x)
 		return (-1);
-	if (map->tab[i][j] == 1)
+	if (map->tab[i][j] == 1 || map->tab[i][j] == 4)
 	{
 		/*
 		*/
@@ -102,7 +102,7 @@ double	calcul_dist(t_map *map, t_player *player, t_calculs *calculs, t_vector_2d
 			nextIndex.y += vector.y > 0 ? 1 : -1;
 		}
 	}
-	return (ret == -1 ? -1 : cos(calculs->angle) * dist_dot_2d(next, player->pos));
+	return (ret == -1 ? -1 : cos(calculs->angle) * dist_dot_2d(next, player->pos) + 0.00000000001);
 }
 
 void			raycasting(t_win *win, t_map *map, t_player *player, t_calculs *calculs)
