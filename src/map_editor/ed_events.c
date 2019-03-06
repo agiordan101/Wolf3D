@@ -3,15 +3,22 @@
 /*                                                              /             */
 /*   ed_events.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/01 19:31:15 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 20:22:25 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/06 17:58:35 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+int	mouse_motion(t_win *win, SDL_Event event)
+{
+	if (win->editor.dragging && (event.motion.state & SDL_BUTTON_LEFT))
+		printf("click gauche && drag\n");
+	return (1);
+}
 
 int pevent(t_win *win, SDL_Event event)
 {
