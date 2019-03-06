@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 19:27:03 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/05 23:46:35 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/06 03:25:03 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -77,7 +77,7 @@ double	calcul_dist(t_map *map, t_player *player, t_calculs *calculs, t_vector_2d
 	//printf("Vector x = %lf\tVector y = %lf\n", vector.x, vector.y);
 	next = player->pos;
 	nextIndex =	(t_dot_2d){.x = 0, .y = 0};
-	calculs->a = vector.y / vector.x; //Division 0
+	calculs->a = vector.y /  vector.x; //Division 0
 	calculs->b = vector.origin.y - calculs->a * vector.origin.x;
 	while ((ret = test_wall(map, calculs, next, vector)) == 0)
 	{

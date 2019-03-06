@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 16:24:13 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/04 20:33:26 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/06 03:27:42 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -60,11 +60,11 @@ void		draw(t_win *win, t_calculs *calculs)
 			d1 = (t_dot_2d){.x = j, .y = win->height / 2 - h / calculs->dist[j]};
 			d2 = (t_dot_2d){.x = j, .y = win->height / 2 + h / calculs->dist[j]};
 			//printf("d1x = %f\td1y = %f\n", d1.x, d1.y);
-			SDL_SetRenderDrawColor(win->rend, BACK_R, BACK_G, BACK_B, 255);
+			SDL_SetRenderDrawColor(win->rend, BACK_R, BACK_G, BACK_B, 50);
 			draw_line(win, dfloor2, d1, win->rend);
 			
 			
-			SDL_SetRenderDrawColor(win->rend, WALL_R, WALL_G, WALL_B, 255);
+			SDL_SetRenderDrawColor(win->rend, WALL_R, WALL_G, WALL_B, 50);
 			draw_line(win, d1, d2, win->rend);
 
 			//pseudo code qui sert a choisir le pixel correspondant en Y
