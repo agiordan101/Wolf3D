@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/01 19:25:09 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/04 19:19:39 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/06 17:34:30 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -45,8 +45,8 @@ void keyboard_state(t_player *player, t_win *win)
 		player->dir += 0.05;
 	if (state[SDL_SCANCODE_TAB])
 	{
-		win->map.minimap.x_unit = (win->map.len_x >= win->map.len_y) ? win->width / win->map.len_x : win->width / win->map.len_y;
-		win->map.minimap.y_unit = (win->map.len_x >= win->map.len_y) ? win->width / win->map.len_x : win->width / win->map.len_y;
+		win->map.minimap.x_unit = (win->map.len_x > win->map.len_y) ? (win->width - 10) / win->map.len_x : (win->height - 10) / win->map.len_y;
+		win->map.minimap.y_unit = (win->map.len_x > win->map.len_y) ? (win->width - 10) / win->map.len_x : (win->height - 10) / win->map.len_y;
 		win->map.minimap.height = win->map.len_y * win->map.minimap.y_unit;
 		win->map.minimap.width = win->map.len_x * win->map.minimap.x_unit;
 		win->map.minimap.static_map = 1;
