@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   wolf3d.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/05 15:43:37 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/07 15:26:30 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,6 +21,7 @@
 # define BACK_R 100
 # define BACK_G 100
 # define BACK_B 100
+# define UI_WDRAG 
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -84,6 +85,25 @@ typedef struct		s_map
 	t_minimap		minimap;
 }					t_map;
 
+typedef struct 		s_ui
+{
+	int				x;
+	int				y;
+	int				width;
+	int				height;
+	char			*name;
+	t_ui			*next;
+}					t_ui;
+
+typedef struct		s_editor
+{
+	char			*dragging;
+	int				frame_color[4];
+	char			*mouse_ui;
+	t_ui			*ui;
+}					t_editor;
+
+
 typedef struct		s_win
 {
 	SDL_Window		*ptr;
@@ -100,6 +120,7 @@ typedef struct		s_win
 	int				height;
 	t_dot_2d		pos;
 	t_calculs		calculs;
+	t_editor		editor;
 }					t_win;
 
 
@@ -109,6 +130,7 @@ void				draw_line(t_win *win, t_dot_2d p1, t_dot_2d p2, SDL_Renderer *image);
 void				draw_txt(t_win *win, char *txt, SDL_Color color, SDL_Rect rect);
 void				draw(t_win *win, t_calculs *calculs);
 void				draw_compass(t_win *win);
+void    			draw_map_frame(t_win *win);
 void				calcul_compass(t_win *win);
 
 int					ed_add_tile(int	x, int y, t_win *win, int tile);
@@ -117,9 +139,11 @@ int					ed_is_in_map(int x, int y, t_win *win);
 void				ed_put_grid(t_win *win);
 int 				ed_put_map(t_win *win);
 int					ed_window_loop(t_win *win);
+int					mouse_motion(t_win *win, SDL_Event event);
 int					pevent(t_win *win, SDL_Event event);
 void				ed_keyboard_event(t_win *win);
 void				ed_mouse_event(t_win *win);
+char				*ed_get_ui(int x, int y, t_ui *ui, t_dot_2d window_pos);
 
 int					parser(int const fd, t_map *map, t_player *player);
 int					params(t_win *win, int ac, char **av);

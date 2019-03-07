@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 09:58:24 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/06 18:30:51 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/06 22:31:56 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,7 +23,12 @@ static void		init(t_win *win)
 	win->name = "map_editor";
 	win->width = 1200;
 	win->height = 800;
-	win->editor.dragging = 0;
+	win->editor.frame_color[0] = 0xAAAAAA;
+	win->editor.frame_color[1] = 0xAAAAAA;
+	win->editor.frame_color[2] = 0xAAAAAA;
+	win->editor.frame_color[3] = 0xAAAAAA;
+	win->editor.mouse_ui = NULL;
+	win->editor.dragging = NULL;
 }
 
 int				map_editor(int fd)
