@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   main.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/06 18:15:46 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/07 15:36:29 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,6 @@
 **	3	->	Mur invisible
 **	4	->	Mur traversable
 */
-
 
 static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 {
@@ -73,7 +72,8 @@ int		main(int ac, char **av)
 			map_editor(fd);
 	}
 	else
-		ft_putendl("usage: ./Wolf3D <map> <0/1>\n0 : Wolf3d\n1 : map_editor");
+		ft_putendl("usage: ./Wolf3D <map> 0 | 1 [-len <width> <height>]\
+					[-name <window's name>]\n0 : Wolf3d\n1 : map_editor");
 	quit(&win);
 	return (0);
 }
