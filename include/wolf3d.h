@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/07 15:26:30 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/07 15:34:46 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,6 @@
 # define BACK_R 100
 # define BACK_G 100
 # define BACK_B 100
-# define UI_WDRAG 
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -92,7 +91,7 @@ typedef struct 		s_ui
 	int				width;
 	int				height;
 	char			*name;
-	t_ui			*next;
+	struct s_ui		*next;
 }					t_ui;
 
 typedef struct		s_editor
