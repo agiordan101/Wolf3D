@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ed_events.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/01 19:31:15 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/06 17:58:35 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/07 15:58:06 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,13 +51,13 @@ void ed_keyboard_event(t_win *win)
 
 	state = SDL_GetKeyboardState(NULL);
 	if (state[SDL_SCANCODE_W])
-		win->pos.y -= 1;
+		win->editor.pos.y -= 1;
 	else if (state[SDL_SCANCODE_S])
-		win->pos.y += 1;
+		win->editor.pos.y += 1;
 	if (state[SDL_SCANCODE_A])
-		win->pos.x -= 1;
+		win->editor.pos.x -= 1;
 	else if (state[SDL_SCANCODE_D])
-		win->pos.x += 1;
+		win->editor.pos.x += 1;
 }
 
 void ed_mouse_event(t_win *win)

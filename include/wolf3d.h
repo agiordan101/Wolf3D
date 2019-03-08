@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   wolf3d.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/07 15:34:46 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/07 16:02:22 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -69,10 +69,10 @@ typedef struct 		s_minimap
 	int				static_map;
 }					t_minimap;
 
-typedef struct		s_texture
+typedef struct 		s_textures
 {
 	SDL_Surface		*mur;
-}					t_texture;
+}					t_textures;
 
 typedef struct		s_map
 {
@@ -96,6 +96,7 @@ typedef struct 		s_ui
 
 typedef struct		s_editor
 {
+	t_dot_2d		pos;
 	char			*dragging;
 	int				frame_color[4];
 	char			*mouse_ui;
@@ -107,19 +108,18 @@ typedef struct		s_win
 {
 	SDL_Window		*ptr;
 	SDL_Renderer	*rend;
-	TTF_Font		*police;
 	SDL_Surface		*texte;
+	TTF_Font		*police;
 	t_map			map;
-	t_texture		textures;
+	t_textures		textures;
 	t_player		player;
+	t_calculs		calculs;
+	t_editor		editor;
 	char			*name;
 	int				choice;
 	int				fd;
 	int				width;
 	int				height;
-	t_dot_2d		pos;
-	t_calculs		calculs;
-	t_editor		editor;
 }					t_win;
 
 

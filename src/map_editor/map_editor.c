@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   map_editor.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 09:58:24 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/06 22:31:56 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/07 15:57:14 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,8 +18,8 @@ static void		init(t_win *win)
 	win->map.unit = 50;
 	win->map.tile = 1;
 	win->map.tab = NULL;
-	win->pos.x = 0;
-	win->pos.y = 0;
+	win->editor.pos.x = 0;
+	win->editor.pos.y = 0;
 	win->name = "map_editor";
 	win->width = 1200;
 	win->height = 800;

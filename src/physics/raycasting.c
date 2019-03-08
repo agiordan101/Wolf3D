@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 19:27:03 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/06 03:25:03 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/08 15:32:48 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -45,22 +45,21 @@ static int		test_wall(t_map *map, t_calculs *calculs, t_dot_2d dot, t_vector_2d 
 		return (-1);
 	if (map->tab[i][j] == 1 || map->tab[i][j] == 4)
 	{
-		/*
-		*/
-		if (ft_dec(i))
+		if (ft_dec(dot.y)) //Marche normalement
 		{
 			if (vector.x > 0)
-				calculs->xray[calculs->i] = ft_dec(i);
+				calculs->xray[calculs->i] = ft_dec(dot.y);
 			else
-				calculs->xray[calculs->i] = 1 - ft_dec(i);
+				calculs->xray[calculs->i] = 1 - ft_dec(dot.y);
 		}
 		else
 		{
 			if (vector.y > 0)
-				calculs->xray[calculs->i] = 1 - ft_dec(j);
+				calculs->xray[calculs->i] = 1 - ft_dec(dot.x);
 			else
-				calculs->xray[calculs->i] = ft_dec(j);
+				calculs->xray[calculs->i] = ft_dec(dot.x);
 		}
+		//printf("Xray %i : %lf\n", calculs->i, calculs->xray[calculs->i]);
 		return (1);
 	}
 	return (0);
@@ -110,6 +109,7 @@ void			raycasting(t_win *win, t_map *map, t_player *player, t_calculs *calculs)
 	t_vector_2d	vector;
 	double		dangle;
 
+	//printf("Debut raycasting\n");
 	dangle = player->fov / win->width;
 	calculs->angle = player->fov / 2;
 	calculs->i = -1;
