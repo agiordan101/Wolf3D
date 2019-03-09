@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/03/05 16:01:53 by agiordan    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/03/09 16:08:39 by gmonacho    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -39,7 +39,10 @@ SRCS_FILES =	main.c \
 				$(SRCS_PATH_4)/ed_is_in_map.c \
 				$(SRCS_PATH_4)/ed_export.c \
 				$(SRCS_PATH_4)/ed_put_grid.c \
+				$(SRCS_PATH_4)/ed_draw.c \
+				$(SRCS_PATH_4)/ed_map_ui.c \
 				$(SRCS_PATH_4)/ed_events.c
+				#$(SRCS_PATH_4)/ui.c
 
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_FILES))
 
@@ -50,7 +53,7 @@ OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS_FILES))
 INCLUDES_PATH = include
 FW_PATH = ./frameworks
 CC = gcc
-CFLAGS += -Wall -Wextra -Werror -O3 -I./$(INCLUDES_PATH)\
+CFLAGS += -Wall -Wextra -Werror -g -fsanitize=address -O3 -I./$(INCLUDES_PATH)\
 			-I$(FW_PATH)/SDL2_image.framework/Headers/\
 			-I$(FW_PATH)/SDL2_ttf.framework/Headers/\
 			-I$(FW_PATH)/SDL2.framework/Headers/

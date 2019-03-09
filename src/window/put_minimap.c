@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/28 17:08:46 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/04 18:16:22 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/08 19:17:38 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,10 +51,10 @@ static void 	draw_tile(t_win *win, int i, int j)
 			if (y_unit < 0)
 				y_unit = 0;
 			SDL_SetRenderDrawColor(win->rend, 255, 255, 255, 255);
-			draw_rect(win, (t_dot_2d){
+			draw_rect(win, (t_rect){
 				x,
-				y},
-				x_unit, y_unit);
+				y,
+				x_unit, y_unit});
 		}
 	}
 }
@@ -62,21 +62,21 @@ static void 	draw_tile(t_win *win, int i, int j)
 static void		draw_player(t_win *win)
 {
 	SDL_SetRenderDrawColor(win->rend, 255, 0, 0, 255);
-	draw_rect(win, (t_dot_2d){
+	draw_rect(win, (t_rect){
 		win->map.minimap.x + win->map.minimap.width / 2 - win->map.minimap.x_unit / 4,
-		win->map.minimap.y + win->map.minimap.height / 2 - win->map.minimap.y_unit / 4},
+		win->map.minimap.y + win->map.minimap.height / 2 - win->map.minimap.y_unit / 4,
 		win->map.minimap.x_unit / 2,
-		win->map.minimap.y_unit / 2);
+		win->map.minimap.y_unit / 2});
 }
 
 static void		static_draw_player(t_win *win)
 {
 	SDL_SetRenderDrawColor(win->rend, 255, 0, 0, 255);
-	draw_rect(win, (t_dot_2d){
+	draw_rect(win, (t_rect){
 		win->map.minimap.x + win->player.pos.x * win->map.minimap.x_unit - win->map.minimap.x_unit / 4,
-		win->map.minimap.y + win->player.pos.y * win->map.minimap.y_unit - win->map.minimap.x_unit / 4},
+		win->map.minimap.y + win->player.pos.y * win->map.minimap.y_unit - win->map.minimap.x_unit / 4,
 		win->map.minimap.x_unit / 2,
-		win->map.minimap.y_unit / 2);
+		win->map.minimap.y_unit / 2});
 }
 
 static void 	static_draw_tile(t_win *win, int i, int j)
@@ -99,10 +99,10 @@ static void 	static_draw_tile(t_win *win, int i, int j)
 			if (y_unit < 0)
 				y_unit = 0;
 			SDL_SetRenderDrawColor(win->rend, 255, 255, 255, 255);
-			draw_rect(win, (t_dot_2d){
+			draw_rect(win, (t_rect){
 				x,
-				y},
-				x_unit, y_unit);
+				y,
+				x_unit, y_unit});
 		}
 	}
 }

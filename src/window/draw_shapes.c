@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   draw_shapes.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/01 17:49:51 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/02 06:44:54 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/08 19:15:38 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,14 +39,14 @@ void    draw_line(t_win *win, t_dot_2d p1, t_dot_2d p2, SDL_Renderer *image)
 	}
 }
 
-void	draw_rect(t_win *win, t_dot_2d pos, int width, int height)
+void	draw_rect(t_win *win, t_rect rect)
 {
 	int		posx;
 
-	posx = pos.x;
-	while (posx < pos.x + width)
+	posx = rect.x;
+	while (posx < rect.x + rect.width)
 	{
-		draw_line(win , (t_dot_2d){posx, pos.y}, (t_dot_2d){posx, pos.y + height}, win->rend);
+		draw_line(win , (t_dot_2d){posx, rect.y}, (t_dot_2d){posx,rect.y + rect.height}, win->rend);
 		posx++;
 	}
 }

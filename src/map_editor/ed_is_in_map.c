@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/26 18:31:43 by gal          #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 16:30:43 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/07 17:13:23 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,8 +18,8 @@ int		ed_is_in_map(int x, int y, t_win *win)
 	int 	i;
 	int		j;
 
-	i = ((int)(win->pos.y) + y) / win->map.unit;
-	j = ((int)(win->pos.x) + x) / win->map.unit;
+	i = ((int)(win->editor.pos.y) + y) / win->map.unit;
+	j = ((int)(win->editor.pos.x) + x) / win->map.unit;
 	if (i >= 0 && i < win->map.len_y &&
 		j >= 0 && j < win->map.len_x)
 		return (1);

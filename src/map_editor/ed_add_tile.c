@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/26 18:00:25 by gal          #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 16:30:26 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/07 17:12:56 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,8 +38,8 @@ int ed_add_tile(int	x, int y, t_win *win, int tile)
 	int		i;
 	int		j;
 
-	i = ((int)(win->pos.y + y)) / win->map.unit;
-	j = ((int)(win->pos.x + x)) / win->map.unit;
+	i = ((int)(win->editor.pos.y + y)) / win->map.unit;
+	j = ((int)(win->editor.pos.x + x)) / win->map.unit;
 	if (win->map.tab[i][j] != tile)
 	{
 		if (tile == 2)

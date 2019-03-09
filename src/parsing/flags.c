@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   flags.c                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/05 15:06:12 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/05 15:48:46 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/06 18:26:11 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -47,6 +47,5 @@ int		params(t_win *win, int ac, char **av)
 	win->fd = -1;
 	while (++i < ac)
 		flags(win, ac, av, &i);
-	printf("Fd = %i\nChoice = %i\n", win->fd, win->choice);
 	return (win->fd);
 }
