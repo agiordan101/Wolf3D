@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/09 17:58:10 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/09 18:14:04 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -77,10 +77,10 @@ typedef struct 		s_minimap
 	int				static_map;
 }					t_minimap;
 
-typedef struct		s_texture
+typedef struct 		s_textures
 {
 	SDL_Surface		*mur;
-}					t_texture;
+}					t_textures;
 
 typedef struct		s_map
 {
@@ -108,6 +108,7 @@ typedef struct 		s_ui
 
 typedef struct		s_editor
 {
+	t_dot_2d		pos;
 	char			*dragging;
 	t_ui			ui[NB_UI];
 	Uint32			ui_color[NB_UI];
@@ -123,18 +124,18 @@ typedef struct		s_win
 {
 	SDL_Window		*ptr;
 	SDL_Renderer	*rend;
-	TTF_Font		*police;
 	SDL_Surface		*texte;
+	TTF_Font		*police;
 	t_map			map;
-	t_texture		textures;
+	t_textures		textures;
 	t_player		player;
+	t_calculs		calculs;
+	t_editor		editor;
 	char			*name;
 	int				choice;
 	int				fd;
 	int				width;
 	int				height;
-	t_calculs		calculs;
-	t_editor		editor;
 	t_dot_2d		mouse;
 }					t_win;
 

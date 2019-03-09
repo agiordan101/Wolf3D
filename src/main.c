@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/08 15:18:08 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/09 18:15:09 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -44,7 +44,6 @@ static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 	player->const_vel = 0.05;
 	player->dir = PI / 2;
 	player->fov = PI / 2.5;
-	win->textures.mur = NULL;
 	return (0);
 } 
 
@@ -62,8 +61,10 @@ int		main(int ac, char **av)
 		{
 			if (init(&win, &(win.map), &(win.calculs), &(win.player)))
 				return (error(-2, "init"));
+			printf("Fin init\n");
 			if ((ret = parser(fd, &(win.map), &(win.player))) <= 0)
 				return(error(ret, "parser"));
+			printf("Fin parsing\n");
 			if (!open_window(&win))
 				return (0);
 			window_loop(&win);

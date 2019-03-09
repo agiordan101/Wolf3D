@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/28 18:53:05 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/04 16:46:14 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/07 15:31:50 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,7 +50,8 @@ void	calcul_compass(t_win *win)
 	draw_txt(win, ft_strdup("Nfvfvrgbv"), (SDL_Color){255, 255, 255, 255}, rect);
 }
 
-/*void	draw_compass(t_win *win)
+/*
+void	draw_compass(t_win *win)
 {
 	SDL_Point	*origin;
 	SDL_RendererFlip flip;
@@ -69,4 +70,5 @@ void	calcul_compass(t_win *win)
 	d2 = (t_dot_2d){.x = origin.x + cos(-PI / 2 - PI / 2 + win->player.dir) * len,\
 					.y = origin.y + sin(-PI / 2 - PI / 2 + win->player.dir) * len};
 	SDL_RenderCopyEx(win->compass, NULL, NULL, NULL, 0, (const SDL_Point *)origin, flip);
-}*/
+}
+*/
