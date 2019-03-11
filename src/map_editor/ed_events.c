@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/01 19:31:15 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/11 22:06:33 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/11 22:33:16 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -115,12 +115,12 @@ void ed_mouse_event(t_win *win)
 
 	if (SDL_GetMouseState(&x, &y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 	{
-		if (ed_is_in_map(x, y, win))
+		if (ed_is_in_map(x, y, win) && win->editor.drag < 0 && win->editor.mouse_ui < 0)
 			ed_add_tile(x, y, win, win->map.tile);
 	}
 	if (SDL_GetMouseState(&x, &y) & SDL_BUTTON(SDL_BUTTON_RIGHT))
 	{
-		if (ed_is_in_map(x, y, win))
+		if (ed_is_in_map(x, y, win) && win->editor.drag < 0 && win->editor.mouse_ui < 0)
 			ed_add_tile(x, y, win, 0);
 	}
 }
