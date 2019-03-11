@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ed_map_ui.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/08 20:41:13 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/11 19:19:46 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/11 19:42:00 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -70,9 +70,9 @@ void	ed_update_map_ui_color(Uint32 *map_ui_color, int flag)
 	{
 		pcolor = &map_ui_color[i];
 		if ((int)i == flag)
-			*pcolor = (*pcolor << 24) | (*pcolor << 16) | (*pcolor << 8) | COLOR_ON;
+			*pcolor = (*pcolor << 8) | COLOR_ON;
 		else
-			*pcolor = (*pcolor << 24) | (*pcolor << 16) | (*pcolor << 8) | COLOR_OFF;
+			*pcolor = (*pcolor << 8) | COLOR_OFF;
 		i++;
 	}
 }

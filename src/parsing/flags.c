@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   flags.c                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/05 15:06:12 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/09 18:16:38 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/11 18:27:50 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,6 +30,11 @@ static void	flags(t_win *win, int ac, char **av, int *i)
 			win->width = ft_atoi(av[++(*i)]);
 		if (*i + 1 < ac)
 			win->height = ft_atoi(av[++(*i)]);
+	}
+	else if (!ft_strcmp(av[*i], "-direction"))
+	{
+		if (*i + 1 < ac)
+			win->player.dir = ft_atoi(av[++(*i)]);
 	}
 	else if (ft_atoi(av[*i]) >= 0 && ft_atoi(av[*i]) <= 1)
 		win->choice = ft_atoi(av[(*i)]);
