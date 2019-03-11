@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/11 16:13:59 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/11 21:24:24 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/11 22:27:04 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,7 +49,7 @@ static int		**push_front(int **tab, int x_shift, t_len len)
 	size_t		j;
 	size_t		x_limit;
 
-	x_limit = (x_shift >= 0) ? x_shift : abs(x_shift) - 1;
+	x_limit = (x_shift >= 0) ? x_shift : 0;
 	if (!(new_tab = (int**)ft_memalloc(sizeof(int*) * len.y)))
 		return (NULL);
 	i = 0;
