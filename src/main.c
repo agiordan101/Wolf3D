@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/11 19:50:06 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/11 20:06:58 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -58,6 +58,8 @@ int		main(int ac, char **av)
 	int		fd;
 	int		ret;
 
+	Uint32	pixel = 0xAABBCCDD;
+	printf("r = %x\ng = %x\nb = %x\nalpha = %x\n", (pixel >> 24) & 0xFF, (pixel >> 16) & 0xFF, (pixel >> 8) & 0xFF, pixel & 0xFF);
 	if (ac > 1)
 	{
 		if ((fd = params(&win, ac, av)) == -1)

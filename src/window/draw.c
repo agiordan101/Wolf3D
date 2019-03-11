@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 16:24:13 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/11 19:43:45 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/11 20:12:03 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,7 +28,7 @@ static int	get_rgb_surface(SDL_Surface *surface, double x, double y, int elem)
 	else if (elem == 3)
 		return ((*pixel >> 8) & 0xFF);
 	return (*pixel & 0xFF);
-} //Completement faux, mais theoriquement vrai.
+}
 
 void		draw(t_win *win, t_calculs *calculs, t_textures *textures)
 {
@@ -64,9 +64,6 @@ void		draw(t_win *win, t_calculs *calculs, t_textures *textures)
 			//printf("d1x = %f\td1y = %f\n", d1.x, d1.y);
 			SDL_SetRenderDrawColor(win->rend, BACK_R, BACK_G, BACK_B, 255);
 			draw_line(win, dfloor2, d1, win->rend);
-						
-			//SDL_SetRenderDrawColor(win->rend, WALL_R, WALL_G, WALL_B, 50);
-			//draw_line(win, d1, d2, win->rend);
 
 			textures->current = textures->tab[calculs->orientation[j] - 1];
 			dySurface = textures->current->h / (2 * h);
