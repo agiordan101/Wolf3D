@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/01 19:31:15 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/11 19:01:33 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/11 22:06:33 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,9 +49,9 @@ int pevent(t_win *win, SDL_Event event)
 	else if (event.type == SDL_MOUSEWHEEL)
 	{
 		if (event.wheel.y > 0)
-			win->map.unit += 1;
+			ed_zoom(&(win->map), &(win->editor.pos), 1);
 		else if (event.wheel.y < 0)
-			win->map.unit = (win->map.unit > 1) ? win->map.unit - 1 : 1;
+			ed_zoom(&(win->map), &(win->editor.pos), -1);
 	}
 	if (event.type == SDL_MOUSEBUTTONDOWN)
 	{

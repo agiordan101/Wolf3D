@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/26 18:00:19 by gal          #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/09 22:17:23 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/11 21:44:55 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@ static void refresh_window(t_win *win)
 	//if (win->editor.mouse_ui >= 0)
 	ed_update_map_ui_color(win->editor.map_ui_color, win->editor.mouse_ui);
 	ed_draw_map_ui(win, win->editor.map_ui_color, win->editor.map_ui);
-	//ed_draw_ui(win, win->editor.ui_color, win->editor.ui);
+	ed_draw_ui(win, win->editor.ui_color, win->editor.ui);
 	SDL_RenderPresent(win->rend);
 }
 

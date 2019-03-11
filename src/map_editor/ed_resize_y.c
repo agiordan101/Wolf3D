@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/11 18:28:27 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/11 19:21:31 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/11 21:24:44 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -96,6 +96,6 @@ int				**ed_resize_y(int **tab, int y_shift, t_len len, int drag_flag)
 
 void		ed_scroll_resize_y(t_dot_2d *pos, int unit, int y_shift, int drag_flag)
 {
-	if (drag_flag == ED_BDRAG)
-		pos->y += y_shift * unit;
+	if (drag_flag == ED_TDRAG)
+		pos->y -= y_shift * unit;
 }

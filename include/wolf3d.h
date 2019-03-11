@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   wolf3d.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/11 19:38:31 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/11 22:06:24 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -163,6 +163,7 @@ int					mouse_motion(t_win *win, SDL_Event event);
 int					pevent(t_win *win, SDL_Event event);
 void				ed_keyboard_event(t_win *win);
 void				ed_mouse_event(t_win *win);
+void				ed_zoom(t_map *map, t_dot_2d *pos, int zoom);
 
 int					ed_init_ui(t_win *win);
 t_ui				*ed_add_ui(t_editor *editor, t_ui new_ui);
