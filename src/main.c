@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   main.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/09 18:15:09 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/11 19:50:06 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,6 +36,11 @@ static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 		return (1);
 	if (!(calculs->xray = (double *)malloc(sizeof(double) * win->width)))
 		return (1);
+	if (!(calculs->orientation = (int *)malloc(sizeof(int) * win->width)))
+		return (1);
+	if (!(win->textures.tab = (SDL_Surface **)malloc(sizeof(SDL_Surface *) * 5)))
+		return (1);
+	win->textures.tab[4] = NULL;
 	player->pos.x = 0;
 	player->pos.y = 0;
 	player->box.x = 0.2;
@@ -67,6 +72,7 @@ int		main(int ac, char **av)
 			printf("Fin parsing\n");
 			if (!open_window(&win))
 				return (0);
+			//SDL_SetRenderDrawBlendMode(win.rend, SDL_BLENDMODE_BLEND);
 			window_loop(&win);
 		}
 		else if (win.choice == 1) 

@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   wolf3d.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/11 19:16:11 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/11 19:38:31 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,7 +28,7 @@
 # define NB_UI 0
 # define NB_MAP_UI 4
 # define COLOR_OFF 0x00000088
-# define COLOR_ON 0x000000AA 
+# define COLOR_ON 0x000000AA
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -64,6 +64,7 @@ typedef struct		s_calculs
 	double			b;
 	double			*dist;
 	double			*xray;
+	int				*orientation;
 	int				i;
 }					t_calculs;
 
@@ -80,7 +81,8 @@ typedef struct 		s_minimap
 
 typedef struct 		s_textures
 {
-	SDL_Surface		*mur;
+	SDL_Surface		*current;
+	SDL_Surface		**tab;
 }					t_textures;
 
 typedef struct		s_map
@@ -144,7 +146,7 @@ void				draw_rect(t_win *win, t_rect rect);
 void				draw_empty_rect(t_win *win, t_dot_2d pos, int width, int height);
 void				draw_line(t_win *win, t_dot_2d p1, t_dot_2d p2, SDL_Renderer *image);
 void				draw_txt(t_win *win, char *txt, SDL_Color color, SDL_Rect rect);
-void				draw(t_win *win, t_calculs *calculs);
+void				draw(t_win *win, t_calculs *calculs, t_textures *textures);
 void				draw_compass(t_win *win);
 void				calcul_compass(t_win *win);
 

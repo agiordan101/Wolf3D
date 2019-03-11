@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 16:24:13 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/08 16:18:33 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/11 19:43:45 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,7 +30,7 @@ static int	get_rgb_surface(SDL_Surface *surface, double x, double y, int elem)
 	return (*pixel & 0xFF);
 } //Completement faux, mais theoriquement vrai.
 
-void		draw(t_win *win, t_calculs *calculs)
+void		draw(t_win *win, t_calculs *calculs, t_textures *textures)
 {
 	t_dot_2d	dfloor1;
 	t_dot_2d	dfloor2;
@@ -62,22 +62,23 @@ void		draw(t_win *win, t_calculs *calculs)
 			d1 = (t_dot_2d){.x = j, .y = win->height / 2 - h};
 			d2 = (t_dot_2d){.x = j, .y = win->height / 2 + h};
 			//printf("d1x = %f\td1y = %f\n", d1.x, d1.y);
-			SDL_SetRenderDrawColor(win->rend, BACK_R, BACK_G, BACK_B, 50);
+			SDL_SetRenderDrawColor(win->rend, BACK_R, BACK_G, BACK_B, 255);
 			draw_line(win, dfloor2, d1, win->rend);
 						
 			//SDL_SetRenderDrawColor(win->rend, WALL_R, WALL_G, WALL_B, 50);
 			//draw_line(win, d1, d2, win->rend);
 
-			dySurface = win->textures.mur->h / (2 * h);
+			textures->current = textures->tab[calculs->orientation[j] - 1];
+			dySurface = textures->current->h / (2 * h);
 			ySurface = 0;
-			xSurface = win->calculs.xray[j] * win->textures.mur->w;
+			xSurface = win->calculs.xray[j] * textures->current->w;
 			i = (int)(-h);
 			while (++i < (int)h)
 			{
-				SDL_SetRenderDrawColor(win->rend, get_rgb_surface(win->textures.mur, xSurface, ySurface, 1),\
-												get_rgb_surface(win->textures.mur, xSurface, ySurface, 2),\
-												get_rgb_surface(win->textures.mur, xSurface, ySurface, 3),\
-												get_rgb_surface(win->textures.mur, xSurface, ySurface, 4));
+				SDL_SetRenderDrawColor(win->rend, get_rgb_surface(textures->current, xSurface, ySurface, 1),\
+												get_rgb_surface(textures->current, xSurface, ySurface, 2),\
+												get_rgb_surface(textures->current, xSurface, ySurface, 3),\
+												get_rgb_surface(textures->current, xSurface, ySurface, 4));
 				SDL_RenderDrawPoint(win->rend, j, win->height / 2 + i);
 				ySurface += dySurface;
 			}

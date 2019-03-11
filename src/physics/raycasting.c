@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 19:27:03 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/08 15:32:48 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/11 19:07:28 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -48,16 +48,28 @@ static int		test_wall(t_map *map, t_calculs *calculs, t_dot_2d dot, t_vector_2d 
 		if (ft_dec(dot.y)) //Marche normalement
 		{
 			if (vector.x > 0)
+			{
+				calculs->orientation[calculs->i] = 1;
 				calculs->xray[calculs->i] = ft_dec(dot.y);
+			}
 			else
+			{
+				calculs->orientation[calculs->i] = 3;
 				calculs->xray[calculs->i] = 1 - ft_dec(dot.y);
+			}
 		}
 		else
 		{
 			if (vector.y > 0)
+			{
+				calculs->orientation[calculs->i] = 2;
 				calculs->xray[calculs->i] = 1 - ft_dec(dot.x);
+			}
 			else
+			{
+				calculs->orientation[calculs->i] = 4;
 				calculs->xray[calculs->i] = ft_dec(dot.x);
+			}
 		}
 		//printf("Xray %i : %lf\n", calculs->i, calculs->xray[calculs->i]);
 		return (1);
