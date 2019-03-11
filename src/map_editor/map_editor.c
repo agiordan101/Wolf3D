@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 09:58:24 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/09 19:18:03 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/11 18:55:57 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,7 +26,7 @@ static int		init(t_win *win)
 	win->width = 1200;
 	win->height = 800;
 	win->editor.mouse_ui = -1;
-	win->editor.drag = 0;
+	win->editor.drag = -1;
 	win->mouse.x = 0;
 	win->mouse.y = 0;
 	return (1);

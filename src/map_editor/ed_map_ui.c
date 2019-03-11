@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/08 20:41:13 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/11 17:27:22 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/11 19:19:46 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -45,11 +45,17 @@ t_ui	ed_new_map_ui(t_rect rect, int flag)
 int		ed_update_map_ui(t_win *win, t_editor *editor, t_dot_2d shift)
 {
 	win->map.tab = ed_resize_x(win->map.tab, shift.x, (t_len){win->map.len_x, win->map.len_y}, editor->drag);
+	ed_scroll_resize_x(&(editor->pos), win->map.unit, shift.x, editor->drag);
+	win->map.tab = ed_resize_y(win->map.tab, shift.y, (t_len){win->map.len_x, win->map.len_y}, editor->drag);
+	ed_scroll_resize_y(&(editor->pos), win->map.unit, shift.y, editor->drag);
 	if (editor->drag == ED_RDRAG)
 		win->map.len_x += shift.x;
 	else if (editor->drag == ED_LDRAG)
 		win->map.len_x -= shift.x;
-	win->map.len_y += shift.y;
+	if (editor->drag == ED_BDRAG)
+		win->map.len_y += shift.y;
+	else if (editor->drag == ED_TDRAG)
+		win->map.len_y -= shift.y;
 	ed_init_map_ui(*win, editor->map_ui, editor->map_ui_color);
 	return (1);
 }

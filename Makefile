@@ -6,7 +6,7 @@
 #    By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/03/11 16:35:37 by gmonacho    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/03/11 18:34:04 by gmonacho    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -42,7 +42,8 @@ SRCS_FILES =	main.c \
 				$(SRCS_PATH_4)/ed_draw.c \
 				$(SRCS_PATH_4)/ed_map_ui.c \
 				$(SRCS_PATH_4)/ed_drag.c \
-				$(SRCS_PATH_4)/ed_resize.c \
+				$(SRCS_PATH_4)/ed_resize_x.c \
+				$(SRCS_PATH_4)/ed_resize_y.c \
 				$(SRCS_PATH_4)/ed_events.c
 				#$(SRCS_PATH_4)/ui.c
 

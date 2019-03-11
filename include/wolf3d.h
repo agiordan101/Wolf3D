@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/11 16:10:23 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/11 19:16:11 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,7 +39,7 @@
 # include "../frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h"
 # include "../libft/libft.h"
 # include "../libmath/include/libmath.h"
-# include "2d_struct.h"
+#include "2d_struct.h"
 
 /*
 **	dir: Direction de la camera en radian
@@ -175,7 +175,11 @@ t_ui				ed_new_map_ui(t_rect rect, int flag);
 int					ed_get_map_ui(t_dot_2d mpos, t_win *win, t_ui *map_ui);
 void    			ed_draw_map_ui(t_win *win, Uint32 *map_ui_color, t_ui *map_ui);
 int					ed_drag_x_shift(int x, int end, int unit);
+int					ed_drag_y_shift(int y, int end, int unit);
 int					**ed_resize_x(int **tab, int x_shift, t_len len, int drag_flag);
+void				ed_scroll_resize_x(t_dot_2d *pos, int unit, int x_shift, int drag_flag);
+int					**ed_resize_y(int **tab, int y_shift, t_len len, int drag_flag);
+void				ed_scroll_resize_y(t_dot_2d *pos, int unit, int y_shift, int drag_flag);
 
 int					parser(int const fd, t_map *map, t_player *player);
 int					params(t_win *win, int ac, char **av);

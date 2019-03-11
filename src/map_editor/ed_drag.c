@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/09 18:49:37 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/11 17:25:14 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/11 19:03:19 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,23 +27,16 @@ int		ed_drag_x_shift(int x, int end, int unit)
 	return (x_shift);
 }
 
-t_dot_2d	ed_drag_y_shift(int x, int y, int end, int unit)
+int		ed_drag_y_shift(int y, int end, int unit)
 {
-	static int  first_x;
-	static int	first_y;
-	t_dot_2d	shift;
+	static int  first_y = 0;
+	int			y_shift;
 
-	shift.x = 0;
-	shift.y = 0;
+	y_shift = 0;
 	if (!end)
-	{
-		first_x = x;
+
 		first_y = y;
-	}
 	else
-	{
-		shift.x = (x - first_x) / unit;
-		shift.y = (y - first_y) / unit;
-	}
-	return (shift);
+		y_shift = (y - first_y) / unit;
+	return (y_shift);
 }

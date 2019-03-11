@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ed_resize.c                                      .::    .:/ .      .::   */
+/*   ed_resize_x.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/11 16:13:59 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/11 17:52:22 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/11 19:20:39 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -71,7 +71,6 @@ static int		**push_front(int **tab, int x_shift, t_len len)
 	return (new_tab);
 }
 
-
 int				**ed_resize_x(int **tab, int x_shift, t_len len, int drag_flag)
 {
 	int     **new_tab;
@@ -93,4 +92,10 @@ int				**ed_resize_x(int **tab, int x_shift, t_len len, int drag_flag)
 	}
 	else
 		return (tab);
+}
+
+void		ed_scroll_resize_x(t_dot_2d *pos, int unit, int x_shift, int drag_flag)
+{
+	if (drag_flag == ED_LDRAG)
+		pos->x -= x_shift * unit;
 }

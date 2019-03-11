@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/01 19:31:15 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/11 16:39:28 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/11 19:01:33 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -55,12 +55,20 @@ int pevent(t_win *win, SDL_Event event)
 	}
 	if (event.type == SDL_MOUSEBUTTONDOWN)
 	{
-		if (event.button.button == SDL_BUTTON_LEFT 
-		&& (win->editor.mouse_ui == ED_RDRAG 
-		|| win->editor.mouse_ui == ED_LDRAG) 
-		&& !win->editor.drag)
+		if (event.button.button == SDL_BUTTON_LEFT
+		&& (win->editor.mouse_ui == ED_RDRAG
+		|| win->editor.mouse_ui == ED_LDRAG)
+		&& win->editor.drag < 0)
 		{
 			ed_drag_x_shift(event.button.x, 0, win->map.unit);
+			win->editor.drag = win->editor.mouse_ui;
+		}
+		else if (event.button.button == SDL_BUTTON_LEFT
+		&& (win->editor.mouse_ui == ED_TDRAG
+		|| win->editor.mouse_ui == ED_BDRAG)
+		&& win->editor.drag < 0)
+		{
+			ed_drag_y_shift(event.button.y, 0, win->map.unit);
 			win->editor.drag = win->editor.mouse_ui;
 		}
 	}
@@ -70,8 +78,10 @@ int pevent(t_win *win, SDL_Event event)
 		{
 			if (win->editor.drag == ED_RDRAG || win->editor.drag == ED_LDRAG)
 				x_shift = ed_drag_x_shift(event.button.x, 1, win->map.unit);
+			else if (win->editor.drag == ED_TDRAG || win->editor.drag == ED_BDRAG)
+				y_shift = ed_drag_y_shift(event.button.y, 1, win->map.unit);
 			ed_update_map_ui(win, &(win->editor), (t_dot_2d){x_shift, y_shift});
-			win->editor.drag = 0;
+			win->editor.drag = -1;
 		}
 	}
 	if (event.type == SDL_MOUSEMOTION)
