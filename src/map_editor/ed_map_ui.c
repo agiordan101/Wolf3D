@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/08 20:41:13 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/09 18:01:36 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/11 17:27:22 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,19 +42,17 @@ t_ui	ed_new_map_ui(t_rect rect, int flag)
 	return (new_map_ui);
 }
 
-/*int		ed_update_map_ui(t_ui *ui, t_vector_2d velocity)
+int		ed_update_map_ui(t_win *win, t_editor *editor, t_dot_2d shift)
 {
-	size_t		i;
-
-	i = 0;
-	while (i < NB_UI)
-{	
-		ui[i].rect.x -= velocity.x;
-		ui[i].rect.y -= velocity.y;
-		i++;
-	}
+	win->map.tab = ed_resize_x(win->map.tab, shift.x, (t_len){win->map.len_x, win->map.len_y}, editor->drag);
+	if (editor->drag == ED_RDRAG)
+		win->map.len_x += shift.x;
+	else if (editor->drag == ED_LDRAG)
+		win->map.len_x -= shift.x;
+	win->map.len_y += shift.y;
+	ed_init_map_ui(*win, editor->map_ui, editor->map_ui_color);
 	return (1);
-}*/
+}
 
 void	ed_update_map_ui_color(Uint32 *map_ui_color, int flag)
 {

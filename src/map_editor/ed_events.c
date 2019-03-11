@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/01 19:31:15 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/09 18:15:41 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/11 16:39:28 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,6 +28,11 @@ int	mouse_motion(t_win *win, SDL_Event event)
 
 int pevent(t_win *win, SDL_Event event)
 {
+	int		x_shift;
+	int		y_shift;
+
+	x_shift = 0;
+	y_shift = 0;
 	if (event.type == SDL_QUIT)
 		return (0);
 	else if (event.type == SDL_KEYDOWN)
@@ -47,6 +52,27 @@ int pevent(t_win *win, SDL_Event event)
 			win->map.unit += 1;
 		else if (event.wheel.y < 0)
 			win->map.unit = (win->map.unit > 1) ? win->map.unit - 1 : 1;
+	}
+	if (event.type == SDL_MOUSEBUTTONDOWN)
+	{
+		if (event.button.button == SDL_BUTTON_LEFT 
+		&& (win->editor.mouse_ui == ED_RDRAG 
+		|| win->editor.mouse_ui == ED_LDRAG) 
+		&& !win->editor.drag)
+		{
+			ed_drag_x_shift(event.button.x, 0, win->map.unit);
+			win->editor.drag = win->editor.mouse_ui;
+		}
+	}
+	else if (event.type == SDL_MOUSEBUTTONUP)
+	{
+		if (win->editor.drag >= 0)
+		{
+			if (win->editor.drag == ED_RDRAG || win->editor.drag == ED_LDRAG)
+				x_shift = ed_drag_x_shift(event.button.x, 1, win->map.unit);
+			ed_update_map_ui(win, &(win->editor), (t_dot_2d){x_shift, y_shift});
+			win->editor.drag = 0;
+		}
 	}
 	if (event.type == SDL_MOUSEMOTION)
 		mouse_motion(win, event);
