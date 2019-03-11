@@ -6,12 +6,14 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/28 17:08:46 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/08 19:17:38 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/11 18:20:43 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+// changement
 
 static void 	draw_tile(t_win *win, int i, int j)
 {
