@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/11 20:06:58 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/12 21:45:14 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,6 +21,7 @@
 **	2	->	Position initiale du personnage
 **	3	->	Mur invisible
 **	4	->	Mur traversable
+**	5	->	Miroir
 */
 
 static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
@@ -58,8 +59,6 @@ int		main(int ac, char **av)
 	int		fd;
 	int		ret;
 
-	Uint32	pixel = 0xAABBCCDD;
-	printf("r = %x\ng = %x\nb = %x\nalpha = %x\n", (pixel >> 24) & 0xFF, (pixel >> 16) & 0xFF, (pixel >> 8) & 0xFF, pixel & 0xFF);
 	if (ac > 1)
 	{
 		if ((fd = params(&win, ac, av)) == -1)
@@ -68,10 +67,10 @@ int		main(int ac, char **av)
 		{
 			if (init(&win, &(win.map), &(win.calculs), &(win.player)))
 				return (error(-2, "init"));
-			printf("Fin init\n");
+			//printf("Fin init\n");
 			if ((ret = parser(fd, &(win.map), &(win.player))) <= 0)
 				return(error(ret, "parser"));
-			printf("Fin parsing\n");
+			//printf("Fin parsing\n");
 			if (!open_window(&win))
 				return (0);
 			//SDL_SetRenderDrawBlendMode(win.rend, SDL_BLENDMODE_BLEND);

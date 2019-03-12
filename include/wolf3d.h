@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   wolf3d.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/11 22:06:24 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/12 21:42:16 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,6 +15,7 @@
 # define WOLF3D_H
 
 # define VEL 0.05
+# define HEIGHT_WALL 500
 # define WALL_R 0x50
 # define WALL_G 0xAA
 # define WALL_B 0x50
@@ -83,6 +84,7 @@ typedef struct 		s_textures
 {
 	SDL_Surface		*current;
 	SDL_Surface		**tab;
+	SDL_Surface		*sky;
 }					t_textures;
 
 typedef struct		s_map

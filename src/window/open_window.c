@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   open_window.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/14 18:59:51 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/11 21:14:29 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/12 19:56:24 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,9 +23,10 @@ int		open_window(t_win *win)
 		return (0);
 	}
 	if (!(win->textures.tab[0] = SDL_LoadBMP("./ressource/monop.bmp")) ||\
-		!(win->textures.tab[1] = SDL_LoadBMP("./ressource/red.bmp")) ||\
+		!(win->textures.tab[1] = SDL_LoadBMP("./ressource/superman.bmp")) ||\
 		!(win->textures.tab[2] = SDL_LoadBMP("./ressource/simple_wall.bmp")) ||\
-		!(win->textures.tab[3] = SDL_LoadBMP("./ressource/decorate_wall.bmp")))
+		!(win->textures.tab[3] = SDL_LoadBMP("./ressource/decorate_wall.bmp")) ||\
+		!(win->textures.sky = SDL_LoadBMP("./ressource/skyrender0001.bmp")))
 	{
 		ft_putstr(ft_strjoin("Open texture error : ", SDL_GetError()));
 		return (0);
