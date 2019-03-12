@@ -6,25 +6,25 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 11:24:44 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/12 16:50:49 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/12 22:23:17 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static void draw_tile(t_win *win, int i, int j)
+static void draw_tile(t_win *win, SDL_Texture **texture, int i, int j)
 {
+
+	SDL_Rect rect;
+
 	if (win->map.tab[i][j] != 0)
 	{
-		if (win->map.tab[i][j] == 1)
-			SDL_SetRenderDrawColor(win->rend, 255, 255, 255, 255);
-		else if (win->map.tab[i][j] == 2)
-			SDL_SetRenderDrawColor(win->rend, 255, 0, 0, 255);
-		draw_rect(win, (t_rect){
+		rect = (SDL_Rect){
 			  j * win->map.unit - (int)(win->editor.pos.x),
 			  i * win->map.unit - (int)(win->editor.pos.y),
-			  win->map.unit, win->map.unit});
+			  win->map.unit, win->map.unit};
+		SDL_RenderCopy(win->rend, texture[win->map.tab[i][j] - 1], NULL, &rect);
 	}
 }
 
@@ -48,7 +48,7 @@ int ed_put_map(t_win *win)
 			j = 0;
 		while (j < jmax && j < win->map.len_x)
 		{
-			draw_tile(win, i, j);
+			draw_tile(win, win->textures.ttab, i, j);
 			j++;
 		}
 		i++;

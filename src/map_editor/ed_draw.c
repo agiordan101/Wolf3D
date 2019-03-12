@@ -6,29 +6,31 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/06 19:40:58 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/09 17:53:06 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/12 22:05:08 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void    ed_draw_ui(t_win *win, Uint32 *ui_color, t_ui *ui)
+void    ed_draw_ui(t_win *win, Uint32 *ui_color, t_ui *ui, SDL_Texture **texture)
 {
-	int		color;
-	int		unit;
-	t_rect  rect;
-	size_t	i;
+	int			color;
+	SDL_Rect 	rect;
+	size_t		i;
 
 	i = 0;
-	while (i < NB_UI)
+	if (texture)
 	{
-		color = ui_color[i];
-		rect = ui[i].rect;
-		unit = win->map.unit;
-		SDL_SetRenderDrawColor(win->rend, color >> 24, color >> 16, color >> 8, color);
-		draw_rect(win, rect);
+	while (i < NB_UI && i < 4)
+	{
+		color = ui_color[i + 1];
+		rect = (SDL_Rect){ui[i + 1].rect.x, ui[i + 1].rect.y, ui[i + 1].rect.width, ui[i + 1].rect.height};
+		SDL_RenderCopy(win->rend, texture[i], NULL, &rect);
+		//SDL_SetRenderDrawColor(win->rend, color >> 24, color >> 16, color >> 8, color);
+		draw_rect(win, ui[i].rect);
 		i++;
+	}
 	}
 }
 

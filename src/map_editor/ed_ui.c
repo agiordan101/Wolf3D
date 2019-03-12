@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ui.c                                             .::    .:/ .      .::   */
+/*   ed_ui.c                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/06 21:57:42 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/08 20:20:02 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/12 16:45:56 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,15 +15,27 @@
 
 int		ed_init_ui(t_win *win)
 {
-	int 	unit;
+	size_t	i;
 	int		w;
 	int		h;
+	t_ui	*ui;
+	Uint32	*ui_color;
+	t_rect	tiles_rect;
 
-	unit = win->map.unit;
 	w = win->width;
 	h = win->height;
-	win->editor.ui[ED_TDRAG] = ed_new_ui((t_rect){w - w / 10, h / 20, win->width / 15, win->height / 100}, ED_TDRAG);
-	win->editor.ui_color[ED_TDRAG] = 0x88888800 + COLOR_OFF;
+	ui = win->editor.ui;
+	ui_color = win->editor.ui_color;
+	ui[ED_TILES - 10] = ed_new_ui((t_rect){w / 20, h / 30, w - 2 * (w / 20), h / 15}, ED_TILES);
+	ui_color[ED_TILES - 10] = 0x88888800 + COLOR_OFF;
+	tiles_rect = ui[ED_TILES - 10].rect;
+	i = 0;
+	while (i < 8)
+	{
+		ui[ED_TILE1 - 10 + i] = ed_new_ui((t_rect){tiles_rect.x + tiles_rect.height * i, tiles_rect.y, tiles_rect.height, tiles_rect.height}, ED_TILE1 + i);
+		ui_color[ED_TILE1 - 10 + i] = 0x88888800 + COLOR_OFF;
+		i++;
+	}
 	return (1);
 }
 
@@ -36,17 +48,10 @@ t_ui	ed_new_ui(t_rect rect, int flag)
 	return (new_ui);
 }
 
-int		ed_update_ui(t_ui *ui, t_vector_2d velocity)
+int		ed_update_ui(t_ui *ui)
 {
-	size_t		i;
-
-	i = 0;
-	while (i < NB_UI)
-{	
-		ui[i].rect.x -= velocity.x;
-		ui[i].rect.y -= velocity.y;
-		i++;
-	}
+	if (ui)
+		return (1);
 	return (1);
 }
 
@@ -56,36 +61,36 @@ void	ed_update_ui_color(Uint32 *ui_color, int flag)
 	Uint32	*pcolor;
 
 	i = 0;
+	//printf("flag = %d\n", flag);
 	while (i < NB_UI)
 	{
 		pcolor = &ui_color[i];
-		if ((int)i == flag)
-			*pcolor = (*pcolor << 24) | (*pcolor << 16) | (*pcolor << 8) | COLOR_ON;
-		else
-			*pcolor = (*pcolor << 24) | (*pcolor << 16) | (*pcolor << 8) | COLOR_OFF;
+		if (i != 0)
+		{
+			if ((int)i == flag - 10)
+				*pcolor = (*pcolor << 8) | COLOR_ON;
+			else
+				*pcolor = (*pcolor << 8) | COLOR_OFF;
+		}
 		i++;
 	}
 }
 
-int		ed_get_ui(t_dot_2d mpos, t_ui *ui)
+int		ed_get_ui(t_dot_2d mpos, t_ui *ui, int	mouse_ui)
 {
-	size_t	i;
+	int		i;
 
-	i = 0;
-	while (i < NB_UI)
+	i = NB_UI - 1;
+	while (i >= 0)
 	{
 		if (mpos.x >= ui[i].rect.x
 				&& mpos.x <= ui[i].rect.x + ui[i].rect.width
 				&& mpos.y >= ui[i].rect.y 
 				&& mpos.y <= ui[i].rect.y + ui[i].rect.height)
-		{
-			printf("LOL\n");
 			return (ui[i].flag);
-		}
-		i++;
+		i--;
 	}
-	printf("NON\n");
-	return (-1);
+	return (mouse_ui);
 }
 
 /*
