@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 19:27:03 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/11 19:07:28 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/12 21:48:18 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -71,7 +71,6 @@ static int		test_wall(t_map *map, t_calculs *calculs, t_dot_2d dot, t_vector_2d 
 				calculs->xray[calculs->i] = ft_dec(dot.x);
 			}
 		}
-		//printf("Xray %i : %lf\n", calculs->i, calculs->xray[calculs->i]);
 		return (1);
 	}
 	return (0);
@@ -85,10 +84,9 @@ double	calcul_dist(t_map *map, t_player *player, t_calculs *calculs, t_vector_2d
 	t_dot_2d	d2;
 	int			ret;
 
-	//printf("Vector x = %lf\tVector y = %lf\n", vector.x, vector.y);
 	next = player->pos;
 	nextIndex =	(t_dot_2d){.x = 0, .y = 0};
-	calculs->a = vector.y /  vector.x; //Division 0
+	calculs->a = vector.y / vector.x; //Division 0
 	calculs->b = vector.origin.y - calculs->a * vector.origin.x;
 	while ((ret = test_wall(map, calculs, next, vector)) == 0)
 	{
