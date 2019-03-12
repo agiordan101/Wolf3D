@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 11:24:44 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/09 18:16:14 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/12 16:50:49 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,8 +39,8 @@ int ed_put_map(t_win *win)
 	if (i < 0)
 		i = 0;
 	j = win->editor.pos.x / win->map.unit;
-	imax = i + 1 + win->height / win->map.unit;
-	jmax = j + win->width / win->map.unit;
+	imax = i + 2 + win->height / win->map.unit;
+	jmax = j + 2 + win->width / win->map.unit;
 	while (i < imax && i < win->map.len_y)
 	{
 		j = win->editor.pos.x / win->map.unit;
