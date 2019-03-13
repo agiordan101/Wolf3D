@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   main.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/12 21:45:14 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/13 15:43:41 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -53,6 +53,20 @@ static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 	return (0);
 } 
 
+static int	init_texture(t_win win, SDL_Surface **tab, SDL_Texture **ttab)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < NB_TILES && i < 4)
+	{
+		if (!(ttab[i] = create_t_from_s(tab[i], win.rend)))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int		main(int ac, char **av)
 {
 	t_win	win;
@@ -73,6 +87,8 @@ int		main(int ac, char **av)
 			//printf("Fin parsing\n");
 			if (!open_window(&win))
 				return (0);
+			if (!(ret = init_texture(win, win.textures.tab, win.textures.ttab)))
+				return (error(ret, "map_editor : init_texture"));
 			//SDL_SetRenderDrawBlendMode(win.rend, SDL_BLENDMODE_BLEND);
 			window_loop(&win);
 		}
