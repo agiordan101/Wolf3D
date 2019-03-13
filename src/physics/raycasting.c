@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 19:27:03 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/12 21:48:18 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/13 16:33:15 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,7 +28,7 @@
 													+ inter2.x);
 }*/
 
-static int		test_wall(t_map *map, t_calculs *calculs, t_dot_2d dot, t_vector_2d vector)
+static int		textures_set_1(t_map *map, t_calculs *calculs, t_dot_2d dot, t_vector_2d vector)
 {
 	int	i;
 	int	j;
@@ -39,13 +39,11 @@ static int		test_wall(t_map *map, t_calculs *calculs, t_dot_2d dot, t_vector_2d 
 		j -= vector.x >= 0 ? 0 : 1;
 	if (!ft_dec(dot.y)) //Else if
 		i -= vector.y >= 0 ? 0 : 1;
-	//printf("x = %lf\ty = %lf\n", dot.x, dot.y);
-	//printf("i = %i\tj = %i\n", i, j);
 	if (i < 0 || i >= map->len_y || j < 0 || j >= map->len_x)
 		return (-1);
-	if (map->tab[i][j] == 1 || map->tab[i][j] == 4)
+	if (map->tab[i][j] != 0 && map->tab[i][j] != 9)
 	{
-		if (ft_dec(dot.y)) //Marche normalement
+		if (ft_dec(dot.y))
 		{
 			if (vector.x > 0)
 			{
@@ -76,7 +74,50 @@ static int		test_wall(t_map *map, t_calculs *calculs, t_dot_2d dot, t_vector_2d 
 	return (0);
 }
 
-double	calcul_dist(t_map *map, t_player *player, t_calculs *calculs, t_vector_2d vector)
+static int		textures_set_2(t_map *map, t_calculs *calculs, t_dot_2d dot, t_vector_2d vector)
+{
+	int	i;
+	int	j;
+
+	j = ft_dtoi_low(dot.x);
+	i = ft_dtoi_low(dot.y);
+	if (!ft_dec(dot.x))
+		j -= vector.x >= 0 ? 0 : 1;
+	if (!ft_dec(dot.y)) //Else if
+		i -= vector.y >= 0 ? 0 : 1;
+	if (i < 0 || i >= map->len_y || j < 0 || j >= map->len_x)
+		return (-1);
+	if (map->tab[i][j] != 0 && map->tab[i][j] != 9)
+	{
+		calculs->orientation[calculs->i] = map->tab[i][j];
+		if (ft_dec(dot.y))
+		{
+			if (vector.x > 0)
+				calculs->xray[calculs->i] = ft_dec(dot.y);
+			else
+				calculs->xray[calculs->i] = 1 - ft_dec(dot.y);
+		}
+		else
+		{
+			if (vector.y > 0)
+				calculs->xray[calculs->i] = 1 - ft_dec(dot.x);
+			else
+				calculs->xray[calculs->i] = ft_dec(dot.x);
+		}
+		return (1);
+	}
+	return (0);
+}
+
+static int		test_wall(t_win *win, t_calculs *calculs, t_dot_2d dot, t_vector_2d vector)
+{
+	if (win->textures_set == 1)
+		return (textures_set_1(&(win->map), calculs, dot, vector));
+	else
+		return (textures_set_2(&(win->map), calculs, dot, vector));
+}
+
+double			calcul_dist(t_win *win, t_player *player, t_calculs *calculs, t_vector_2d vector)
 {
 	t_dot_2d	next;
 	t_dot_2d	nextIndex;
@@ -88,7 +129,7 @@ double	calcul_dist(t_map *map, t_player *player, t_calculs *calculs, t_vector_2d
 	nextIndex =	(t_dot_2d){.x = 0, .y = 0};
 	calculs->a = vector.y / vector.x; //Division 0
 	calculs->b = vector.origin.y - calculs->a * vector.origin.x;
-	while ((ret = test_wall(map, calculs, next, vector)) == 0)
+	while ((ret = test_wall(win, calculs, next, vector)) == 0)
 	{
 		if (vector.x > 0)
 			d1.x = ft_dtoi_up(player->pos.x) + nextIndex.x;
@@ -114,7 +155,7 @@ double	calcul_dist(t_map *map, t_player *player, t_calculs *calculs, t_vector_2d
 	return (ret == -1 ? -1 : cos(calculs->angle) * dist_dot_2d(next, player->pos) + 0.00000000001);
 }
 
-void			raycasting(t_win *win, t_map *map, t_player *player, t_calculs *calculs)
+void			raycasting(t_win *win, t_player *player, t_calculs *calculs)
 {
 	t_vector_2d	vector;
 	double		dangle;
@@ -128,7 +169,7 @@ void			raycasting(t_win *win, t_map *map, t_player *player, t_calculs *calculs)
 		vector = (t_vector_2d){.origin = player->pos,\
 								.x = cos(player->dir + calculs->angle),
 								.y = -sin(player->dir + calculs->angle)};
-		calculs->dist[calculs->i] = calcul_dist(map, player, calculs, vector);
+		calculs->dist[calculs->i] = calcul_dist(win, player, calculs, vector);
 		calculs->angle -= dangle;
 	}
 }

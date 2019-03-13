@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/12 21:45:14 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/12 22:45:13 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,6 +50,7 @@ static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 	player->const_vel = 0.05;
 	player->dir = PI / 2;
 	player->fov = PI / 2.5;
+	win->textures_set = 1;
 	return (0);
 } 
 

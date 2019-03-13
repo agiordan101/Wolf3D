@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   parser.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:03:22 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/06 18:28:53 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/13 16:32:13 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,7 +24,7 @@ static int		set_player_pos(t_map map, t_player *player)
 		j = 0;
 		while (j < map.len_x)
 		{
-			if (map.tab[i][j] == 2)
+			if (map.tab[i][j] == 9)
 			{
 				player->pos.x = j + 0.5;
 				player->pos.y = i + 0.5;
