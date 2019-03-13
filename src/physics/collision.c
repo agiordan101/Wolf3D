@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 17:45:05 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/05 21:58:42 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/13 16:31:49 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,7 +30,7 @@ static int		test_wall(t_map *map, t_dot_2d dot, t_vector_2d *vector)
 		i -= vector->y >= 0 ? 0 : 1;
 	if (i < 0 || i >= map->len_y || j < 0 || j >= map->len_x)
 		*vector = (t_vector_2d){};
-	if (map->tab[i][j] == 1 || map->tab[i][j] == 3)
+	if (map->tab[i][j] != 0 && map->tab[i][j] != 9)
 		return (1);
 	return (0);
 }

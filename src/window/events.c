@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   events.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/01 19:25:09 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/07 18:27:00 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/13 16:10:56 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -69,9 +69,13 @@ int	keyboard_event(t_win *win, SDL_Event event)
 	dfov = 0.1;
 	if (event.type == SDL_QUIT || event.key.keysym.sym == SDLK_ESCAPE)
 		return (0);
-	if (event.key.keysym.sym == SDLK_KP_MINUS)
+	else if (event.key.keysym.sym == SDLK_KP_MINUS)
 		win->player.fov -= win->player.fov - dfov < 0 ? 0 : dfov;
-	if (event.key.keysym.sym == SDLK_KP_PLUS)
+	else if (event.key.keysym.sym == SDLK_KP_PLUS)
 		win->player.fov += win->player.fov + dfov > 2 * PI ? 0 : dfov;
+	else if (event.key.keysym.sym == SDLK_1)
+		win->textures_set = 1;
+	else if (event.key.keysym.sym == SDLK_2)
+		win->textures_set = 2;
 	return (1);
 }

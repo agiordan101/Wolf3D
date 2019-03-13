@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/13 15:35:40 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/13 16:39:11 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,7 +50,7 @@
 # include "../frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h"
 # include "../libft/libft.h"
 # include "../libmath/include/libmath.h"
-#include "2d_struct.h"
+# include "2d_struct.h"
 
 /*
 **	dir: Direction de la camera en radian
@@ -135,7 +135,6 @@ typedef struct		s_editor
 	t_vector_2d		vel;
 }					t_editor;
 
-
 typedef struct		s_win
 {
 	SDL_Window		*ptr;
@@ -149,6 +148,7 @@ typedef struct		s_win
 	t_editor		editor;
 	char			*name;
 	int				choice;
+	int				textures_set;
 	int				fd;
 	int				width;
 	int				height;
@@ -213,8 +213,8 @@ int					error(int error, char *error_source);
 int					wolf3d_exit(t_win *win);
 int					quit(t_win *win);
 
-void				raycasting(t_win *win, t_map *map, t_player *player, t_calculs *calculs);
-double				calcul_dist(t_map *map, t_player *player, t_calculs *calculs, t_vector_2d vector);
+void				raycasting(t_win *win, t_player *player, t_calculs *calculs);
+double				calcul_dist(t_win *win, t_player *player, t_calculs *calculs, t_vector_2d vector);
 int					collision(t_map *map, t_player *player);
 
 #endif
