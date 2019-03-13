@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/13 16:39:11 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/13 18:44:40 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,24 +22,6 @@
 # define BACK_R 100
 # define BACK_G 100
 # define BACK_B 100
-# define ED_TDRAG 0
-# define ED_RDRAG 1
-# define ED_BDRAG 2
-# define ED_LDRAG 3
-# define NB_MAP_UI 4
-# define ED_TILES 10
-# define ED_TILE1 11
-# define ED_TILE2 12
-# define ED_TILE3 13
-# define ED_TILE4 14
-# define ED_TILE5 15
-# define ED_TILE6 16
-# define ED_TILE7 17
-# define ED_TILE8 18
-# define NB_TILES 8
-# define NB_UI 9
-# define COLOR_OFF 0x00000088
-# define COLOR_ON 0x000000AA
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -50,111 +32,15 @@
 # include "../frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h"
 # include "../libft/libft.h"
 # include "../libmath/include/libmath.h"
+# include "editor.h"
+# include "shape.h"
 # include "2d_struct.h"
+# include "win_struct.h"
 
 /*
 **	dir: Direction de la camera en radian
 **	fov: Angle de vision du personnage en radian
 */
-
-typedef struct		s_player
-{
-	t_dot_2d		pos;
-	t_vector_2d		vel;
-	double			const_vel;
-	double			dir;
-	double			fov;
-	t_dot_2d 		box;
-}					t_player;
-
-typedef struct		s_calculs
-{
-	double			angle;
-	t_vector_2d		vectors;
-	double			a;
-	double			b;
-	double			*dist;
-	double			*xray;
-	int				*orientation;
-	int				i;
-}					t_calculs;
-
-typedef struct 		s_minimap
-{
-	int 			x;
-	int				y;
-	int				width;
-	int 			height;
-	int				x_unit;
-	int				y_unit;
-	int				static_map;
-}					t_minimap;
-
-typedef struct 		s_textures
-{
-	SDL_Surface		*current;
-	SDL_Surface		**tab;
-	SDL_Texture		*ttab[NB_TILES];
-	SDL_Surface		*sky;
-}					t_textures;
-
-typedef struct		s_map
-{
-	int				**tab;
-	int				len_x;
-	int				len_y;
-	int				unit;
-	int				tile;
-	t_minimap		minimap;
-}					t_map;
-
-typedef struct		s_rect
-{
-	int				x;
-	int				y;
-	int				width;
-	int 			height;
-}					t_rect;
-
-typedef struct 		s_ui
-{
-	t_rect			rect;
-	int				flag;
-}					t_ui;
-
-typedef struct		s_editor
-{
-	t_dot_2d		pos;
-	int				drag;
-	t_ui			ui[NB_UI];
-	Uint32			ui_color[NB_UI];
-	t_ui			map_ui[NB_MAP_UI];
-	Uint32			map_ui_color[NB_MAP_UI];
-	int				mouse_ui;
-	int				selected_tile;
-	t_vector_2d		vel;
-}					t_editor;
-
-typedef struct		s_win
-{
-	SDL_Window		*ptr;
-	SDL_Renderer	*rend;
-	SDL_Surface		*texte;
-	TTF_Font		*police;
-	t_map			map;
-	t_textures		textures;
-	t_player		player;
-	t_calculs		calculs;
-	t_editor		editor;
-	char			*name;
-	int				choice;
-	int				textures_set;
-	int				fd;
-	int				width;
-	int				height;
-	t_dot_2d		mouse;
-}					t_win;
-
 
 void				draw_rect(t_win *win, t_rect rect);
 void				draw_empty_rect(t_win *win, t_dot_2d pos, int width, int height);

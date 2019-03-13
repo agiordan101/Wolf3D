@@ -3,6 +3,7 @@
 		"wolf3d.h": "c",
 		"string": "c",
 		"string_view": "c",
-		"vector": "c"
+		"vector": "c",
+		"libmath.h": "c"
 	}
 }

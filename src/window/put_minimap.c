@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/28 17:08:46 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/11 18:20:43 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/13 16:12:38 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,10 +17,11 @@
 
 static void 	draw_tile(t_win *win, int i, int j)
 {
-	int 	x;
-	int		y;
-	int		x_unit;
-	int		y_unit;
+	int 		x;
+	int			y;
+	int			x_unit;
+	int			y_unit;
+	//SDL_Rect	rect;
 
 	x_unit = win->map.minimap.x_unit;
 	y_unit = win->map.minimap.y_unit;
@@ -53,6 +54,11 @@ static void 	draw_tile(t_win *win, int i, int j)
 			if (y_unit < 0)
 				y_unit = 0;
 			SDL_SetRenderDrawColor(win->rend, 255, 255, 255, 255);
+			/*rect = (SDL_Rect){
+				x,
+				y,
+				x_unit, y_unit};
+			SDL_RenderCopy(win->rend, win->textures.ttab[win->map.tab[i][j] - 1], NULL, &rect);*/
 			draw_rect(win, (t_rect){
 				x,
 				y,
