@@ -3,17 +3,17 @@
 /*                                                              /             */
 /*   win_struct.h                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/13 18:39:15 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 18:46:08 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 19:24:22 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #ifndef WIN_STRUCT_H
 # define WIN_STRUCT_H
-# define N_SURFACE 4
+# define N_SURFACE 5
 
 # include "../frameworks/SDL2.framework/Headers/SDL.h"
 # include "../frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h"

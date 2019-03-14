@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/06 21:57:42 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 17:45:29 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 19:36:52 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,7 +30,7 @@ int		ed_init_ui(t_win *win)
 	ui_color[ED_TILES - 10] = 0x88888800 + COLOR_OFF;
 	tiles_rect = ui[ED_TILES - 10].rect;
 	i = 0;
-	while (i < 8)
+	while (i < N_SURFACE)
 	{
 		ui[ED_TILE1 - 10 + i] = ed_new_ui((t_rect){
 			tiles_rect.x + tiles_rect.height * i,

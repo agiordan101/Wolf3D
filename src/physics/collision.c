@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 17:45:05 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 18:39:34 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 20:33:14 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,7 +30,8 @@ static int		test_wall(t_map *map, t_dot_2d dot, t_vector_2d *vector)
 		i -= vector->y >= 0 ? 0 : 1;
 	if (i < 0 || i >= map->len_y || j < 0 || j >= map->len_x)
 		*vector = (t_vector_2d){};
-	if (map->tab[i][j] != 0 && map->tab[i][j] != PLAYER_TILE)
+	if (map->tab[i][j] != 0 && map->tab[i][j] != PLAYER_TILE
+		&& map->tab[i][j] != TRAVERS_TILE)
 		return (1);
 	return (0);
 }

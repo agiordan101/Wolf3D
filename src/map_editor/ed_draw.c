@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/06 19:40:58 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 15:12:34 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 19:38:17 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,7 +24,7 @@ void			ed_draw_ui(t_win *win,
 	i = 0;
 	if (texture)
 	{
-		while (i < NB_UI && i < 4)
+		while (i < NB_UI && i < N_SURFACE + 1)
 		{
 			color = ui_color[i + 1];
 			rect = (SDL_Rect){ui[i + 1].rect.x, ui[i + 1].rect.y,

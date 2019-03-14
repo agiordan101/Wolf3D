@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 18:33:28 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 20:14:37 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,7 +14,7 @@
 #ifndef WOLF3D_H
 # define WOLF3D_H
 
-# define VEL 0.50
+# define VEL 0.1
 # define HEIGHT_WALL 500
 # define WALL_R 0x50
 # define WALL_G 0xAA
@@ -23,6 +23,7 @@
 # define BACK_G 100
 # define BACK_B 100
 # define PLAYER_TILE 5
+# define TRAVERS_TILE 3
 
 # include <stdio.h>
 # include <stdlib.h>
