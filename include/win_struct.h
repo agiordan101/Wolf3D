@@ -6,13 +6,14 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/13 18:39:15 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 18:30:57 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 18:46:08 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #ifndef WIN_STRUCT_H
 # define WIN_STRUCT_H
+# define N_SURFACE 4
 
 # include "../frameworks/SDL2.framework/Headers/SDL.h"
 # include "../frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h"
@@ -56,8 +57,8 @@ typedef struct 		s_minimap
 typedef struct 		s_textures
 {
 	SDL_Surface		*current;
-	SDL_Surface		**tab;
-	SDL_Surface		**tabDev;
+	SDL_Surface		*tab[N_SURFACE];
+	SDL_Surface		*tabDev[N_SURFACE];
 	SDL_Texture		*ttab[NB_TILES];
 	SDL_Surface		*sky;
 }					t_textures;

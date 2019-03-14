@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 09:58:24 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 18:43:46 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 18:54:49 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,10 +15,9 @@
 
 static int		init(t_win *win)
 {
-	if (!(win->textures.tab =
-	(SDL_Surface **)malloc(sizeof(SDL_Surface *) * 5)))
+	/*if (!(win->textures.tab = (SDL_Surface **)malloc(sizeof(SDL_Surface *) * 5)))
 		return (1);
-	win->textures.tab[4] = NULL;
+	win->textures.tab[4] = NULL;*/
 	win->map.unit = 50;
 	win->map.tile = 1;
 	win->map.tab = NULL;
