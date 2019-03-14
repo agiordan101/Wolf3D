@@ -6,17 +6,17 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/27 13:42:55 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/13 18:45:41 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 16:41:42 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static char		*next_file()
+static char		*next_file(void)
 {
-	char	*filename;
-	int		i;
+	char		*filename;
+	int			i;
 
 	filename = NULL;
 	filename = "maps/map0.w3d";
@@ -31,18 +31,19 @@ static char		*next_file()
 
 static int		open_new_fd(char *filename)
 {
-	int	fd;
- 
-	if (!(fd = open(filename, O_CREAT | O_WRONLY, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)))
+	int			fd;
+
+	if (!(fd = open(filename,
+	O_CREAT | O_WRONLY, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)))
 		return (-1);
 	return (fd);
 }
 
-int			ed_export(t_map map)
+int				ed_export(t_map map)
 {
-	int     i;
-	int     j;
-	int		fd_export;
+	int			i;
+	int			j;
+	int			fd_export;
 
 	fd_export = open_new_fd(next_file());
 	i = 0;

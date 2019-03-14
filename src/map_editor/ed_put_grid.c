@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 15:18:08 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/13 18:45:41 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 16:46:16 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,12 +15,12 @@
 
 static void		put_vert(t_win *win)
 {
-	int		top;
-	int		bot;
-	int		j;
-	int		x;
+	int			top;
+	int			bot;
+	int			j;
+	int			x;
 
-	top = 0 - win->editor.pos.y;;
+	top = 0 - win->editor.pos.y;
 	bot = win->map.len_y * win->map.unit - win->editor.pos.y;
 	j = 0;
 	while (j <= win->map.len_x)
@@ -33,10 +33,10 @@ static void		put_vert(t_win *win)
 
 static void		put_hor(t_win *win)
 {
-	int		left;
-	int		right;
-	int		i;
-	int		y;
+	int			left;
+	int			right;
+	int			i;
+	int			y;
 
 	left = 0 - win->editor.pos.x;
 	right = win->map.len_x * win->map.unit - win->editor.pos.x;
@@ -49,7 +49,7 @@ static void		put_hor(t_win *win)
 	}
 }
 
-void		ed_put_grid(t_win *win)
+void			ed_put_grid(t_win *win)
 {
 	if (win)
 	{

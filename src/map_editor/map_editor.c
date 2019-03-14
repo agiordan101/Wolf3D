@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 09:58:24 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/13 18:45:41 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 18:14:32 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,8 @@
 
 static int		init(t_win *win)
 {
-	if (!(win->textures.tab = (SDL_Surface **)malloc(sizeof(SDL_Surface *) * 5)))
+	if (!(win->textures.tab =
+	(SDL_Surface **)malloc(sizeof(SDL_Surface *) * 5)))
 		return (1);
 	win->textures.tab[4] = NULL;
 	win->map.unit = 50;
@@ -36,9 +37,9 @@ static int		init(t_win *win)
 	return (1);
 }
 
-static int	init_texture(t_win win, SDL_Surface **tab, SDL_Texture **ttab)
+static int		init_texture(t_win win, SDL_Surface **tab, SDL_Texture **ttab)
 {
-	size_t	i;
+	size_t		i;
 
 	i = 0;
 	while (i < NB_TILES && i < 4)
@@ -52,21 +53,22 @@ static int	init_texture(t_win win, SDL_Surface **tab, SDL_Texture **ttab)
 
 int				map_editor(int fd)
 {
-	t_win	win;
-	int		ret;
+	t_win		win;
+	int			ret;
 
 	if (!(ret = init(&win)))
-		return (error(ret, "map_editor : init"));
+		return (error(ret, "map_editor : init", &win));
 	if ((ret = parser(fd, &(win.map), &(win.player))) <= 0)
-		return (error(ret, "map_editor : parser"));
-	if (!(ret = ed_init_map_ui(win, win.editor.map_ui, win.editor.map_ui_color)))
-		return (error(ret, "map editor : ed_init_map_ui"));
+		return (error(ret, "map_editor : parser", &win));
+	if (!(ret = ed_init_map_ui(win, win.editor.map_ui,
+									win.editor.map_ui_color)))
+		return (error(ret, "map editor : ed_init_map_ui", &win));
 	if (!(ret = ed_init_ui(&win)))
-		return (error(ret, "map editor : ed_init_ui"));
+		return (error(ret, "map editor : ed_init_ui", &win));
 	if (!(open_window(&(win))))
-		return (error(-1, "map editor : open_window"));
+		return (error(-1, "map editor : open_window", &win));
 	if (!(ret = init_texture(win, win.textures.tab, win.textures.ttab)))
-		return (error(ret, "map_editor : init_texture"));
+		return (error(ret, "map_editor : init_texture", &win));
 	SDL_SetRenderDrawBlendMode(win.rend, SDL_BLENDMODE_BLEND);
 	ed_window_loop(&win);
 	quit(&win);

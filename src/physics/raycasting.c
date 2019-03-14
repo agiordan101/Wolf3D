@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   raycasting.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 19:27:03 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/13 16:33:15 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 18:23:11 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,7 +41,7 @@ static int		textures_set_1(t_map *map, t_calculs *calculs, t_dot_2d dot, t_vecto
 		i -= vector.y >= 0 ? 0 : 1;
 	if (i < 0 || i >= map->len_y || j < 0 || j >= map->len_x)
 		return (-1);
-	if (map->tab[i][j] != 0 && map->tab[i][j] != 9)
+	if (map->tab[i][j] != 0 && map->tab[i][j] != PLAYER_TILE)
 	{
 		if (ft_dec(dot.y))
 		{

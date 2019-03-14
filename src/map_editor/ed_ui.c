@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/06 21:57:42 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/13 18:45:41 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 17:45:29 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,23 +16,25 @@
 int		ed_init_ui(t_win *win)
 {
 	size_t	i;
-	int		w;
-	int		h;
+	t_len	s;
 	t_ui	*ui;
 	Uint32	*ui_color;
 	t_rect	tiles_rect;
 
-	w = win->width;
-	h = win->height;
+	s.x = win->width;
+	s.y = win->height;
 	ui = win->editor.ui;
 	ui_color = win->editor.ui_color;
-	ui[ED_TILES - 10] = ed_new_ui((t_rect){w / 20, h / 30, w - 2 * (w / 20), h / 15}, ED_TILES);
+	ui[ED_TILES - 10] = ed_new_ui((t_rect){
+		s.x / 20, s.y / 30, s.x - 2 * (s.x / 20), s.y / 15}, ED_TILES);
 	ui_color[ED_TILES - 10] = 0x88888800 + COLOR_OFF;
 	tiles_rect = ui[ED_TILES - 10].rect;
 	i = 0;
 	while (i < 8)
 	{
-		ui[ED_TILE1 - 10 + i] = ed_new_ui((t_rect){tiles_rect.x + tiles_rect.height * i, tiles_rect.y, tiles_rect.height, tiles_rect.height}, ED_TILE1 + i);
+		ui[ED_TILE1 - 10 + i] = ed_new_ui((t_rect){
+			tiles_rect.x + tiles_rect.height * i,
+			tiles_rect.y, tiles_rect.height, tiles_rect.height}, ED_TILE1 + i);
 		ui_color[ED_TILE1 - 10 + i] = 0x88888800 + COLOR_OFF;
 		i++;
 	}
@@ -61,7 +63,6 @@ void	ed_update_ui_color(Uint32 *ui_color, int flag)
 	Uint32	*pcolor;
 
 	i = 0;
-	//printf("flag = %d\n", flag);
 	while (i < NB_UI)
 	{
 		pcolor = &ui_color[i];
@@ -76,7 +77,7 @@ void	ed_update_ui_color(Uint32 *ui_color, int flag)
 	}
 }
 
-int		ed_get_ui(t_dot_2d mpos, t_ui *ui, int	mouse_ui)
+int		ed_get_ui(t_dot_2d mpos, t_ui *ui, int mouse_ui)
 {
 	int		i;
 
@@ -85,29 +86,10 @@ int		ed_get_ui(t_dot_2d mpos, t_ui *ui, int	mouse_ui)
 	{
 		if (mpos.x >= ui[i].rect.x
 				&& mpos.x <= ui[i].rect.x + ui[i].rect.width
-				&& mpos.y >= ui[i].rect.y 
+				&& mpos.y >= ui[i].rect.y
 				&& mpos.y <= ui[i].rect.y + ui[i].rect.height)
 			return (ui[i].flag);
 		i--;
 	}
 	return (mouse_ui);
 }
-
-/*
-t_ui	*ed_add_ui(t_editor *editor, t_ui new_ui)
-{
-	t_ui	*ui_tab;
-	size_t	i;
-	
-	if (!(ui_tab = (t_ui*)ft_memalloc(sizeof(editor->nb_ui) + 1)))
-		return (NULL);
-	i = 0;
-	while (i < editor->nb_ui)
-	{
-		ui_tab[i] = editor->ui[i];
-		i++;
-	}
-	ui_tab[i] = new_ui;
-	editor->nb_ui++;
-	return (ui_tab);
-}*/

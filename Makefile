@@ -6,7 +6,7 @@
 #    By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/03/12 19:38:27 by gmonacho    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/03/14 17:49:11 by gmonacho    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -47,6 +47,8 @@ SRCS_FILES =	main.c \
 				$(SRCS_PATH_4)/ed_resize_x.c \
 				$(SRCS_PATH_4)/ed_resize_y.c \
 				$(SRCS_PATH_4)/ed_zoom.c \
+				$(SRCS_PATH_4)/ed_pevent.c \
+				$(SRCS_PATH_4)/ed_update_map_ui.c \
 				$(SRCS_PATH_4)/ed_events.c
 				#$(SRCS_PATH_4)/ui.c
 

@@ -6,17 +6,17 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/26 18:00:25 by gal          #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/13 18:45:41 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 15:08:05 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static void	ed_switch_player(int i, int j, t_map *map)
+static void		ed_switch_player(int i, int j, t_map *map)
 {
-	int		ni;
-	int		nj;
+	int			ni;
+	int			nj;
 
 	ni = 0;
 	while (ni < map->len_y)
@@ -33,10 +33,10 @@ static void	ed_switch_player(int i, int j, t_map *map)
 	map->tab[i][j] = 2;
 }
 
-int ed_add_tile(int	x, int y, t_win *win, int tile)
+int				ed_add_tile(int x, int y, t_win *win, int tile)
 {
-	int		i;
-	int		j;
+	int			i;
+	int			j;
 
 	i = ((int)(win->editor.pos.y + y)) / win->map.unit;
 	j = ((int)(win->editor.pos.x + x)) / win->map.unit;
