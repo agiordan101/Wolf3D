@@ -6,14 +6,14 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/26 18:00:19 by gal          #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/13 18:45:41 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 17:40:02 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static void refresh_window(t_win *win)
+static void		refresh_window(t_win *win)
 {
 	SDL_SetRenderDrawColor(win->rend, 0, 0, 0, 255);
 	SDL_RenderClear(win->rend);
@@ -27,17 +27,16 @@ static void refresh_window(t_win *win)
 	SDL_RenderPresent(win->rend);
 }
 
-void ed_move(t_win *win)
+void			ed_move(t_win *win)
 {
 	win->editor.pos.x += win->editor.vel.x;
 	win->editor.pos.y += win->editor.vel.y;
-	//ed_update_ui(win->editor.ui, win->editor.vel);
 }
 
-int ed_window_loop(t_win *win)
+int				ed_window_loop(t_win *win)
 {
-	SDL_Event event;
-	int loop;
+	SDL_Event	event;
+	int			loop;
 
 	loop = 1;
 	if (!win)
@@ -51,7 +50,8 @@ int ed_window_loop(t_win *win)
 														win->mouse.y},
 											win,
 											win->editor.map_ui);
-		win->editor.mouse_ui = ed_get_ui(win->mouse, win->editor.ui, win->editor.mouse_ui);
+		win->editor.mouse_ui = ed_get_ui(win->mouse,
+										win->editor.ui, win->editor.mouse_ui);
 		while (SDL_PollEvent(&event))
 			if (!pevent(win, event))
 				loop = 0;

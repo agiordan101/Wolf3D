@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/28 17:08:46 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/13 16:12:38 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 18:21:14 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,7 +27,7 @@ static void 	draw_tile(t_win *win, int i, int j)
 	y_unit = win->map.minimap.y_unit;
 	if (win->map.tab[i][j] != 0)
 	{
-		if (win->map.tab[i][j] == 1)
+		if (win->map.tab[i][j] != 0 && win->map.tab[i][j] != PLAYER_TILE)
 		{
 			x = win->map.minimap.x + j * x_unit - win->player.pos.x * x_unit + win->map.minimap.width / 2;
 			y = win->map.minimap.y + i * y_unit - win->player.pos.y * y_unit + win->map.minimap.height / 2;
@@ -98,7 +98,7 @@ static void 	static_draw_tile(t_win *win, int i, int j)
 	y_unit = win->map.minimap.y_unit;
 	if (win->map.tab[i][j] != 0)
 	{
-		if (win->map.tab[i][j] == 1)
+		if (win->map.tab[i][j] != 0 && win->map.tab[i][j] != PLAYER_TILE)
 		{
 			x = win->map.minimap.x + j * x_unit;
 			y = win->map.minimap.y + i * y_unit;

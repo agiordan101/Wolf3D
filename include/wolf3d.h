@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   wolf3d.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 18:28:09 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 18:33:28 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,7 +14,7 @@
 #ifndef WOLF3D_H
 # define WOLF3D_H
 
-# define VEL 0.05
+# define VEL 0.50
 # define HEIGHT_WALL 500
 # define WALL_R 0x50
 # define WALL_G 0xAA
@@ -22,6 +22,7 @@
 # define BACK_R 100
 # define BACK_G 100
 # define BACK_B 100
+# define PLAYER_TILE 5
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -95,7 +96,7 @@ void				keyboard_state(t_player *player, t_win *win);
 int					keyboard_event(t_win *win, SDL_Event event);
 
 int 				put_minimap(t_win *win);
-int					error(int error, char *error_source);
+int			        error(int error, char *error_source, t_win *win);
 int					wolf3d_exit(t_win *win);
 int					quit(t_win *win);
 

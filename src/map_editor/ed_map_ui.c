@@ -6,18 +6,18 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/08 20:41:13 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/13 18:45:41 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 17:51:53 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int		ed_init_map_ui(t_win win, t_ui *map_ui, Uint32 *map_ui_color)
+int				ed_init_map_ui(t_win win, t_ui *map_ui, Uint32 *map_ui_color)
 {
-	int     lx;
-	int     ly;
-	int     u;
+	int			lx;
+	int			ly;
+	int			u;
 
 	lx = win.map.len_x;
 	ly = win.map.len_y;
@@ -33,57 +33,19 @@ int		ed_init_map_ui(t_win win, t_ui *map_ui, Uint32 *map_ui_color)
 	return (1);
 }
 
-t_ui	ed_new_map_ui(t_rect rect, int flag)
+t_ui			ed_new_map_ui(t_rect rect, int flag)
 {
-	t_ui	new_map_ui;
+	t_ui		new_map_ui;
 
 	new_map_ui.rect = rect;
 	new_map_ui.flag = flag;
 	return (new_map_ui);
 }
 
-int		ed_update_map_ui(t_win *win, t_editor *editor, t_dot_2d shift)
+void			ed_update_map_ui_color(Uint32 *map_ui_color, int flag)
 {
-	if (editor->drag == ED_RDRAG)
-	{		
-		if (win->map.len_x + shift.x <= 0)
-			shift.x = 0;
-	}
-	else if (editor->drag == ED_LDRAG)
-	{
-		if (win->map.len_x - shift.x <= 0)
-			shift.x = 0;
-	}
-	if (editor->drag == ED_BDRAG)
-	{
-		if (win->map.len_y + shift.y <= 0)
-			shift.y = 0;
-	}
-	else if (editor->drag == ED_TDRAG)
-	{
-		if (win->map.len_y - shift.y <= 0)
-			shift.y = 0;
-	}
-	win->map.tab = ed_resize_x(win->map.tab, shift.x, (t_len){win->map.len_x, win->map.len_y}, editor->drag);
-	ed_scroll_resize_x(&(editor->pos), win->map.unit, shift.x, editor->drag);
-	win->map.tab = ed_resize_y(win->map.tab, shift.y, (t_len){win->map.len_x, win->map.len_y}, editor->drag);
-	ed_scroll_resize_y(&(editor->pos), win->map.unit, shift.y, editor->drag);
-	if (editor->drag == ED_RDRAG)
-		win->map.len_x += shift.x;
-	else if (editor->drag == ED_LDRAG)
-		win->map.len_x -= shift.x;
-	if (editor->drag == ED_BDRAG)
-		win->map.len_y += shift.y;
-	else if (editor->drag == ED_TDRAG)
-		win->map.len_y -= shift.y;
-	ed_init_map_ui(*win, editor->map_ui, editor->map_ui_color);
-	return (1);
-}
-
-void	ed_update_map_ui_color(Uint32 *map_ui_color, int flag)
-{
-	size_t	i;
-	Uint32	*pcolor;
+	size_t		i;
+	Uint32		*pcolor;
 
 	i = 0;
 	while (i < NB_MAP_UI)
@@ -97,7 +59,7 @@ void	ed_update_map_ui_color(Uint32 *map_ui_color, int flag)
 	}
 }
 
-int		ed_get_map_ui(t_dot_2d mpos, t_win *win, t_ui *map_ui)
+int				ed_get_map_ui(t_dot_2d mpos, t_win *win, t_ui *map_ui)
 {
 	t_dot_2d	wp;
 	int			u;
@@ -112,7 +74,7 @@ int		ed_get_map_ui(t_dot_2d mpos, t_win *win, t_ui *map_ui)
 		r = map_ui[i].rect;
 		if (mpos.x >= -wp.x + r.x * u
 				&& mpos.x <= -wp.x + (r.x + r.width) * u
-				&& mpos.y >= -wp.y + r.y * u 
+				&& mpos.y >= -wp.y + r.y * u
 				&& mpos.y <= -wp.y + (r.y + r.height) * u)
 			return (map_ui[i].flag);
 		i++;

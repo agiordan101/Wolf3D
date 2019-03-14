@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/11 18:28:27 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/13 18:45:41 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 17:23:29 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,7 +23,7 @@ static int		**push_back(int **tab, int y_shift, t_len len)
 		return (NULL);
 	i = 0;
 	if (tab)
-	 	i = 0;
+		i = 0;
 	while (i < len.y + y_shift)
 	{
 		j = 0;
@@ -73,7 +73,7 @@ static int		**push_front(int **tab, int y_shift, t_len len)
 
 int				**ed_resize_y(int **tab, int y_shift, t_len len, int drag_flag)
 {
-	int     **new_tab;
+	int			**new_tab;
 
 	new_tab = NULL;
 	if (y_shift != 0)
@@ -94,7 +94,8 @@ int				**ed_resize_y(int **tab, int y_shift, t_len len, int drag_flag)
 		return (tab);
 }
 
-void		ed_scroll_resize_y(t_dot_2d *pos, int unit, int y_shift, int drag_flag)
+void			ed_scroll_resize_y(t_dot_2d *pos, int unit,
+									int y_shift, int drag_flag)
 {
 	if (drag_flag == ED_TDRAG)
 		pos->y -= y_shift * unit;

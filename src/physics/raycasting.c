@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   raycasting.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 19:27:03 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 18:00:27 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 18:40:29 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -77,7 +77,7 @@ static int		test_wall(t_win *win, t_map *map, t_calculs *calculs, t_dot_2d dot)
 		i -= calculs->vector.y >= 0 ? 0 : 1;
 	if (i < 0 || i >= map->len_y || j < 0 || j >= map->len_x)
 		return (-1);
-	if (map->tab[i][j] == 0 || map->tab[i][j] == 9)
+	if (map->tab[i][j] == 0 || map->tab[i][j] == PLAYER_TILE)
 		return (0);
 	save_texture(calculs, dot);
 	if (win->textures_mode == 1)

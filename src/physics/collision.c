@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   collision.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 17:45:05 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 16:38:20 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 18:39:34 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,7 +30,7 @@ static int		test_wall(t_map *map, t_dot_2d dot, t_vector_2d *vector)
 		i -= vector->y >= 0 ? 0 : 1;
 	if (i < 0 || i >= map->len_y || j < 0 || j >= map->len_x)
 		*vector = (t_vector_2d){};
-	if (map->tab[i][j] != 0 && map->tab[i][j] != 9)
+	if (map->tab[i][j] != 0 && map->tab[i][j] != PLAYER_TILE)
 		return (1);
 	return (0);
 }
