@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 09:58:24 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 18:14:32 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 18:43:46 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -58,17 +58,23 @@ int				map_editor(int fd)
 
 	if (!(ret = init(&win)))
 		return (error(ret, "map_editor : init", &win));
+	printf("la1\n");
 	if ((ret = parser(fd, &(win.map), &(win.player))) <= 0)
 		return (error(ret, "map_editor : parser", &win));
+	printf("la2\n");
 	if (!(ret = ed_init_map_ui(win, win.editor.map_ui,
 									win.editor.map_ui_color)))
 		return (error(ret, "map editor : ed_init_map_ui", &win));
+	printf("la3\n");
 	if (!(ret = ed_init_ui(&win)))
 		return (error(ret, "map editor : ed_init_ui", &win));
+	printf("la4\n");
 	if (!(open_window(&(win))))
 		return (error(-1, "map editor : open_window", &win));
+	printf("la5\n");
 	if (!(ret = init_texture(win, win.textures.tab, win.textures.ttab)))
 		return (error(ret, "map_editor : init_texture", &win));
+	printf("la6\n");
 	SDL_SetRenderDrawBlendMode(win.rend, SDL_BLENDMODE_BLEND);
 	ed_window_loop(&win);
 	quit(&win);
