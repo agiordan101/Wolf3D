@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 17:45:05 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 18:23:35 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 18:39:34 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,7 +14,7 @@
 #include "wolf3d.h"
 
 /*
-** On va faire simple poyr l'instant
+** On va faire simple pour l'instant
 */
 
 static int		test_wall(t_map *map, t_dot_2d dot, t_vector_2d *vector)

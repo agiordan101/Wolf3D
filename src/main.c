@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/13 23:35:14 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 18:39:10 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,6 +32,19 @@ static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 	map->minimap.height = win->height / 4;
 	map->minimap.static_map = 0;
 	map->tab = NULL;
+	calculs->angle = -player->fov / 2;
+	if (!(calculs->dist = (double *)malloc(sizeof(double) * win->width)))
+		return (1);
+	if (!(calculs->xray = (double *)malloc(sizeof(double) * win->width)))
+		return (1);
+	if (!(calculs->orientation = (int *)malloc(sizeof(int) * win->width)))
+		return (1);
+	if (!(win->textures.tab = (SDL_Surface **)malloc(sizeof(SDL_Surface *) * 5)))
+		return (1);
+	win->textures.tab[4] = NULL;
+	if (!(win->textures.tabDev = (SDL_Surface **)malloc(sizeof(SDL_Surface *) * 5)))
+		return (1);
+	win->textures.tabDev[4] = NULL;
 	player->pos.x = 0;
 	player->pos.y = 0;
 	player->box.x = 0.2;
@@ -40,18 +53,8 @@ static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 	player->const_vel = VEL;
 	player->dir = PI / 2;
 	player->fov = PI / 2.5;
-	win->textures_set = 1;
-	calculs->angle = -player->fov / 2;
-	if (!(calculs->dist = (double *)malloc(sizeof(double) * win->width)))
-		return (-2);
-	if (!(calculs->xray = (double *)malloc(sizeof(double) * win->width)))
-		return (-2);
-	if (!(calculs->orientation = (int *)malloc(sizeof(int) * win->width)))
-		return (-2);
-	if (!(win->textures.tab = (SDL_Surface **)malloc(sizeof(SDL_Surface *) * 5)))
-		return (-2);
-	win->textures.tab[4] = NULL;
-	return (1);
+	win->textures_mode = 1;
+	return (0);
 } 
 
 static int	init_texture(t_win win, SDL_Surface **tab, SDL_Texture **ttab)

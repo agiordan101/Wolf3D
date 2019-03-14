@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   win_struct.h                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/13 18:39:15 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/13 18:41:47 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 18:30:57 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -33,7 +33,7 @@ typedef struct		s_player
 typedef struct		s_calculs
 {
 	double			angle;
-	t_vector_2d		vectors;
+	t_vector_2d		vector;
 	double			a;
 	double			b;
 	double			*dist;
@@ -57,6 +57,7 @@ typedef struct 		s_textures
 {
 	SDL_Surface		*current;
 	SDL_Surface		**tab;
+	SDL_Surface		**tabDev;
 	SDL_Texture		*ttab[NB_TILES];
 	SDL_Surface		*sky;
 }					t_textures;
@@ -85,7 +86,7 @@ typedef struct		s_win
 	t_editor		editor;
 	char			*name;
 	int				choice;
-	int				textures_set;
+	int				textures_mode;
 	int				fd;
 	int				width;
 	int				height;

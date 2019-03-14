@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 18:19:46 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 18:33:28 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -101,7 +101,7 @@ int					wolf3d_exit(t_win *win);
 int					quit(t_win *win);
 
 void				raycasting(t_win *win, t_player *player, t_calculs *calculs);
-double				calcul_dist(t_win *win, t_player *player, t_calculs *calculs, t_vector_2d vector);
+double				calcul_dist(t_win *win, t_player *player, t_calculs *calculs);
 int					collision(t_map *map, t_player *player);
 
 #endif
