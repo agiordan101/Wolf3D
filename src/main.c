@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 18:49:31 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 19:01:49 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,11 +17,13 @@
 **	Differents murs :
 **	
 **	0	->	Vide
-**	1	->	Mur simple
-**	2	->	Position initiale du personnage
-**	3	->	Mur invisible
-**	4	->	Mur traversable
-**	5	->	Miroir
+**	1	->	Mur 1
+**	2	->	Mur 2
+**	3	->	Mur 3
+**	4	->	Mur 4
+**	5	->	Mur invisible
+**	6	->	Mur traversable
+**	7	->	Personnage
 */
 
 static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
