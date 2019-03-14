@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 16:24:13 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/12 21:37:40 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 18:25:51 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -79,38 +79,20 @@ static void		draw_wall(t_win *win, t_calculs *calculs, t_textures *textures, int
 
 void		draw(t_win *win, t_calculs *calculs, t_textures *textures)
 {
-	t_dot_2d	dfloor1;
-	t_dot_2d	dfloor2;
-	t_dot_2d	d1;
-	t_dot_2d	d2;
+	t_dot_2d	dfloor;
+	t_dot_2d	dlow;
 	int			j;
 	
-	dfloor1.y = win->height;
-	dfloor2.y = 0;
+	dfloor.y = win->height;
 	j = -1;
 	while (++j < win->width)
 	{
-		dfloor1.x = j;
-		dfloor2.x = j;
-		if (calculs->dist[j] == -1)
-		{
-			SDL_SetRenderDrawColor(win->rend, BACK_R, BACK_G, BACK_B, 255);
-			draw_line(win, dfloor1, dfloor2, win->rend);
-		}
-		else
-		{
-			d1 = (t_dot_2d){.x = j, .y = win->height / 2 - HEIGHT_WALL / calculs->dist[j]};
-			d2 = (t_dot_2d){.x = j, .y = win->height / 2 + HEIGHT_WALL / calculs->dist[j]};
-			
-			//SDL_SetRenderDrawColor(win->rend, BACK_R, BACK_G, BACK_B, 255);
-			//draw_line(win, dfloor2, d1, win->rend);
-			draw_sky(win, textures, j);
-
+		dfloor.x = j;
+		dlow = (t_dot_2d){.x = j, .y = win->height / 2 + (calculs->dist[j] == -1 ? 0 : HEIGHT_WALL / calculs->dist[j])};
+		draw_sky(win, textures, j);
+		if (calculs->dist[j] != -1)
 			draw_wall(win, calculs, textures, j);
-			
-			SDL_SetRenderDrawColor(win->rend, BACK_R, BACK_G, BACK_B, 255);
-			draw_line(win, d2, dfloor1, win->rend);
-			
-		}
+		SDL_SetRenderDrawColor(win->rend, BACK_R, BACK_G, BACK_B, 255);
+		draw_line(win, dlow, dfloor, win->rend);
 	}
 }

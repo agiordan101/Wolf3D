@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/01 19:25:09 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/13 16:10:56 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 18:25:43 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -74,8 +74,10 @@ int	keyboard_event(t_win *win, SDL_Event event)
 	else if (event.key.keysym.sym == SDLK_KP_PLUS)
 		win->player.fov += win->player.fov + dfov > 2 * PI ? 0 : dfov;
 	else if (event.key.keysym.sym == SDLK_1)
-		win->textures_set = 1;
+		win->textures_mode = 1;
 	else if (event.key.keysym.sym == SDLK_2)
-		win->textures_set = 2;
+		win->textures_mode = 2;
+	else if (event.key.keysym.sym == SDLK_3)
+		win->textures_mode = 3;
 	return (1);
 }

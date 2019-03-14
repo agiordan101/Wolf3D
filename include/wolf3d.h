@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/13 16:36:47 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 17:49:36 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -70,7 +70,7 @@ typedef struct		s_player
 typedef struct		s_calculs
 {
 	double			angle;
-	t_vector_2d		vectors;
+	t_vector_2d		vector;
 	double			a;
 	double			b;
 	double			*dist;
@@ -94,6 +94,7 @@ typedef struct 		s_textures
 {
 	SDL_Surface		*current;
 	SDL_Surface		**tab;
+	SDL_Surface		**tabDev;
 	SDL_Texture		*ttab[NB_TILES];
 	SDL_Surface		*sky;
 }					t_textures;
@@ -148,7 +149,7 @@ typedef struct		s_win
 	t_editor		editor;
 	char			*name;
 	int				choice;
-	int				textures_set;
+	int				textures_mode;
 	int				fd;
 	int				width;
 	int				height;
@@ -214,7 +215,7 @@ int					wolf3d_exit(t_win *win);
 int					quit(t_win *win);
 
 void				raycasting(t_win *win, t_player *player, t_calculs *calculs);
-double				calcul_dist(t_win *win, t_player *player, t_calculs *calculs, t_vector_2d vector);
+double				calcul_dist(t_win *win, t_player *player, t_calculs *calculs);
 int					collision(t_map *map, t_player *player);
 
 #endif
