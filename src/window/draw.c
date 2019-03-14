@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 16:24:13 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 18:25:51 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 18:36:11 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -61,7 +61,10 @@ static void		draw_wall(t_win *win, t_calculs *calculs, t_textures *textures, int
 	int			i;
 
 	h = HEIGHT_WALL / calculs->dist[j];
-	textures->current = textures->tab[calculs->orientation[j] - 1];
+	if (win->textures_mode == 3)
+		textures->current = textures->tabDev[calculs->orientation[j] - 1];
+	else
+		textures->current = textures->tab[calculs->orientation[j] - 1];
 	ySurface = 0;
 	xSurface = win->calculs.xray[j] * textures->current->w;
 	dySurface = textures->current->h / (2 * h);
