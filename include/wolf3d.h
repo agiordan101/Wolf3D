@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/15 14:45:02 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/15 15:55:29 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,6 +23,7 @@
 # define BACK_G 100
 # define BACK_B 100
 # define PLAYER_TILE 5
+# define TRAVERS_TILE 3
 
 # include <stdio.h>
 # include <stdlib.h>

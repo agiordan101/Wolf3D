@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/26 18:00:25 by gal          #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 15:08:05 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 19:50:21 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,13 +24,13 @@ static void		ed_switch_player(int i, int j, t_map *map)
 		nj = 0;
 		while (nj < map->len_x)
 		{
-			if (map->tab[ni][nj] == 2)
+			if (map->tab[ni][nj] == PLAYER_TILE)
 				map->tab[ni][nj] = 0;
 			nj++;
 		}
 		ni++;
 	}
-	map->tab[i][j] = 2;
+	map->tab[i][j] = PLAYER_TILE;
 }
 
 int				ed_add_tile(int x, int y, t_win *win, int tile)
@@ -42,7 +42,7 @@ int				ed_add_tile(int x, int y, t_win *win, int tile)
 	j = ((int)(win->editor.pos.x + x)) / win->map.unit;
 	if (win->map.tab[i][j] != tile)
 	{
-		if (tile == 2)
+		if (tile == PLAYER_TILE)
 			ed_switch_player(i, j, &(win->map));
 		else
 			win->map.tab[i][j] = tile;

@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/15 15:52:56 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/15 15:56:18 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,13 +17,12 @@
 **	Differents murs :
 **	
 **	0	->	Vide
-**	1	->	Mur 1
-**	2	->	Mur 2
-**	3	->	Mur 3
-**	4	->	Mur 4
-**	5	->	Mur invisible
-**	6	->	Mur traversable
-**	7	->	Personnage
+**	1	->	Mur simple 1
+**	2	->	Mur simple 2
+**	3	->	Mur traversable
+**	4	->  Mur invisible
+**	5	->	Miroir
+**	6	->	Position initiale du personnage
 */
 
 static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
@@ -36,11 +35,11 @@ static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 	map->tab = NULL;
 	calculs->angle = -player->fov / 2;
 	if (!(calculs->dist = (double *)malloc(sizeof(double) * win->width)))
-		return (1);
+		return (0);
 	if (!(calculs->xray = (double *)malloc(sizeof(double) * win->width)))
-		return (1);
+		return (0);
 	if (!(calculs->orientation = (int *)malloc(sizeof(int) * win->width)))
-		return (1);
+		return (0);
 	/*if (!(win->textures.tab = (SDL_Surface **)malloc(sizeof(SDL_Surface *) * 5)))
 		return (1);
 	win->textures.tab[4] = NULL;
@@ -56,7 +55,7 @@ static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 	player->dir = PI / 2;
 	player->fov = PI / 2.5;
 	win->textures_mode = 1;
-	return (0);
+	return (1);
 } 
 
 static int	init_texture(t_win win, SDL_Surface **tab, SDL_Texture **ttab)
