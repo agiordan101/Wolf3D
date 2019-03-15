@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/14 18:59:51 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 17:52:31 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/14 19:29:23 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,9 +28,7 @@ int		open_window(t_win *win)
 		!(win->textures.tab[3] = SDL_LoadBMP("./ressource/bois.bmp")) ||\
 		!(win->textures.sky = SDL_LoadBMP("./ressource/skyrender0005.bmp")) ||\
 		!(win->textures.tabDev[0] = SDL_LoadBMP("./ressource/gmonacho.bmp")) ||\
-		!(win->textures.tabDev[1] = SDL_LoadBMP("./ressource/agiordan.bmp")) ||\
-		!(win->textures.tabDev[2] = SDL_LoadBMP("./ressource/gmonacho.bmp")) ||\
-		!(win->textures.tabDev[3] = SDL_LoadBMP("./ressource/agiordan.bmp")))
+		!(win->textures.tabDev[1] = SDL_LoadBMP("./ressource/agiordan.bmp")))
 	{
 		ft_putstr(ft_strjoin("Open texture error : ", SDL_GetError()));
 		return (0);

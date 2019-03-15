@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/01 19:25:09 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 18:25:43 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/15 15:01:55 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -79,5 +79,6 @@ int	keyboard_event(t_win *win, SDL_Event event)
 		win->textures_mode = 2;
 	else if (event.key.keysym.sym == SDLK_3)
 		win->textures_mode = 3;
+	printf("Fin events\n");
 	return (1);
 }
