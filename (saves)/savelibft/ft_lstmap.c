@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_tabint2del.c                                  .::    .:/ .      .::   */
+/*   ft_lstmap.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: agiordan <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/01/10 18:54:01 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/06 16:41:28 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/11 19:33:04 by agiordan     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/11 19:33:05 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_tabint2del(int ***tab, size_t len)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	size_t	i;
+	t_list	*first;
+	t_list	*s;
+	t_list	*savelast;
 
-	i = -1;
-	if (!tab || !(*tab))
-		return ;
-	while (++i < len)
-		ft_tabintdel(&((*tab)[i]));
-	free(*tab);
-	*tab = NULL;
+	if (!lst)
+		return (NULL);
+	if (!(first = f(lst)))
+		return (NULL);
+	s = first;
+	savelast = s;
+	lst = lst->next;
+	while (lst)
+	{
+		s = f(lst);
+		savelast->next = s;
+		savelast = s;
+		lst = lst->next;
+	}
+	return (first);
 }

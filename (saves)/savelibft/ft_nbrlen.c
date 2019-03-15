@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_tabint2del.c                                  .::    .:/ .      .::   */
+/*   ft_nbrlen.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: agiordan <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/01/10 18:54:01 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/06 16:41:28 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/07 20:44:16 by agiordan     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/07 20:44:17 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_tabint2del(int ***tab, size_t len)
+int	ft_nbrlen(long nbr)
 {
-	size_t	i;
+	int		count;
+	long	p;
 
-	i = -1;
-	if (!tab || !(*tab))
-		return ;
-	while (++i < len)
-		ft_tabintdel(&((*tab)[i]));
-	free(*tab);
-	*tab = NULL;
+	count = 1;
+	p = 10;
+	if (nbr < 0)
+		nbr *= -1;
+	while (nbr - p >= 0)
+	{
+		count++;
+		p *= 10;
+	}
+	return (count);
 }

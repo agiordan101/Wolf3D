@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_tabint2del.c                                  .::    .:/ .      .::   */
+/*   ft_strcmp.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/01/10 18:54:01 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/06 16:41:28 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/04 21:28:54 by agiordan     #+#   ##    ##    #+#       */
+/*   Updated: 2019/03/07 20:42:45 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
 
-void	ft_tabint2del(int ***tab, size_t len)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	size_t	i;
-
-	i = -1;
-	if (!tab || !(*tab))
-		return ;
-	while (++i < len)
-		ft_tabintdel(&((*tab)[i]));
-	free(*tab);
-	*tab = NULL;
+	if (s1 && s2)
+	{
+		while (*s1 == *s2 && *s1 && *s2)
+		{
+			s1++;
+			s2++;
+		}
+		return ((unsigned char)(*s1) - (unsigned char)(*s2));
+	}
+	else
+		return (-1);
 }

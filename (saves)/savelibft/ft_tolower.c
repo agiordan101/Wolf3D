@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_tabint2del.c                                  .::    .:/ .      .::   */
+/*   ft_tolower.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: agiordan <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/01/10 18:54:01 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/06 16:41:28 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/06 19:19:35 by agiordan     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/06 19:19:36 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
 
-void	ft_tabint2del(int ***tab, size_t len)
+int	ft_tolower(int c)
 {
-	size_t	i;
-
-	i = -1;
-	if (!tab || !(*tab))
-		return ;
-	while (++i < len)
-		ft_tabintdel(&((*tab)[i]));
-	free(*tab);
-	*tab = NULL;
+	if (c >= 'A' && c <= 'Z')
+		c += 'a' - 'A';
+	return (c);
 }

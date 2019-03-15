@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_tabint2del.c                                  .::    .:/ .      .::   */
+/*   ft_countnumbers.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: gmonacho <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/01/10 18:54:01 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/06 16:41:28 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/11/25 20:23:39 by gmonacho     #+#   ##    ##    #+#       */
+/*   Updated: 2019/02/15 15:08:21 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_tabint2del(int ***tab, size_t len)
+int		ft_countnumbers(char *str)
 {
-	size_t	i;
+	int	i;
+	int	nb;
 
-	i = -1;
-	if (!tab || !(*tab))
-		return ;
-	while (++i < len)
-		ft_tabintdel(&((*tab)[i]));
-	free(*tab);
-	*tab = NULL;
+	i = 0;
+	nb = 0;
+	while (str[i])
+	{
+		if (ft_isdigit(str[i++]))
+		{
+			nb++;
+			while (ft_isdigit(str[i]) && str[i])
+				i++;
+		}
+	}
+	return (nb);
 }

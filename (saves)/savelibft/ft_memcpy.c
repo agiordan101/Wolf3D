@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_tabint2del.c                                  .::    .:/ .      .::   */
+/*   ft_memcpy.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: agiordan <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/01/10 18:54:01 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/06 16:41:28 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/03 20:47:36 by agiordan     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/03 20:47:38 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
 
-void	ft_tabint2del(int ***tab, size_t len)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t	i;
+	char	*castsrc;
+	char	*castdest;
 
-	i = -1;
-	if (!tab || !(*tab))
-		return ;
-	while (++i < len)
-		ft_tabintdel(&((*tab)[i]));
-	free(*tab);
-	*tab = NULL;
+	castsrc = (char *)src;
+	castdest = (char *)dest;
+	i = 0;
+	while (i < n)
+	{
+		castdest[i] = castsrc[i];
+		i++;
+	}
+	return (castdest);
 }

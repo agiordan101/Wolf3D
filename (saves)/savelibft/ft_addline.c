@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_tabint2del.c                                  .::    .:/ .      .::   */
+/*   ft_addline.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: mwaterso <mwaterso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/01/10 18:54:01 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/06 16:41:28 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/11/13 21:02:28 by agiordan     #+#   ##    ##    #+#       */
+/*   Updated: 2018/11/24 17:23:18 by mwaterso    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_tabint2del(int ***tab, size_t len)
+char	**ft_addline(char **tab, char *line, size_t length)
 {
+	char	**newtab;
 	size_t	i;
 
+	newtab = (char **)malloc(sizeof(char *) * (length + 1));
 	i = -1;
-	if (!tab || !(*tab))
-		return ;
-	while (++i < len)
-		ft_tabintdel(&((*tab)[i]));
-	free(*tab);
-	*tab = NULL;
+	while (++i < length)
+	{
+		newtab[i] = ft_strdup(tab[i]);
+		ft_strdel(tab + i);
+	}
+	if (!tab)
+		free(tab);
+	newtab[i] = ft_strdup(line);
+	ft_strdel(&line);
+	return (newtab);
 }

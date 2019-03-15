@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_tabint2del.c                                  .::    .:/ .      .::   */
+/*   ft_addint.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: agiordan <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/01/10 18:54:01 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/06 16:41:28 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/11/14 18:19:54 by agiordan     #+#   ##    ##    #+#       */
+/*   Updated: 2019/01/14 02:39:47 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_tabint2del(int ***tab, size_t len)
+int	*ft_addint(int *tab, int nbr, size_t length)
 {
+	int		*newtab;
 	size_t	i;
 
+	newtab = (int *)malloc(sizeof(int) * (length + 1));
 	i = -1;
-	if (!tab || !(*tab))
-		return ;
-	while (++i < len)
-		ft_tabintdel(&((*tab)[i]));
-	free(*tab);
-	*tab = NULL;
+	while (++i < length)
+		newtab[i] = tab[i];
+	ft_tabintdel(&tab);
+	newtab[i] = nbr;
+	return (newtab);
 }

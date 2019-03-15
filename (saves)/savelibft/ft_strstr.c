@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_tabint2del.c                                  .::    .:/ .      .::   */
+/*   ft_strstr.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: agiordan <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/01/10 18:54:01 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/06 16:41:28 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/04 20:53:56 by agiordan     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/04 20:53:57 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_tabint2del(int ***tab, size_t len)
+char	*ft_strstr(const char *meule, const char *aiguille)
 {
-	size_t	i;
+	int	i;
 
-	i = -1;
-	if (!tab || !(*tab))
-		return ;
-	while (++i < len)
-		ft_tabintdel(&((*tab)[i]));
-	free(*tab);
-	*tab = NULL;
+	if (!aiguille[0])
+		return ((char *)meule);
+	while (*meule)
+	{
+		i = 0;
+		while (meule[i] - aiguille[i] == 0)
+		{
+			i++;
+			if (!aiguille[i])
+				return ((char *)meule);
+		}
+		meule++;
+	}
+	return (NULL);
 }

@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_tabint2del.c                                  .::    .:/ .      .::   */
+/*   ft_tabdel.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: agiordan <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/01/10 18:54:01 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/06 16:41:28 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/01/07 14:49:14 by agiordan     #+#   ##    ##    #+#       */
+/*   Updated: 2019/01/10 20:08:05 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_tabint2del(int ***tab, size_t len)
+void	ft_tabdel(char ***tab)
 {
-	size_t	i;
+	int	i;
 
-	i = -1;
-	if (!tab || !(*tab))
+	if (!tab | !(*tab))
 		return ;
-	while (++i < len)
-		ft_tabintdel(&((*tab)[i]));
+	i = -1;
+	while ((*tab)[++i])
+		ft_strdel(*tab + i);
 	free(*tab);
 	*tab = NULL;
 }
