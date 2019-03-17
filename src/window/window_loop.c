@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   window_loop.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 08:56:27 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 17:48:28 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 18:05:09 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 static void		move(t_win *win)
 {
-	if (win->player.pos.x + win->player.vel.x - win->player.box.x < 0)
+	/*if (win->player.pos.x + win->player.vel.x - win->player.box.x < 0)
 		win->player.pos.x = 0 + win->player.vel.x + win->player.box.x;
 	else if (win->player.pos.x + win->player.vel.x
 			+ win->player.box.x > win->map.len_x - 1)
@@ -26,12 +26,12 @@ static void		move(t_win *win)
 	else if (win->player.pos.y + win->player.vel.y
 			+ win->player.box.y > win->map.len_y - 1)
 		win->player.pos.y = win->map.len_y
-							- win->player.vel.y - win->player.box.y;
+							- win->player.vel.y - win->player.box.y;*/
 	win->player.pos.y += win->player.vel.y;
 	win->player.pos.x += win->player.vel.x;
 }
 
-void			refresh_window(t_win *win)
+static void		refresh_window(t_win *win)
 {
 	SDL_SetRenderDrawColor(win->rend, 0, 0, 0, 255);
 	SDL_RenderClear(win->rend);

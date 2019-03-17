@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 19:27:03 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 17:42:32 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 19:07:47 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -70,7 +70,8 @@ static int		test_wall(t_win *win, t_map *map, t_calculs *calculs,\
 	int	i;
 	int	j;
 
-	printf("Dot x = %lf\ty = %lf\n\n", dot.x, dot.y);
+	/*if (calculs->i == 600)
+		printf("Dot x = %lf\ty = %lf\n", dot.x, dot.y);*/
 	j = ft_dtoi_low(dot.x);
 	i = ft_dtoi_low(dot.y);
 	if (!ft_dec(dot.x))
@@ -144,4 +145,5 @@ void			raycasting(t_win *win, t_player *player, t_calculs *calculs)
 		cos(calculs->angle) * dist_dot_2d(next, player->pos));
 		calculs->angle -= dangle;
 	}
+	//printf("\n");
 }

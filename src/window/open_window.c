@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/14 18:59:51 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 17:39:52 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 19:36:11 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,21 +15,25 @@
 
 static int	load_texture(t_win *win)
 {
+	SDL_Surface	*tmp;
+
 	if (!(win->textures.tab[0] = SDL_LoadBMP("./ressource/bois.bmp")) ||\
 	!(win->textures.tab[1] = SDL_LoadBMP("./ressource/simple_wall.bmp")) ||\
 	!(win->textures.tab[2] = SDL_LoadBMP("./ressource/decorate_wall.bmp")) ||\
 	!(win->textures.tab[3] = SDL_LoadBMP("./ressource/stone.bmp")) ||\
 	!(win->textures.tab[4] = SDL_LoadBMP("./ressource/superman.bmp")) ||\
-	!(win->textures.sky = SDL_LoadBMP("./ressource/skyrender0005.bmp")) ||\
-	!(win->textures.tabDev[0] = SDL_LoadBMP("./ressource/gmonacho.bmp")) ||\
-	!(win->textures.tabDev[1] = SDL_LoadBMP("./ressource/agiordan.bmp")) ||\
-	!(win->textures.tabDev[2] = SDL_LoadBMP("./ressource/gmonacho.bmp")) ||\
-	!(win->textures.tabDev[3] = SDL_LoadBMP("./ressource/agiordan.bmp")) ||\
+	!(tmp = SDL_LoadBMP("./ressource/skyrender0005.bmp")) ||\
+	!(win->textures.sky = SDL_CreateTextureFromSurface(win->rend, tmp)) ||\
+	!(win->textures.tabDev[0] = SDL_LoadBMP("./ressource/agiordan.bmp")) ||\
+	!(win->textures.tabDev[1] = SDL_LoadBMP("./ressource/gmonacho.bmp")) ||\
+	!(win->textures.tabDev[2] = SDL_LoadBMP("./ressource/agiordan.bmp")) ||\
+	!(win->textures.tabDev[3] = SDL_LoadBMP("./ressource/gmonacho.bmp")) ||\
 	!(win->textures.tabDev[4] = SDL_LoadBMP("./ressource/bois.bmp")))
 	{
 		ft_putstr(ft_strjoin("Open texture error : ", SDL_GetError()));
 		return (0);
 	}
+	SDL_FreeSurface(tmp);
 	return (1);
 }
 

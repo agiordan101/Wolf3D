@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   win_struct.h                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/13 18:39:15 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 19:24:22 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 19:14:45 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -60,7 +60,8 @@ typedef struct 		s_textures
 	SDL_Surface		*tab[N_SURFACE];
 	SDL_Surface		*tabDev[N_SURFACE];
 	SDL_Texture		*ttab[NB_TILES];
-	SDL_Surface		*sky;
+	SDL_Texture		*sky;
+	SDL_Rect		skyrect;
 }					t_textures;
 
 typedef struct		s_map

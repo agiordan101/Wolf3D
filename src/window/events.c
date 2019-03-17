@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   events.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/01 19:25:09 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 17:43:00 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 19:35:22 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,9 +36,9 @@ static void		keyboard_move(const Uint8 *state, t_player *player)
 		player->vel.y += -sin(player->dir - PI / 2) * player->const_vel;
 	}
 	if (state[SDL_SCANCODE_RIGHT])
-		player->dir -= 0.05;
+		player->dir -= 0.07;
 	if (state[SDL_SCANCODE_LEFT])
-		player->dir += 0.05;
+		player->dir += 0.07;
 }
 
 static void		keyboard_norme(const Uint8 *state, t_win *win)

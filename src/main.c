@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 17:46:22 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 19:29:08 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -44,11 +44,11 @@ static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 	player->pos.y = 0;
 	player->box.x = 0.2;
 	player->box.y = 0.2;
-	player->vel = (t_vector_2d){}; //Inutile
 	player->const_vel = VEL;
 	player->dir = PI / 2;
 	player->fov = PI / 2.5;
 	win->textures_mode = 1;
+	win->textures.skyrect = (SDL_Rect){0, 0, win->width, win->height / 2};
 	return (1);
 } 
 

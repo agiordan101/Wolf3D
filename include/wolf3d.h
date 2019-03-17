@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   wolf3d.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 15:50:06 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 19:33:08 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,7 +14,7 @@
 #ifndef WOLF3D_H
 # define WOLF3D_H
 
-# define VEL 0.10
+# define VEL 0.1
 # define HEIGHT_WALL 500
 # define WALL_R 0x50
 # define WALL_G 0xAA
@@ -92,9 +92,8 @@ int					params(t_win *win, int ac, char **av);
 int					map_editor(int fd);
 
 int					open_window(t_win *win);
-int					window_loop(t_win *win);
-void                refresh_window(t_win *win);
-void				keyboard_state(t_player *player, t_win *win);
+int			        window_loop(t_win *win);
+void		        keyboard_state(t_player *player, t_win *win);
 int					keyboard_event(t_win *win, SDL_Event event);
 
 int 				put_minimap(t_win *win);
