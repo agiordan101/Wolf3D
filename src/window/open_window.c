@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   open_window.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/14 18:59:51 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 16:40:19 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 17:39:52 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,7 @@ static int	load_texture(t_win *win)
 	if (!(win->textures.tab[0] = SDL_LoadBMP("./ressource/bois.bmp")) ||\
 	!(win->textures.tab[1] = SDL_LoadBMP("./ressource/simple_wall.bmp")) ||\
 	!(win->textures.tab[2] = SDL_LoadBMP("./ressource/decorate_wall.bmp")) ||\
-	!(win->textures.tab[3] = SDL_LoadBMP("./ressource/lubrun.bmp")) ||\
+	!(win->textures.tab[3] = SDL_LoadBMP("./ressource/stone.bmp")) ||\
 	!(win->textures.tab[4] = SDL_LoadBMP("./ressource/superman.bmp")) ||\
 	!(win->textures.sky = SDL_LoadBMP("./ressource/skyrender0005.bmp")) ||\
 	!(win->textures.tabDev[0] = SDL_LoadBMP("./ressource/gmonacho.bmp")) ||\
