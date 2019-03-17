@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 17:45:05 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 18:19:45 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 20:43:54 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -48,7 +48,7 @@ int				collision(t_map *map, t_player *player)
 	t_dot_2d	box;
 
 	box.x = (player->vel.x > 0) ? player->box.x : -player->box.x;
-    box.y = (player->vel.y > 0) ? player->box.y : -player->box.y;
+	box.y = (player->vel.y > 0) ? player->box.y : -player->box.y;
 	nextx = (t_dot_2d){.x = player->pos.x + player->vel.x + box.x,
 						.y = player->pos.y + box.y};
 	nexty = (t_dot_2d){.x = player->pos.x + box.x,

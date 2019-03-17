@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/14 18:59:51 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 20:16:22 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 20:40:06 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,11 +25,11 @@ static int	load_texture(t_win *win)
 	!(win->textures.tab[5] = SDL_LoadBMP("./ressource/superman.bmp")) ||\
 	!(tmp = SDL_LoadBMP("./ressource/skyrender0005.bmp")) ||\
 	!(win->textures.sky = SDL_CreateTextureFromSurface(win->rend, tmp)) ||\
-	!(win->textures.tabDev[0] = SDL_LoadBMP("./ressource/agiordan.bmp")) ||\
-	!(win->textures.tabDev[1] = SDL_LoadBMP("./ressource/gmonacho.bmp")) ||\
-	!(win->textures.tabDev[2] = SDL_LoadBMP("./ressource/agiordan.bmp")) ||\
-	!(win->textures.tabDev[3] = SDL_LoadBMP("./ressource/gmonacho.bmp")) ||\
-	!(win->textures.tabDev[4] = SDL_LoadBMP("./ressource/bois.bmp")))
+	!(win->textures.tabdev[0] = SDL_LoadBMP("./ressource/agiordan.bmp")) ||\
+	!(win->textures.tabdev[1] = SDL_LoadBMP("./ressource/gmonacho.bmp")) ||\
+	!(win->textures.tabdev[2] = SDL_LoadBMP("./ressource/agiordan.bmp")) ||\
+	!(win->textures.tabdev[3] = SDL_LoadBMP("./ressource/gmonacho.bmp")) ||\
+	!(win->textures.tabdev[4] = SDL_LoadBMP("./ressource/bois.bmp")))
 	{
 		ft_putstr(ft_strjoin("Open texture error : ", SDL_GetError()));
 		return (0);

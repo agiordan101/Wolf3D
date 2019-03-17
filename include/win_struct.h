@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/13 18:39:15 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 20:32:28 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 20:42:31 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,11 +21,19 @@
 # include "../libmath/include/libmath.h"
 # include "editor.h"
 
-typedef struct s_len
+typedef struct		s_len
 {
-	size_t		x;
-	size_t		y;
-}				t_len;
+	size_t			x;
+	size_t			y;
+}					t_len;
+
+typedef struct		s_rect
+{
+	int				x;
+	int				y;
+	int				width;
+	int				height;
+}					t_rect;
 
 typedef struct		s_player
 {
@@ -34,7 +42,7 @@ typedef struct		s_player
 	double			const_vel;
 	double			dir;
 	double			fov;
-	t_dot_2d 		box;
+	t_dot_2d		box;
 }					t_player;
 
 typedef struct		s_calculs
@@ -49,22 +57,22 @@ typedef struct		s_calculs
 	int				i;
 }					t_calculs;
 
-typedef struct 		s_minimap
+typedef struct		s_minimap
 {
-	int 			x;
+	int				x;
 	int				y;
 	int				width;
-	int 			height;
+	int				height;
 	int				x_unit;
 	int				y_unit;
 	int				static_map;
 }					t_minimap;
 
-typedef struct 		s_textures
+typedef struct		s_textures
 {
 	SDL_Surface		*current;
 	SDL_Surface		*tab[N_SURFACE];
-	SDL_Surface		*tabDev[N_SURFACE];
+	SDL_Surface		*tabdev[N_SURFACE];
 	SDL_Texture		*ttab[NB_TILES];
 	SDL_Texture		*sky;
 	SDL_Rect		skyrect;
@@ -79,7 +87,6 @@ typedef struct		s_map
 	int				tile;
 	t_minimap		minimap;
 }					t_map;
-
 
 typedef struct		s_win
 {

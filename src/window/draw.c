@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 16:24:13 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 19:26:59 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 20:46:53 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,34 +34,31 @@ static int		get_rgb_surface(SDL_Surface *surface,
 	return (*pixel & 0xFF);
 }
 
-static void		draw_wall(t_win *win, t_calculs *calculs,
+static void		draw_wall(t_win *win, t_calculs *calculs,\
 							t_textures *textures, int j)
 {
 	double		y_surface;
 	double		x_surface;
 	double		dy_surface;
 	double		h;
-	int			i;
 
 	h = HEIGHT_WALL / calculs->dist[j];
-	if (win->textures_mode == 3)
-		textures->current = textures->tabDev[calculs->orientation[j] - 1];
-	else
-		textures->current = textures->tab[calculs->orientation[j] - 1];
+	textures->current = win->textures_mode == 3 ? textures->tabdev\
+	[calculs->orientation[j] - 1] : textures->tab[calculs->orientation[j] - 1];
 	y_surface = 0;
 	x_surface = win->calculs.xray[j] * textures->current->w;
 	dy_surface = textures->current->h / (2 * h);
-	i = (int)(-h);
-	while (++i < (int)h)
+	calculs->i = (int)(-h);
+	while (++(calculs->i) < (int)h)
 	{
-		if (i > -win->width / 2 && i < win->width / 2)
+		if (calculs->i > -win->width / 2 && calculs->i < win->width / 2)
 		{
 			SDL_SetRenderDrawColor(win->rend,
 				get_rgb_surface(textures->current, x_surface, y_surface, 2),\
 				get_rgb_surface(textures->current, x_surface, y_surface, 3),\
 				get_rgb_surface(textures->current, x_surface, y_surface, 1),\
 				get_rgb_surface(textures->current, x_surface, y_surface, 4));
-			SDL_RenderDrawPoint(win->rend, j, win->height / 2 + i);
+			SDL_RenderDrawPoint(win->rend, j, win->height / 2 + calculs->i);
 		}
 		y_surface += dy_surface;
 	}
