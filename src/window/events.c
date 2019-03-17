@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/01 19:25:09 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 16:43:14 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 17:43:00 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -68,20 +68,6 @@ static void		keyboard_norme(const Uint8 *state, t_win *win)
 	}
 }
 
-static int		at_least_one(const Uint8 *state)
-{
-	int			i;
-
-	i = 0;
-	while (i < SDL_NUM_SCANCODES)
-	{
-		if (state[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 void			keyboard_state(t_player *player, t_win *win)
 {
 	const Uint8	*state;
@@ -90,8 +76,6 @@ void			keyboard_state(t_player *player, t_win *win)
 	player->vel = (t_vector_2d){.x = 0, .y = 0};
 	keyboard_move(state, player);
 	keyboard_norme(state, win);
-	if (at_least_one(state))
-		refresh_window(win);
 }
 
 int				keyboard_event(t_win *win, SDL_Event event)

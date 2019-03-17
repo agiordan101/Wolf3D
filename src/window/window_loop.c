@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 08:56:27 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 16:44:58 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 17:48:28 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -62,6 +62,7 @@ int				window_loop(t_win *win)
 			if (!keyboard_event(win, event))
 				loop = 0;
 		}
+		refresh_window(win);
 	}
 	return (1);
 }
