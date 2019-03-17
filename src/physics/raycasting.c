@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 19:27:03 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 15:46:24 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 17:22:05 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,12 +14,18 @@
 #include "wolf3d.h"
 
 /*
-**	test_wall	: 1 si mur, 0 si vide, -1 si bords de map
+**	save_orientation : Save orientation S/N/E/W du mur touche.
 **
-**	calcul_dist : Trouve le premier mur pointe par le vector
+**	save_texture	: Save la distance entre le point d'impact du rayon
+**						et le 'debut' gauche du mur.
 **
-**	raycasting	: Lance des 'calcul_dist' pour chaque pixel de l'ecran avec le
-**					vector qui correspond
+**	test_wall		: 1 si mur, 0 si vide, -1 si bords de map.
+**						Et save des donnees selin le mode de texture.
+**
+**	affine_function : Parcourt la droite jusqu'a un mur.
+**
+**	raycasting		: Calcul les equations de droites representees par tout 
+**						les rayons et lance plusieures fois 'affine_function'.
 */
 
 static void		save_orientation(t_calculs *calculs, t_dot_2d dot)
@@ -68,7 +74,7 @@ static int		test_wall(t_win *win, t_map *map, t_calculs *calculs,\
 	i = ft_dtoi_low(dot.y);
 	if (!ft_dec(dot.x))
 		j -= calculs->vector.x >= 0 ? 0 : 1;
-	else
+	if (!ft_dec(dot.y))
 		i -= calculs->vector.y >= 0 ? 0 : 1;
 	if (i < 0 || i >= map->len_y || j < 0 || j >= map->len_x)
 		return (-1);
@@ -118,44 +124,23 @@ void			raycasting(t_win *win, t_player *player, t_calculs *calculs)
 	t_dot_2d	nextindex;
 	int			ret;
 
-	//printf("Debut raycasting\n");
 	dangle = player->fov / win->width;
 	calculs->angle = player->fov / 2;
 	calculs->i = -1;
 	while (++(calculs->i) < win->width)
 	{
-		if (cos(player->dir + calculs->angle))
-		{
-			calculs->vector = (t_vector_2d){.origin = player->pos,\
-								.x = cos(player->dir + calculs->angle),
-								.y = -sin(player->dir + calculs->angle)};
-			next = player->pos;
-			nextindex = (t_dot_2d){.x = 0, .y = 0};
-			calculs->a = calculs->vector.y / calculs->vector.x;
-			calculs->b = calculs->vector.origin.y -\
-										calculs->a * calculs->vector.origin.x;
-			if (calculs->a)
-			{	while ((ret = test_wall(win, &(win->map), calculs, next)) == 0)
-					affine_function(player, calculs, &next, &nextindex);
-			}
-			else
-			{
-				calculs->dist[calculs->i] = 0;
-				printf("a ==================================== 0");
-				return ;	
-			}
-			calculs->dist[calculs->i] = (ret == -1 ? -1 :\
-			cos(calculs->angle) * dist_dot_2d(next, player->pos));
-			
-			printf("Dist : %lf\n", calculs->dist[calculs->i]);
-			printf("a = %lf\tb = %lf\n\n", calculs->a, calculs->b);
-			calculs->angle -= dangle;
-		}
-		else
-		{
-			calculs->dist[calculs->i] = 0;
-			printf("vector x ========================== 0000000");
-			return ;
-		}
+		calculs->vector = (t_vector_2d){.origin = player->pos,\
+							.x = cos(player->dir + calculs->angle),
+							.y = -sin(player->dir + calculs->angle)};
+		next = player->pos;
+		nextindex = (t_dot_2d){.x = 0, .y = 0};
+		calculs->a = calculs->vector.y / calculs->vector.x;
+		calculs->b = calculs->vector.origin.y -\
+									calculs->a * calculs->vector.origin.x;
+		while ((ret = test_wall(win, &(win->map), calculs, next)) == 0)
+			affine_function(player, calculs, &next, &nextindex);
+		calculs->dist[calculs->i] = (ret == -1 ? -1 :\
+		cos(calculs->angle) * dist_dot_2d(next, player->pos));
+		calculs->angle -= dangle;
 	}
 }
