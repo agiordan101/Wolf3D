@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/14 17:48:40 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 18:11:23 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 16:05:30 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,19 +39,19 @@ static void		protect_map(t_win *win, t_dot_2d *shift)
 
 int				ed_update_map_ui(t_win *win, t_editor *editor, t_dot_2d shift)
 {
-	int			***tmp_to_free;
+	int			**tmp_to_free;
 
 	protect_map(win, &shift);
-	tmp_to_free = &(win->map.tab);
+	tmp_to_free = win->map.tab;
 	win->map.tab = ed_resize_x(win->map.tab, shift.x, (t_len){
 		win->map.len_x, win->map.len_y}, editor->drag);
-	ft_tabint2del(tmp_to_free, win->map.len_y);
+	//ft_tabint2del(&tmp_to_free, win->map.len_y);
 	ed_scroll_resize_x(&(editor->pos), win->map.unit, shift.x, editor->drag);
-	tmp_to_free = &(win->map.tab);
+	tmp_to_free = win->map.tab;
 	win->map.tab = ed_resize_y(win->map.tab, shift.y, (t_len){
 		win->map.len_x, win->map.len_y}, editor->drag);
 	ed_scroll_resize_y(&(editor->pos), win->map.unit, shift.y, editor->drag);
-	ft_tabint2del(tmp_to_free, win->map.len_y);
+	//ft_tabint2del(&tmp_to_free, win->map.len_y);
 	if (editor->drag == ED_RDRAG)
 		win->map.len_x += shift.x;
 	else if (editor->drag == ED_LDRAG)
