@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   quit.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 09:02:07 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 16:41:26 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 19:56:41 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,9 +15,11 @@
 
 int		quit(t_win *win)
 {
+	free(win->calculs.dist);
+	free(win->calculs.xray);
+	free(win->calculs.orientation);
+	ft_tabint2del(&(win->map.tab), win->map.len_y);
 	SDL_DestroyWindow(win->ptr);
-	TTF_CloseFont(win->police);
-	TTF_Quit();
 	SDL_Quit();
 	return (1);
 }

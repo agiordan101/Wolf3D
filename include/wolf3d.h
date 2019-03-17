@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 19:33:08 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 20:11:03 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@
 # define BACK_R 100
 # define BACK_G 100
 # define BACK_B 100
-# define PLAYER_TILE 5
+# define PLAYER_TILE 6
 # define TRAVERS_TILE 3
 
 # include <stdio.h>
@@ -47,10 +47,8 @@
 void				draw_rect(t_win *win, t_rect rect);
 void				draw_empty_rect(t_win *win, t_dot_2d pos, int width, int height);
 void				draw_line(t_win *win, t_dot_2d p1, t_dot_2d p2, SDL_Renderer *image);
-void				draw_txt(t_win *win, char *txt, SDL_Color color, SDL_Rect rect);
 void				draw(t_win *win, t_calculs *calculs, t_textures *textures);
-void				draw_compass(t_win *win);
-void				calcul_compass(t_win *win);
+void				print_compass(t_win *win);
 SDL_Texture     	*create_t_from_s(SDL_Surface *surface, SDL_Renderer *rend);
 
 int					ed_add_tile(int	x, int y, t_win *win, int tile);

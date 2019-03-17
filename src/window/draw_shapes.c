@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   draw_shapes.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/01 17:49:51 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 15:06:18 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 19:56:23 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -66,22 +66,4 @@ void			draw_empty_rect(t_win *win, t_dot_2d pos, int width, int height)
 					(t_dot_2d){pos.x, pos.y + height}, win->rend);
 	draw_line(win, (t_dot_2d){pos.x, pos.y + height},
 					(t_dot_2d){pos.x, pos.y}, win->rend);
-}
-
-void			draw_txt(t_win *win, char *txt, SDL_Color color, SDL_Rect rect2)
-{
-	SDL_Surface	*surface;
-	SDL_Texture	*texture;
-	SDL_Rect	rect1;
-	SDL_Rect	dst;
-
-	rect1 = (SDL_Rect){0, 0, 100, 100};
-	surface = SDL_CreateRGBSurface(0, 100, 100, 32,
-							0xff000000, 0x00ff0000, 0x0000ff00, 0x000000ff);
-	win->texte = TTF_RenderText_Blended(win->police, txt, color);
-	SDL_BlitSurface(win->texte, &rect1, surface, &rect2);
-	texture = SDL_CreateTextureFromSurface(win->rend, surface);
-	SDL_QueryTexture(texture, NULL, NULL, &dst.w, &dst.h);
-	SDL_RenderCopy(win->rend, texture, NULL, &dst);
-	SDL_RenderPresent(win->rend);
 }

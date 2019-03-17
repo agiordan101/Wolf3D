@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 19:29:08 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 19:48:38 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,11 +35,11 @@ static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 	map->tab = NULL;
 	calculs->angle = -player->fov / 2;
 	if (!(calculs->dist = (double *)malloc(sizeof(double) * win->width)))
-		return (0);
+		return (-2);
 	if (!(calculs->xray = (double *)malloc(sizeof(double) * win->width)))
-		return (0);
+		return (-2);
 	if (!(calculs->orientation = (int *)malloc(sizeof(int) * win->width)))
-		return (0);
+		return (-2);
 	player->pos.x = 0;
 	player->pos.y = 0;
 	player->box.x = 0.2;

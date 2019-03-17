@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 08:56:27 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 18:05:09 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 19:59:33 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,7 +38,7 @@ static void		refresh_window(t_win *win)
 	raycasting(win, &(win->player), &(win->calculs));
 	draw(win, &(win->calculs), &(win->textures));
 	put_minimap(win);
-	calcul_compass(win);
+	print_compass(win);
 	SDL_RenderPresent(win->rend);
 }
 

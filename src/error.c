@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   error.c                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 23:34:23 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 14:59:06 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 19:43:48 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,7 @@ int			error(int error, char *error_source, t_win *win)
 	ft_putstr("Error (");
 	ft_putstr(error_source);
 	ft_putstr(") : ");
-	ft_tabint2del(&(win->map.tab), win->map.len_y);
+	quit(win);
 	if (error == -1)
 		return (write(1, "Openning Failed, Please enter a valid file name\n",
 		48));

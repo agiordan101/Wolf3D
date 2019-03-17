@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   flags.c                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/05 15:06:12 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 14:50:46 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 19:53:15 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 static void		flags(t_win *win, int ac, char **av, int *i)
 {
-	int			fd;
+	int	fd;
 
 	if ((fd = open(av[*i], O_RDONLY)) > 0)
 		win->fd = fd;
