@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/28 18:53:05 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 20:10:15 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 20:20:28 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -48,8 +48,10 @@ void	print_compass(t_win *win)
 	SDL_SetRenderDrawColor(win->rend, 0xff, 0x20, 0x20, 255);
 	origin = (t_dot_2d){.x = 9 * win->width / 10, .y = win->height / 10};
 	calcul_comp(win, origin, len);
-	rect = (SDL_Rect){.x = origin.x + cos(PI - PI / 2 + win->player.dir) * 5 * len / 4,\
-						.y = origin.y + sin(PI - PI / 2 + win->player.dir) * 5 * len / 4,\
+	rect = (SDL_Rect){.x = origin.x + cos(PI - PI / 2 + win->player.dir) *\
+																5 * len / 4,\
+						.y = origin.y + sin(PI - PI / 2 + win->player.dir) *\
+																5 * len / 4,\
 						.w = 100,\
 						.h = 100};
 }

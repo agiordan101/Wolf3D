@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 08:56:27 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 19:59:33 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 20:32:13 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,18 +15,6 @@
 
 static void		move(t_win *win)
 {
-	/*if (win->player.pos.x + win->player.vel.x - win->player.box.x < 0)
-		win->player.pos.x = 0 + win->player.vel.x + win->player.box.x;
-	else if (win->player.pos.x + win->player.vel.x
-			+ win->player.box.x > win->map.len_x - 1)
-		win->player.pos.x = win->map.len_x
-							- win->player.vel.x - win->player.box.x;
-	if (win->player.pos.y + win->player.vel.y - win->player.box.y < 0)
-		win->player.pos.y = 0.01 + win->player.vel.y + win->player.box.y;
-	else if (win->player.pos.y + win->player.vel.y
-			+ win->player.box.y > win->map.len_y - 1)
-		win->player.pos.y = win->map.len_y
-							- win->player.vel.y - win->player.box.y;*/
 	win->player.pos.y += win->player.vel.y;
 	win->player.pos.x += win->player.vel.x;
 }

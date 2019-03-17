@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 20:11:03 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 20:32:25 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,7 +36,6 @@
 # include "../libmath/include/libmath.h"
 # include "editor.h"
 # include "shape.h"
-# include "2d_struct.h"
 # include "win_struct.h"
 
 /*

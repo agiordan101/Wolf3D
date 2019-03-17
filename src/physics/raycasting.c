@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 19:27:03 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 20:10:47 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 20:27:39 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,7 +24,7 @@
 **
 **	affine_function : Parcourt la droite jusqu'a un mur.
 **
-**	raycasting		: Calcul les equations de droites representees par tout 
+**	raycasting		: Calcul les equations de droites representees par tout
 **						les rayons et lance plusieures fois 'affine_function'.
 */
 
@@ -70,8 +70,6 @@ static int		test_wall(t_win *win, t_map *map, t_calculs *calculs,\
 	int	i;
 	int	j;
 
-	/*if (calculs->i == 600)
-		printf("Dot x = %lf\ty = %lf\n", dot.x, dot.y);*/
 	j = ft_dtoi_low(dot.x);
 	i = ft_dtoi_low(dot.y);
 	if (!ft_dec(dot.x))
@@ -80,7 +78,8 @@ static int		test_wall(t_win *win, t_map *map, t_calculs *calculs,\
 		i -= calculs->vector.y >= 0 ? 0 : 1;
 	if (i < 0 || i >= map->len_y || j < 0 || j >= map->len_x)
 		return (-1);
-	if (map->tab[i][j] == 0 || map->tab[i][j] == 5 || map->tab[i][j] == PLAYER_TILE)
+	if (map->tab[i][j] == 0 || map->tab[i][j] == 5 ||\
+		map->tab[i][j] == PLAYER_TILE)
 		return (0);
 	save_texture(calculs, dot);
 	if (win->textures_mode == 1)
@@ -145,5 +144,4 @@ void			raycasting(t_win *win, t_player *player, t_calculs *calculs)
 		cos(calculs->angle) * dist_dot_2d(next, player->pos));
 		calculs->angle -= dangle;
 	}
-	//printf("\n");
 }

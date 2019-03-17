@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/13 18:39:15 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 20:13:25 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 20:32:28 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,6 +20,12 @@
 # include "../libft/libft.h"
 # include "../libmath/include/libmath.h"
 # include "editor.h"
+
+typedef struct s_len
+{
+	size_t		x;
+	size_t		y;
+}				t_len;
 
 typedef struct		s_player
 {
