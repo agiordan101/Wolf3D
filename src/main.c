@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/15 15:56:18 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 15:11:59 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -84,9 +84,9 @@ int		main(int ac, char **av)
 			return (error(-1, "open", &win));
 		if (win.choice == 0)
 		{
-			if ((ret = init(&win, &(win.map), &(win.calculs), &(win.player))))
+			if (!(ret = init(&win, &(win.map), &(win.calculs), &(win.player))))
 				return (error(ret, "init", &win));
-			printf("Fin init\n");
+			//printf("Fin init\n");
 			if ((ret = parser(fd, &(win.map), &(win.player))) <= 0)
 				return(error(ret, "parser", &win));
 			//printf("Fin parsing\n");

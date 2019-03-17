@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 16:24:13 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/15 15:41:00 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 15:12:06 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -93,10 +93,8 @@ void		draw(t_win *win, t_calculs *calculs, t_textures *textures)
 		dfloor.x = j;
 		dlow = (t_dot_2d){.x = j, .y = win->height / 2 + (calculs->dist[j] == -1 ? 0 : HEIGHT_WALL / calculs->dist[j])};
 		draw_sky(win, textures, j);
-	printf("Debut draw wall\n");
 		if (calculs->dist[j] != -1)
 			draw_wall(win, calculs, textures, j);
-	printf("fin\n");
 		SDL_SetRenderDrawColor(win->rend, BACK_R, BACK_G, BACK_B, 255);
 		draw_line(win, dlow, dfloor, win->rend);
 	}
