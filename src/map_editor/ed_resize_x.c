@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/11 16:13:59 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 16:54:17 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 15:58:03 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -87,7 +87,7 @@ int				**ed_resize_x(int **tab, int x_shift, t_len len, int drag_flag)
 		{
 			if (!(new_tab = push_back(tab, x_shift, len)))
 				return (NULL);
-		}
+		}\
 		return (new_tab);
 	}
 	else
