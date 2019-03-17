@@ -6,7 +6,7 @@
 /*   By: agiordan <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/01 16:23:21 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 17:34:43 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 20:23:22 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,4 +37,3 @@ double	ft_pythagore(double *hypo, double *c1, double *c2)
 		return (*c2 = ft__sqrt(*hypo * *hypo - *c1 * *c1, 2));
 	return (-1);
 }
-

@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 19:23:30 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/01 17:34:45 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 20:21:36 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 #include "../libft/libft.h"
 #include <stdio.h>
 
-int	main()
+int	main(void)
 {
 	double *a;
 	double *b;
@@ -30,6 +30,5 @@ int	main()
 	*b = 3;
 	*h = 3.605551;
 	printf("%lf\n", ft_pythagore(h, a, b));
-	//printf("%lf\n", *b);
 	return (0);
 }
