@@ -3,21 +3,21 @@
 /*                                                              /             */
 /*   flags.c                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/05 15:06:12 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/11 18:27:50 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 14:50:46 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static void	flags(t_win *win, int ac, char **av, int *i)
+static void		flags(t_win *win, int ac, char **av, int *i)
 {
-	int	fd;
+	int			fd;
 
-	if ((fd = open(av[*i], O_RDONLY)) > 0)  
+	if ((fd = open(av[*i], O_RDONLY)) > 0)
 		win->fd = fd;
 	else if (!ft_strcmp(av[*i], "-name"))
 	{
@@ -40,7 +40,7 @@ static void	flags(t_win *win, int ac, char **av, int *i)
 		win->choice = ft_atoi(av[(*i)]);
 }
 
-int		params(t_win *win, int ac, char **av)
+int				params(t_win *win, int ac, char **av)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 20:14:37 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 15:36:25 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -93,6 +93,7 @@ int					map_editor(int fd);
 
 int					open_window(t_win *win);
 int					window_loop(t_win *win);
+void                refresh_window(t_win *win);
 void				keyboard_state(t_player *player, t_win *win);
 int					keyboard_event(t_win *win, SDL_Event event);
 

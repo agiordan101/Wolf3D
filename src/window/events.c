@@ -3,22 +3,18 @@
 /*                                                              /             */
 /*   events.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/01 19:25:09 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 18:25:43 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 15:46:46 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void keyboard_state(t_player *player, t_win *win)
+static void		keyboard_move(const Uint8 *state, t_player *player)
 {
-    const Uint8 *state;
-
-    state = SDL_GetKeyboardState(NULL);
-	player->vel = (t_vector_2d){.x = 0, .y = 0};
 	if (state[SDL_SCANCODE_W])
 	{
 		player->vel.x += cos(player->dir) * player->const_vel;
@@ -43,12 +39,22 @@ void keyboard_state(t_player *player, t_win *win)
 		player->dir -= 0.05;
 	if (state[SDL_SCANCODE_LEFT])
 		player->dir += 0.05;
+}
+
+static void		keyboard_norme(const Uint8 *state, t_win *win)
+{
 	if (state[SDL_SCANCODE_TAB])
 	{
-		win->map.minimap.x_unit = (win->map.len_x > win->map.len_y) ? (win->width - 10) / win->map.len_x : (win->height - 10) / win->map.len_y;
-		win->map.minimap.y_unit = (win->map.len_x > win->map.len_y) ? (win->width - 10) / win->map.len_x : (win->height - 10) / win->map.len_y;
-		win->map.minimap.height = win->map.len_y * win->map.minimap.y_unit;
-		win->map.minimap.width = win->map.len_x * win->map.minimap.x_unit;
+		win->map.minimap.x_unit = (win->map.len_x > win->map.len_y) ?
+			(win->width - 10) / win->map.len_x :
+			(win->height - 10) / win->map.len_y;
+		win->map.minimap.y_unit = (win->map.len_x > win->map.len_y) ?
+			(win->width - 10) / win->map.len_x :
+			(win->height - 10) / win->map.len_y;
+		win->map.minimap.height = win->map.len_y
+			* win->map.minimap.y_unit;
+		win->map.minimap.width = win->map.len_x
+			* win->map.minimap.x_unit;
 		win->map.minimap.static_map = 1;
 	}
 	else
@@ -62,9 +68,20 @@ void keyboard_state(t_player *player, t_win *win)
 	}
 }
 
-int	keyboard_event(t_win *win, SDL_Event event)
+void			keyboard_state(t_player *player, t_win *win)
 {
-	double	dfov;
+	const Uint8	*state;
+
+	state = SDL_GetKeyboardState(NULL);
+	player->vel = (t_vector_2d){.x = 0, .y = 0};
+	keyboard_move(state, player);
+	keyboard_norme(state, win);
+	refresh_window(win);
+}
+
+int				keyboard_event(t_win *win, SDL_Event event)
+{
+	double		dfov;
 
 	dfov = 0.1;
 	if (event.type == SDL_QUIT || event.key.keysym.sym == SDLK_ESCAPE)

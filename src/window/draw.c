@@ -3,21 +3,25 @@
 /*                                                              /             */
 /*   draw.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 16:24:13 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 18:36:11 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 15:23:46 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-//Attention au bpp quand on chope le rgb
-static int	get_rgb_surface(SDL_Surface *surface, double x, double y, int elem)
+/*
+**	Attention au bpp quand on chope le rgb
+*/
+
+static int		get_rgb_surface(SDL_Surface *surface,
+								double x, double y, int elem)
 {
-	int		bpp;
-	Uint32	*pixel;
+	int			bpp;
+	Uint32		*pixel;
 
 	bpp = surface->format->BytesPerPixel;
 	pixel = surface->pixels + (int)y * surface->pitch + (int)x * bpp;
@@ -32,31 +36,33 @@ static int	get_rgb_surface(SDL_Surface *surface, double x, double y, int elem)
 
 static void		draw_sky(t_win *win, t_textures *textures, int j)
 {
-	double		ySurface;
-	double		xSurface;
-	double		dySurface;
+	double		y_surface;
+	double		x_surface;
+	double		dy_surface;
 	int			i;
 
-	ySurface = 0;
-	xSurface = ((double)j / win->width) * textures->sky->w;
-	dySurface = (double)textures->sky->h / win->height;
+	y_surface = 0;
+	x_surface = ((double)j / win->width) * textures->sky->w;
+	dy_surface = (double)textures->sky->h / win->height;
 	i = 0;
 	while (++i < win->height / 2)
 	{
-		SDL_SetRenderDrawColor(win->rend, get_rgb_surface(textures->sky, xSurface, ySurface, 2),\
-										get_rgb_surface(textures->sky, xSurface, ySurface, 3),\
-										get_rgb_surface(textures->sky, xSurface, ySurface, 1),\
-										get_rgb_surface(textures->sky, xSurface, ySurface, 4));
+		SDL_SetRenderDrawColor(win->rend,
+			get_rgb_surface(textures->sky, x_surface, y_surface, 2),\
+			get_rgb_surface(textures->sky, x_surface, y_surface, 3),\
+			get_rgb_surface(textures->sky, x_surface, y_surface, 1),\
+			get_rgb_surface(textures->sky, x_surface, y_surface, 4));
 		SDL_RenderDrawPoint(win->rend, j, i);
-		ySurface += dySurface;
+		y_surface += dy_surface;
 	}
 }
 
-static void		draw_wall(t_win *win, t_calculs *calculs, t_textures *textures, int j)
+static void		draw_wall(t_win *win, t_calculs *calculs,
+							t_textures *textures, int j)
 {
-	double		ySurface;
-	double		xSurface;
-	double		dySurface;
+	double		y_surface;
+	double		x_surface;
+	double		dy_surface;
 	double		h;
 	int			i;
 
@@ -65,33 +71,36 @@ static void		draw_wall(t_win *win, t_calculs *calculs, t_textures *textures, int
 		textures->current = textures->tabDev[calculs->orientation[j] - 1];
 	else
 		textures->current = textures->tab[calculs->orientation[j] - 1];
-	ySurface = 0;
-	xSurface = win->calculs.xray[j] * textures->current->w;
-	dySurface = textures->current->h / (2 * h);
+	y_surface = 0;
+	x_surface = win->calculs.xray[j] * textures->current->w;
+	dy_surface = textures->current->h / (2 * h);
 	i = (int)(-h);
 	while (++i < (int)h)
 	{
-		SDL_SetRenderDrawColor(win->rend, get_rgb_surface(textures->current, xSurface, ySurface, 2),\
-										get_rgb_surface(textures->current, xSurface, ySurface, 3),\
-										get_rgb_surface(textures->current, xSurface, ySurface, 1),\
-										get_rgb_surface(textures->current, xSurface, ySurface, 4));
+		SDL_SetRenderDrawColor(win->rend,
+			get_rgb_surface(textures->current, x_surface, y_surface, 2),\
+			get_rgb_surface(textures->current, x_surface, y_surface, 3),\
+			get_rgb_surface(textures->current, x_surface, y_surface, 1),\
+			get_rgb_surface(textures->current, x_surface, y_surface, 4));
 		SDL_RenderDrawPoint(win->rend, j, win->height / 2 + i);
-		ySurface += dySurface;
+		y_surface += dy_surface;
 	}
 }
 
-void		draw(t_win *win, t_calculs *calculs, t_textures *textures)
+void			draw(t_win *win, t_calculs *calculs, t_textures *textures)
 {
 	t_dot_2d	dfloor;
 	t_dot_2d	dlow;
 	int			j;
-	
+
 	dfloor.y = win->height;
 	j = -1;
 	while (++j < win->width)
 	{
 		dfloor.x = j;
-		dlow = (t_dot_2d){.x = j, .y = win->height / 2 + (calculs->dist[j] == -1 ? 0 : HEIGHT_WALL / calculs->dist[j])};
+		dlow = (t_dot_2d){.x = j,
+			.y = win->height / 2 +
+			(calculs->dist[j] == -1 ? 0 : HEIGHT_WALL / calculs->dist[j])};
 		draw_sky(win, textures, j);
 		if (calculs->dist[j] != -1)
 			draw_wall(win, calculs, textures, j);

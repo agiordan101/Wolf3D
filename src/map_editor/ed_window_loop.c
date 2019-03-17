@@ -6,14 +6,14 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/26 18:00:19 by gal          #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 17:40:02 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 15:39:37 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static void		refresh_window(t_win *win)
+static void		srefresh_window(t_win *win)
 {
 	SDL_SetRenderDrawColor(win->rend, 0, 0, 0, 255);
 	SDL_RenderClear(win->rend);
@@ -56,7 +56,7 @@ int				ed_window_loop(t_win *win)
 			if (!pevent(win, event))
 				loop = 0;
 		ed_move(win);
-		refresh_window(win);
+		srefresh_window(win);
 	}
 	return (1);
 }
