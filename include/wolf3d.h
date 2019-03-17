@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 15:36:25 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 15:50:06 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,7 +14,7 @@
 #ifndef WOLF3D_H
 # define WOLF3D_H
 
-# define VEL 0.1
+# define VEL 0.10
 # define HEIGHT_WALL 500
 # define WALL_R 0x50
 # define WALL_G 0xAA

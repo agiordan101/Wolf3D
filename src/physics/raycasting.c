@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   raycasting.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 19:27:03 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/14 18:41:43 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 15:46:24 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,12 +21,6 @@
 **	raycasting	: Lance des 'calcul_dist' pour chaque pixel de l'ecran avec le
 **					vector qui correspond
 */
-
-/*double	prop(double x, t_dot_2d inter1, t_dot_2d inter2)
-{
-	return ((x - inter1.x) / (inter1.y - inter1.x) * (inter2.y - inter2.x)\
-													+ inter2.x);
-}*/
 
 static void		save_orientation(t_calculs *calculs, t_dot_2d dot)
 {
@@ -64,7 +58,8 @@ static void		save_texture(t_calculs *calculs, t_dot_2d dot)
 	}
 }
 
-static int		test_wall(t_win *win, t_map *map, t_calculs *calculs, t_dot_2d dot)
+static int		test_wall(t_win *win, t_map *map, t_calculs *calculs,\
+																t_dot_2d dot)
 {
 	int	i;
 	int	j;
@@ -87,30 +82,32 @@ static int		test_wall(t_win *win, t_map *map, t_calculs *calculs, t_dot_2d dot)
 	return (1);
 }
 
-void			affine_function(t_player *player, t_calculs *calculs, t_dot_2d *next, t_dot_2d *nextIndex)
+void			affine_function(t_player *player, t_calculs *calculs,\
+								t_dot_2d *next, t_dot_2d *nextindex)
 {
 	t_dot_2d	d1;
 	t_dot_2d	d2;
 
 	if (calculs->vector.x > 0)
-		d1.x = ft_dtoi_up(player->pos.x) + nextIndex->x;
+		d1.x = ft_dtoi_up(player->pos.x) + nextindex->x;
 	else
-		d1.x = ft_dtoi_low(player->pos.x) + nextIndex->x;
+		d1.x = ft_dtoi_low(player->pos.x) + nextindex->x;
 	if (calculs->vector.y > 0)
-		d2.y = ft_dtoi_up(player->pos.y) + nextIndex->y;
+		d2.y = ft_dtoi_up(player->pos.y) + nextindex->y;
 	else
-		d2.y = ft_dtoi_low(player->pos.y) + nextIndex->y;
+		d2.y = ft_dtoi_low(player->pos.y) + nextindex->y;
 	d1.y = calculs->a * d1.x + calculs->b;
-	d2.x = (d2.y - calculs->b) / calculs->a; //Division 0
-	if (ft__abs(dist_dot_2d(d1, player->pos)) < ft__abs(dist_dot_2d(d2, player->pos)))
+	d2.x = (d2.y - calculs->b) / calculs->a;
+	if (ft__abs(dist_dot_2d(d1, player->pos)) <\
+		ft__abs(dist_dot_2d(d2, player->pos)))
 	{
 		*next = d1;
-		nextIndex->x += calculs->vector.x > 0 ? 1 : -1;
+		nextindex->x += calculs->vector.x > 0 ? 1 : -1;
 	}
 	else
 	{
 		*next = d2;
-		nextIndex->y += calculs->vector.y > 0 ? 1 : -1;
+		nextindex->y += calculs->vector.y > 0 ? 1 : -1;
 	}
 }
 
@@ -118,7 +115,7 @@ void			raycasting(t_win *win, t_player *player, t_calculs *calculs)
 {
 	double		dangle;
 	t_dot_2d	next;
-	t_dot_2d	nextIndex;
+	t_dot_2d	nextindex;
 	int			ret;
 
 	//printf("Debut raycasting\n");
@@ -126,19 +123,39 @@ void			raycasting(t_win *win, t_player *player, t_calculs *calculs)
 	calculs->angle = player->fov / 2;
 	calculs->i = -1;
 	while (++(calculs->i) < win->width)
+	{
 		if (cos(player->dir + calculs->angle))
 		{
 			calculs->vector = (t_vector_2d){.origin = player->pos,\
 								.x = cos(player->dir + calculs->angle),
 								.y = -sin(player->dir + calculs->angle)};
 			next = player->pos;
-			nextIndex =	(t_dot_2d){.x = 0, .y = 0};
+			nextindex = (t_dot_2d){.x = 0, .y = 0};
 			calculs->a = calculs->vector.y / calculs->vector.x;
-			calculs->b = calculs->vector.origin.y - calculs->a * calculs->vector.origin.x;
-			while ((ret = test_wall(win, &(win->map), calculs, next)) == 0)
-				affine_function(player, calculs, &next, &nextIndex);
-			calculs->dist[calculs->i] = (ret == -1 ? -1 : cos(calculs->angle) * dist_dot_2d(next, player->pos) + 0.00000000001);//0.00000000001
-			//printf("%lf\n", calculs->dist[calculs->i]);
+			calculs->b = calculs->vector.origin.y -\
+										calculs->a * calculs->vector.origin.x;
+			if (calculs->a)
+			{	while ((ret = test_wall(win, &(win->map), calculs, next)) == 0)
+					affine_function(player, calculs, &next, &nextindex);
+			}
+			else
+			{
+				calculs->dist[calculs->i] = 0;
+				printf("a ==================================== 0");
+				return ;	
+			}
+			calculs->dist[calculs->i] = (ret == -1 ? -1 :\
+			cos(calculs->angle) * dist_dot_2d(next, player->pos));
+			
+			printf("Dist : %lf\n", calculs->dist[calculs->i]);
+			printf("a = %lf\tb = %lf\n\n", calculs->a, calculs->b);
 			calculs->angle -= dangle;
 		}
+		else
+		{
+			calculs->dist[calculs->i] = 0;
+			printf("vector x ========================== 0000000");
+			return ;
+		}
+	}
 }
