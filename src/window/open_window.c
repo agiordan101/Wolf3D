@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   open_window.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/14 18:59:51 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 19:36:11 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 20:08:48 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,6 +22,7 @@ static int	load_texture(t_win *win)
 	!(win->textures.tab[2] = SDL_LoadBMP("./ressource/decorate_wall.bmp")) ||\
 	!(win->textures.tab[3] = SDL_LoadBMP("./ressource/stone.bmp")) ||\
 	!(win->textures.tab[4] = SDL_LoadBMP("./ressource/superman.bmp")) ||\
+	!(win->textures.tab[5] = SDL_LoadBMP("./ressource/vitre.bmp")) ||\
 	!(tmp = SDL_LoadBMP("./ressource/skyrender0005.bmp")) ||\
 	!(win->textures.sky = SDL_CreateTextureFromSurface(win->rend, tmp)) ||\
 	!(win->textures.tabDev[0] = SDL_LoadBMP("./ressource/agiordan.bmp")) ||\
