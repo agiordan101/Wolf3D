@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/13 18:39:15 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 19:14:45 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 20:10:56 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -80,7 +80,6 @@ typedef struct		s_win
 	SDL_Window		*ptr;
 	SDL_Renderer	*rend;
 	SDL_Surface		*texte;
-	TTF_Font		*police;
 	t_map			map;
 	t_textures		textures;
 	t_player		player;

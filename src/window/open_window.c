@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/14 18:59:51 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 19:36:11 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 19:55:47 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,10 +49,5 @@ int			open_window(t_win *win)
 	}
 	if (!(load_texture(win)))
 		return (0);
-	if (TTF_Init() < 0 || !(win->police = TTF_OpenFont("arial.ttf", 65)))
-	{
-		ft_putstr(ft_strjoin("Open TTF error : ", TTF_GetError()));
-		return (0);
-	}
 	return (1);
 }
