@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/28 18:53:05 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 20:20:28 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/18 15:27:19 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,7 +38,7 @@ static void	calcul_comp(t_win *win, t_dot_2d origin, int len)
 	draw_line(win, d1, d2, win->rend);
 }
 
-void	print_compass(t_win *win)
+void		print_compass(t_win *win)
 {
 	SDL_Rect	rect;
 	t_dot_2d	origin;

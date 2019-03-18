@@ -6,16 +6,12 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 16:24:13 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 20:46:53 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/18 15:24:38 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-
-/*
-**	Attention au bpp quand on chope le rgb
-*/
 
 static int		get_rgb_surface(SDL_Surface *surface,
 								double x, double y, int elem)

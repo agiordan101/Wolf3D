@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/13 16:58:48 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 20:42:38 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/18 15:28:47 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,6 +38,14 @@
 # include "../frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h"
 # include "../libft/libft.h"
 # include "../libmath/include/libmath.h"
+
+typedef struct		s_rect
+{
+	int				x;
+	int				y;
+	int				width;
+	int				height;
+}					t_rect;
 
 typedef struct		s_ui
 {

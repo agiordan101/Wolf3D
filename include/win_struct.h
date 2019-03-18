@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/13 18:39:15 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 20:42:31 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/18 15:29:09 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,14 +26,6 @@ typedef struct		s_len
 	size_t			x;
 	size_t			y;
 }					t_len;
-
-typedef struct		s_rect
-{
-	int				x;
-	int				y;
-	int				width;
-	int				height;
-}					t_rect;
 
 typedef struct		s_player
 {
