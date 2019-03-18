@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 19:48:38 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/18 16:25:15 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 /*
 **	Differents murs :
-**	
+**
 **	0	->	Vide
 **	1	->	Mur bois
 **	2	->	Mur pierre
@@ -25,7 +25,7 @@
 **	6	->	Position initiale du personnage
 */
 
-static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
+static int	init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 {
 	map->minimap.x = 10;
 	map->minimap.y = 10;
@@ -50,7 +50,7 @@ static int init(t_win *win, t_map *map, t_calculs *calculs, t_player *player)
 	win->textures_mode = 1;
 	win->textures.skyrect = (SDL_Rect){0, 0, win->width, win->height / 2};
 	return (1);
-} 
+}
 
 static int	init_texture(t_win win, SDL_Surface **tab, SDL_Texture **ttab)
 {
@@ -66,7 +66,7 @@ static int	init_texture(t_win win, SDL_Surface **tab, SDL_Texture **ttab)
 	return (1);
 }
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	t_win	win;
 	int		fd;
@@ -78,25 +78,19 @@ int		main(int ac, char **av)
 			return (error(-1, "open", &win));
 		if (win.choice == 0)
 		{
-			if (!(ret = init(&win, &(win.map), &(win.calculs), &(win.player))))
-				return (error(ret, "init", &win));
-			//printf("Fin init\n");
-			if ((ret = parser(fd, &(win.map), &(win.player))) <= 0)
-				return(error(ret, "parser", &win));
-			//printf("Fin parsing\n");
-			if (!open_window(&win))
-				return (0);
-			if (!(ret = init_texture(win, win.textures.tab, win.textures.ttab)))
-				return (error(ret, "map_editor : init_texture", &win));
-			//SDL_SetRenderDrawBlendMode(win.rend, SDL_BLENDMODE_BLEND);
+			if (!(ret = init(&win, &(win.map), &(win.calculs), &(win.player)))\
+			|| ((ret = parser(fd, &(win.map), &(win.player))) <= 0) ||\
+			!open_window(&win) ||\
+			!(ret = init_texture(win, win.textures.tab, win.textures.ttab)))
+				return (error(ret, "Parser | init | open_textures", &win));
 			window_loop(&win);
 		}
-		else if (win.choice == 1) 
+		else if (win.choice == 1)
 			map_editor(fd);
+		quit(&win);
 	}
 	else
 		ft_putendl("usage: ./Wolf3D <map> 0 | 1 [-len <width> <height>]\
 					[-name <window's name>]\n0 : Wolf3d\n1 : map_editor");
-	quit(&win);
 	return (0);
 }

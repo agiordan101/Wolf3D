@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/03/14 17:49:11 by gmonacho    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/03/18 15:31:07 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -113,8 +113,8 @@ fclean:	clean
 re:	fclean all
 
 norme:
-		@norminette $(LIBFT)
-		@norminette $(LIBMATH)
+		@make norme -C $(LIBFT)
+		@make norme -C $(LIBMATH)
 		@norminette $(SRCS_PATH)
 		@norminette $(INCLUDES_PATH)
 

@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   editor.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/13 16:58:48 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/13 18:42:12 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/18 15:28:47 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -33,14 +33,21 @@
 # define COLOR_OFF 0x00000088
 # define COLOR_ON 0x000000AA
 
-# include "shape.h"
 # include "../libmath/include/libmath.h"
 # include "../frameworks/SDL2.framework/Headers/SDL.h"
 # include "../frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h"
 # include "../libft/libft.h"
 # include "../libmath/include/libmath.h"
 
-typedef struct 		s_ui
+typedef struct		s_rect
+{
+	int				x;
+	int				y;
+	int				width;
+	int				height;
+}					t_rect;
+
+typedef struct		s_ui
 {
 	t_rect			rect;
 	int				flag;
@@ -58,6 +65,5 @@ typedef struct		s_editor
 	int				selected_tile;
 	t_vector_2d		vel;
 }					t_editor;
-
 
 #endif
