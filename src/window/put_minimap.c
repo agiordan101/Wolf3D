@@ -6,7 +6,7 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/28 17:08:46 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/18 16:34:14 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/18 16:39:30 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -78,7 +78,7 @@ void			put_minimap_norme(t_win *win, int i, int j, t_dot_2d max)
 			if (win->map.minimap.static_map)
 				static_draw_tile(win, i, j++);
 			else
-				draw_tile(win, i, j++);
+				static_draw_tile(win, i, j++);
 		}
 		i++;
 	}
