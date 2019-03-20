@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/03/18 15:31:07 by agiordan    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/03/20 15:41:43 by gmonacho    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -33,6 +33,7 @@ SRCS_FILES =	main.c \
 				$(SRCS_PATH_3)/quit.c \
 				$(SRCS_PATH_3)/compass.c \
 				$(SRCS_PATH_3)/surface.c \
+				$(SRCS_PATH_3)/draw_tile.c \
 				$(SRCS_PATH_4)/map_editor.c \
 				$(SRCS_PATH_4)/ed_window_loop.c \
 				$(SRCS_PATH_4)/ed_put_map.c \
