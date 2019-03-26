@@ -6,7 +6,7 @@
 #    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/03 17:31:01 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/03/05 16:02:28 by agiordan    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/03/22 14:49:26 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -89,6 +89,7 @@ FILE =	ft_memset.c \
 		ft_tablen.c \
 		ft_tabnew.c \
 		ft_tabdel.c \
+		ft_tab2del.c \
 		ft_tabcpy.c \
 		ft_tabdup.c \
 		ft_printtab.c \

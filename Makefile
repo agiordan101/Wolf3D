@@ -6,7 +6,7 @@
 #    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/03/18 15:31:07 by agiordan    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/03/26 00:59:11 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -50,7 +50,6 @@ SRCS_FILES =	main.c \
 				$(SRCS_PATH_4)/ed_pevent.c \
 				$(SRCS_PATH_4)/ed_update_map_ui.c \
 				$(SRCS_PATH_4)/ed_events.c
-				#$(SRCS_PATH_4)/ui.c
 
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_FILES))
 

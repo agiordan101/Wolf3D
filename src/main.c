@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 18:26:02 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/18 16:25:15 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/26 01:16:01 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -72,25 +72,19 @@ int			main(int ac, char **av)
 	int		fd;
 	int		ret;
 
-	if (ac > 1)
+	if ((fd = params(&win, ac, av)) == -1)
+		return (error(-1, "open", &win));
+	if (win.choice == 0)
 	{
-		if ((fd = params(&win, ac, av)) == -1)
-			return (error(-1, "open", &win));
-		if (win.choice == 0)
-		{
-			if (!(ret = init(&win, &(win.map), &(win.calculs), &(win.player)))\
-			|| ((ret = parser(fd, &(win.map), &(win.player))) <= 0) ||\
-			!open_window(&win) ||\
-			!(ret = init_texture(win, win.textures.tab, win.textures.ttab)))
-				return (error(ret, "Parser | init | open_textures", &win));
-			window_loop(&win);
-		}
-		else if (win.choice == 1)
-			map_editor(fd);
-		quit(&win);
+		if (!(ret = init(&win, &(win.map), &(win.calculs), &(win.player))) ||\
+		((ret = parser(fd, &(win.map), &(win.player))) <= 0) ||\
+		!open_window(&win) ||\
+		!(ret = init_texture(win, win.textures.tab, win.textures.ttab)))
+			return (error(ret, "Parser | init | open/init textures", &win));
+		window_loop(&win);
 	}
-	else
-		ft_putendl("usage: ./Wolf3D <map> 0 | 1 [-len <width> <height>]\
-					[-name <window's name>]\n0 : Wolf3d\n1 : map_editor");
+	else if (win.choice == 1)
+		map_editor(fd);
+	quit(&win);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/13 18:39:15 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/18 15:29:09 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/26 01:06:50 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -84,7 +84,6 @@ typedef struct		s_win
 {
 	SDL_Window		*ptr;
 	SDL_Renderer	*rend;
-	SDL_Surface		*texte;
 	t_map			map;
 	t_textures		textures;
 	t_player		player;
