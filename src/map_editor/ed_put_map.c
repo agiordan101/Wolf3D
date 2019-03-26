@@ -6,14 +6,14 @@
 /*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/18 11:24:44 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 16:03:24 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/17 20:51:32 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static void		draw_tile(t_win *win, SDL_Texture **texture, int i, int j)
+static void		ed_draw_tile(t_win *win, SDL_Texture **texture, int i, int j)
 {
 	SDL_Rect	rect;
 
@@ -47,7 +47,7 @@ int				ed_put_map(t_win *win)
 			j = 0;
 		while (j < jmax && j < win->map.len_x)
 		{
-			draw_tile(win, win->textures.ttab, i, j);
+			ed_draw_tile(win, win->textures.ttab, i, j);
 			j++;
 		}
 		i++;
