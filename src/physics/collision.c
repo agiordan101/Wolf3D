@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/16 17:45:05 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/17 20:43:54 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/26 00:59:46 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,7 +14,7 @@
 #include "wolf3d.h"
 
 /*
-** On va faire simple pour l'instant
+**	Meme principe que le raycasting
 */
 
 static int		test_wall(t_map *map, t_dot_2d next, t_vector_2d *vel)

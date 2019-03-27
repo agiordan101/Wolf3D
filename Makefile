@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/02/15 15:27:07 by agiordan     #+#   ##    ##    #+#        #
-#    Updated: 2019/03/20 15:41:43 by gmonacho    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/03/26 01:18:03 by agiordan    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -51,7 +51,6 @@ SRCS_FILES =	main.c \
 				$(SRCS_PATH_4)/ed_pevent.c \
 				$(SRCS_PATH_4)/ed_update_map_ui.c \
 				$(SRCS_PATH_4)/ed_events.c
-				#$(SRCS_PATH_4)/ui.c
 
 SRCS = $(addprefix $(SRCS_PATH)/, $(SRCS_FILES))
 
