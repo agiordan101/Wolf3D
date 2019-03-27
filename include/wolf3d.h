@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/13 17:12:06 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/26 01:18:27 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/27 19:34:58 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,6 +41,7 @@ void		draw_rect(t_win *win, t_rect rect);
 void		draw_empty_rect(t_win *win, t_dot_2d pos, int width, int height);
 void		draw_line(t_win *win, t_dot_2d p1, t_dot_2d p2,\
 														SDL_Renderer *image);
+void		draw_tile(t_win *win, int i, int j);
 void		draw(t_win *win, t_calculs *calculs, t_textures *textures);
 void		print_compass(t_win *win);
 SDL_Texture	*create_t_from_s(SDL_Surface *surface, SDL_Renderer *rend);

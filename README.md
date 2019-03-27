@@ -1,2 +1,4 @@
 # Wolf3D
-agiordan and gmonacho
+Devellopeurs :
+agiordan
+gmonacho
