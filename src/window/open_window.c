@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   open_window.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: gmonacho <gmonacho@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/14 18:59:51 by gmonacho     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/18 16:13:08 by agiordan    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/27 17:29:22 by gmonacho    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,7 +43,7 @@ int			open_window(t_win *win)
 	if (SDL_Init(SDL_INIT_VIDEO) < 0 || \
 	!(win->ptr = SDL_CreateWindow(win->name,
 				0, 0, win->width, win->height, 0)) || \
-	!(win->rend = SDL_CreateRenderer(win->ptr, -1, SDL_RENDERER_SOFTWARE)))
+	!(win->rend = SDL_CreateRenderer(win->ptr, 0, SDL_RENDERER_SOFTWARE)))
 	{
 		ft_putstr(ft_strjoin("Open window error : ", SDL_GetError()));
 		return (0);
