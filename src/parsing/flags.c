@@ -6,7 +6,7 @@
 /*   By: agiordan <agiordan@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/03/05 15:06:12 by agiordan     #+#   ##    ##    #+#       */
-/*   Updated: 2019/03/27 21:04:42 by gmonacho    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/28 20:20:50 by agiordan    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -45,12 +45,6 @@ int				params(t_win *win, int ac, char **av)
 	int	i;
 
 	i = 0;
-	if (ac != 3)
-	{
-		ft_putstr("usage: ./Wolf3D <map> 0 | 1 [-len <width> <height>]");
-		ft_putendl("[-name <window's name>]\n0 : Wolf3d\n1 : map_editor");
-		return (-1);
-	}
 	win->name = "Wolf3D";
 	win->width = 1500;
 	win->height = 1000;
@@ -58,5 +52,11 @@ int				params(t_win *win, int ac, char **av)
 	win->fd = -1;
 	while (++i < ac)
 		flags(win, ac, av, &i);
+	if (ac < 3 || (ac > 3 && !ft_strcmp(win->name, "Wolf3D") && win->width == 1500 && win->height == 1000))
+	{
+		ft_putstr("usage: ./Wolf3D <map> 0 | 1 [-len <width> <height>]");
+		ft_putendl("[-name <window's name>]\n0 : Wolf3d\n1 : map_editor");
+		return (-1);
+	}
 	return (win->fd);
 }
